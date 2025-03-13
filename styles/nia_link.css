@@ -1,0 +1,104 @@
+html {
+  counter-reset: linkTitleWarning linkTitleError linkTitleInternal linkTitleExternal;
+}
+
+/* Display count in sidebar */
+html::after {
+  content: "#03 Link titles :\A - " counter(linkTitleInternal) " internal(s)\A - " counter(linkTitleExternal) " external(s)\A\A\A - " counter(linkTitleError) " error(s) \A - " counter(linkTitleWarning) " warning(s)\A";
+  position: fixed !important;
+  top: 300px !important;
+  right: 0 !important;
+  z-index: 123456 !important;
+  width: 12em !important;
+  border: 5px solid #fff;
+  border-right: 0;
+  padding: 15px !important;
+  white-space: pre !important;
+  font-family: sans-serif !important;
+  font-size: 20px !important;
+  font-weight: bold;
+  color: #fff !important;
+  background: #10415E !important;
+}
+
+a[title] {
+  position: relative;
+}
+
+a[title]::after {
+  content: " 💬 " attr(title);
+  position: absolute;
+  top: calc(100% - 5px);
+  left: -5px;
+  width: fit-content;
+  white-space: pre;
+  background-color: darkslateblue;
+  opacity: 1/*0.7;*/
+}
+
+/* Styles */
+a:where([aria-label], [aria-labelledby])::before,
+a[title]::after {
+  z-index: 123456;
+  display: block;
+  line-height: 1.5;
+  color: #fff;
+}
+
+/* Highlight all links */
+a:not([target="_blank"]):not([href^="http"]):not([title$="Nouvelle fenêtre"]) {
+  border: 3px solid green;
+  counter-increment: linkTitleInternal;
+}
+
+a[target="_blank"],
+a[href^="http"],
+a[title$="Nouvelle fenêtre"]{
+  border: 3px solid blue;
+  counter-increment: linkTitleExternal;
+}
+
+html[lang="fr"] a[target="_blank"]:not([title$="Nouvelle fenêtre"]),
+html[lang="fr"] a[title$="Nouvelle fenêtre"]:not([target="_blank"]){
+  border: 3px solid orange;
+  counter-increment: linkTitleWarning;
+}
+
+html[lang="fr"] a[target="_blank"]:not([title$="Nouvelle fenêtre"])::before,
+html[lang="fr"] a[title$="Nouvelle fenêtre"]:not([target="_blank"])::before{
+  content: 'Missing suffix ' !important;
+  position: relative;
+  color: orange;
+}
+
+a[title=" "],
+a[title="Nouvelle fenêtre"],
+a[title$="Nouvelle fenêtre - Nouvelle fenêtre"],
+a[aria-label][aria-labelledby]{
+  outline: solid 3px red!important;
+  outline-offset: 2px;
+}
+
+a[title=" "]::before,
+a[title="Nouvelle fenêtre"]::before,
+a[title$="Nouvelle fenêtre - Nouvelle fenêtre"]::before{
+  content: '<a title="'attr(title)'">'!important;
+  color: red;
+  counter-increment: linkTitleError;
+}
+
+*:not(.pagination-page):not(.pagination-next):not(.pagination-prev) > a[title][aria-label]:not([aria-labelledby])::before,
+*:not(.pagination-page):not(.pagination-next):not(.pagination-prev) > a[title][aria-labelledby]:not([aria-label])::before {
+  content: 'Check Aria-label / Aria-labelledby ' !important;
+  position: relative;
+  color: yellow;
+  counter-increment: linkTitleWarning;
+  display: block;
+}
+
+
+a[aria-label][aria-labelledby]::before{
+  content: 'Double Aria-label / Aria-labelledby' !important;
+  color: red;
+  counter-increment: linkTitleError;
+}

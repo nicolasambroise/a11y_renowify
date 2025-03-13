@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+[lang]:before {
+    display: block;
+    content: "Indication de langue : "attr(lang)"";
+    font-family: sans-serif!important;
+    font-size: 1rem!important;
+    font-weight: bold;
+    color: #fff!important;
+    background: green;
+}
+
+[lang] {
+    display: inline-block;
+    outline: solid 10px green!important;
+}
+
+
+[lang]:before {
+    counter-increment: thematique8-lang;
+}
+
+
+html {
+    padding-left: 200px;
+    counter-reset: thematique8-lang;
+}
+
+
+html:after {
+    font-family: sans-serif!important;
+    font-size: 1rem!important;
+    font-weight:bold;
+    color: #000!important;
+    position: fixed!important;
+    top: 0px!important;
+    left: 0!important;
+    white-space: pre!important;
+    width: 10em!important;
+    padding: 15px!important;
+    background: #eee!important;
+    z-index: 100000!important;
+    content: "" counter(thematique8-lang) " indications\A de langue "
+       
+}

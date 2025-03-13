@@ -1,0 +1,96 @@
+html {
+  counter-reset: tableNb tableError tableWarning;
+}
+
+/* Display count in sidebar */
+html::after {
+  content: "Tableaux :\A - " counter(tableNb) " element(s)\A\A\A - " counter(tableError) " error(s)\A - " counter(tableWarning) " warning(s)\A" ;
+  position: fixed !important;
+  top: 300px !important;
+  right: 0 !important;
+  z-index: 123456 !important;
+  width: 12em !important;
+  border: 5px solid #fff;
+  border-right: 0;
+  padding: 15px !important;
+  white-space: pre !important;
+  font-family: sans-serif !important;
+  font-size: 20px !important;
+  font-weight: bold;
+  color: #fff !important;
+  background: #10415E !important;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+:where([role="table"],table):before {
+	display:block;
+    content: "TABLEAU";
+    font-family: sans-serif!important;
+    font-size: 2rem!important;
+    font-weight: bold;
+    color: #fff!important;
+    background:green;
+}
+
+
+:where([role="table"],table) {
+    display: block;
+    outline: solid 10px green!important;
+    counter-increment: tableNb;
+}
+
+
+table[role]:after {
+       content: '<table role="'attr(role)'">'!important;
+	   counter-increment: tableWarning;
+}
+
+caption {
+    outline: solid 2px green!important;
+}
+
+th[scope="row"] {
+    outline: solid 2px green!important;
+}
+
+th[scope="col"] {
+    outline: solid 2px green!important;
+}
+
+th[scope]:after {
+       content: '<th scope="'attr(scope)'">'!important;
+}
+
+
+th:not([scope="row"]):not([scope="col"]){
+    outline: solid 2px red!important;
+}
+th:not([scope="row"]):not([scope="col"]):after{
+    content: 'Missing scope'!important;
+	counter-increment: tableError;
+}
+
+:where([role="table"],table):where([align],[bgcolor],[border],[frame],[cellpadding],[cellspacing],[width],[summary],[rules]){
+	outline: solid 10px red!important;
+}
+
+:where([role="table"],table):where([align],[bgcolor],[border],[frame],[cellpadding],[cellspacing],[width],[summary],[rules]):after{
+	content: 'Deprecated attributes'!important;
+	counter-increment: tableWarning;
+}
+
+th[header], td[header]{
+	outline: solid 2px orange!important;
+}
+th[header]:after{
+       content: '<th header="'attr(header)'">'!important;
+}
+
+td[header]:after {
+       content: '<td header="'attr(header)'">'!important;
+}

@@ -1,0 +1,83 @@
+html {
+  counter-reset: imgElm imgSvg imgObject imgWarning imgError;
+}
+
+/* Display count in sidebar */
+html::after {
+  content: "Textes alternatifs d'images\A - " counter(imgElm) " img\A"
+			"- " counter(imgSvg) " svg\A"
+			"- " counter(imgobject) " object\A\A\A"
+            "- " counter(imgWarning) " warning(s)\A"
+			"- " counter(imgError) " error(s)\A"
+      ;
+  position: fixed !important;
+  top: 300px !important;
+  right: 0 !important;
+  z-index: 123456 !important;
+  width: 12em !important;
+  border: 5px solid #fff;
+  border-right: 0;
+  padding: 15px !important;
+  white-space: pre !important;
+  font-family: sans-serif !important;
+  font-size: 20px !important;
+  font-weight: bold;
+  color: #fff !important;
+  background: #10415E !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+[role="img"],
+img,
+svg,
+area,
+object[type="image"],
+canvas,
+embed[type="image"] {
+    max-width: 150px;
+    height: auto;
+    margin-bottom:30px;
+    outline: solid 3px green;
+}
+
+
+img:not([alt]){
+    outline: solid 5px red!important;   
+    counter-increment: imgError;
+}
+
+
+svg:not([aria-hidden="true"]) {
+    outline: solid 5px red!important;   
+    counter-increment: imgError;
+}
+
+svg:not([focusable="false"]) {
+    outline: solid 5px orange;   
+    counter-increment: imgWarning;
+}
+
+.cmp-focus img:not([alt=""]){
+    outline: solid 5px red!important;   
+    counter-increment: imgError;
+}
+
+figcaption,
+.cmp-image[data-cmp-hook-image="imageV3"] .cmp-image__title {
+    outline: solid 5px orange;   
+    counter-increment: imgWarning;
+}
+
+
+img {counter-increment: imgElm;}
+[role="img"] {counter-increment: imgElm;}
+svg,
+svg[role="img"]{counter-increment: imgSvg;}
+embed,
+object{counter-increment: imgObject;}
+
