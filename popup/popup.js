@@ -2,56 +2,56 @@
 
 // ===== Globals
 // Stockage
-chrome.storage.local.get(["renowifyData"], function(result){
-  console.log(result);
-  if(result.renowifyData != undefined){
-	if(result.renowifyData["renowify_btn"] != undefined){
-      const renowify_btn = document.getElementById('renowify_btn');
-	  if(result.renowifyData["renowify_btn"]){
-	    renowify_btn.setAttribute('checked', true);
-	    renowify_btn.setAttribute('aria-pressed', true);
+if(chrome.storage.local.get(["renowifyData"]) == undefined){
+	console.log("initialise local storage")
+	chrome.storage.local.set({renowifyData:{}});
+}
+
+chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {	    
+	const currentTabId = tabs[0].id
+	chrome.storage.local.get(["renowifyData"], function(result){
+	  console.log(result);
+	  if(result.renowifyData != undefined){
+		if(result.renowifyData["renowify_btn"] != undefined){
+		  const renowify_btn = document.getElementById('renowify_btn');
+		  
+		  chrome.scripting.executeScript({
+				func : checkPanelInjected,
+				target : {tabId : currentTabId}
+		  }).then(isPanelInjected  => {
+		  
+			  console.log("Panel déjà présent : "+isPanelInjected[0].result);
+			  
+			  if(isPanelInjected[0].result){	  	  
+				  if(result.renowifyData["renowify_btn"]){
+					renowify_btn.setAttribute('checked', true);
+					renowify_btn.setAttribute('aria-pressed', true);
+				  }
+				  else{
+					renowify_btn.removeAttribute('checked')
+					renowify_btn.setAttribute('aria-pressed', false);
+				  }
+			  }
+			  else{
+				  let renowifyDataObject = result.renowifyData
+				  renowifyDataObject["renowify_btn"] = false;
+				  chrome.storage.local.set({renowifyData:renowifyDataObject});
+			  }
+		  });
+		}
+		if(result.renowifyData["renowify_type"] != undefined){
+		  const renowify_selected = document.getElementById('radio_'+result.renowifyData["renowify_type"]);
+		  renowify_selected.setAttribute('checked', true);
+		}
+		retrieveSwitchState(result.renowifyData, currentTabId);
 	  }
-	  else{
-	    renowify_btn.removeAttribute('checked')
-	    renowify_btn.setAttribute('aria-pressed', false);
-	  }
-	}
-	if(result.renowifyData["renowify_type"] != undefined){
-      const renowify_selected = document.getElementById('radio_'+result.renowifyData["renowify_type"]);
-	  renowify_selected.setAttribute('checked', true);
-	}
-	if(result.renowifyData["alt"] != undefined){
-      document.getElementById('checkbox_alt').setAttribute('checked', result.renowifyData["alt"]);
-	}
-	if(result.renowifyData["focus"] != undefined){
-      document.getElementById('checkbox_focus').setAttribute('checked', result.renowifyData["focus"]);
-	}
-	if(result.renowifyData["theme"] != undefined){
-      document.getElementById('checkbox_theme').setAttribute('checked', result.renowifyData["theme"]);
-	}
-	if(result.renowifyData["lang"] != undefined){
-      document.getElementById('checkbox_lang').setAttribute('checked', result.renowifyData["lang"]);
-	}
-	if(result.renowifyData["space"] != undefined){
-      document.getElementById('checkbox_space').setAttribute('checked', result.renowifyData["space"]);
-	}
-	if(result.renowifyData["headings"] != undefined){
-      document.getElementById('checkbox_headings').setAttribute('checked', result.renowifyData["headings"]);
-	}
-	if(result.renowifyData["tabindex"] != undefined){
-      document.getElementById('checkbox_tabindex').setAttribute('checked', result.renowifyData["tabindex"]);
-	}
-	if(result.renowifyData["autocomplete"] != undefined){
-      document.getElementById('checkbox_autocomplete').setAttribute('checked', result.renowifyData["autocomplete"]);
-	}
-	if(result.renowifyData["table"] != undefined){
-      document.getElementById('checkbox_table').setAttribute('checked', result.renowifyData["table"]);
-	}
-	if(result.renowifyData["link"] != undefined){
-      document.getElementById('checkbox_link').setAttribute('checked', result.renowifyData["link"]);
-	}
-  }
+	})
 })	  
+
+function checkPanelInjected(){
+	if(document.body.classList.contains("panel-injected")) return true;
+	return false
+}
 
 const scriptFolder = 'scripts/'
 const styleFolder = 'styles/'
@@ -96,14 +96,12 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 				func : addClassToBody,
 				target : {tabId : currentTabId}
 			});
-			const p4 = chrome.action.setBadgeText({
-				tabId: currentTabId,
-				text: 'ON'
-			});	
+			const p4 = addBadge(currentTabId)
 			const p5 = chrome.scripting.executeScript({
 				files: [scriptFolder+'/script_'+selected+'.js'],
 				target: { tabId: currentTabId }
 			});
+			
 			Promise.all([p1, p2, p3]).then(p4).then(() => console.log("script & style injected"));
 		}
 		// Hide/Remove Panel
@@ -171,9 +169,110 @@ function cleanRenowify() {
 		}
 	});
 }
+
+
+// ===== Tools
+
+// Fonction pour activer un style au clic sur le switch correspondant
+chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+	const currentTabId = tabs[0].id
+	const checkboxes = document.querySelectorAll('input[id^=checkbox_]')
+	for(let i=0; i<checkboxes.length; i++)
+	checkboxes[i].addEventListener('click', (event) => {
+		let checked = event.target.checked	
+		let checkboxId = (event.target.id).replace("checkbox_", "");
+		activeToolSwitch(checkboxId, checked, currentTabId);
+		chrome.storage.local.get(["renowifyData"], function(result){
+			console.log(result);
+			if(result.renowifyData != undefined){
+				let renowifyDataObject = result.renowifyData
+				renowifyDataObject[checkboxId] = checked;
+				chrome.storage.local.set({renowifyData:renowifyDataObject});
+			}
+		});		
+	});
+}); 
+
+// Fonction pour recuperer l'état actif des switch à l'ouverture de la popup
+function retrieveSwitchState(rd,currentTabId){
+	const SwitchList = ["alt","focus","theme","lang","space","headings","tabindex","autocomplete","table","link"]
+	SwitchList.forEach(el => {
+		if(rd[el] != undefined && rd[el]){
+		console.log(">> "+el+ " : "+ rd[el])
+			document.getElementById('checkbox_'+el).checked = true;
+			activeToolSwitch(el, true, currentTabId)
+		}	
+	});
+}
+
+// Fonction pour injecter les CSS ou les retirer
+function activeToolSwitch(checkboxId, checked, currentTabId){
+	const target = document.getElementById('checkbox_'+checkboxId);
+	target.setAttribute('aria-pressed', target.getAttribute("aria-pressed") === 'true' ? 'false' : 'true');
+	console.log("ActiveToolSwitch > "+checkboxId+" : "+checked)
+	if (checked) {
+		chrome.scripting.insertCSS({
+			files: [styleFolder+"nia_"+checkboxId+".css"],
+			target: {tabId: currentTabId}
+		});
+		addBadge(currentTabId);
+	} else {
+		chrome.scripting.removeCSS({
+			files: [styleFolder+"nia_"+checkboxId+".css"],
+			target: {tabId: currentTabId}
+		});
+		removeBadge(currentTabId);
+	}	
+}
+
+// Fonction pour re-injecter les CSS suite au reload de la page
+chrome.tabs.onUpdated.addListener(function(currentTabId, changeInfo, tab) {
+  if(changeInfo.status == 'complete'){
+    chrome.storage.local.get(["renowifyData"], function(result){
+	  console.log("Refresh de la page")
+	  console.log(result);
+	  if(result.renowifyData != undefined){
+		if(result.renowifyData["renowify_btn"] != undefined){
+		  const renowify_btn = document.getElementById('renowify_btn');
+		  if(document.body.classList.contains("panel-injected")){	  	  
+			  if(result.renowifyData["renowify_btn"]){
+				renowify_btn.setAttribute('checked', true);
+				renowify_btn.setAttribute('aria-pressed', true);
+			  }
+			  else{
+				renowify_btn.removeAttribute('checked')
+				renowify_btn.setAttribute('aria-pressed', false);
+			  }
+		  }
+		  else{
+			  let renowifyDataObject = result.renowifyData
+			  renowifyDataObject["renowify_btn"] = false;
+			  chrome.storage.local.set({renowifyData:renowifyDataObject});
+		  }
+		}
+		if(result.renowifyData["renowify_type"] != undefined){
+		  const renowify_selected = document.getElementById('radio_'+result.renowifyData["renowify_type"]);
+		  renowify_selected.setAttribute('checked', true);
+		}
+		retrieveSwitchState(result.renowifyData, currentTabId);
+	  }
+	})
+   }
+}); 
+
+
+// ==== Gestion du Badge 
+
+function addBadge(currentTabId){
+	chrome.action.setBadgeText({
+		tabId: currentTabId,
+		text: 'ON'
+	});
+}
+
 function removeBadge(currentTabId) {
   const checkboxes = document.querySelectorAll('input[type="checkbox"][role="switch"]');
-  const isActif = false;
+  let isActif = false;
   for (var i = 0; i < checkboxes.length; i++) {
 	  if (checkboxes[i].checked){
 		isActif = true;  
@@ -186,41 +285,4 @@ function removeBadge(currentTabId) {
 	  text: 'OFF'
 	});
   }
-}
-
-// ===== Tools
-chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-	const currentTabId = tabs[0].id
-	const checkboxes = document.querySelectorAll('input[id^=checkbox_]')
-	for(let i=0; i<checkboxes.length; i++)
-	checkboxes[i].addEventListener('click', (event) => {
-		let checked = event.target.checked	
-		let checkbox_id = (event.target.id).replace("checkbox_", "");
-		event.target.setAttribute('aria-pressed', event.target.getAttribute("aria-pressed") === 'true' ? 'false' : 'true');
-		console.log(checkbox_id+" : "+checked)
-		toggleCSS("nia_"+checkbox_id, checked, currentTabId);
-		
-		chrome.storage.local.get(["renowifyData"], function(result){
-			console.log(result);
-			if(result.renowifyData != undefined){
-				let renowifyDataObject = result.renowifyData
-				renowifyDataObject[checkbox_id] = checked;
-				chrome.storage.local.set({renowifyData:renowifyDataObject});
-			}
-		});	
-	});
-}); 
-
-function toggleCSS(filename, checked, currentTabId) {
-	if (checked) {
-		chrome.scripting.insertCSS({
-			files: [styleFolder+`${filename}.css`],
-			target: {tabId: currentTabId}
-		});
-	} else {
-		chrome.scripting.removeCSS({
-			files: [styleFolder+`${filename}.css`],
-			target: {tabId: currentTabId}
-		});
-	}
 }

@@ -34,32 +34,15 @@ function setItemsOutline(items,color,classname,label){
 
 function setItemOutline(item,color,classname,label){
 	if(debug_flag) console.log(item);
-	/*
-	if(color == "red"){ 
-		item.setAttribute("style","outline: 3px solid #ea0202 !important");
-	}
-	else if(item.style.outlineColor != "#ea0202" && item.style.outlineColor != "rgb(234, 2, 2)") {
-		item.setAttribute("style","outline: 3px solid "+color+" !important");
-	}
-	item.style.outlineOffset = "1px";
-	*/
 	item.classList.add("checkA11YOutline__"+color);
 	item.classList.add(classname);
 	const spanLabel = document.createElement('span');
-	/*
-	if(color == "red"){
-		spanLabel.style.backgroundColor = "#ea0202";
-		spanLabel.style.color = "white";
-	}
-	else{
-		spanLabel.style.backgroundColor = color;
-		spanLabel.style.color = "black";
-	}
-	*/
 	spanLabel.classList.add("checkA11YSpan");
 	spanLabel.classList.add("checkA11YSpan__"+color);
 	spanLabel.innerHTML = label;
-	if(item.nodeName == "LI"){item.prepend(spanLabel);} //Element “span” not allowed as child of element “ul” in this context.
+	if(item.nodeName == "LI"){
+		item.prepend(spanLabel); //Element “span” not allowed as child of element “ul” in this context.
+	} 
 	else{
 		item.before(spanLabel);
 	}
@@ -116,8 +99,6 @@ function isItemHasVisibleContent(item){
 	// innerText : ne recupère pas les élements cachés
 	if(item.innerText && sanitizeText(item.innerText,lang) == "") return false;
 	let style_i,style_j;
-	// A remplacer par un while
-	//console.log(item.childNodes)
 	for(let i = 0; i < item.childNodes.length; i++){
 		if(item.childNodes[i].nodeName != "#text" && item.childNodes[i].nodeName != "#comment"){
 			// console.log(item.childNodes[i])

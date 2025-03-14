@@ -2,46 +2,57 @@
     box-sizing: border-box;
 }
 
+html {
+  counter-reset:langElm langFr langEn langDe langOther;
+}
+
+/* Display count in sidebar */
+html::after {
+  content: "Indic. de langue : " counter(langElm)"\A - FR : " counter(langFr)"\A - DE : " counter(langDe)"\A - EN : " counter(langEn)"\A - Other : " counter(langOther);
+  position: fixed !important;
+  top: 400px !important;
+  right: 0 !important;
+  z-index: 123456 !important;
+  width: 12em !important;
+  border: 5px solid #fff;
+  border-right: 0;
+  padding: 15px !important;
+  white-space: pre !important;
+  font-family: sans-serif !important;
+  font-size: 18px !important;
+  font-weight: bold;
+  color: #fff !important;
+  background: #005166 !important;
+}
+
 [lang]:before {
     display: block;
-    content: "Indication de langue : "attr(lang)"";
+    content: "⚑ : "attr(lang)"";
     font-family: sans-serif!important;
     font-size: 1rem!important;
     font-weight: bold;
     color: #fff!important;
     background: green;
+	counter-increment: langElm;
 }
 
 [lang] {
     display: inline-block;
-    outline: solid 10px green!important;
+    outline: solid 5px green!important;
 }
 
-
-[lang]:before {
-    counter-increment: thematique8-lang;
+[lang^="fr"] {
+    counter-increment: langFr;
 }
 
-
-html {
-    padding-left: 200px;
-    counter-reset: thematique8-lang;
+[lang^="de"] {
+    counter-increment: langDe;
 }
 
+[lang^="en"] {
+    counter-increment: langEn;
+}
 
-html:after {
-    font-family: sans-serif!important;
-    font-size: 1rem!important;
-    font-weight:bold;
-    color: #000!important;
-    position: fixed!important;
-    top: 0px!important;
-    left: 0!important;
-    white-space: pre!important;
-    width: 10em!important;
-    padding: 15px!important;
-    background: #eee!important;
-    z-index: 100000!important;
-    content: "" counter(thematique8-lang) " indications\A de langue "
-       
+[lang]:not([lang^="fr"]):not([lang^="de"]):not([lang^="en"]) {
+    counter-increment: langOther;
 }

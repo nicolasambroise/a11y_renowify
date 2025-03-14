@@ -6,7 +6,7 @@ function check_part_01(){
 	if(debug_flag) console.log("01 AEM Component");
 
 	// A. Position de bouton menu
-	if(!only_redactor){
+	if(!only_redactor && isAEM){
 		const nia01a_nodes = document.querySelectorAll('button.anchor[data-destination^="#headernav"]:not(.anchor-close)');
 		let nia01a_flag = false;
 		if(nia01a_nodes && nia01a_nodes.length > 0){
@@ -63,78 +63,93 @@ function check_part_01(){
 	}
 	
 	// Role search sur les recherches secondaires
-	const nia01b4_nodes = document.querySelectorAll('main form[role="search"]:not([action$="recherche.html"]):not([aria-label="Globale"]):not([aria-label="Global"])');
-	if(nia01b4_nodes && nia01b4_nodes.length > 0 && isItemsVisible(nia01b4_nodes)){
-	  setItemToResultList("dev","<li><a href='#' data-destination='nia01b4' class='result-focus label-yellow'>01-B</a> : Présence d'un role=search sur les éléments de recherche secondaire</li>");
-	  setItemsOutline(nia01b4_nodes,"yellow","nia01b4","01-B");
+	if(!only_redactor && !only_error && isAEM){
+		const nia01b4_nodes = document.querySelectorAll('main form[role="search"]:not([action$="recherche.html"]):not([aria-label="Globale"]):not([aria-label="Global"])');
+		if(nia01b4_nodes && nia01b4_nodes.length > 0 && isItemsVisible(nia01b4_nodes)){
+		  setItemToResultList("dev","<li><a href='#' data-destination='nia01b4' class='result-focus label-yellow'>01-B</a> : Présence d'un role=search sur les éléments de recherche secondaire</li>");
+		  setItemsOutline(nia01b4_nodes,"yellow","nia01b4","01-B");
+		}
 	}
 	
 	// Les filtres sont présentés avec une structure en accordéon details/summary
-	const nia01b5_nodes = document.querySelectorAll('.filters-content > *:not(details)');
-	if(nia01b5_nodes && nia01b5_nodes.length > 0 && isItemsVisible(nia01b5_nodes)){
-	  setItemToResultList("dev","<li><a href='#' data-destination='nia01b5' class='result-focus label-yellow'>01-B</a> : Il est recommander de présenter les filtres avec une structure en accordéon details/summary</li>");
-	  setItemsOutline(nia01b5_nodes,"yellow","nia01b5","01-B");
+	if(!only_redactor && !only_error && isAEM){
+		const nia01b5_nodes = document.querySelectorAll('.filters-content > *:not(details)');
+		if(nia01b5_nodes && nia01b5_nodes.length > 0 && isItemsVisible(nia01b5_nodes)){
+		  setItemToResultList("dev","<li><a href='#' data-destination='nia01b5' class='result-focus label-yellow'>01-B</a> : Il est recommander de présenter les filtres avec une structure en accordéon details/summary</li>");
+		  setItemsOutline(nia01b5_nodes,"yellow","nia01b5","01-B");
+		}
 	}
 	
 	//Affichage du nombre de résultat
-	const nia01b6_nodes = document.querySelectorAll('.search-meta-count');
-	if(nia01b6_nodes && nia01b6_nodes.length > 0 && !isItemsVisible(nia01b6_nodes)){
-	  setItemToResultList("dev","<li><a href='#' data-destination='nia01b6' class='result-focus label-orange'>01-B</a> : Absence du nombre de resultat de la recherche</li>");
-	  setItemsOutline(nia01b6_nodes,"orange","nia01b6","01-B");
+	if(!only_redactor && isAEM){
+		const nia01b6_nodes = document.querySelectorAll('.search-meta-count');
+		if(nia01b6_nodes && nia01b6_nodes.length > 0 && !isItemsVisible(nia01b6_nodes)){
+		  setItemToResultList("dev","<li><a href='#' data-destination='nia01b6' class='result-focus label-orange'>01-B</a> : Absence du nombre de resultat de la recherche</li>");
+		  setItemsOutline(nia01b6_nodes,"orange","nia01b6","01-B");
+		}
 	}
 	
 	// Les résultats sont présentés sous forme d’une suite de balise <article> ou <li>
-	const nia01b7_nodes = document.querySelectorAll('.search-results .search-result > *:not(article):not(li)');
-	if(nia01b7_nodes && nia01b7_nodes.length > 0 && isItemsVisible(nia01b7_nodes)){
-	  setItemToResultList("dev","<li><a href='#' data-destination='nia01b7' class='result-focus label-yellow'>01-B</a> : Les résultats doivent être présentés sous forme d’une suite de balise 'article' ou 'li'</li>");
-	  setItemsOutline(nia01b7_nodes,"yellow","nia01b7","01-B");
+	if(!only_redactor && !only_error && isAEM){
+		const nia01b7_nodes = document.querySelectorAll('.search-results .search-result > *:not(article):not(li)');
+		if(nia01b7_nodes && nia01b7_nodes.length > 0 && isItemsVisible(nia01b7_nodes)){
+		  setItemToResultList("dev","<li><a href='#' data-destination='nia01b7' class='result-focus label-yellow'>01-B</a> : Les résultats doivent être présentés sous forme d’une suite de balise 'article' ou 'li'</li>");
+		  setItemsOutline(nia01b7_nodes,"yellow","nia01b7","01-B");
+		}
 	}
 	
 	// La pagination doit être structurée dans un élément <nav role=‘navigation’> avec un aria_label
-	const nia01b8_nodes = document.querySelectorAll('nav:not([role="navigation"]) > :is(ol,ul).pagination, *:not(nav) > :is(ol,ul).pagination, nav:not([aria-label]) > :is(ol,ul).pagination');
-	if(nia01b8_nodes && nia01b8_nodes.length > 0 && isItemsVisible(nia01b8_nodes)){
-	  setItemToResultList("dev","<li><a href='#' data-destination='nia01b8' class='result-focus label-red'>01-B</a> : La pagination doit être structurée dans un élément 'nav'  avec le role=navigation et un aria_label</li>");
-	  setItemsOutline(nia01b8_nodes,"red","nia01b8","01-B");
+	if(!only_redactor){
+		const nia01b8_nodes = document.querySelectorAll('nav:not([role="navigation"]) > :is(ol,ul).pagination, *:not(nav) > :is(ol,ul).pagination, nav:not([aria-label]) > :is(ol,ul).pagination');
+		if(nia01b8_nodes && nia01b8_nodes.length > 0 && isItemsVisible(nia01b8_nodes)){
+		  setItemToResultList("dev","<li><a href='#' data-destination='nia01b8' class='result-focus label-red'>01-B</a> : La pagination doit être structurée dans un élément 'nav'  avec le role=navigation et un aria_label</li>");
+		  setItemsOutline(nia01b8_nodes,"red","nia01b8","01-B");
+		}
 	}
 	
 	//Les différents éléments de la pagination doivent être sous forme de liste (ul ou ol)
-	const nia01b9_nodes = document.querySelectorAll('nav > .pagination:not(ol,ul)');
-	if(nia01b9_nodes && nia01b9_nodes.length > 0 && isItemsVisible(nia01b9_nodes)){
-	  setItemToResultList("dev","<li><a href='#' data-destination='nia01b9' class='result-focus label-red'>01-B</a> : Les différents éléments de la pagination doivent être sous forme de liste (ul ou ol)</li>");
-	  setItemsOutline(nia01b9_nodes,"red","nia01b9","01-B");
+	if(!only_redactor){
+		const nia01b9_nodes = document.querySelectorAll('nav > .pagination:not(ol,ul)');
+		if(nia01b9_nodes && nia01b9_nodes.length > 0 && isItemsVisible(nia01b9_nodes)){
+		  setItemToResultList("dev","<li><a href='#' data-destination='nia01b9' class='result-focus label-red'>01-B</a> : Les différents éléments de la pagination doivent être sous forme de liste (ul ou ol)</li>");
+		  setItemsOutline(nia01b9_nodes,"red","nia01b9","01-B");
+		}
 	}
 	
 	// La page active doit avoir un aria_current= ‘page’
-	const nia01b10_nodes = document.querySelectorAll('.pagination .pagination-page');
-	let nia01b10_flag = false;
-	let nia01b11_counter = 0;
-	if(nia01b10_nodes && nia01b10_nodes.length > 0 && isItemsVisible(nia01b10_nodes)){
-		for(let i = 0; i < nia01b10_nodes.length; i++){
-			if(nia01b10_nodes[i].tagName != 'LI') {setItemsOutline(nia01b10_nodes,"red","nia01b10","01-B");nia01b10_flag = true;}
-			else if(!nia01b10_nodes[i].firstElementChild || (nia01b10_nodes[i].firstElementChild.tagName == 'A' && ( !nia01b10_nodes[i].firstElementChild.hasAttribute("aria-label") || nia01b10_nodes[i].firstElementChild.getAttribute("aria-label").length < 4))) {setItemsOutline(nia01b10_nodes,"red","nia01b10","01-B");nia01b10_flag = true;}
-			if(nia01b10_nodes[i].hasAttribute("aria-current") && nia01b10_nodes[i].getAttribute("aria-current") == "page"){nia01b11_counter++;}
-		}
+	if(!only_redactor && isAEM){
+		const nia01b10_nodes = document.querySelectorAll('.pagination .pagination-page');
+		let nia01b10_flag = false;
+		let nia01b11_counter = 0;
+		if(nia01b10_nodes && nia01b10_nodes.length > 0 && isItemsVisible(nia01b10_nodes)){
+			for(let i = 0; i < nia01b10_nodes.length; i++){
+				if(nia01b10_nodes[i].tagName != 'LI') {setItemsOutline(nia01b10_nodes,"red","nia01b10","01-B");nia01b10_flag = true;}
+				else if(!nia01b10_nodes[i].firstElementChild || (nia01b10_nodes[i].firstElementChild.tagName == 'A' && ( !nia01b10_nodes[i].firstElementChild.hasAttribute("aria-label") || nia01b10_nodes[i].firstElementChild.getAttribute("aria-label").length < 4))) {setItemsOutline(nia01b10_nodes,"red","nia01b10","01-B");nia01b10_flag = true;}
+				if(nia01b10_nodes[i].hasAttribute("aria-current") && nia01b10_nodes[i].getAttribute("aria-current") == "page"){nia01b11_counter++;}
+			}
 
-		if(nia01b10_flag == true){
-		   setItemToResultList("dev","<li><a href='#' data-destination='nia01b10' class='result-focus label-red'>01-B</a> : Les item de la pagination doivent être dans une balise li et leur enfant posseder un aria-label pertinent</li>");
-		}
-		if(nia01b11_counter == 0){
-		   setItemToResultList("dev","<li><a href='#' data-destination='nia01b11' class='result-focus label-red'>01-B</a> : La page active de la pagination doit avoir un aria_current= ‘page’</li>");
-		   setItemsOutline(nia01b10_nodes,"red","nia01b11","01-B");
+			if(nia01b10_flag == true){
+			   setItemToResultList("dev","<li><a href='#' data-destination='nia01b10' class='result-focus label-red'>01-B</a> : Les item de la pagination doivent être dans une balise li et leur enfant posseder un aria-label pertinent</li>");
+			}
+			if(nia01b11_counter == 0){
+			   setItemToResultList("dev","<li><a href='#' data-destination='nia01b11' class='result-focus label-red'>01-B</a> : La page active de la pagination doit avoir un aria_current= ‘page’</li>");
+			   setItemsOutline(nia01b10_nodes,"red","nia01b11","01-B");
+			}
 		}
 	}
 
 	// C. Tooltip
-
-	const nia01c_nodes = document.querySelectorAll('.search-view');
-	if(nia01c_nodes && nia01c_nodes.length > 0 && isItemsVisible(nia01c_nodes)){
-	  setItemToResultList("nc","<li><a href='#' data-destination='nia01c' class='result-focus label-red'>01-C</a> : Présence de tooltip non accessible sur les résultats de recherches [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-10-13-1' target='_blank'>RAWeb 10.13.1</a>]</li>");
-	  setItemsOutline(nia01c_nodes,"red","nia01c","01-C");
+	if(isAEM){
+		const nia01c_nodes = document.querySelectorAll('.search-view');
+		if(nia01c_nodes && nia01c_nodes.length > 0 && isItemsVisible(nia01c_nodes)){
+		  setItemToResultList("nc","<li><a href='#' data-destination='nia01c' class='result-focus label-red'>01-C</a> : Présence de tooltip non accessible sur les résultats de recherches [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-10-13-1' target='_blank'>RAWeb 10.13.1</a>]</li>");
+		  setItemsOutline(nia01c_nodes,"red","nia01c","01-C");
+		}
 	}
 
 	// D. Menu langue
 
-	if(!only_redactor){
+	if(!only_redactor && isAEM){
 		const nia01d1_nodes = document.querySelectorAll('nav[id^="language-"]:not([aria-label]), div > ul.cmp-languagenavigation__group:not([aria-label])');
 		if(nia01d1_nodes && nia01d1_nodes.length > 0 && isItemsVisible(nia01d1_nodes)){
 		  setItemToResultList("nc","<li><a href='#' data-destination='nia01d1' class='result-focus label-red'>01-D</a> : Absence de l'aria-label sur le menu de selection de langue (à ajouter dans le cqdialog)</li>");
@@ -158,17 +173,18 @@ function check_part_01(){
 
 
 	// E. Video player
-
-	const nia01e_nodes = document.querySelectorAll('.cmp-multiplayer .player_img img[alt="Lire la vidéo Youtube, voir légende ci-après"][lang]:not([lang="fr"])');
-	if(nia01e_nodes && nia01e_nodes.length > 0 && isItemsVisible(nia01e_nodes)){
-	  setItemToResultList("dev","<li><a href='#' data-destination='nia01e' class='result-focus label-orange'>01-E</a> : Traduction manquante dans le composant Multimedia Player</li>");
-	  setItemsOutline(nia01e_nodes,"orange","nia01e","01-E");
+	if(!only_redactor && isAEM){
+		const nia01e_nodes = document.querySelectorAll('.cmp-multiplayer .player_img img[alt="Lire la vidéo Youtube, voir légende ci-après"][lang]:not([lang="fr"])');
+		if(nia01e_nodes && nia01e_nodes.length > 0 && isItemsVisible(nia01e_nodes)){
+		  setItemToResultList("dev","<li><a href='#' data-destination='nia01e' class='result-focus label-orange'>01-E</a> : Traduction manquante dans le composant Multimedia Player</li>");
+		  setItemsOutline(nia01e_nodes,"orange","nia01e","01-E");
+		}
 	}
 
 	// F. Menu
 
 	// F1. Check si le menu existe
-	if(!only_redactor){
+	if(!only_redactor && isAEM){
 		const nia01f_menu = document.querySelector('nav.topnav > .page-headernav .navigation-container > ul.nav ,nav.page-headernav .navigation-container > ul.nav, nav.page-headernav-desk .navigation-container > ul.nav, nav.headernav-detached .navigation-container > ul.nav');
 		let nia01f_hasPasserelle = false; 
 		let nia01f_isModal = false; 
@@ -178,10 +194,12 @@ function check_part_01(){
 			  setItemToResultList("dev","<li><a href='#' data-destination='nia01f01' class='result-focus label-orange'>01-F</a> : Role navigation absent de la barre de navigation</li>");
 			  setItemsOutline(nia01f01_node,"orange","nia01f01","01-F");
 			}
-			const nia01f02_node = document.querySelector('nav#headernav:not([aria-label]):not([aria-labelledby])');
-			if(nia01f02_node && isItemVisible(nia01f02_node)){
-			  setItemToResultList("dev","<li><a href='#' data-destination='nia01f02' class='result-focus label-yellow'>01-F</a> : Attribut Aria-label absent de la barre de navigation</li>");
-			  setItemsOutline(nia01f02_node,"yellow","nia01f02","01-F");
+			if(!only_error){
+				const nia01f02_node = document.querySelector('nav#headernav:not([aria-label]):not([aria-labelledby])');
+				if(nia01f02_node && isItemVisible(nia01f02_node)){
+				  setItemToResultList("dev","<li><a href='#' data-destination='nia01f02' class='result-focus label-yellow'>01-F</a> : Attribut Aria-label absent de la barre de navigation</li>");
+				  setItemsOutline(nia01f02_node,"yellow","nia01f02","01-F");
+				}
 			}
 
 			// Check si un acces aux pages passerelles est disponible depuis la navigation
@@ -343,8 +361,7 @@ function check_part_01(){
 					if(!nia01f20_btn.hasAttribute("aria-expanded")){
 						nia01f_isModal = true;
 						if(debug_flag) console.log(" - Le menu mobile s'ouvre dans une modale");
-						
-						if(!nia01f20_btn.hasAttribute("aria-haspopup")){
+						if(!nia01f20_btn.hasAttribute("aria-haspopup") && !only_error){
 							if(debug_flag) console.log(" - F5.1 : Absence de l'attribut aria-haspopup=dialog du bouton d'ouverture du menu");
 							setItemToResultList("dev","<li><a href='#' data-destination='nia01f51' class='result-focus label-yellow'>01-F</a> : Absence de l'attribut aria-haspopup=dialog du bouton d'ouverture du menu</li>");
 							setItemOutline(nia01f20_btn,"yellow","nia01f51","01-F");
@@ -513,7 +530,7 @@ function check_part_01(){
 
 			
 		}
-		else {
+		else if(!only_error){
 			  setItemToResultList("man","<li><span class='result-focus label-yellow'>01-F</span> : Absence de barre de navigation</li>");
 		}
 	}

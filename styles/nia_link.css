@@ -1,12 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+
 html {
   counter-reset: linkTitleWarning linkTitleError linkTitleInternal linkTitleExternal;
 }
 
 /* Display count in sidebar */
 html::after {
-  content: "#03 Link titles :\A - " counter(linkTitleInternal) " internal(s)\A - " counter(linkTitleExternal) " external(s)\A\A\A - " counter(linkTitleError) " error(s) \A - " counter(linkTitleWarning) " warning(s)\A";
+  content: "Attributs title de lien :\A - " counter(linkTitleInternal) " internal(s)\A - " counter(linkTitleExternal) " external(s)\A\A\A >> " counter(linkTitleError) " error(s) \A >> " counter(linkTitleWarning) " warning(s)\A";
   position: fixed !important;
-  top: 300px !important;
+  top: 400px !important;
   right: 0 !important;
   z-index: 123456 !important;
   width: 12em !important;
@@ -15,10 +20,10 @@ html::after {
   padding: 15px !important;
   white-space: pre !important;
   font-family: sans-serif !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
   font-weight: bold;
   color: #fff !important;
-  background: #10415E !important;
+  background: #005166 !important;
 }
 
 a[title] {
@@ -27,13 +32,14 @@ a[title] {
 
 a[title]::after {
   content: " 💬 " attr(title);
+  font-size: 18px !important;
   position: absolute;
   top: calc(100% - 5px);
   left: -5px;
   width: fit-content;
   white-space: pre;
-  background-color: darkslateblue;
-  opacity: 1/*0.7;*/
+  background-color: #005166;
+  opacity: 1;
 }
 
 /* Styles */

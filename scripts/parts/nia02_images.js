@@ -17,12 +17,13 @@ function check_part_02(){
 	  setItemsOutline(nia02a1_nodes,"red","nia02a1","02-A");
 	}
 	
-	const nia02a2_nodes = document.querySelectorAll('*:not(.ol-overlay-container) > *:not(.ol-overlay-container) > img:not([alt])');
-	if(nia02a2_nodes && nia02a2_nodes.length > 0 && isItemsVisible(nia02a2_nodes)){
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia02a2' class='result-focus label-yellow'>02-A</a> : Présence de " + nia02a2_nodes.length + " images sans attribut alt [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>");
-	  setItemsOutline(nia02a2_nodes,"yellow","nia02a2","02-A");
+	if(!only_error){
+		const nia02a2_nodes = document.querySelectorAll('*:not(.ol-overlay-container) > *:not(.ol-overlay-container) > img:not([alt])');
+		if(nia02a2_nodes && nia02a2_nodes.length > 0 && isItemsVisible(nia02a2_nodes)){
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia02a2' class='result-focus label-yellow'>02-A</a> : Présence de " + nia02a2_nodes.length + " images sans attribut alt [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>");
+		  setItemsOutline(nia02a2_nodes,"yellow","nia02a2","02-A");
+		}
 	}
-
 
 	// B. Vérification des attributs des svg, 
 	const nia02b1_nodes = document.querySelectorAll('svg:not([aria-hidden="true"]):not(.iconset)'); 
@@ -31,9 +32,11 @@ function check_part_02(){
 	  setItemToResultList("nc","<li><a href='#' data-destination='nia02b1' class='result-focus label-red'>02-B</a> : Absence de certains attributs sur des SVG (aria-hidden=true) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-2-4' target='_blank'>RAWeb 1.2.4</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>");
 	  setItemsOutline(nia02b1_nodes,"red","nia02b1","02-B");
 	}
-	if(nia02b2_nodes && nia02b2_nodes.length > 0 && isItemsVisible(nia02b2_nodes)){
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia02b2' class='result-focus label-yellow'>02-B</a> : Absence de certains attributs sur des SVG (focusable=false) [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>");
-	  setItemsOutline(nia02b2_nodes,"yellow","nia02b2","02-B");
+	if(!only_error){
+		if(nia02b2_nodes && nia02b2_nodes.length > 0 && isItemsVisible(nia02b2_nodes)){
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia02b2' class='result-focus label-yellow'>02-B</a> : Absence de certains attributs sur des SVG (focusable=false) [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>");
+		  setItemsOutline(nia02b2_nodes,"yellow","nia02b2","02-B");
+		}
 	}
 	
 	const nia02b3_nodes = document.querySelectorAll('svg[role="img"]:not([title]):not([aria-labelledby]):not([aria-label])');
@@ -63,7 +66,7 @@ function check_part_02(){
 	}
 	
 	// C. Alt vide sur les images de search logique. 
-	if(!only_redactor){
+	if(!only_redactor && isAEM){
 		const nia02c_nodes = document.querySelectorAll('.cmp-focus img:not([alt=""])');
 		if(nia02c_nodes && nia02c_nodes.length > 0 && isItemsVisible(nia02c_nodes)){
 		  setItemToResultList("dev","<li><a href='#' data-destination='nia02c' class='result-focus label-red'>02-C</a> : Présence de " + nia02c_nodes.length + " image de search-logic sans attribut alt vide</li>");
@@ -72,7 +75,7 @@ function check_part_02(){
 	}
 
 	// D. Absence de copyright/caption/légende sur une image Core V3
-	if(!only_redactor){
+	if(!only_redactor && isAEM){
 		const nia02d_nodes = document.querySelectorAll('.cmp-image[data-cmp-hook-image="imageV3"] .cmp-image__title');
 		if(nia02d_nodes && nia02d_nodes.length > 0 && isItemsVisible(nia02d_nodes)){
 		  setItemToResultList("dev","<li><a href='#' data-destination='nia02d' class='result-focus label-orange'>02-D</a> : Présence d'un caption non lié correctement à son image</li>");
@@ -81,7 +84,7 @@ function check_part_02(){
 	}
 	
 	// E. Images légendés presence du aria-label sur le figure
-	if(!only_redactor){
+	if(!only_redactor && isAEM){
 		const nia02e_nodes = document.querySelectorAll('figure[data-cmp-hook-image="figure"]:not([aria-label]) figcaption');
 		if(nia02e_nodes && nia02e_nodes.length > 0 && isItemsVisible(nia02e_nodes)){
 		  setItemToResultList("dev","<li><a href='#' data-destination='nia02e' class='result-focus label-orange'>02-E</a> : Les captions des images ne sont pas correctement restitué, il manque un attribut aria-label sur la balise figure</li>");
@@ -196,20 +199,20 @@ function check_part_02(){
 					setItemOutline(nia02h_nodes[i],"red","nia02h1","02-H");
 					setItemToResultList("nc","<li><a href='#' data-destination='nia02h1' class='result-focus label-red'>02-H</a> : Problème de référence introuvable ur un attribut aria-labelledby</li>");
 				}
-				else if(sanitizeText(nia02h_label[0].textContent,nia02h_lang).length > 150){
+				else if(!only_error && sanitizeText(nia02h_label[0].textContent,nia02h_lang).length > 150){
 					setItemOutline(nia02h_nodes[i],"yellow","nia02h","02-H");
 					nia02h_flag = true;
 				}
 			}
-			else if(nia02h_nodes[i].hasAttribute("aria-label") && sanitizeText(nia02h_nodes[i].getAttribute("aria-label"),nia02h_lang).length > 150){
+			else if(!only_error && nia02h_nodes[i].hasAttribute("aria-label") && sanitizeText(nia02h_nodes[i].getAttribute("aria-label"),nia02h_lang).length > 150){
 				setItemOutline(nia02h_nodes[i],"yellow","nia02h","02-H");
 				nia02h_flag = true;
 			}
-			else if(nia02h_nodes[i].hasAttribute("alt") && sanitizeText(nia02h_nodes[i].getAttribute("alt"),nia02h_lang).length > 150){
+			else if(!only_error && nia02h_nodes[i].hasAttribute("alt") && sanitizeText(nia02h_nodes[i].getAttribute("alt"),nia02h_lang).length > 150){
 				setItemOutline(nia02h_nodes[i],"yellow","nia02h","02-H");
 				nia02h_flag = true;
 			}
-			else if(nia02h_nodes[i].hasAttribute("title") && sanitizeText(nia02h_nodes[i].getAttribute("title"),nia02h_lang).length > 150){
+			else if(!only_error && nia02h_nodes[i].hasAttribute("title") && sanitizeText(nia02h_nodes[i].getAttribute("title"),nia02h_lang).length > 150){
 				setItemOutline(nia02h_nodes[i],"yellow","nia02h","02-H");
 				nia02h_flag = true;
 			}
@@ -219,76 +222,78 @@ function check_part_02(){
 	  setItemToResultList("nth","<li><a href='#' data-destination='nia02h' class='result-focus label-yellow'>02-H</a> : Présence d'alternative textuelle trop longue [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-3-9' target='_blank'>RAWeb 1.3.9</a>]</li>");
 	}
 	
-	
 	// I Chaque image-lien est dotée d'une alternative textuelle appropriée.
-	const nia02i_nodes = document.querySelectorAll('a:not(.blocklink):has(> img),a:not(.blocklink):has(> svg)');
-	let nia02i_title ="";
-	let nia02i_flag = false;
-	if(nia02i_nodes && nia02i_nodes.length > 0){
-	  for(let i = 0; i < nia02i_nodes.length; i++){
-			if(isItemVisible(nia02i_nodes[i])){
-				if(nia02i_nodes[i].childElementCount == 1 && nia02i_nodes[i].getElementsByTagName("img")[0] != null && nia02i_nodes[i].getElementsByTagName("img")[0].getAttribute("alt") == ""){
-					setItemOutline(nia02i_nodes[i],"yellow","nia02i","02-I");
-					nia02i_flag = true;
-				}
-				else if(nia02i_nodes[i].childElementCount == 1 && nia02i_nodes[i].getElementsByTagName("svg")[0] != null){
-					setItemOutline(nia02i_nodes[i],"yellow","nia02i","02-I");
-					nia02i_flag = true;
+	if(!only_error){
+		const nia02i_nodes = document.querySelectorAll('a:not(.blocklink):has(> img),a:not(.blocklink):has(> svg)');
+		let nia02i_title ="";
+		let nia02i_flag = false;
+		if(nia02i_nodes && nia02i_nodes.length > 0){
+		  for(let i = 0; i < nia02i_nodes.length; i++){
+				if(isItemVisible(nia02i_nodes[i])){
+					if(nia02i_nodes[i].childElementCount == 1 && nia02i_nodes[i].getElementsByTagName("img")[0] != null && nia02i_nodes[i].getElementsByTagName("img")[0].getAttribute("alt") == ""){
+						setItemOutline(nia02i_nodes[i],"yellow","nia02i","02-I");
+						nia02i_flag = true;
+					}
+					else if(nia02i_nodes[i].childElementCount == 1 && nia02i_nodes[i].getElementsByTagName("svg")[0] != null){
+						setItemOutline(nia02i_nodes[i],"yellow","nia02i","02-I");
+						nia02i_flag = true;
+					}
 				}
 			}
 		}
+		if(nia02i_flag == true) {
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia02i' class='result-focus label-yellow'>02-I</a> : Présence d'image-lien avec une alternative textuelle non pertinente [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-6-1-5' target='_blank'>RAWeb 6.1.5</a>, <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-lien-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'> Opquast 112</a>]</li>");
+		}
 	}
-	if(nia02i_flag == true) {
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia02i' class='result-focus label-yellow'>02-I</a> : Présence d'image-lien avec une alternative textuelle non pertinente [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-6-1-5' target='_blank'>RAWeb 6.1.5</a>, <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-lien-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'> Opquast 112</a>]</li>");
-	}
-	
 	
 	// J.Les vignettes et aperçus ne sont pas des images de taille supérieure redimensionnées côté client.
-	const nia02j_nodes = document.querySelectorAll('*:not(.feed-item-content > p):not(.feed-item-header):not(.ol-full-screen-false) > img:not([src$=".svg"])');
-	let nia02j_css_h ="", nia02j_css_w ="",nia02j_html_h ="", nia02j_html_w ="",nia02j_natural_h ="", nia02j_natural_w ="";
-	let nia02j_flag = false;
-	let nia02j_ratio_max = 2.5;
-	let nia02j_ratio_min = 0.5;
-	if(nia02j_nodes && nia02j_nodes.length > 0){
-		for(let i = 0; i < nia02j_nodes.length; i++){
-			if(isItemVisible(nia02j_nodes[i])){
-				nia02j_ratio_max = 2.5;
-				if(Boolean(nia02j_nodes[i].closest(".search-result")) || Boolean(nia02j_nodes[i].closest(".cmp-focus"))){ 
-					nia02j_ratio_max = 5;
-					if(debug_flag) console.log(nia02j_ratio_max + " " + nia02j_nodes[i].getAttribute("src"));
-				} // ratio 5 pour search-result  2.5 sinon
+	if(!only_error && isAEM){
+		const nia02j_nodes = document.querySelectorAll('*:not(.feed-item-content > p):not(.feed-item-header):not(.ol-full-screen-false) > img:not([src$=".svg"])');
+		let nia02j_css_h ="", nia02j_css_w ="",nia02j_html_h ="", nia02j_html_w ="",nia02j_natural_h ="", nia02j_natural_w ="";
+		let nia02j_flag = false;
+		let nia02j_ratio_max = 2.5;
+		let nia02j_ratio_min = 0.5;
+		if(nia02j_nodes && nia02j_nodes.length > 0){
+			for(let i = 0; i < nia02j_nodes.length; i++){
+				if(isItemVisible(nia02j_nodes[i])){
+					nia02j_ratio_max = 2.5;
+					if(Boolean(nia02j_nodes[i].closest(".search-result")) || Boolean(nia02j_nodes[i].closest(".cmp-focus"))){ 
+						nia02j_ratio_max = 5;
+						if(debug_flag) console.log(nia02j_ratio_max + " " + nia02j_nodes[i].getAttribute("src"));
+					} // ratio 5 pour search-result  2.5 sinon
+						
+					nia02j_css_h = nia02j_nodes[i].height;
+					nia02j_css_w = nia02j_nodes[i].width;
+					nia02j_html_h = nia02j_nodes[i].getAttribute('height');
+					nia02j_html_w = nia02j_nodes[i].getAttribute('width');
+					nia02j_natural_h = nia02j_nodes[i].naturalHeight;
+					nia02j_natural_w = nia02j_nodes[i].naturalWidth;
 					
-				nia02j_css_h = nia02j_nodes[i].height;
-				nia02j_css_w = nia02j_nodes[i].width;
-				nia02j_html_h = nia02j_nodes[i].getAttribute('height');
-				nia02j_html_w = nia02j_nodes[i].getAttribute('width');
-				nia02j_natural_h = nia02j_nodes[i].naturalHeight;
-				nia02j_natural_w = nia02j_nodes[i].naturalWidth;
-				
-				if(nia02j_html_h && (Math.abs(nia02j_html_h/nia02j_css_h) < nia02j_ratio_min || Math.abs(nia02j_html_h/nia02j_css_h) > nia02j_ratio_max)){
-					if(debug_flag) console.log("Html Height : "+ nia02j_html_h+" vs "+nia02j_css_h);
-					setItemOutline(nia02j_nodes[i],"yellow","nia02j","02-J");
-					nia02j_flag = true;
-				}
-				else if(nia02j_html_w && (Math.abs(nia02j_html_w/nia02j_css_w) < nia02j_ratio_min || Math.abs(nia02j_html_w/nia02j_css_w) > nia02j_ratio_max)){
-					if(debug_flag) console.log("Html Width : "+ nia02j_html_w+" vs "+nia02j_css_w);
-					setItemOutline(nia02j_nodes[i],"yellow","nia02j","02-J");
-					nia02j_flag = true;
-				}
-				else if((Math.abs(nia02j_natural_h/nia02j_css_h) < nia02j_ratio_min || Math.abs(nia02j_natural_h/nia02j_css_h) > nia02j_ratio_max) && nia02j_natural_h > 1){
-					if(debug_flag) console.log("Natural Height : "+ nia02j_natural_h+" vs "+nia02j_css_h);
-					setItemOutline(nia02j_nodes[i],"yellow","nia02j","02-J");
-					nia02j_flag = true;
-				}
-				else if((Math.abs(nia02j_natural_w/nia02j_css_w) < nia02j_ratio_min || Math.abs(nia02j_natural_w/nia02j_css_w) > nia02j_ratio_max) && nia02j_natural_w > 1){
-					if(debug_flag) console.log("Natural Width : "+ nia02j_natural_w+" vs "+nia02j_css_w);
-					setItemOutline(nia02j_nodes[i],"yellow","nia02j","02-J");
-					nia02j_flag = true;
+					if(nia02j_html_h && (Math.abs(nia02j_html_h/nia02j_css_h) < nia02j_ratio_min || Math.abs(nia02j_html_h/nia02j_css_h) > nia02j_ratio_max)){
+						if(debug_flag) console.log("Html Height : "+ nia02j_html_h+" vs "+nia02j_css_h);
+						setItemOutline(nia02j_nodes[i],"yellow","nia02j","02-J");
+						nia02j_flag = true;
+					}
+					else if(nia02j_html_w && (Math.abs(nia02j_html_w/nia02j_css_w) < nia02j_ratio_min || Math.abs(nia02j_html_w/nia02j_css_w) > nia02j_ratio_max)){
+						if(debug_flag) console.log("Html Width : "+ nia02j_html_w+" vs "+nia02j_css_w);
+						setItemOutline(nia02j_nodes[i],"yellow","nia02j","02-J");
+						nia02j_flag = true;
+					}
+					else if((Math.abs(nia02j_natural_h/nia02j_css_h) < nia02j_ratio_min || Math.abs(nia02j_natural_h/nia02j_css_h) > nia02j_ratio_max) && nia02j_natural_h > 1){
+						if(debug_flag) console.log("Natural Height : "+ nia02j_natural_h+" vs "+nia02j_css_h);
+						setItemOutline(nia02j_nodes[i],"yellow","nia02j","02-J");
+						nia02j_flag = true;
+					}
+					else if((Math.abs(nia02j_natural_w/nia02j_css_w) < nia02j_ratio_min || Math.abs(nia02j_natural_w/nia02j_css_w) > nia02j_ratio_max) && nia02j_natural_w > 1){
+						if(debug_flag) console.log("Natural Width : "+ nia02j_natural_w+" vs "+nia02j_css_w);
+						setItemOutline(nia02j_nodes[i],"yellow","nia02j","02-J");
+						nia02j_flag = true;
+					}
 				}
 			}
 		}
-	}
-	if(nia02j_flag == true) {
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia02j' class='result-focus label-yellow'>02-J</a> : Présence d'image redimentionnées côté Client [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-vignettes-et-apercus-ne-sont-pas-des-images-de-taille-superieure-redimensionnees-cote-client' target='_blank'>Opquast 114</a>]</li>");
+		if(nia02j_flag == true) {
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia02j' class='result-focus label-yellow'>02-J</a> : Présence d'image redimentionnées côté Client [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-vignettes-et-apercus-ne-sont-pas-des-images-de-taille-superieure-redimensionnees-cote-client' target='_blank'>Opquast 114</a>]</li>");
+		}
 	}
 }

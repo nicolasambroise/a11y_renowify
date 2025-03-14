@@ -328,3 +328,7 @@ body.check-panel-active [role="dialog"]{
     outline-offset: 1px;
 }
 
+.checkA11YOutline__parent{
+    outline: #ea0202 dotted 3px !important;
+    outline-offset: -2px;
+}

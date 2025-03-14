@@ -10,7 +10,7 @@ function check_part_03(){
 	}
 
 	// A. Verification de la présence du suffix sur les liens externe
-	if(!only_redactor){
+	if(!only_redactor && !only_error){
 		const nia03a_nodes = document.querySelectorAll('html[lang="fr"] a[target="_blank"]:not([title$="- Nouvelle fenêtre"]):not(.mapboxgl-ctrl-logo):not(.blocklink), html[lang="fr"] a[title$="- Nouvelle fenêtre"]:not([target="_blank"]), html[lang="en"] a[target="_blank"]:not([title$="- New window"]):not(.mapboxgl-ctrl-logo):not(.blocklink),html[lang="en"] a[title$="- New window"]:not([target="_blank"]), html[lang="de"] a[target="_blank"]:not([title$="- Neues Fenster"]):not(.mapboxgl-ctrl-logo):not(.blocklink),html[lang="de"] a[title$="- Neues Fenster"]:not([target="_blank"]),html[lang="lb"] a[target="_blank"]:not([title$="- Nei Fënster"]):not(.mapboxgl-ctrl-logo):not(.blocklink),html[lang="lb"] a[title$="- Nei Fënster"]:not([target="_blank"])');
 		let nia03a_flag = false;
 		let nia03a_lang;
@@ -88,7 +88,7 @@ function check_part_03(){
 	}
 	
 	// F. Chaque lien a t'il un intitulé
-const nia03f_nodes = document.querySelectorAll('a[href]:not([href^="#"]),[role="link"][href]:not([href^="#"])');
+	const nia03f_nodes = document.querySelectorAll('a[href]:not([href^="#"]),[role="link"][href]:not([href^="#"])');
 	let nia03f_flag = false;
 	let nia03f_lang = "";
 	if(nia03f_nodes && nia03f_nodes.length > 0){
@@ -108,10 +108,12 @@ const nia03f_nodes = document.querySelectorAll('a[href]:not([href^="#"]),[role="
 	}
 	
 	// G. Présence de liens sans href
-	const nia03g_nodes = document.querySelectorAll('a:not([href]),[role="link"]:not([href])');
-	if(nia03g_nodes && nia03g_nodes.length > 0 && isItemsVisible(nia03g_nodes)){
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia03g' class='result-focus label-yellow'>03-G</a> : Présence d'un lien sans destination</li>");
-	  setItemsOutline(nia03g_nodes,"yellow","nia03g","03-G");
+	if(!only_error){
+		const nia03g_nodes = document.querySelectorAll('a:not([href]),[role="link"]:not([href])');
+		if(nia03g_nodes && nia03g_nodes.length > 0 && isItemsVisible(nia03g_nodes)){
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia03g' class='result-focus label-yellow'>03-G</a> : Présence d'un lien sans destination</li>");
+		  setItemsOutline(nia03g_nodes,"yellow","nia03g","03-G");
+		}
 	}
 	
 	// H. Liens tel: mailto: fax:
@@ -148,22 +150,24 @@ const nia03f_nodes = document.querySelectorAll('a[href]:not([href^="#"]),[role="
 	}
 	
 	// I Lien sur "ici" ou sur "lien"
-	const nia03i_nodes = document.querySelectorAll('html[lang="fr"] a');
-	let nia03i_content ="";
-	let nia03i_flag = false;
-	if(nia03i_nodes && nia03i_nodes.length > 0){
-	  for(let i = 0; i < nia03i_nodes.length; i++){
-			if(isItemVisible(nia03i_nodes[i])){
-				nia03i_content = nia03i_nodes[i].innerHTML;
-				if(nia03i_content == "ici" || nia03i_content == "cliquer ici" || nia03i_content == "cliquez ici" || nia03i_content == "lire la suite" || nia03i_content == "lien" ){
-					setItemOutline(nia03i_nodes[i],"yellow","nia03i","03-I");
-					nia03i_flag = true;
+	if(!only_error){
+		const nia03i_nodes = document.querySelectorAll('html[lang="fr"] a');
+		let nia03i_content ="";
+		let nia03i_flag = false;
+		if(nia03i_nodes && nia03i_nodes.length > 0){
+		  for(let i = 0; i < nia03i_nodes.length; i++){
+				if(isItemVisible(nia03i_nodes[i])){
+					nia03i_content = nia03i_nodes[i].innerHTML;
+					if(nia03i_content == "ici" || nia03i_content == "cliquer ici" || nia03i_content == "cliquez ici" || nia03i_content == "lire la suite" || nia03i_content == "lien" ){
+						setItemOutline(nia03i_nodes[i],"yellow","nia03i","03-I");
+						nia03i_flag = true;
+					}
 				}
 			}
 		}
-	}
-	if(nia03i_flag == true) {
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia03i' class='result-focus label-yellow'>03-I</a> : Présence de liens non pertinent [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-libelle-de-chaque-lien-decrit-sa-fonction-ou-la-nature-du-contenu-vers-lequel-il-pointe' target='_blank'> Opquast 132</a>]</li>");
+		if(nia03i_flag == true) {
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia03i' class='result-focus label-yellow'>03-I</a> : Présence de liens non pertinent [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-libelle-de-chaque-lien-decrit-sa-fonction-ou-la-nature-du-contenu-vers-lequel-il-pointe' target='_blank'> Opquast 132</a>]</li>");
+		}
 	}
 	
 	// J Vérifie la présence de l'attribut target_blank sur les liens externe
@@ -184,25 +188,29 @@ const nia03f_nodes = document.querySelectorAll('a[href]:not([href^="#"]),[role="
 	}
 	
 	//K Liens Pour en savoir plus
-	const nia03k_nodes = document.querySelectorAll('.cmp-focus .focus-more.btn, .cmp-contentbox a.btn');
-	if(nia03k_nodes && nia03k_nodes.length > 15 && isItemsVisible(nia03k_nodes)){
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia03k' class='result-focus label-yellow'>03-K</a> : Trop de liens Pour en savoir plus (" + nia03k_nodes.length + ")</li>");
-	  setItemsOutline(nia03k_nodes,"yellow","nia03k","03-K");
+	if(!only_error && isAEM){
+		const nia03k_nodes = document.querySelectorAll('.cmp-focus .focus-more.btn, .cmp-contentbox a.btn');
+		if(nia03k_nodes && nia03k_nodes.length > 15 && isItemsVisible(nia03k_nodes)){
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia03k' class='result-focus label-yellow'>03-K</a> : Trop de liens Pour en savoir plus (" + nia03k_nodes.length + ")</li>");
+		  setItemsOutline(nia03k_nodes,"yellow","nia03k","03-K");
+		}
 	}
 
 	// L Présence de soulignement en dehors de lien
-	const nia03l_nodes = document.querySelectorAll("body *:not(a):not(mark)");
-	let nia03l_flag = false;
-	if(nia03l_nodes && nia03l_nodes.length > 0 && isItemsVisible(nia03l_nodes)){	
-		for(let i = 0; i < nia03l_nodes.length; i++){
-			if(isItemVisible(nia03l_nodes[i]) && window.getComputedStyle(nia03l_nodes[i], null).textDecorationLine == "underline"){
-				setItemOutline(nia03l_nodes[i],"yellow","nia03l","03-L");
-				nia03l_flag = true;
+	if(!only_error){
+		const nia03l_nodes = document.querySelectorAll("body *:not(a):not(mark)");
+		let nia03l_flag = false;
+		if(nia03l_nodes && nia03l_nodes.length > 0 && isItemsVisible(nia03l_nodes)){	
+			for(let i = 0; i < nia03l_nodes.length; i++){
+				if(isItemVisible(nia03l_nodes[i]) && window.getComputedStyle(nia03l_nodes[i], null).textDecorationLine == "underline"){
+					setItemOutline(nia03l_nodes[i],"yellow","nia03l","03-L");
+					nia03l_flag = true;
+				}
 			}
 		}
-	}
-	if(nia03l_flag == true) {
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia03l' class='result-focus label-yellow'>03-L</a> : Réservez le soulignement aux liens</li>");
+		if(nia03l_flag == true) {
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia03l' class='result-focus label-yellow'>03-L</a> : Réservez le soulignement aux liens</li>");
+		}
 	}
 
 	// M. Présence de liens avec un espace dans le href
@@ -213,17 +221,19 @@ const nia03f_nodes = document.querySelectorAll('a[href]:not([href^="#"]),[role="
 	}
 
 	// N. Un lien non_souligné et inclus dans un paragraphe de texte doit être suffisamment contrasté avec le texte environnant (à l’état par défaut, hover et focus). Idéalement, toujours souligner les liens.
-	const nia03n_nodes = document.querySelectorAll("main *:not(li.nav-item) > p > a, main *:not(.cmp-autocompleteSearch__keywords) > li:not(.cmp-focus-list-item):not(.nav-item):not(.cmp-languagenavigation__item):not(.cmp-breadcrumb__item):not(.subnav-item):not(.cmp-grid__item ):not(.filter-item):not(.cmp-list__item) > a:not(.toc-anchor)");
-	let nia03n_flag = false;
-	if(nia03n_nodes && nia03n_nodes.length > 0 && isItemsVisible(nia03l_nodes)){	
-		for(let i = 0; i < nia03n_nodes.length; i++){
-			if(isItemVisible(nia03n_nodes[i]) && window.getComputedStyle(nia03n_nodes[i], null).textDecorationLine != "underline"){
-				setItemOutline(nia03n_nodes[i],"yellow","nia03n","03-N");
-				nia03n_flag = true;
+	if(!only_error){
+		const nia03n_nodes = document.querySelectorAll("main *:not(li.nav-item) > p > a, main *:not(.cmp-autocompleteSearch__keywords) > li:not(.cmp-focus-list-item):not(.nav-item):not(.cmp-languagenavigation__item):not(.cmp-breadcrumb__item):not(.subnav-item):not(.cmp-grid__item ):not(.filter-item):not(.cmp-list__item) > a:not(.toc-anchor)");
+		let nia03n_flag = false;
+		if(nia03n_nodes && nia03n_nodes.length > 0 && isItemsVisible(nia03l_nodes)){	
+			for(let i = 0; i < nia03n_nodes.length; i++){
+				if(isItemVisible(nia03n_nodes[i]) && window.getComputedStyle(nia03n_nodes[i], null).textDecorationLine != "underline"){
+					setItemOutline(nia03n_nodes[i],"yellow","nia03n","03-N");
+					nia03n_flag = true;
+				}
 			}
 		}
-	}
-	if(nia03n_flag == true) {
-	  setItemToResultList("man","<li><a href='#' data-destination='nia03n' class='result-focus label-yellow'>03-N</a> : Présence d'un lien non souligné, vérifier son contraste avec le texte environnant</li>");
+		if(nia03n_flag == true) {
+		  setItemToResultList("man","<li><a href='#' data-destination='nia03n' class='result-focus label-yellow'>03-N</a> : Présence d'un lien non souligné, vérifier son contraste avec le texte environnant</li>");
+		}
 	}
 }

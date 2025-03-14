@@ -48,7 +48,7 @@ function check_part_05(){
 	if(!only_redactor){
 		const nia05c_doctype = new XMLSerializer().serializeToString(document.doctype);
 		if(nia05c_doctype != "<!DOCTYPE html>"){
-			setItemToResultList("dev","<li><a href='#' data-destination='nia05c' class='result-focus label-yellow'>05-C</a> : Vérifier qu'un doctype est correctement déclaré [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-1-1' target='_blank'>RAWeb 8.1.1</a>]</li>");
+			setItemToResultList("dev","<li><a href='#' data-destination='nia05c' class='result-focus label-orange'>05-C</a> : Vérifier qu'un doctype est correctement déclaré [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-1-1' target='_blank'>RAWeb 8.1.1</a>]</li>");
 		}
 	}
 	
@@ -59,27 +59,29 @@ function check_part_05(){
 	}
 	
 	// E. Changement de sens de lecture
-	const nia05e1_nodes = document.querySelectorAll('[dir]:not([dir="rtl"]):not([dir="ltr"])');
-	if(nia05e1_nodes && nia05e1_nodes.length > 0 && isItemsVisible(nia05e1_nodes)){
-	  setItemToResultList("nc","<li><a href='#' data-destination='nia05e1' class='result-focus label-red'>05-E</a> : Vérifier la valeur de définition du sens de lecture [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-10-2' target='_blank'>RAWeb 8.10.2</a>]</li>");
-	  setItemsOutline(nia05e1_nodes,"red","nia05e1","05-E");
-	}
-	
-	const nia05e2_nodes = document.querySelectorAll('[dir="rtl"]');
-	const nia05e2_rtl_isocode = ["ar", "ara", "arc", "ae", "ave", "egy", "he", "heb", "nqo", "pal", "phn", "sam", "syc", "syr", "fa", "per", "fas", "ku", "kur", "dv", "ha" , "khw", "ks", "pa", "ur", "yi"];
-	let nia05e2_flag = false;
-	let nia05e2_lang;
-	if(nia05e2_nodes && nia05e2_nodes.length > 0 && isItemsVisible(nia05e2_nodes)){
-	  for(let i = 0; i < nia05e2_nodes.length; i++){
-		  nia05e2_lang = nia05e2_nodes[i].closest('[lang]').getAttribute('lang');
-		  if (nia05e2_rtl_isocode.indexOf(nia05e2_lang) < 0) {
-			  setItemOutline(nia05e2_nodes[i],"red","nia05e2","05-E");
-			  nia05e2_flag = true;
+	if(!only_redactor){
+		const nia05e1_nodes = document.querySelectorAll('[dir]:not([dir="rtl"]):not([dir="ltr"])');
+		if(nia05e1_nodes && nia05e1_nodes.length > 0 && isItemsVisible(nia05e1_nodes)){
+		  setItemToResultList("nc","<li><a href='#' data-destination='nia05e1' class='result-focus label-red'>05-E</a> : Vérifier la valeur de définition du sens de lecture [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-10-2' target='_blank'>RAWeb 8.10.2</a>]</li>");
+		  setItemsOutline(nia05e1_nodes,"red","nia05e1","05-E");
+		}
+		
+		const nia05e2_nodes = document.querySelectorAll('[dir="rtl"]');
+		const nia05e2_rtl_isocode = ["ar", "ara", "arc", "ae", "ave", "egy", "he", "heb", "nqo", "pal", "phn", "sam", "syc", "syr", "fa", "per", "fas", "ku", "kur", "dv", "ha" , "khw", "ks", "pa", "ur", "yi"];
+		let nia05e2_flag = false;
+		let nia05e2_lang;
+		if(nia05e2_nodes && nia05e2_nodes.length > 0 && isItemsVisible(nia05e2_nodes)){
+		  for(let i = 0; i < nia05e2_nodes.length; i++){
+			  nia05e2_lang = nia05e2_nodes[i].closest('[lang]').getAttribute('lang');
+			  if (nia05e2_rtl_isocode.indexOf(nia05e2_lang) < 0) {
+				  setItemOutline(nia05e2_nodes[i],"red","nia05e2","05-E");
+				  nia05e2_flag = true;
+			  }
 		  }
-	  }
-	}
-	if(nia05e2_flag == true){
-	  setItemToResultList("nc","<li><a href='#' data-destination='nia05e2' class='result-focus label-red'>05-E</a> : Présence d'élément avec un sens de lecture de droite vers la gauche [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-10-2' target='_blank'>RAWeb 8.10.2</a>]</li>");
+		}
+		if(nia05e2_flag == true){
+		  setItemToResultList("nc","<li><a href='#' data-destination='nia05e2' class='result-focus label-red'>05-E</a> : Présence d'élément avec un sens de lecture de droite vers la gauche [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-10-2' target='_blank'>RAWeb 8.10.2</a>]</li>");
+		}
 	}
 	
 	// F. Id dupliqué
@@ -110,9 +112,11 @@ function check_part_05(){
 	}
 	
 	// G. Présence de la Govbar
-	const nia05g_govbar = document.querySelector('#govbar.govbar');
-	if(nia05g_govbar == null || !isItemVisible(nia05g_govbar)){
-		setItemToResultList("nth","<li><span class='result-focus label-yellow'>05-G</span> : Absence de la govbar, vérifier si ce n'est pas un oubli</li>");
+	if(isCTIE && !only_error){
+		const nia05g_govbar = document.querySelector('#govbar.govbar');
+		if(nia05g_govbar == null || !isItemVisible(nia05g_govbar)){
+			setItemToResultList("nth","<li><span class='result-focus label-yellow'>05-G</span> : Absence de la govbar, vérifier si ce n'est pas un oubli</li>");
+		}
 	}
 	
 	// H. Detect double <br>
@@ -133,15 +137,13 @@ function check_part_05(){
 				if(nia05h_prev_n1.nodeName == "BR"){
 					setItemOutline(nia05h_nodes[i],"red","nia05h","05-H");
 					nia05h_container = nia05h_nodes[i].parentElement;
-					nia05h_container.style.outline = "3px dotted red";
-					nia05h_container.style.outlineOffset = "-2px";
+					nia05h_container.classList.add("checkA11YOutline__parent");
 					nia05h_flag = true;
 				}
 				else if(nia05h_prev_n2.nodeName == "BR" && (nia05h_prev_n1.nodeName == "#text" || nia05h_prev_n1.nodeName == "#comment") && (nia05h_prev_n1.textContent == " " || nia05h_prev_n1.textContent == "")){
 					setItemOutline(nia05h_nodes[i],"red","nia05h","05-H");
 					nia05h_container = nia05h_nodes[i].parentElement;
-					nia05h_container.style.outline = "3px dotted red";
-					nia05h_container.style.outlineOffset = "-2px";
+					nia05h_container.classList.add("checkA11YOutline__parent");
 					nia05h_flag = true;
 				}
 			}
@@ -152,19 +154,23 @@ function check_part_05(){
 	}
 	
 	// I. Le code source de chaque page contient une métadonnée qui en décrit le contenu. ==> Présence de meta name=description 
-	const nia05i_node = document.querySelector('meta[name="description"]');
-	if(nia05i_node == null || nia05i_node.content == null || nia05i_node.content == "" ){
-		setItemToResultList("nth","<li><span class='result-focus label-yellow'>05-I</span> : Absence de métadonnée qui en décrit le contenu [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-code-source-de-chaque-page-contient-une-metadonnee-qui-en-decrit-le-contenu' target='_blank'>Opquast 3</a>]</li>");
+	if(!only_error && !isSearchLogic){
+		const nia05i_node = document.querySelector('meta[name="description"]');
+		if(nia05i_node == null || nia05i_node.content == null || nia05i_node.content == "" ){
+			setItemToResultList("nth","<li><span class='result-focus label-yellow'>05-I</span> : Absence de métadonnée qui en décrit le contenu [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-code-source-de-chaque-page-contient-une-metadonnee-qui-en-decrit-le-contenu' target='_blank'>Opquast 3</a>]</li>");
+		}
 	}
 	
 	// J. Le code source des pages contient un appel valide à une icône de favori.
-	const nia05j_node = document.querySelector("link[rel*='icon']");
-	if(nia05j_node == null || nia05j_node.getAttribute("href") == null || nia05j_node.getAttribute("href") == "" ){
-		setItemToResultList("nth","<li><span class='result-focus label-yellow'>05-J</span> : Absence de Favicon [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-code-source-des-pages-contient-un-appel-valide-a-un-icone-de-favori' target='_blank'>Opquast 99</a>]</li>");
+	if(!only_error){
+		const nia05j_node = document.querySelector("link[rel*='icon']");
+		if(nia05j_node == null || nia05j_node.getAttribute("href") == null || nia05j_node.getAttribute("href") == "" ){
+			setItemToResultList("nth","<li><span class='result-focus label-yellow'>05-J</span> : Absence de Favicon [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-code-source-des-pages-contient-un-appel-valide-a-un-icone-de-favori' target='_blank'>Opquast 99</a>]</li>");
+		}
 	}
-
+	
 	// K. Chaque page affiche une information permettant de connaître son emplacement dans l'arborescence du site.
-	if(isHomepage == false && !only_redactor){
+	if(!isHomepage && !only_redactor && isAEM && !only_error){
 		const nia05k_node = document.querySelector(".cmp-breadcrumb,.cmp-breadcrumb-demarches");
 		if(!nia05k_node){
 			setItemToResultList("nth","<li><span class='result-focus label-yellow'>05-K</span> : Absence de Fils d'Ariane [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-page-affiche-une-information-permettant-de-connaitre-son-emplacement-dans-larborescence-du-site' target='_blank'>Opquast 151</a>]</li>");
@@ -187,49 +193,53 @@ function check_part_05(){
 	}
 	
 	// M. Les styles ne justifient pas le texte.
-	const nia05m_node = document.querySelector("p");
-	if(nia05m_node && nia05m_node.style.textAlign == "justify"){
-		setItemOutline(nia05m_node,"yellow","nia05m","05-M");
-		setItemToResultList("nth","<li><a href='#' data-destination='nia05m' class='result-focus label-yellow'>05-M</a> : Présence de texte justifié [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-styles-ne-justifient-pas-le-texte' target='_blank'>Opquast 186</a>]</li>");
+	if(!only_error){
+		const nia05m_node = document.querySelector("p");
+		if(nia05m_node && nia05m_node.style.textAlign == "justify"){
+			setItemOutline(nia05m_node,"yellow","nia05m","05-M");
+			setItemToResultList("nth","<li><a href='#' data-destination='nia05m' class='result-focus label-yellow'>05-M</a> : Présence de texte justifié [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-styles-ne-justifient-pas-le-texte' target='_blank'>Opquast 186</a>]</li>");
+		}
 	}
 	
 	// N. Les mises en majuscules à des fins décoratives sont effectuées à l'aide des styles.
-	function isUpperCase (textInput) {  
-	  return textInput === String(textInput).toUpperCase();
-	}
-	const nia05n_h1 = document.querySelector("h1");
-	const nia05n_h2 = document.querySelector("h2");
-	const nia05n_h3 = document.querySelector("h3");
-	const nia05n_h4 = document.querySelector("h4");
-	const nia05n_h5 = document.querySelector("h5");
-	const nia05n_h6 = document.querySelector("h6");
-	if(nia05n_h1 && isUpperCase(nia05n_h1)){
-		setItemOutline(nia05n_h1,"yellow","nia05n1","05-N");
-		setItemToResultList("nth","<li><a href='#' data-destination='nia05n1' class='result-focus label-yellow'>05-N</a> : Présence de titre H1 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
-	}
-	if(nia05n_h2 && isUpperCase(nia05n_h2)){
-		setItemOutline(nia05n_h2,"yellow","nia05n2","05-N");
-		setItemToResultList("nth","<li><a href='#' data-destination='nia05n2' class='result-focus label-yellow'>05-N</a> : Présence de titre H2 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
-	}
-	if(nia05n_h1 && isUpperCase(nia05n_h3)){
-		setItemOutline(nia05n_h3,"yellow","nia05n3","05-N");
-		setItemToResultList("nth","<li><a href='#' data-destination='nia05n3' class='result-focus label-yellow'>05-N</a> : Présence de titre H3 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
-	}
-	if(nia05n_h1 && isUpperCase(nia05n_h4)){
-		setItemOutline(nia05n_h4,"yellow","nia05n4","05-N");
-		setItemToResultList("nth","<li><a href='#' data-destination='nia05n4' class='result-focus label-yellow'>05-N</a> : Présence de titre H4 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
-	}
-	if(nia05n_h1 && isUpperCase(nia05n_h5)){
-		setItemOutline(nia05n_h5,"yellow","nia05n5","05-N");
-		setItemToResultList("nth","<li><a href='#' data-destination='nia05n5' class='result-focus label-yellow'>05-N</a> : Présence de titre H5 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
-	}
-	if(nia05n_h1 && isUpperCase(nia05n_h6)){
-		setItemOutline(nia05n_h6,"yellow","nia05n6","05-N");
-		setItemToResultList("nth","<li><a href='#' data-destination='nia05n6' class='result-focus label-yellow'>05-N</a> : Présence de titre H6 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
+	if(!only_error){
+		function isUpperCase (textInput) {  
+		  return textInput === String(textInput).toUpperCase();
+		}
+		const nia05n_h1 = document.querySelector("h1");
+		const nia05n_h2 = document.querySelector("h2");
+		const nia05n_h3 = document.querySelector("h3");
+		const nia05n_h4 = document.querySelector("h4");
+		const nia05n_h5 = document.querySelector("h5");
+		const nia05n_h6 = document.querySelector("h6");
+		if(nia05n_h1 && isUpperCase(nia05n_h1)){
+			setItemOutline(nia05n_h1,"yellow","nia05n1","05-N");
+			setItemToResultList("nth","<li><a href='#' data-destination='nia05n1' class='result-focus label-yellow'>05-N</a> : Présence de titre H1 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
+		}
+		if(nia05n_h2 && isUpperCase(nia05n_h2)){
+			setItemOutline(nia05n_h2,"yellow","nia05n2","05-N");
+			setItemToResultList("nth","<li><a href='#' data-destination='nia05n2' class='result-focus label-yellow'>05-N</a> : Présence de titre H2 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
+		}
+		if(nia05n_h1 && isUpperCase(nia05n_h3)){
+			setItemOutline(nia05n_h3,"yellow","nia05n3","05-N");
+			setItemToResultList("nth","<li><a href='#' data-destination='nia05n3' class='result-focus label-yellow'>05-N</a> : Présence de titre H3 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
+		}
+		if(nia05n_h1 && isUpperCase(nia05n_h4)){
+			setItemOutline(nia05n_h4,"yellow","nia05n4","05-N");
+			setItemToResultList("nth","<li><a href='#' data-destination='nia05n4' class='result-focus label-yellow'>05-N</a> : Présence de titre H4 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
+		}
+		if(nia05n_h1 && isUpperCase(nia05n_h5)){
+			setItemOutline(nia05n_h5,"yellow","nia05n5","05-N");
+			setItemToResultList("nth","<li><a href='#' data-destination='nia05n5' class='result-focus label-yellow'>05-N</a> : Présence de titre H5 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
+		}
+		if(nia05n_h1 && isUpperCase(nia05n_h6)){
+			setItemOutline(nia05n_h6,"yellow","nia05n6","05-N");
+			setItemToResultList("nth","<li><a href='#' data-destination='nia05n6' class='result-focus label-yellow'>05-N</a> : Présence de titre H6 en majuscule [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/les-mises-en-majuscules-a-des-fins-decoratives-sont-effectuees-a-laide-des-styles' target='_blank'>Opquast 187</a>]</li>");
+		}
 	}
 
 	// O. La page des résultats de recherche indique le nombre de résultats
-	if(!only_redactor){
+	if(!only_redactor && isSearchLogic && isAEM){
 		const nia05o_isSearch = document.getElementById("mainSearch");
 		if(nia05o_isSearch){
 			const nia05o_searchCount = document.querySelector(".search-meta-count");
@@ -241,31 +251,34 @@ function check_part_05(){
 	}
 	
 	// P. Section vide dans la page
-	const nia05p_nodes = document.querySelectorAll('section.cmp-section');
-	let nia05p_flag = false;
-	let nia05p_clean_node = "", nia05p_container = "", nia05p_lang = "";
-	if(nia05p_nodes && nia05p_nodes.length > 0){
-		for(let i = 0; i < nia05p_nodes.length; i++){
-			nia05p_lang = nia05p_nodes[i].closest('[lang]').getAttribute('lang');
-			nia05p_clean_node = sanitizeText(nia05p_nodes[i].innerText, nia05p_lang);
-			if(nia05p_clean_node == "" && isItemVisible(nia05p_nodes[i])){
-				setItemOutline(nia05p_nodes[i],"yellow","nia05p","05-P");
-				nia05p_container = nia05p_nodes[i].parentElement;
-				nia05p_flag = true;
+	if(!only_error){
+		const nia05p_nodes = document.querySelectorAll('section.cmp-section');
+		let nia05p_flag = false;
+		let nia05p_clean_node = "", nia05p_container = "", nia05p_lang = "";
+		if(nia05p_nodes && nia05p_nodes.length > 0){
+			for(let i = 0; i < nia05p_nodes.length; i++){
+				nia05p_lang = nia05p_nodes[i].closest('[lang]').getAttribute('lang');
+				nia05p_clean_node = sanitizeText(nia05p_nodes[i].innerText, nia05p_lang);
+				if(nia05p_clean_node == "" && isItemVisible(nia05p_nodes[i])){
+					setItemOutline(nia05p_nodes[i],"yellow","nia05p","05-P");
+					nia05p_container = nia05p_nodes[i].parentElement;
+					nia05p_flag = true;
+				}
 			}
 		}
-	}
-	if(nia05p_flag == true) {
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia05p' class='result-focus label-yellow'>05-P</a> : Présence de section vides (ou avec un contenu assimilable à vide) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-9-1' target='_blank'>RAWeb 8.9.1</a>]</li>");
+		if(nia05p_flag == true) {
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia05p' class='result-focus label-yellow'>05-P</a> : Présence de section vides (ou avec un contenu assimilable à vide) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-9-1' target='_blank'>RAWeb 8.9.1</a>]</li>");
+		}
 	}
 	
-	// Q Logo
+	// Q Logo TODO !
 	/*
 	Le lien sur le logo redirige vers la page d’accueil et possède un attribut title respectant la nomenclature suivante : « [XXX] – Accueil »
 	Si du texte est présent sur le logo, possibilité de saisir un texte alt
 	Si du texte rédigé dans une langue étangère est présente sur le logo, possibilité de préciser une langue.
 	Pas d'indication du mot "logo" dans le texte alt du logo
 	*/
+	/*
 	const nia05q_nodes = document.querySelectorAll('header .logo');
 	let nia05q_flag1 = false;
 	let nia05q_flag2 = false;
@@ -276,7 +289,19 @@ function check_part_05(){
 			
 		}
 	}
-	
+	if(nia05q_flag1 == true) {
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia05q' class='result-focus label-yellow'>05-Q</a> : xxx</li>");
+	}
+	if(nia05q_flag2 == true) {
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia05q' class='result-focus label-yellow'>05-Q</a> : xxx</li>");
+	}
+	if(nia05q_flag3 == true) {
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia05q' class='result-focus label-yellow'>05-Q</a> : xxx</li>");
+	}
+	if(nia05q_flag4 == true) {
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia05q' class='result-focus label-yellow'>05-Q</a> : xxx</li>");
+	}
+	*/
 	// Y. TODO -->  Detect Overflow
 	// https://stackoverflow.com/questions/143815/determine-if-an-html-elements-content-overflows
 	// https://webtips.dev/webtips/javascript/find-overflowing-elements-with-javascript

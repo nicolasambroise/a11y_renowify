@@ -4,99 +4,161 @@
 function check_part_04(){
 	if(debug_flag) console.log("04 Formulaire");
 
-	if(currentUrl.includes("contact.html")){
+	// A. Champ générique 
+	const nia04a1_nodes = document.querySelectorAll('input[name="name"]:not([autocomplete="family-name"]), input[name="lastname"]:not([autocomplete="family-name"])');
+	if(nia04a1_nodes && nia04a1_nodes.length > 0){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a1' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (name) - utiliser 'family-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a1_nodes,"red","nia04a1","04-A");
+	}
+	const nia04a2_nodes = document.querySelectorAll('input[name="firstname"]:not([autocomplete="given-name"])');
+	if(nia04a2_nodes && nia04a2_nodes.length > 0){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a2' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (firstname) - utiliser 'given-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a2_nodes,"red","nia04a2","04-A");
+	}
+	const nia04a3_nodes = document.querySelectorAll('input[type="email"]:not([autocomplete="email"])');
+	if(nia04a3_nodes && nia04a3_nodes.length > 0){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a3' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (email) - utiliser 'email' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a3_nodes,"red","nia04a3","04-A");
+	}
+	const nia04a4_nodes = document.querySelectorAll('input[type="tel"]:not([autocomplete="tel"]), input[name="phone"]:not([autocomplete="tel"])');
+	if(nia04a4_nodes && nia04a4_nodes.length > 0){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a4' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (phone) - utiliser 'tel' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a4_nodes,"red","nia04a4","04-A");
+	}
+	const nia04a5_nodes = document.querySelectorAll('input[name="postal"]:not([autocomplete="postal-code"]),input[type="postal-code"]:not([autocomplete="postal-code"])');
+	if(nia04a5_nodes && nia04a5_nodes.length > 0){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a5' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (postal) - utiliser 'postal-code' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a5_nodes,"red","nia04a5","04-A");
+	}
+	const nia04a6_nodes = document.querySelectorAll('input[name="country"]:not([autocomplete="country-name"]), select[name="country"]:not([autocomplete="country"])');
+	if(nia04a6_nodes && nia04a6_nodes.length > 0){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a6' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (country) - utiliser 'country-name' ou 'country' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a6_nodes,"red","nia04a6","04-A");
+	}
+	const nia04a7_nodes = document.querySelectorAll('input[name="matricule"][autocomplete]');
+	if(nia04a7_nodes && nia04a7_nodes.length > 0 ){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a7' class='result-focus label-red'>04-A</a> : Attribut erronée sur des champs formulaire (matricule) - Enlever l'attribut [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a7_nodes,"red","nia04a7","04-A");
+	}
+	const nia04a8_nodes = document.querySelectorAll('input[name="city"]:not([autocomplete="address-level2"]), input[name="ville"]:not([autocomplete="address-level2"])');
+	if(nia04a8_nodes && nia04a8_nodes.length > 0){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a8' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (ville) - Utiliser 'address-level2' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a8_nodes,"red","nia04a8","04-A");
+	}
+	const nia04a9_nodes = document.querySelectorAll('textarea[name="adresse"]:not([autocomplete="street-address"]), input[name="adresse"]:not([autocomplete="street-address"]), input[name="street"]:not([autocomplete="street-address"])');
+	if(nia04a9_nodes && nia04a9_nodes.length > 0 ){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a9' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (adresse) - Utiliser 'street-address' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a9_nodes,"red","nia04a9","04-A");
+	}
+	const nia04a10_nodes = document.querySelectorAll('input[name="organisation"]:not([autocomplete="organization"]), input[name="organization"]:not([autocomplete="organization"]),input[name="organism"]:not([autocomplete="organization"])');
+	if(nia04a10_nodes && nia04a10_nodes.length > 0 ){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a10' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (organisation) - utiliser 'organization' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a10_nodes,"red","nia04a10","04-A");
+	}
+	const nia04a11_nodes = document.querySelectorAll('input[name="fonction"]:not([autocomplete="organization-title"]), input[name="function"]:not([autocomplete="organization-title"])');
+	if(nia04a11_nodes && nia04a11_nodes.length > 0 ){
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04a11' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (function) - utiliser 'organization-title' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+	  setItemsOutline(nia04a11_nodes,"red","nia04a11","04-A");
+	}
+	
+	/* Liste des autocomplete : 
+	
+	name - Nom complet ;
+	honorific-prefix - Abréviation, civilité ou titre ;
+	given-name - Prénom ;
+	additional-name - Prénoms additionnels ;
+	family-name - Nom de famille ;
+	honorific-suffix - Suffixe honorifique ;
+	nickname - Surnom, diminutif ;
+	organization-title - Fonction, intitulé de poste ;
+	username - Nom d’utilisateur ;
+	new-password - Nouveau mot de passe (par exemple, lors de la création d’un compte ou d’un changement de mot de passe) ;
+	current-password - Mot de passe actuel pour le compte identifié par le champ username (par exemple, lors d’une connexion) ;
+	organization - Nom de l’organisation correspondant à la personne, à l’adresse ou à l’information de contact dans les autres champs associés avec ce champ ;
+	street-address - Adresse postale (multiligne, nouvelles lignes conservées) ;
+	address-line1 - Adresse postale (une ligne par champ, ligne 1) ;
+	address-line2 - Adresse postale (une ligne par champ, ligne 2) ;
+	address-line3 - Adresse postale (une ligne par champ, ligne 3) ;
+	address-level4 - Le niveau administratif le plus détaillé, pour les adresses pourvues de quatre niveaux administratifs ;
+	address-level3 - Le troisième niveau administratif, pour les adresses pourvues d’au moins trois niveaux administratifs ;
+	address-level2 - Le deuxième niveau administratif, pour les adresses pourvues d’au moins deux niveaux administratifs ;
+	address-level1 - Le plus large niveau administratif d’une adresse, c’est-à-dire la province dans laquelle se trouve la localité ;
+	country - Code pays ;
+	country-name - Nom de pays ;
+	postal-code - Code postal, code CEDEX (si le CEDEX est présent, ajouter “CEDEX”, et ce qui le suit doit être ajouté dans le champ address-level2) ;
+	cc-name - Nom complet figurant sur le moyen de paiement ;
+	cc-given-name - Prénom figurant sur le moyen de paiement ;
+	cc-additional-name - Prénoms additionnels figurant sur le moyen de paiement cc-family-name - Nom de famille figurant sur le moyen de paiement ;
+	cc-number - Code identifiant le moyen de paiement (e.g., un numéro de carte bancaire) ;
+	cc-exp - Date d’expiration du moyen de paiement ;
+	cc-exp-month - Le mois de la date d’expiration du moyen de paiement ;
+	cc-exp-year - L’année de la date d’expiration du moyen de paiement ;
+	cc-csc - Code de sécurité du moyen de paiement (also known as the card security code (CSC), card validation code (CVC), card verification value (CVV), signature panel code (SPC), credit card ID (CCID), etc.) ;
+	cc-type - Type de moyen de paiement (e.g. Visa) ;
+	transaction-currency - La devise qui a la préférence de l’utilisateur lors d’une transaction ;
+	transaction-amount - Le montant qui a la préférence de l’utilisateur lors d’une transaction (e.g., en réponse à une enchère ou à un prix soldé) ;
+	language - Langage préféré ;
+	bday - Date d’anniversaire ;
+	bday-day - Le jour de la date d’anniversaire ;
+	bday-month - Le mois de la date d’anniversaire ;
+	bday-year - L’année de la date d’anniversaire ;
+	sex - Identité sexuelle ;
+	url - Page d’accueil ou une autre page Web correspondant à l’organisation, la personne, l’adresse ou à l’information de contact dans les autres champs associés avec ce champ ;
+	photo - Photographie, icone ou une autre image correspondant à l’organisation, la personne, l’adresse ou à l’information de contact dans les autres champs associés avec ce champ ;
+	tel - Numéro de téléphone complet, y compris le code pays ;
+	tel-country-code - Code pays du numéro de téléphone ;
+	tel-national - Numéro de téléphone sans la partie code pays, avec un préfixe interne au pays, s’il y a lieu ;
+	tel-area-code - Indicatif régional du numéro de téléphone, avec un préfixe interne au pays, s’il y a lieu ;
+	tel-local - Numéro de téléphone sans la partie code pays ni l’indicatif régional ;
+	tel-local-prefix - La première partie du composant du numéro de téléphone qui suit l’indicatif régional, lorsque ce composant est scindé en deux parties ;
+	tel-local-suffix - La seconde partie du composant du numéro de téléphone qui suit l’indicatif régional, lorsque ce composant est scindé en deux parties ;
+	tel-extension - Numéro de téléphone d’un poste interne ;
+	email - Adresse électronique ;
+	impp - URL correspondant d’un protocole de messagerie instantanée (par exemple, "aim:goim?screenname=example" ou "xmpp:fred@example.net").*/
 
-		// A. Champ générique 
-		const nia04a1_nodes = document.querySelectorAll('input[name="name"]:not([autocomplete="family-name"]), input[name="lastname"]:not([autocomplete="family-name"])');
-		if(nia04a1_nodes && nia04a1_nodes.length > 0){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a1' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (name) - utiliser 'family-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a1_nodes,"red","nia04a1","04-A");
+	if(!only_error && isCTIE){
+		const nia04a12_nodes = document.querySelectorAll('[autocomplete="name"],[autocomplete="honorific-suffix"],[autocomplete="nickname"],[autocomplete="address-level1"],[autocomplete="address-level3"],[autocomplete="address-level4"],[autocomplete="cc-name"],[autocomplete="cc-given-name"],[autocomplete="cc-additional-name"],[autocomplete="cc-number"],[autocomplete="cc-exp"],[autocomplete="cc-exp-month"],[autocomplete="cc-exp-year"],[autocomplete="cc-csc"],[autocomplete="cc-type"],[autocomplete="transaction-currency"],[autocomplete="transaction-amount"],[autocomplete="language"],[autocomplete="bday-day"],[autocomplete="bday-month"],[autocomplete="bday-year"],[autocomplete="sex"],[autocomplete="photo"],[autocomplete="tel-area-code"],[autocomplete="tel-local"],[autocomplete="tel-local-prefix"],[autocomplete="tel-local-suffix"],[autocomplete="tel-extension"],[autocomplete="impp"]');
+		if(nia04a12_nodes && nia04a12_nodes.length > 0 ){
+		  setItemToResultList("man","<li><a href='#' data-destination='nia04a12' class='result-focus label-yellow'>04-A</a> : Présence d'attribut autocomplete vraisemblablement erronée sur des champs formulaire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
+		  setItemsOutline(nia04a12_nodes,"yellow","nia04a12","04-A");
 		}
-		const nia04a2_nodes = document.querySelectorAll('input[name="firstname"]:not([autocomplete="given-name"])');
-		if(nia04a2_nodes && nia04a2_nodes.length > 0){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a2' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (firstname) - utiliser 'given-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a2_nodes,"red","nia04a2","04-A");
-		}
-		const nia04a3_nodes = document.querySelectorAll('input[type="email"]:not([autocomplete="email"])');
-		if(nia04a3_nodes && nia04a3_nodes.length > 0){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a3' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (email) - utiliser 'email' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a3_nodes,"red","nia04a3","04-A");
-		}
-		const nia04a4_nodes = document.querySelectorAll('input[type="tel"]:not([autocomplete="tel"]), input[name="phone"]:not([autocomplete="tel"])');
-		if(nia04a4_nodes && nia04a4_nodes.length > 0){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a4' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (phone) - utiliser 'tel' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a4_nodes,"red","nia04a4","04-A");
-		}
-		const nia04a5_nodes = document.querySelectorAll('input[name="postal"]:not([autocomplete="postal-code"]),input[type="postal-code"]:not([autocomplete="postal-code"])');
-		if(nia04a5_nodes && nia04a5_nodes.length > 0){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a5' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (postal) - utiliser 'postal-code' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a5_nodes,"red","nia04a5","04-A");
-		}
-		const nia04a6_nodes = document.querySelectorAll('input[name="country"]:not([autocomplete="country-name"]), select[name="country"]:not([autocomplete="country"])');
-		if(nia04a6_nodes && nia04a6_nodes.length > 0){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a6' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (country) - utiliser 'country-name' ou 'country' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a6_nodes,"red","nia04a6","04-A");
-		}
-		const nia04a7_nodes = document.querySelectorAll('input[name="matricule"][autocomplete]');
-		if(nia04a7_nodes && nia04a7_nodes.length > 0 ){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a7' class='result-focus label-red'>04-A</a> : Attribut erronée sur des champs formulaire (matricule) - Enlever l'attribut [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a7_nodes,"red","nia04a7","04-A");
-		}
-		const nia04a8_nodes = document.querySelectorAll('input[name="city"]:not([autocomplete="address-level2"]), input[name="ville"]:not([autocomplete="address-level2"])');
-		if(nia04a8_nodes && nia04a8_nodes.length > 0){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a8' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (ville) - Utiliser 'address-level2' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a8_nodes,"red","nia04a8","04-A");
-		}
-		const nia04a9_nodes = document.querySelectorAll('textarea[name="adresse"]:not([autocomplete="street-address"]), input[name="adresse"]:not([autocomplete="street-address"]), input[name="street"]:not([autocomplete="street-address"])');
-		if(nia04a9_nodes && nia04a9_nodes.length > 0 ){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a9' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (adresse) - Utiliser 'street-address' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a9_nodes,"red","nia04a9","04-A");
-		}
-		const nia04a10_nodes = document.querySelectorAll('input[name="organisation"]:not([autocomplete="organization"]), input[name="organization"]:not([autocomplete="organization"]),input[name="organism"]:not([autocomplete="organization"])');
-		if(nia04a10_nodes && nia04a10_nodes.length > 0 ){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a10' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (organisation) - utiliser 'organization' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a10_nodes,"red","nia04a10","04-A");
-		}
-		const nia04a11_nodes = document.querySelectorAll('input[name="fonction"]:not([autocomplete="organization-title"]), input[name="function"]:not([autocomplete="organization-title"])');
-		if(nia04a11_nodes && nia04a11_nodes.length > 0 ){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04a11' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (function) - utiliser 'organization-title' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>");
-		  setItemsOutline(nia04a11_nodes,"red","nia04a11","04-A");
-		}
-		
-		// B. Vérifier le format sur l'email
-		const nia04b_nodes = document.querySelectorAll('input[type="email"]');
-		let nia04b_flag = false;
-		let nia04b_id = "", nia04b_desc = "", nia04b_label = "", nia04b_help = "";
-		if(nia04b_nodes && nia04b_nodes.length > 0){
-			for(let i = 0; i < nia04b_nodes.length; i++){
-				nia04b_id = "", nia04b_desc = "", nia04b_label = "", nia04b_help = "";
-				nia04b_id = nia04b_nodes[i].getAttribute("id");
-				nia04b_desc = nia04b_nodes[i].getAttribute("aria-describedby");
-				if(nia04b_id && nia04b_id != ""){
-					nia04b_label = document.querySelector("label[for='"+nia04b_id+"']");
-					if(!nia04b_label){
-						setItemOutline(nia04b_nodes[i],"red","nia04b","04-B");
-						nia04b_flag = true;
-					}
-				}
-				if(nia04b_desc && nia04b_desc != ""){
-					nia04b_help = document.querySelector("[id="+nia04b_desc+"]");
-					if(!nia04b_help){
-						setItemOutline(nia04b_nodes[i],"red","nia04b","04-B");
-						nia04b_flag = true;
-					}
-				}
-				if((nia04b_label && nia04b_label != "" && nia04b_label.innerText.match(/^\S+@\S+\.\S+$/)) || (nia04b_help && nia04b_help != "" && nia04b_help.innerText.match(/^\S+@\S+\.\S+$/))){
+	}
+	
+	// B. Vérifier le format sur l'email
+	const nia04b_nodes = document.querySelectorAll('input[type="email"]');
+	let nia04b_flag = false;
+	let nia04b_id = "", nia04b_desc = "", nia04b_label = "", nia04b_help = "";
+	if(nia04b_nodes && nia04b_nodes.length > 0){
+		for(let i = 0; i < nia04b_nodes.length; i++){
+			nia04b_id = "", nia04b_desc = "", nia04b_label = "", nia04b_help = "";
+			nia04b_id = nia04b_nodes[i].getAttribute("id");
+			nia04b_desc = nia04b_nodes[i].getAttribute("aria-describedby");
+			if(nia04b_id && nia04b_id != ""){
+				nia04b_label = document.querySelector("label[for='"+nia04b_id+"']");
+				if(!nia04b_label){
 					setItemOutline(nia04b_nodes[i],"red","nia04b","04-B");
 					nia04b_flag = true;
 				}
 			}
+			if(nia04b_desc && nia04b_desc != ""){
+				nia04b_help = document.querySelector("[id="+nia04b_desc+"]");
+				if(!nia04b_help){
+					setItemOutline(nia04b_nodes[i],"red","nia04b","04-B");
+					nia04b_flag = true;
+				}
+			}
+			if((nia04b_label && nia04b_label != "" && nia04b_label.innerText.match(/^\S+@\S+\.\S+$/)) || (nia04b_help && nia04b_help != "" && nia04b_help.innerText.match(/^\S+@\S+\.\S+$/))){
+				setItemOutline(nia04b_nodes[i],"red","nia04b","04-B");
+				nia04b_flag = true;
+			}
 		}
-		if(nia04b_flag == true) {
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04b' class='result-focus label-red'>04-B</a> : Présence de champs email sans exemple de format [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-10-5' target='_blank'>RAWeb 11.10.5</a>]</li>");
-		}
+	}
+	if(nia04b_flag == true) {
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia04b' class='result-focus label-red'>04-B</a> : Présence de champs email sans exemple de format [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-10-5' target='_blank'>RAWeb 11.10.5</a>]</li>");
+	}
 		
 		// C. Check intitulé bouton envoi 
+	if(!only_error && isAEM){
 		const nia04c_btn = document.querySelector('html[lang="fr"] form button.cmp-form-button[type="SUBMIT"][name="preview"]');
 		if(nia04c_btn && nia04c_btn.textContent != "Prévisualiser puis envoyer" ){
 		  setItemToResultList("nth","<li><a href='#' data-destination='nia04c' class='result-focus label-yellow'>04-C</a> : Vérifier si le bouton de soumission possède bien la notion de prévisualisation' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-12-1' target='_blank'>RAWeb 11.12.1</a>]</li>");
@@ -146,17 +208,17 @@ function check_part_04(){
 	if(nia04e_nodes && nia04e_nodes.length > 0){
 		for(let i = 0; i < nia04e_nodes.length; i++){
 			if(isItemVisible(nia04e_nodes[i])){
-				if(nia04e_nodes[i].firstChild.tagName && nia04e_nodes[i].firstChild.tagName == "LEGEND"){
+				if(nia04e_nodes[i].firstElementChild.tagName && nia04e_nodes[i].firstElementChild.tagName == "LEGEND"){
 					// OK
 				}
-				else if(nia04e_nodes[i].firstChild.firstChild && nia04e_nodes[i].firstChild.firstChild.tagName && nia04e_nodes[i].firstChild.firstChild.tagName == "LEGEND"){
+				else if(nia04e_nodes[i].firstElementChild.firstElementChild && nia04e_nodes[i].firstElementChild.firstElementChild.tagName && nia04e_nodes[i].firstElementChild.firstElementChild.tagName == "LEGEND"){
 					// La balise légend est encapsulée dans un container
 				}
-				else if(sanitizeText(nia04e_nodes[i].firstChild.textContent) == "" && nia04e_nodes[i].firstChild.nextSibling && nia04e_nodes[i].firstChild.nextSibling.tagName == "LEGEND") {
+				else if(sanitizeText(nia04e_nodes[i].firstElementChild.textContent) == "" && nia04e_nodes[i].firstElementChild.nextSibling && nia04e_nodes[i].firstElementChild.nextSibling.tagName == "LEGEND") {
 					// Présence d'un élément décoratif avant la balise légende ( un \n, un pseudo-elem, etc.)
 				}
 				else{
-					setItemsOutline(nia04e_nodes[i],"yellow","nia04e","04-E");
+					setItemsOutline(nia04e_nodes[i],"red","nia04e","04-E");
 					nia04e_flag = true;
 				}
 			}
@@ -167,61 +229,63 @@ function check_part_04(){
 	}
 
 	// F. Required ou aria-required="true" possède un asterisque dans le label
-	const nia04f_nodes = document.querySelectorAll('form [required]:not([required="false"]), form [aria-required="true"]');
-	const nia04f_desc = document.querySelectorAll('.cmp-ratings, .cmp-form__mandatory-text, .mandatory-label')
-	let nia04f_flag = false;
-	let nia04f_id, nia04f_label;
-	let nia04f_fieldset, nia04f_legend;
-	if(nia04f_nodes && nia04f_nodes.length > 0){
-		for(let i = 0; i < nia04f_nodes.length; i++){
-			if(isItemVisible(nia04f_nodes[i])){
-				if(nia04f_nodes[i].parentElement.tagName != "LABEL"){ 
-					nia04f_id = nia04f_nodes[i].getAttribute("id");
-					if(!nia04f_id || nia04f_id == ""){
-						setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
-						nia04f_flag = true;
-					}
-					else{
-						nia04f_label = document.querySelectorAll("label[for='"+nia04f_id+"']");
-						if(!nia04f_label || nia04f_label.length == 0){
+	if(!only_redactor && isAEM){
+		const nia04f_nodes = document.querySelectorAll('form [required]:not([required="false"]), form [aria-required="true"]');
+		const nia04f_desc = document.querySelectorAll('.cmp-ratings, .cmp-form__mandatory-text, .mandatory-label')
+		let nia04f_flag = false;
+		let nia04f_id, nia04f_label;
+		let nia04f_fieldset, nia04f_legend;
+		if(nia04f_nodes && nia04f_nodes.length > 0){
+			for(let i = 0; i < nia04f_nodes.length; i++){
+				if(isItemVisible(nia04f_nodes[i])){
+					if(nia04f_nodes[i].parentElement.tagName != "LABEL"){ 
+						nia04f_id = nia04f_nodes[i].getAttribute("id");
+						if(!nia04f_id || nia04f_id == ""){
 							setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
 							nia04f_flag = true;
 						}
-						else if(!(nia04f_label[0].textContent).includes("*")){
-							setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
-							nia04f_flag = true;
-						}
-					}
-				}
-				else { 
-					// Checkbox / Radio
-					nia04f_fieldset = nia04f_nodes[i].closest('fieldset');
-					if(!nia04f_fieldset){
-						if(!(nia04f_nodes[i].parentElement.textContent).includes("*")){
-							setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
-							nia04f_flag = true;
+						else{
+							nia04f_label = document.querySelectorAll("label[for='"+nia04f_id+"']");
+							if(!nia04f_label || nia04f_label.length == 0){
+								setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
+								nia04f_flag = true;
+							}
+							else if(!(nia04f_label[0].textContent).includes("*")){
+								setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
+								nia04f_flag = true;
+							}
 						}
 					}
-					else{
-						nia04f_legend = nia04f_fieldset.getElementsByTagName('legend');
-						if(!nia04f_legend || nia04f_legend.length != 1){
-							setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
-							nia04f_flag = true;
+					else { 
+						// Checkbox / Radio
+						nia04f_fieldset = nia04f_nodes[i].closest('fieldset');
+						if(!nia04f_fieldset){
+							if(!(nia04f_nodes[i].parentElement.textContent).includes("*")){
+								setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
+								nia04f_flag = true;
+							}
 						}
-						else if(!(nia04f_legend[0].textContent).includes("*")){
-							setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
-							nia04f_flag = true;
+						else{
+							nia04f_legend = nia04f_fieldset.getElementsByTagName('legend');
+							if(!nia04f_legend || nia04f_legend.length != 1){
+								setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
+								nia04f_flag = true;
+							}
+							else if(!(nia04f_legend[0].textContent).includes("*")){
+								setItemOutline(nia04f_nodes[i],"red","nia04f","04-F");
+								nia04f_flag = true;
+							}
 						}
 					}
 				}
 			}
+			if(nia04f_desc.length == 0){
+				setItemToResultList("nc","<li><span class='result-focus label-red'>04-F</span> : Absence d'indication de la signification de l'astrisque sur un champ obligatoire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-10-1' target='_blank'>RAWeb 11.10.1</a>]</li>");
+			}
 		}
-		if(nia04f_desc.length == 0){
-			setItemToResultList("nc","<li><span class='result-focus label-red'>04-F</span> : Absence d'indication de la signification de l'astrisque sur un champ obligatoire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-10-1' target='_blank'>RAWeb 11.10.1</a>]</li>");
+		if(nia04f_flag == true) {
+			setItemToResultList("nc","<li><a href='#' data-destination='nia04f' class='result-focus label-red'>04-F</a> : Absence d'astrisque sur un champ obligatoire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-10-1' target='_blank'>RAWeb 11.10.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/letiquette-de-chaque-champ-de-formulaire-indique-si-la-saisie-est-obligatoire' target='_blank'>Opquast 69</a>]'</li>");
 		}
-	}
-	if(nia04f_flag == true) {
-		setItemToResultList("nc","<li><a href='#' data-destination='nia04f' class='result-focus label-red'>04-F</a> : Absence d'astrisque sur un champ obligatoire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-10-1' target='_blank'>RAWeb 11.10.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/letiquette-de-chaque-champ-de-formulaire-indique-si-la-saisie-est-obligatoire' target='_blank'>Opquast 69</a>]'</li>");
 	}
 
 	// G. Pas d'autocomplete sur les champs radio/checkbox
@@ -264,13 +328,13 @@ function check_part_04(){
 				if(isItemVisible(nia04h_nodes[i])){
 					nia04h_id = nia04h_nodes[i].getAttribute("id");
 					if(!nia04h_id || nia04h_id == ""){
-						setItemOutline(nia04h_nodes[i],"red","nia04h","04-H");
+						setItemOutline(nia04h_nodes[i],"orange","nia04h","04-H");
 						nia04h_flag = true;
 					}
 					else{
 						nia04h_label = document.querySelectorAll("label[for='"+nia04h_id+"']");
 						if(!nia04h_label || nia04h_label.length == 0){
-							setItemOutline(nia04h_nodes[i],"red","nia04h","04-H");
+							setItemOutline(nia04h_nodes[i],"orange","nia04h","04-H");
 							nia04h_flag = true;
 						}
 						else if(isItemVisible(nia04h_label[0]) && !isItemSROnly(nia04h_label[0])){
@@ -278,7 +342,7 @@ function check_part_04(){
 							let nia04h_distance_horizontal = getDistanceBetweenHorizontalElements(nia04h_nodes[i],nia04h_label[0]);
 							if(nia04h_distance_vertical > 100 && nia04h_distance_horizontal > 100){
 								if(debug_flag) console.log("[nia04h] distance : "+nia04h_distance);
-								setItemOutline(nia04h_nodes[i],"red","nia04h","04-H");
+								setItemOutline(nia04h_nodes[i],"orange","nia04h","04-H");
 								nia04h_flag = true;
 							}
 						}
@@ -287,7 +351,7 @@ function check_part_04(){
 			}
 		}
 		if(nia04h_flag == true){
-		  setItemToResultList("nc","<li><a href='#' data-destination='nia04h' class='result-focus label-red'>04-H</a> : Le Champ et l'étiquette doivent être accolé [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-5-1' target='_blank'>RAWeb 11.5.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-etiquette-de-formulaire-est-visuellement-rattachee-au-champ-quelle-decrit' target='_blank'>Opquast 75</a>]</li>");
+		  setItemToResultList("nc","<li><a href='#' data-destination='nia04h' class='result-focus label-orange'>04-H</a> : Le Champ et l'étiquette doivent être accolé [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-5-1' target='_blank'>RAWeb 11.5.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-etiquette-de-formulaire-est-visuellement-rattachee-au-champ-quelle-decrit' target='_blank'>Opquast 75</a>]</li>");
 		}
 	}
 
@@ -349,63 +413,68 @@ function check_part_04(){
 		setItemToResultList("nc","<li><a href='#' data-destination='nia04j' class='result-focus label-red'>04-J</a> : Absence du format de saisie dans un texte d'aide [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-format-de-saisie-des-champs-de-formulaire-qui-le-necessitent-est-indique' target='_blank'>Opquast 70</a>]</li>");
 	}
 
-	// K Présence de label de bouton insuffisament pertinent 
-	const nia04k_nodes = document.querySelectorAll("input[type='submit'], input[type='reset'], input[type='button']");
-	let nia04k_array = ["envoyer", "effacer", "annuler", "confirmer", "valider", "poursuivre", "rechercher"];
-	let nia04k_flag = false;
-	let nia04k_label = "";
-	if(nia04k_nodes && nia04k_nodes.length > 0){
-		for(let i = 0; i < nia04k_nodes.length; i++){
-			if(isItemVisible(nia04k_nodes[i])){
-				nia04k_label = nia04k_nodes[i].value;
-				if (nia04k_label && nia04k_array.includes(nia04k_label)) {
-						setItemOutline(nia04k_nodes[i],"yellow","nia04k","04-K");
-						nia04k_flag = true;
+	// K Présence de label de bouton insuffisament pertinent
+	if(!only_error && isAEM){	
+		const nia04k_nodes = document.querySelectorAll("input[type='submit'], input[type='reset'], input[type='button']");
+		let nia04k_array = ["envoyer", "effacer", "annuler", "confirmer", "valider", "poursuivre", "rechercher"];
+		let nia04k_flag = false;
+		let nia04k_label = "";
+		if(nia04k_nodes && nia04k_nodes.length > 0){
+			for(let i = 0; i < nia04k_nodes.length; i++){
+				if(isItemVisible(nia04k_nodes[i])){
+					nia04k_label = nia04k_nodes[i].value;
+					if (nia04k_label && nia04k_array.includes(nia04k_label)) {
+							setItemOutline(nia04k_nodes[i],"yellow","nia04k","04-K");
+							nia04k_flag = true;
+					}
 				}
 			}
 		}
+		if(nia04k_flag == true) {
+			setItemToResultList("nth","<li><a href='#' data-destination='nia04k' class='result-focus label-yellow'>04-K</a> : Présence de label de bouton insuffisament pertinent  </li>");
+		}
 	}
-	if(nia04k_flag == true) {
-		setItemToResultList("nth","<li><a href='#' data-destination='nia04k' class='result-focus label-yellow'>04-K</a> : Présence de label de bouton insuffisament pertinent  </li>");
-	}
-
 
 	// L Formulaire : bouton avant la fin du formulaire
-	const nia04l_nodes = document.querySelectorAll('form');
-	let nia04l_flag = false;
-	let nia04l_childs, nia04l_lastchilds;
-	if(nia04l_nodes && nia04l_nodes.length > 0){
-		for(let i = 0; i < nia04l_nodes.length; i++){
-			if(isItemVisible(nia04l_nodes[i])){
-				nia04l_childs = nia04l_nodes[i].querySelectorAll('input , button');
-				nia04l_lastchilds = nia04l_childs[nia04l_childs.length - 1]
-				if(nia04l_lastchilds.tagName == "BUTTON" || (nia04l_lastchilds.tagName == "INPUT" && (nia04l_lastchilds.type == "SUBMIT" || nia04l_lastchilds.type == "RESET" || nia04l_lastchilds.type == "BUTTON"))){
-						// OK
-				}
-				else{
-					setItemOutline(nia04l_nodes[i],"yellow","nia04l","04-L");
-					nia04l_flag = true;
+	if(!only_error){	
+		const nia04l_nodes = document.querySelectorAll('form');
+		let nia04l_flag = false;
+		let nia04l_childs, nia04l_lastchilds;
+		if(nia04l_nodes && nia04l_nodes.length > 0){
+			for(let i = 0; i < nia04l_nodes.length; i++){
+				if(isItemVisible(nia04l_nodes[i])){
+					nia04l_childs = nia04l_nodes[i].querySelectorAll('input , button');
+					nia04l_lastchilds = nia04l_childs[nia04l_childs.length - 1]
+					if(nia04l_lastchilds.tagName == "BUTTON" || (nia04l_lastchilds.tagName == "INPUT" && (nia04l_lastchilds.type == "SUBMIT" || nia04l_lastchilds.type == "RESET" || nia04l_lastchilds.type == "BUTTON"))){
+							// OK
+					}
+					else{
+						setItemOutline(nia04l_nodes[i],"yellow","nia04l","04-L");
+						nia04l_flag = true;
+					}
 				}
 			}
 		}
-	}
-	if(nia04l_flag == true) {
-		setItemToResultList("nth","<li><a href='#' data-destination='nia04l' class='result-focus label-yellow'>04-L</a> : Formulaire avec bouton de soumission mal placé </li>");
+		if(nia04l_flag == true) {
+			setItemToResultList("nth","<li><a href='#' data-destination='nia04l' class='result-focus label-yellow'>04-L</a> : Formulaire avec bouton de soumission mal placé </li>");
+		}
 	}
 	
 	// M Un groupe de Checkbox/Radio doit être structuré dans un fieldset
-	const nia04m_nodes = document.querySelectorAll('input[type="checkbox"],input[type="radio"]');
-	let nia04m_flag = false;
-	if(nia04m_nodes && nia04m_nodes.length > 0 && isItemsVisible(nia04m_nodes)){
-		for(let i = 0; i < nia04m_nodes.length; i++){
-			if(!nia04m_nodes[i].parentElement.closest("fieldset")){	
-				nia04m_flag = true;
-				setItemsOutline(nia04g_nodes,"yellow","nia04g","04-G");
+	if(!only_redactor){	
+		const nia04m_nodes = document.querySelectorAll('input[type="checkbox"],input[type="radio"]');
+		let nia04m_flag = false;
+		if(nia04m_nodes && nia04m_nodes.length > 0 && isItemsVisible(nia04m_nodes)){
+			for(let i = 0; i < nia04m_nodes.length; i++){
+				if(!nia04m_nodes[i].parentElement.closest("fieldset")){	
+					nia04m_flag = true;
+					setItemsOutline(nia04g_nodes,"orange","nia04g","04-G");
+				}
 			}
 		}
-	}
-	if(nia04m_flag == true) {
-		setItemToResultList("man","<li><a href='#' data-destination='nia04n' class='result-focus label-yellow'>04-M</a> : Un groupe de Checkbox/Radio doit être structuré dans un fieldset</li>");
+		if(nia04m_flag == true) {
+			setItemToResultList("man","<li><a href='#' data-destination='nia04n' class='result-focus label-orange'>04-M</a> : Un groupe de Checkbox/Radio doit être structuré dans un fieldset</li>");
+		}
 	}
 	
 	// N Le format de saisie du datepicker est indiqué (soit un aria-descibedby, soit des paranthèses dans le label)

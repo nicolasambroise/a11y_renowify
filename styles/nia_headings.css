@@ -2,16 +2,15 @@
     box-sizing: border-box;
 }
 
-
 html {
   counter-reset:roleheading heading errorheading warningheading;
 }
 
 /* Display count in sidebar */
 html::after {
-  content: "#07 Title elements:\A - " counter(roleheading)" role='heading'\A - " counter(heading)" headings <Hn>\A\A\A - "counter(errorheading) " error(s)\A - " counter(warningheading) " warning(s)\A";
+  content: "Titres :\A - " counter(roleheading)" role='heading'\A - " counter(heading)" titres <Hn>\A\A\A >> "counter(errorheading) " error(s)\A >> " counter(warningheading) " warning(s)\A";
   position: fixed !important;
-  top: 300px !important;
+  top: 400px !important;
   right: 0 !important;
   z-index: 123456 !important;
   width: 12em !important;
@@ -20,10 +19,10 @@ html::after {
   padding: 15px !important;
   white-space: pre !important;
   font-family: sans-serif !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
   font-weight: bold;
   color: #fff !important;
-  background: #10415E !important;
+  background: #005166 !important;
 }
 
 

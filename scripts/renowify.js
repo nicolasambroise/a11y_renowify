@@ -4,20 +4,32 @@
 const currentUrl = window.location.href;
 const homepage = document.querySelector('h1.logo.logo--homepage');
 const homepageException = ["https://guichet.public.lu/fr/citoyens.html", "https://guichet.public.lu/fr/entreprises.html","https://guichet.public.lu/fr/leichte-sprache.html", "https://guichet.public.lu/en/citoyens.html", "https://guichet.public.lu/en/entreprises.html","https://guichet.public.lu/en/leichte-sprache.html","https://guichet.public.lu/de/citoyens.html", "https://guichet.public.lu/de/entreprises.html","https://guichet.public.lu/de/leichte-sprache.html"]
-let isHomepage = false;
-let isPreview = false;
-let isDecla = false;
-let isPrototype = false;
+
+let isHomepage = false; // True s'il s'agit de la homepage du site
+let isPreview = false; // True s'il s'agit d'un environnement de dev (LOCAL, BUILD, INTEGR, QUAL)
+let isDecla = false; // True s'il s'agit de la page contenant la declaration d'accessibilité
+let isPrototype = false; // True s'il s'agit de la page prototype / atelier graphique
+let isAEM = false; // True s'il s'agit d'un site réalisé avec AEM
+let isCTIE = false; // True s'il s'agit d'un site hébergé par le CTIE
+let isSearchLogic = false; // True s'il s'agit d'une page présentant des résultats de recherche
+
 if(homepage || homepageException.includes(currentUrl)) {isHomepage = true;}
 if((currentUrl.includes("preview-") || currentUrl.includes("wcm")) && currentUrl.includes(".etat.lu")){isPreview = true;}
 else if(currentUrl.includes("aem-test-")){isPreview = true;}
 if(currentUrl.includes("/prototype/")){isPrototype = true;}
+if(currentUrl.includes("/actualites.html") || currentUrl.includes("/publications.html") || currentUrl.includes("/recherche.html")){isSearchLogic = true;}
 if(currentUrl.includes("/support/accessibilite.html") || currentUrl.includes("/support/accessibilite/accessibilite-guichet.html")){isDecla = true;}
 
-
-if(!currentUrl.includes(".public.lu") && !currentUrl.includes("gouvernement.lu") && !currentUrl.includes(".etat.lu") && !currentUrl.includes("sig-gr.eu") && !currentUrl.includes(".mae.lu") && !currentUrl.includes("lu-alert.lu")){
-  alert("Ce Bookmarklet est à utiliser seulement sur les sites étatiques luxembourgeois");
+if(currentUrl.includes(".public.lu") || currentUrl.includes("gouvernement.lu") || currentUrl.includes(".etat.lu") || currentUrl.includes("sig-gr.eu") || currentUrl.includes(".mae.lu") || currentUrl.includes("lu-alert.lu")){
+  isCTIE = true;
+  if(!currentUrl.includes("fpgun-jway") && !currentUrl.includes("demarches.services-publics") && !currentUrl.includes("fpgun-preintegr") && !currentUrl.includes("services-publics-test")){
+	isAEM = true;
+  }
 }
+else{
+	alert("Ce Bookmarklet est à utiliser seulement sur les sites étatiques luxembourgeois.");
+}
+
 
 // Current Size
 const currentWidth = window.innerWidth;
@@ -55,12 +67,21 @@ function run_renowify(df,or,oe,std,pluginUrl){
 	// clean console
 	console.clear();
 	
-	console.log("Run Renowify (renowify.js)");
+	console.log("== Init Plugin Renowify")
 
 	if(df != null) debug_flag = df;
 	if(or != null) only_redactor = or;
 	if(oe != null) only_error = oe;
 	if(std != null) save_to_db = std;
+	
+	// Check Page
+	if(isHomepage) console.log("$ isHomepage");
+	if(isPreview) console.log("$ isPreview");
+	if(isDecla) console.log("$ isDecla");
+	if(isPrototype) console.log("$ isPrototype");
+	if(isAEM) console.log("$ isAEM");
+	if(isCTIE) console.log("$ isCTIE");
+	if(isSearchLogic) console.log("$ isSearchLogic");
 	
 	// Reset
 	result_crit = "";
@@ -86,8 +107,8 @@ function run_renowify(df,or,oe,std,pluginUrl){
 		loadStyle(pluginUrl)
 		var functions_loaded = loadScript('functions', '/parts/nia_functions.js',pluginUrl);
 		var resultpanel_loaded = loadScript('resultpanel', '/parts/nia_resultpanel.js',pluginUrl);
-		var savebdd_loaded = loadScript('savebdd', '/parts/nia_savebdd.js',pluginUrl);
-		var savedecla_loaded = loadScript('savedecla', '/parts/nia_savedecla.js',pluginUrl);
+		/*var savebdd_loaded = loadScript('savebdd', '/parts/nia_savebdd.js',pluginUrl);
+		var savedecla_loaded = loadScript('savedecla', '/parts/nia_savedecla.js',pluginUrl);*/
 		var thirdservices_loaded = loadScript('thirdservices', '/parts/nia_thirdservices.js',pluginUrl);
 		var p01_loaded = loadScript('p01', '/parts/nia01_config.js',pluginUrl);
 		var p02_loaded = loadScript('p02', '/parts/nia02_images.js',pluginUrl);
@@ -155,8 +176,12 @@ function run_renowify(df,or,oe,std,pluginUrl){
 		var part15 = new Promise(function(resolve) {check_part_15();setTimeout(resolve, 100);});
 
 		Promise.allSettled([part01,part02,part03,part04,part05,part06,part07,part08,part09,part10,part11,part12,part13,part14,part15])
-		.then((results) => {results.forEach((result,index) => {
-		console.log("- Part"+index+" : "+result.status);});})
+		.then((results) => {
+			results.forEach((result,index) => {
+				let newi = ("0"+(index+1)).slice(-2);
+				console.log("- Part"+newi+" : "+result.status);
+			});
+		})
 		.then(function() {setTimeout(createResultPanel(), 100);})
 		.then(function() {setTimeout(thirdPartValidation(), 100);})
 		.then(function() {setTimeout(activateCheckA11YPanel(), 100);})
