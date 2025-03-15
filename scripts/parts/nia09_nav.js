@@ -5,9 +5,8 @@
 function check_part_09(){
 	if(debug_flag) console.log("09 Navigation");
 
-	if(currentUrl.includes("plan-du-site.html") || currentUrl.includes("plan.html") || currentUrl.includes("plan-site.html")){
-		console.log("Page plan du site ");
-		
+	if(isSitemap && is AEM){
+	
 		const nia09a1_footer = document.querySelectorAll('.page-footernav a[href*="contact"][href$=".html"]');
 		const nia09a2_footer = document.querySelectorAll('.page-footernav a[href*="accessibilite"][href$=".html"]');
 		const nia09a3_footer = document.querySelectorAll('.page-footernav a[href*="aspects-legaux"][href$=".html"]');
@@ -26,8 +25,10 @@ function check_part_09(){
 		
 		if(nia09a1_footer && nia09a1_footer.length > 0 && (!nia09a1_sitemap || nia09a1_sitemap.length == 0)){
 			if(nia09a5_support && nia09a5_support.length > 0){
-				setItemToResultList("man","<li><a href='#' data-destination='nia09a1' class='result-focus label-yellow'>09-A</a> : Présence de la page support mais il manque la page contact dans le plan du site, vérifier si c'est volontaire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
-				setItemsOutline(nia09a1_footer,"yellow","nia09a1","09-A");
+				if(!only_error){
+					setItemToResultList("man","<li><a href='#' data-destination='nia09a1' class='result-focus label-yellow'>09-A</a> : Présence de la page support mais il manque la page contact dans le plan du site, vérifier si c'est volontaire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
+					setItemsOutline(nia09a1_footer,"yellow","nia09a1","09-A");
+				}
 			}
 			else {
 				setItemToResultList("nc","<li><a href='#' data-destination='nia09a1' class='result-focus label-red'>09-A</a> : Il manque la page contact dans le plan du site [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
@@ -41,8 +42,10 @@ function check_part_09(){
 
 		if(nia09a2_footer && nia09a2_footer.length > 0 && (!nia09a2_sitemap || nia09a2_sitemap.length == 0)){
 			if(nia09a5_support && nia09a5_support.length > 0){
-				setItemToResultList("man","<li><a href='#' data-destination='nia09a2' class='result-focus label-yellow'>09-A</a> : Présence de la page support mais il manque la page Accessibilté dans le plan du site, vérifier si c'est volontaire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
-				setItemsOutline(nia09a2_footer,"yellow","nia09a2","09-A");
+				if(!only_error){
+					setItemToResultList("man","<li><a href='#' data-destination='nia09a2' class='result-focus label-yellow'>09-A</a> : Présence de la page support mais il manque la page Accessibilté dans le plan du site, vérifier si c'est volontaire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
+					setItemsOutline(nia09a2_footer,"yellow","nia09a2","09-A");
+				}
 			}
 			else {
 				setItemToResultList("nc","<li><a href='#' data-destination='nia09a2' class='result-focus label-red'>09-A</a> : Il manque la page Accessibilité dans le plan du site [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
@@ -56,8 +59,10 @@ function check_part_09(){
 		
 		if(nia09a3_footer && nia09a3_footer.length > 0 && (!nia09a3_sitemap || nia09a3_sitemap.length == 0)){
 			if(nia09a5_support && nia09a5_support.length > 0){
-				setItemToResultList("man","<li><a href='#' data-destination='nia09a3' class='result-focus label-yellow'>09-A</a> : Présence de la page support mais il manque la page Aspect légaux dans le plan du site, vérifier si c'est volontaire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
-				setItemsOutline(nia09a3_footer,"yellow","nia09a3","09-A");
+				if(!only_error){
+					setItemToResultList("man","<li><a href='#' data-destination='nia09a3' class='result-focus label-yellow'>09-A</a> : Présence de la page support mais il manque la page Aspect légaux dans le plan du site, vérifier si c'est volontaire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
+					setItemsOutline(nia09a3_footer,"yellow","nia09a3","09-A");
+				}
 			}
 			else {
 				setItemToResultList("nc","<li><a href='#' data-destination='nia09a3' class='result-focus label-red'>09-A</a> : Il manque la page aspect légaux dans le plan du site [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
@@ -71,8 +76,10 @@ function check_part_09(){
 		
 		if(nia09a4_footer && nia09a4_footer.length > 0 && (!nia09a4_sitemap || nia09a4_sitemap.length == 0)){
 			if(nia09a5_support && nia09a5_support.length > 0){
-				setItemToResultList("man","<li><a href='#' data-destination='nia09a4' class='result-focus label-yellow'>09-A</a> : Présence de la page support mais il manque la page A propos dans le plan du site, vérifier si c'est volontaire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
-				setItemsOutline(nia09a4_footer,"yellow","nia09a4","09-A");
+				if(!only_error){				
+					setItemToResultList("man","<li><a href='#' data-destination='nia09a4' class='result-focus label-yellow'>09-A</a> : Présence de la page support mais il manque la page A propos dans le plan du site, vérifier si c'est volontaire [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
+					setItemsOutline(nia09a4_footer,"yellow","nia09a4","09-A");
+				}
 			}
 			else{
 				setItemToResultList("nc","<li><a href='#' data-destination='nia09a4' class='result-focus label-red'>09-A</a> : Il manque la page A propos dans le plan du site [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-3-1' target='_blank'>RAWeb 12.3.1</a>]</li>");
@@ -102,33 +109,37 @@ function check_part_09(){
 	}
 
 	// D. 2 systemes de navigation (plan du site, recherche, menu)
-	const nia09d_nav = document.querySelector('nav #headernav, nav#headernav');
-	const nia09d_search = document.querySelector('div.topsearch[role="search"],div.topsearch-desk[role="search"]');
-	const nia09d_plan = document.querySelector('.page-footernav ul.nav--support > li.nav-item a[href*="plan"][href$=".html"]');
-	const nia09d_nav_btn = document.querySelector('[class^=page-headernav] button.anchor');
-	const nia09d_search_btn = document.querySelector('div.topsearch[role="search"] button.anchor');
-	const nia09d_footer_links = document.querySelectorAll('footer .nav-item > a:not([target="_blank"])');
-	
-	let nia09d_counter = 0;
-	if(nia09d_nav && isItemVisible(nia09d_nav)){nia09d_counter++;}
-	else if(nia09d_nav && nia09d_nav_btn && isItemVisible(nia09d_nav_btn)){nia09d_counter++;}
-	else if(debug_flag){ console.log("navigation principale non trouvé");}
-	if(nia09d_search && isItemVisible(nia09d_search)){nia09d_counter++;}
-	else if(nia09d_search && nia09d_search_btn && isItemVisible(nia09d_search_btn)){nia09d_counter++;}
-	else if(debug_flag){ console.log("recherche non trouvé");}
-	if(nia09d_plan && isItemVisible(nia09d_plan)){nia09d_counter++;}
-	else if(debug_flag){ console.log("plan du site non trouvé");}
-	if(nia09d_counter < 2){
-		if(nia09d_footer_links && nia09d_footer_links.length <= 3){
-			setItemToResultList("man","<li><span class='result-focus label-yellow'>09-D</span> : Le site doit être muni de 2 systèmes de navigation (exception : One-page, etc.) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-1-1' target='_blank'>RAWeb 12.1.1</a>]</li>");
-		}
-		else {
-			setItemToResultList("nc","<li><span class='result-focus label-red'>09-D</span> : Le site doit être muni de 2 systèmes de navigation (exception : One-page, etc.) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-1-1' target='_blank'>RAWeb 12.1.1</a>]</li>");
+	if(isAEM){
+		const nia09d_nav = document.querySelector('nav #headernav, nav#headernav');
+		const nia09d_search = document.querySelector('div.topsearch[role="search"],div.topsearch-desk[role="search"]');
+		const nia09d_plan = document.querySelector('.page-footernav ul.nav--support > li.nav-item a[href*="plan"][href$=".html"]');
+		const nia09d_nav_btn = document.querySelector('[class^=page-headernav] button.anchor');
+		const nia09d_search_btn = document.querySelector('div.topsearch[role="search"] button.anchor');
+		const nia09d_footer_links = document.querySelectorAll('footer .nav-item > a:not([target="_blank"])');
+		
+		let nia09d_counter = 0;
+		if(nia09d_nav && isItemVisible(nia09d_nav)){nia09d_counter++;}
+		else if(nia09d_nav && nia09d_nav_btn && isItemVisible(nia09d_nav_btn)){nia09d_counter++;}
+		else if(debug_flag){ console.log("navigation principale non trouvé");}
+		if(nia09d_search && isItemVisible(nia09d_search)){nia09d_counter++;}
+		else if(nia09d_search && nia09d_search_btn && isItemVisible(nia09d_search_btn)){nia09d_counter++;}
+		else if(debug_flag){ console.log("recherche non trouvé");}
+		if(nia09d_plan && isItemVisible(nia09d_plan)){nia09d_counter++;}
+		else if(debug_flag){ console.log("plan du site non trouvé");}
+		if(nia09d_counter < 2){
+			if(nia09d_footer_links && nia09d_footer_links.length <= 3){
+				if(!only_error){
+					setItemToResultList("man","<li><span class='result-focus label-yellow'>09-D</span> : Le site doit être muni de 2 systèmes de navigation (exception : One-page, etc.) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-1-1' target='_blank'>RAWeb 12.1.1</a>]</li>");
+				}
+			}
+			else {
+				setItemToResultList("nc","<li><span class='result-focus label-red'>09-D</span> : Le site doit être muni de 2 systèmes de navigation (exception : One-page, etc.) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-1-1' target='_blank'>RAWeb 12.1.1</a>]</li>");
+			}
 		}
 	}
 	
 	// E. Skiplinks
-	if(!only_redactor){
+	if(!only_redactor && isAEM){
 		const nia09e1_nodes = document.querySelector('body > .skiplinks a[href="#main"]');
 		if(nia09e1_nodes == null){
 			setItemToResultList("nc","<li><span class='result-focus label-red'>09-E</span> : Absence de skiplinks pour aller à la zone de contenu principale [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-7-1' target='_blank'>RAWeb 12.7.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-page-contient-des-liens-dacces-rapide-places-au-debut-du-code-source' target='_blank'>Opquast 159</a>]</li>");
@@ -143,7 +154,9 @@ function check_part_09(){
 				if(nia09e2_dest == null){
 					if(debug_flag) console.log(nia09e2_nodes[i]);
 					if(isItemDisplayNone(nia09e2_nodes[i])){
-						setItemToResultList("man","<li><span class='result-focus label-yellow'>09-E</span> : Un skiplinks non visible (display:none) n'a pas de destination [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-7-1' target='_blank'>RAWeb 12.7.1</a>]</li>");
+						if(!only_error){
+							setItemToResultList("man","<li><span class='result-focus label-yellow'>09-E</span> : Un skiplinks non visible (display:none) n'a pas de destination [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-12-7-1' target='_blank'>RAWeb 12.7.1</a>]</li>");
+						}
 					}
 					else{
 						nia09e2_flag = true;
@@ -156,32 +169,35 @@ function check_part_09(){
 		}
 		
 		// Les skiplinks situé dans l’entête doivent être dans un élément <nav role=’navigation’> avec un aria_label
-		const nia09e3_nodes = document.querySelector('body > .skiplinks');		
-		
-		if(nia09e3_nodes && (nia09e3_nodes.nodeName != "NAV" || !nia09e3_nodes.hasAttribute("aria-label") || !nia09e3_nodes.hasAttribute("role") || nia09e3_nodes.getAttribute("role") != "navigation")){
-			setItemToResultList("nth","<li><a href='#' data-destination='nia09e3' class='result-focus label-yellow'>09-E</a> : Les skiplinks doivent se trouver dans un element nav avec un aria-label et un role=navigation</li>");
-			setItemOutline(nia09e3_nodes,"yellow","nia09e3","09-E");
+		if(!only_error){
+			const nia09e3_nodes = document.querySelector('body > .skiplinks');		
+			if(nia09e3_nodes && (nia09e3_nodes.nodeName != "NAV" || !nia09e3_nodes.hasAttribute("aria-label") || !nia09e3_nodes.hasAttribute("role") || nia09e3_nodes.getAttribute("role") != "navigation")){
+				setItemToResultList("nth","<li><a href='#' data-destination='nia09e3' class='result-focus label-yellow'>09-E</a> : Les skiplinks doivent se trouver dans un element nav avec un aria-label et un role=navigation</li>");
+				setItemOutline(nia09e3_nodes,"yellow","nia09e3","09-E");
+			}
 		}
 
 		// Les skiplinks situé dans l’entête doivent être les premiers éléments tabulable de la page (hors modale des cookies)
-		//const nia09e4_index = Array.prototype.indexOf.call(document.body.children, nia09e3_nodes);
-		const nia09e4_nodes = document.querySelectorAll('body > *:not(#orejime):not(#a42-ac):not(.checkA11YSpan)');
-		if(!nia09e4_nodes[0].classList.contains("skiplinks")){
-			setItemToResultList("nth","<li><a href='#' data-destination='nia09e4' class='result-focus label-yellow'>09-E</a> : Les skiplinks situé dans l’entête doivent être les premiers éléments tabulable de la page (hors modale des cookies)</li>");
-			setItemOutline(nia09e4_nodes[0],"yellow","nia09e4","09-E");
+		if(!only_error){
+			const nia09e4_nodes = document.querySelectorAll('body > *:not(#orejime):not(#a42-ac):not(.checkA11YSpan)');
+			if(!nia09e4_nodes[0].classList.contains("skiplinks")){
+				setItemToResultList("nth","<li><a href='#' data-destination='nia09e4' class='result-focus label-yellow'>09-E</a> : Les skiplinks situé dans l’entête doivent être les premiers éléments tabulable de la page (hors modale des cookies)</li>");
+				setItemOutline(nia09e4_nodes[0],"yellow","nia09e4","09-E");
+			}
 		}
 		
 		// S’il y a plusieurs Skiplinks, ils doivent être structurée sous forme de liste <ul>
+		if(!only_error){
 		const nia09e5_nodes = document.querySelectorAll('body > .skiplinks a[href]');
-		if(nia09e5_nodes && nia09e5_nodes.length > 1 && nia09e5_nodes[0].parentElement.nodeName != "UL" && nia09e5_nodes[0].nodeName != "LI"){
-			setItemToResultList("nth","<li><a href='#' data-destination='nia09e5' class='result-focus label-yellow'>09-E</a> : S’il y a plusieurs Skiplinks, ils doivent être structurée sous forme de liste 'ul'</li>");
-			setItemOutline(nia09e5_nodes[0].parentElement,"yellow","nia09e5","09-E");
+			if(nia09e5_nodes && nia09e5_nodes.length > 1 && nia09e5_nodes[0].parentElement.nodeName != "UL" && nia09e5_nodes[0].nodeName != "LI"){
+				setItemToResultList("nth","<li><a href='#' data-destination='nia09e5' class='result-focus label-yellow'>09-E</a> : S’il y a plusieurs Skiplinks, ils doivent être structurée sous forme de liste 'ul'</li>");
+				setItemOutline(nia09e5_nodes[0].parentElement,"yellow","nia09e5","09-E");
+			}
 		}
-		
 	}
 
 	// F taille des éléments interactifs minimum attendue est de 24px par 24px.
-	if(!only_redactor){
+	if(!only_redactor  && !only_error){
 		const nia09f_nodes = document.querySelectorAll('*:not(.cmp-text) > *:not(p) > a:not(.feed-item-timing):not(.cmp-breadcrumb__item-link):not(.geoportail-skip):not(.cmp-image__link), button, input, select, details, textarea, [tabindex="0"], [tabindex="-1"]');
 		let nia09f_flag = false;
 		let nia09f_rect, nia09f_rect_parent;

@@ -1,7 +1,7 @@
 // Fonction Validation Third-part : HTML5 Wave Lighthouse
 function thirdPartValidation(){
 	
-	if(!only_redactor) {
+	if(!only_redactor && !only_error) {
 		// Fonction Validator HTML5
 		const validatorUrl = "https://validator.nu/?out=json"
 		async function validator(url = validatorUrl) {
@@ -155,12 +155,11 @@ function thirdPartValidation(){
 			}*/
 		}
 		
+		// Sauvegarde les infos de la decla en Bdd
+		/*
+		if(isDecla && !isPreview && save_to_db){
+			saveDeclaInBdd();
+		}
+		*/	
 	}
-	
-	// Sauvegarde les infos de la decla en Bdd
-	/*
-	if(isDecla && !isPreview && save_to_db){
-		saveDeclaInBdd();
-	}
-	*/
 }

@@ -8,6 +8,7 @@ const homepageException = ["https://guichet.public.lu/fr/citoyens.html", "https:
 let isHomepage = false; // True s'il s'agit de la homepage du site
 let isPreview = false; // True s'il s'agit d'un environnement de dev (LOCAL, BUILD, INTEGR, QUAL)
 let isDecla = false; // True s'il s'agit de la page contenant la declaration d'accessibilité
+let isSitemap = false; // True s'il s'agit de la page contenant le plan du site
 let isPrototype = false; // True s'il s'agit de la page prototype / atelier graphique
 let isAEM = false; // True s'il s'agit d'un site réalisé avec AEM
 let isCTIE = false; // True s'il s'agit d'un site hébergé par le CTIE
@@ -19,6 +20,7 @@ else if(currentUrl.includes("aem-test-")){isPreview = true;}
 if(currentUrl.includes("/prototype/")){isPrototype = true;}
 if(currentUrl.includes("/actualites.html") || currentUrl.includes("/publications.html") || currentUrl.includes("/recherche.html")){isSearchLogic = true;}
 if(currentUrl.includes("/support/accessibilite.html") || currentUrl.includes("/support/accessibilite/accessibilite-guichet.html")){isDecla = true;}
+if(currentUrl.includes("plan-du-site.html") || currentUrl.includes("plan.html") || currentUrl.includes("plan-site.html")){isSitemap = true;}
 
 if(currentUrl.includes(".public.lu") || currentUrl.includes("gouvernement.lu") || currentUrl.includes(".etat.lu") || currentUrl.includes("sig-gr.eu") || currentUrl.includes(".mae.lu") || currentUrl.includes("lu-alert.lu")){
   isCTIE = true;
@@ -78,10 +80,12 @@ function run_renowify(df,or,oe,std,pluginUrl){
 	if(isHomepage) console.log("$ isHomepage");
 	if(isPreview) console.log("$ isPreview");
 	if(isDecla) console.log("$ isDecla");
+	if(isSitemap) console.log("$ isSitemap");
 	if(isPrototype) console.log("$ isPrototype");
 	if(isAEM) console.log("$ isAEM");
 	if(isCTIE) console.log("$ isCTIE");
 	if(isSearchLogic) console.log("$ isSearchLogic");
+	
 	
 	// Reset
 	result_crit = "";
@@ -110,20 +114,20 @@ function run_renowify(df,or,oe,std,pluginUrl){
 		/*var savebdd_loaded = loadScript('savebdd', '/parts/nia_savebdd.js',pluginUrl);
 		var savedecla_loaded = loadScript('savedecla', '/parts/nia_savedecla.js',pluginUrl);*/
 		var thirdservices_loaded = loadScript('thirdservices', '/parts/nia_thirdservices.js',pluginUrl);
-		var p01_loaded = loadScript('p01', '/parts/nia01_config.js',pluginUrl);
+		var p01_loaded = loadScript('p01', '/parts/nia01_colors.js',pluginUrl);
 		var p02_loaded = loadScript('p02', '/parts/nia02_images.js',pluginUrl);
 		var p03_loaded = loadScript('p03', '/parts/nia03_links.js',pluginUrl);
 		var p04_loaded = loadScript('p04', '/parts/nia04_form.js',pluginUrl);
 		var p05_loaded = loadScript('p05', '/parts/nia05_obligatoire.js',pluginUrl);
 		var p06_loaded = loadScript('p06', '/parts/nia06_structure.js',pluginUrl);
-		var p07_loaded = loadScript('p07', '/parts/nia07_title.js',pluginUrl);
+		var p07_loaded = loadScript('p07', '/parts/nia07_config.js',pluginUrl);
 		var p08_loaded = loadScript('p08', '/parts/nia08_table.js',pluginUrl);
 		var p09_loaded = loadScript('p09', '/parts/nia09_nav.js',pluginUrl);
 		var p10_loaded = loadScript('p10', '/parts/nia10_oldtag.js',pluginUrl);
 		var p11_loaded = loadScript('p11', '/parts/nia11_lang.js',pluginUrl);
 		var p12_loaded = loadScript('p12', '/parts/nia12_button.js',pluginUrl);
 		var p13_loaded = loadScript('p13', '/parts/nia13_lottie.js',pluginUrl);
-		var p14_loaded = loadScript('p14', '/parts/nia14_colors.js',pluginUrl);
+		var p14_loaded = loadScript('p14', '/parts/nia14_title.js',pluginUrl);
 		var p15_loaded = loadScript('p15', '/parts/nia15_secu.js',pluginUrl);
 		
 		Promise.all([functions_loaded,resultpanel_loaded,savebdd_loaded,savedecla_loaded,thirdservices_loaded,p01_loaded,p02_loaded,p03_loaded,p04_loaded,p05_loaded,p06_loaded,p07_loaded,p08_loaded,p09_loaded,p10_loaded,p11_loaded,p12_loaded,p13_loaded,p14_loaded,p15_loaded])

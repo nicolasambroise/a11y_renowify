@@ -22,10 +22,12 @@ function check_part_08(){
 	}
 
 	// C. Attribut deprecated
-	const nia08c_nodes = document.querySelectorAll('th[header], td[header]');
-	if(nia08c_nodes && nia08c_nodes.length > 0 && isItemsVisible(nia08c_nodes)){
-	  setItemToResultList("nth","<li><a href='#' data-destination='nia08c' class='result-focus label-yellow'>08-C</a> : Presence attributs header obsolete dans un tableau</li>");
-	  setItemsOutline(nia08c_nodes,"yellow","nia08c","08-C");
+	if(!only_error){
+		const nia08c_nodes = document.querySelectorAll('th[header], td[header]');
+		if(nia08c_nodes && nia08c_nodes.length > 0 && isItemsVisible(nia08c_nodes)){
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia08c' class='result-focus label-yellow'>08-C</a> : Presence attributs header obsolete dans un tableau</li>");
+		  setItemsOutline(nia08c_nodes,"yellow","nia08c","08-C");
+		}
 	}
 	
 	// D. Tableau de mise en forme
@@ -67,7 +69,7 @@ function check_part_08(){
 						setItemOutline(nia08f_nodes[i],"red","nia08f1","08-F");
 						nia08f_flag_complex = true;
 					}
-					else{
+					else if(!only_error){
 						setItemOutline(nia08f_nodes[i],"yellow","nia08f2","08-F");
 						nia08f_flag_data = true;
 					}
