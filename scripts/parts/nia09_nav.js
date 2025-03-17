@@ -5,7 +5,7 @@
 function check_part_09(){
 	if(debug_flag) console.log("09 Navigation");
 
-	if(isSitemap && is AEM){
+	if(isSitemap && isAEM){
 	
 		const nia09a1_footer = document.querySelectorAll('.page-footernav a[href*="contact"][href$=".html"]');
 		const nia09a2_footer = document.querySelectorAll('.page-footernav a[href*="accessibilite"][href$=".html"]');

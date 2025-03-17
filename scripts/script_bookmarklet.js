@@ -1,18 +1,28 @@
 /* Script Check A11Y Renowify - Nicolas AMBROISE */
 
-if(document.body.classList.contains('panel-injected')){
-	// Variables config globale
-	const debug_flag = false; // true -> affiche les logs
-	const only_redactor = false; // true --> affiche uniquement les critères relatif au redacteur
-	const only_error = false; // true --> affiche uniquement les Non-conformités critiques
-	const save_to_db = false; // true --> autorise la sauvegarde des resultats en base de données
+//if(!document.body.classList.contains('panel-injected')){
 
 	// Environnement
-	const pluginUrl = "https://webux.gouv.etat.lu/a11y/a11y_bookmarklet/src";
+	const pluginUrl = "https://webux.gouv.etat.lu/a11y/a11y_renowify";
 
-	console.log("Run Renowify (script_redac)")
-	run_renowify(debug_flag,only_redactor,only_error,save_to_db,pluginUrl);
+	console.log("Run Renowify (script_bookmarklet)")
+	
+	const load_renowify = new Promise(function(resolve, reject) {
+		let script = document.createElement('script');
+		script.id = 'injected-js-renowify';
+		script.src = pluginUrl + "/scripts/renowify.js" + '?v=' + Date.now();
+
+		script.onload = () => resolve(script);
+		script.onerror = () => reject(new Error(`Script load error for renowify.js`));
+
+		if (document.getElementById('injected-js-renowify') === null) document.head.append(script);
+	  });
+	
+	load_renowify.then(function() {setTimeout(run_renowify(debug_flag,only_redactor,only_error,save_to_db,pluginUrl), 100);}) 
+	
+/*
 }
 else{
 	toggleCheckA11YPanel();
 }
+*/

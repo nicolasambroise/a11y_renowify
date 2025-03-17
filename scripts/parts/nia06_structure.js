@@ -242,7 +242,7 @@ function check_part_06(){
 		if(nia06j2_nodes && nia06j2_nodes.length > 0){
 			for(let i = 0; i < nia06j2_nodes.length; i++){
 				if(isItemVisible(nia06j2_nodes[i])){
-					nia06j2_result = nia06j2_nodes[i].innerText.trim.match(/^(- )/g);
+					nia06j2_result = nia06j2_nodes[i].innerText.trim().match(/^(- )/g);
 					if(nia06j2_result && nia06j2_result.length > 0) {
 						setItemOutline(nia06j2_nodes[i],"yellow","nia06j2","06-J");
 						nia06j2_flag = true;

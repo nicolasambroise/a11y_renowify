@@ -109,28 +109,26 @@ function run_renowify(df,or,oe,std,pluginUrl){
 		/* Pour le bookmarklet */
 		console.log("== Start Bookmarklet Renowify ==");
 		loadStyle(pluginUrl)
-		var functions_loaded = loadScript('functions', '/parts/nia_functions.js',pluginUrl);
-		var resultpanel_loaded = loadScript('resultpanel', '/parts/nia_resultpanel.js',pluginUrl);
-		/*var savebdd_loaded = loadScript('savebdd', '/parts/nia_savebdd.js',pluginUrl);
-		var savedecla_loaded = loadScript('savedecla', '/parts/nia_savedecla.js',pluginUrl);*/
-		var thirdservices_loaded = loadScript('thirdservices', '/parts/nia_thirdservices.js',pluginUrl);
-		var p01_loaded = loadScript('p01', '/parts/nia01_colors.js',pluginUrl);
-		var p02_loaded = loadScript('p02', '/parts/nia02_images.js',pluginUrl);
-		var p03_loaded = loadScript('p03', '/parts/nia03_links.js',pluginUrl);
-		var p04_loaded = loadScript('p04', '/parts/nia04_form.js',pluginUrl);
-		var p05_loaded = loadScript('p05', '/parts/nia05_obligatoire.js',pluginUrl);
-		var p06_loaded = loadScript('p06', '/parts/nia06_structure.js',pluginUrl);
-		var p07_loaded = loadScript('p07', '/parts/nia07_config.js',pluginUrl);
-		var p08_loaded = loadScript('p08', '/parts/nia08_table.js',pluginUrl);
-		var p09_loaded = loadScript('p09', '/parts/nia09_nav.js',pluginUrl);
-		var p10_loaded = loadScript('p10', '/parts/nia10_oldtag.js',pluginUrl);
-		var p11_loaded = loadScript('p11', '/parts/nia11_lang.js',pluginUrl);
-		var p12_loaded = loadScript('p12', '/parts/nia12_button.js',pluginUrl);
-		var p13_loaded = loadScript('p13', '/parts/nia13_lottie.js',pluginUrl);
-		var p14_loaded = loadScript('p14', '/parts/nia14_title.js',pluginUrl);
-		var p15_loaded = loadScript('p15', '/parts/nia15_secu.js',pluginUrl);
+		var functions_loaded = loadScript('functions', '/scripts/parts/nia_functions.js',pluginUrl);
+		var resultpanel_loaded = loadScript('resultpanel', '/scripts/parts/nia_resultpanel.js',pluginUrl);
+		var thirdservices_loaded = loadScript('thirdservices', '/scripts/parts/nia_thirdservices.js',pluginUrl);
+		var p01_loaded = loadScript('p01', '/scripts/parts/nia01_colors.js',pluginUrl);
+		var p02_loaded = loadScript('p02', '/scripts/parts/nia02_images.js',pluginUrl);
+		var p03_loaded = loadScript('p03', '/scripts/parts/nia03_links.js',pluginUrl);
+		var p04_loaded = loadScript('p04', '/scripts/parts/nia04_form.js',pluginUrl);
+		var p05_loaded = loadScript('p05', '/scripts/parts/nia05_obligatoire.js',pluginUrl);
+		var p06_loaded = loadScript('p06', '/scripts/parts/nia06_structure.js',pluginUrl);
+		var p07_loaded = loadScript('p07', '/scripts/parts/nia07_config.js',pluginUrl);
+		var p08_loaded = loadScript('p08', '/scripts/parts/nia08_table.js',pluginUrl);
+		var p09_loaded = loadScript('p09', '/scripts/parts/nia09_nav.js',pluginUrl);
+		var p10_loaded = loadScript('p10', '/scripts/parts/nia10_oldtag.js',pluginUrl);
+		var p11_loaded = loadScript('p11', '/scripts/parts/nia11_lang.js',pluginUrl);
+		var p12_loaded = loadScript('p12', '/scripts/parts/nia12_button.js',pluginUrl);
+		var p13_loaded = loadScript('p13', '/scripts/parts/nia13_lottie.js',pluginUrl);
+		var p14_loaded = loadScript('p14', '/scripts/parts/nia14_title.js',pluginUrl);
+		var p15_loaded = loadScript('p15', '/scripts/parts/nia15_secu.js',pluginUrl);
 		
-		Promise.all([functions_loaded,resultpanel_loaded,savebdd_loaded,savedecla_loaded,thirdservices_loaded,p01_loaded,p02_loaded,p03_loaded,p04_loaded,p05_loaded,p06_loaded,p07_loaded,p08_loaded,p09_loaded,p10_loaded,p11_loaded,p12_loaded,p13_loaded,p14_loaded,p15_loaded])
+		Promise.all([functions_loaded,resultpanel_loaded,thirdservices_loaded,p01_loaded,p02_loaded,p03_loaded,p04_loaded,p05_loaded,p06_loaded,p07_loaded,p08_loaded,p09_loaded,p10_loaded,p11_loaded,p12_loaded,p13_loaded,p14_loaded,p15_loaded])
 		.then(function() {setTimeout(beforeCheck(), 100);})
 		.then(function() {
 			
@@ -200,7 +198,6 @@ function run_renowify(df,or,oe,std,pluginUrl){
 
 // fonction pour charger les scripts
 function loadScript(id,src,pluginUrl) {
-  //console.log("loadScript : "+id);
   return new Promise(function(resolve, reject) {
     let script = document.createElement('script');
 	script.id = 'injected-js-'+id;
@@ -208,7 +205,6 @@ function loadScript(id,src,pluginUrl) {
 
     script.onload = () => resolve(script);
     script.onerror = () => reject(new Error(`Script load error for ${src}`));
-	//script.addEventListener('load', () => {resolve(script);});
 
 	if (document.getElementById('injected-js-'+id) === null) document.head.append(script);
   });
@@ -216,12 +212,11 @@ function loadScript(id,src,pluginUrl) {
 
 // fonction pour charger le style
 function loadStyle(pluginUrl) {
-  //console.log("loadStyle");
   return new Promise(function(resolve, reject) {
     let style = document.createElement('link');
     style.id = 'injected-css';
     style.rel = 'stylesheet';
-    style.href = pluginUrl+ '/stylePanel.css?v=' + Date.now();
+    style.href = pluginUrl+ '/styles/stylePanel.css?v=' + Date.now();
 
     style.onload = () => resolve(style);
     style.onerror = () => reject(new Error(`Style load error`));
