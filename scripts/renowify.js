@@ -104,7 +104,7 @@ function run_renowify(df,or,oe,std,pluginUrl){
 	/*- -------------------------------------------------------------------------------- */
 	// Add JS
 	// - double sécurité pour que ce sript puisse également être appelé par l'extention chrome
-	if(!document.body.classList.contains('panel-injected')){
+	if(!document.body.classList.contains('renowify-script-injected')){
 		/* Pour le bookmarklet */
 		console.log("== Start Bookmarklet Renowify ==");
 		loadStyle(pluginUrl)

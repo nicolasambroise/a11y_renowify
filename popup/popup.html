@@ -15,55 +15,65 @@
 	</header>
 	<main>
 		<div class="frame" id="check">
-			<h2>Check Access</h2>	
-			<div class="form-group">			
-			<fieldset class="form-options form-options--radio">
+		  <h2>Check Access</h2>	
+		  <div class="form-group">
+			<fieldset class="form-options form-options--switch form-options--switch--mini">
 			  <legend class="label form-options-legend">Vérification automatique</legend>
 			  <div class="form-options-wrapper">
-			    <ul class="form-options-content">
+			    <ul class="form-options-content">		
 				  <li class="form-options-group">
-				    <label class="form-options-label" for="radio_redac">
-					  <input class="form-options-field form-options-field--radio" id="radio_redac" type="radio" name="renowify_type" value="redac" checked>
+				    <label for="switch-redac" class="form-options-label">
+					  <input
+					    type="checkbox"
+					    id="switch-redac"
+					    class="form-options-field form-options-field--checkbox"
+					    name="switch-renowify"
+					    value="3"
+					    role="switch"
+					  />
+					  <span class="state">
+					    <span class="container"><span class="position"></span></span>
+					  </span>
 					  <span class="form-options-description">Contenu rédacteur</span>
 				    </label>
 				  </li>
 				  <li class="form-options-group">
-					<label class="form-options-label" for="radio_nc">
-					  <input class="form-options-field form-options-field--radio" id="radio_nc" type="radio" name="renowify_type" value="nc">
+				    <label for="switch-nc" class="form-options-label">
+					  <input
+					    type="checkbox"
+					    id="switch-nc"
+					    class="form-options-field form-options-field--checkbox"
+					    name="switch-renowify"
+					    value="3"
+					    role="switch"
+					  />
+					  <span class="state">
+					    <span class="container"><span class="position"></span></span>
+					  </span>
 					  <span class="form-options-description">Erreurs uniquement</span>
-					</label>
+				    </label>
 				  </li>
 				  <li class="form-options-group">
-					<label class="form-options-label" for="radio_all">
-					  <input class="form-options-field form-options-field--radio" id="radio_all" type="radio" name="renowify_type" value="all">
+				    <label for="switch-all" class="form-options-label">
+					  <input
+					    type="checkbox"
+					    id="switch-all"
+					    class="form-options-field form-options-field--checkbox"
+					    name="switch-renowify"
+					    value="3"
+					    role="switch"
+					  />
+					  <span class="state">
+					    <span class="container"><span class="position"></span></span>
+					  </span>
 					  <span class="form-options-description">Erreurs, Alertes et bonnes pratiques</span>
-					</label>
+				    </label>
 				  </li>
-			    </ul>
+				</ul>
 			  </div>
 			</fieldset>
-
-			<div class="form-group">
-			  <div class="form-options form-options--switch">
-				<label for="renowify_btn" class="form-options-label">
-				  <input
-					type="checkbox"
-					id="renowify_btn"
-					class="form-options-field form-options-field--checkbox"
-					name="renowify_btn"
-					value="1"
-					role="switch"
-				  />
-				  <span class="state">
-					<span class="container"><span class="position"></span></span>
-				  </span>
-				  <span class="form-options-description">Afficher le résultat</span>
-				</label>
-			  </div>
-			</div>
 		  </div>
 		</div>
-
 		<div class="frame" id="tools">	
 		  <h2>Outils</h2>
 		  <div class="form-group">
@@ -72,12 +82,12 @@
 			<div class="form-options-wrapper">
 			  <ul class="form-options-content">
 				<li class="form-options-group">
-				  <label for="checkbox_alt" class="form-options-label">
+				  <label for="switch-images" class="form-options-label">
 					<input
 					  type="checkbox"
-					  id="checkbox_alt"
+					  id="switch-images"
 					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
+					  name="switch-renowify"
 					  value="1"
 					  role="switch"
 					/>
@@ -88,12 +98,12 @@
 				  </label>
 				</li>
 				<li class="form-options-group">
-				  <label for="checkbox_focus" class="form-options-label">
+				  <label for="switch-tab" class="form-options-label">
 					<input
 					  type="checkbox"
-					  id="checkbox_focus"
+					  id="switch-tab"
 					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
+					  name="switch-renowify"
 					  value="2"
 					  role="switch"
 					/>
@@ -103,29 +113,13 @@
 					<span class="form-options-description">Forcer l'affichage du focus</span>
 				  </label>
 				</li>
-				<!-- li class="form-options-group">
-				  <label for="checkbox_theme" class="form-options-label">
-					<input
-					  type="checkbox"
-					  id="checkbox_theme"
-					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
-					  value="3"
-					  role="switch"
-					/>
-					<span class="state">
-					  <span class="container"><span class="position"></span></span>
-					</span>
-					<span class="form-options-description">Lister les thématiques</span>
-				  </label>
-				</li -->
 				<li class="form-options-group">
-				  <label for="checkbox_lang" class="form-options-label">
+				  <label for="switch-lang" class="form-options-label">
 					<input
 					  type="checkbox"
-					  id="checkbox_lang"
+					  id="switch-lang"
 					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
+					  name="switch-renowify"
 					  value="3"
 					  role="switch"
 					/>
@@ -136,12 +130,12 @@
 				  </label>
 				</li>
 				<li class="form-options-group">
-				  <label for="checkbox_space" class="form-options-label">
+				  <label for="switch-space" class="form-options-label">
 					<input
 					  type="checkbox"
-					  id="checkbox_space"
+					  id="switch-space"
 					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
+					  name="switch-renowify"
 					  value="3"
 					  role="switch"
 					/>
@@ -152,44 +146,28 @@
 				  </label>
 				</li>
 				<li class="form-options-group">
-				  <label for="checkbox_headings" class="form-options-label">
+				  <label for="switch-headings" class="form-options-label">
 					<input
 					  type="checkbox"
-					  id="checkbox_headings"
+					  id="switch-headings"
 					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
+					  name="switch-renowify"
 					  value="3"
 					  role="switch"
 					/>
 					<span class="state">
 					  <span class="container"><span class="position"></span></span>
 					</span>
-					<span class="form-options-description">Afficher les titres</span>
+					<span class="form-options-description">Afficher les niveaux de titre</span>
 				  </label>
 				</li>
 				<li class="form-options-group">
-				  <label for="checkbox_tabindex" class="form-options-label">
+				  <label for="switch-autocomplete" class="form-options-label">
 					<input
 					  type="checkbox"
-					  id="checkbox_tabindex"
+					  id="switch-autocomplete"
 					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
-					  value="3"
-					  role="switch"
-					/>
-					<span class="state">
-					  <span class="container"><span class="position"></span></span>
-					</span>
-					<span class="form-options-description">Afficher les attributs tabIndex</span>
-				  </label>
-				</li>
-				<li class="form-options-group">
-				  <label for="checkbox_autocomplete" class="form-options-label">
-					<input
-					  type="checkbox"
-					  id="checkbox_autocomplete"
-					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
+					  name="switch-renowify"
 					  value="3"
 					  role="switch"
 					/>
@@ -200,12 +178,12 @@
 				  </label>
 				</li>
 				<li class="form-options-group">
-				  <label for="checkbox_table" class="form-options-label">
+				  <label for="switch-table" class="form-options-label">
 					<input
 					  type="checkbox"
-					  id="checkbox_table"
+					  id="switch-table"
 					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
+					  name="switch-renowify"
 					  value="3"
 					  role="switch"
 					/>
@@ -216,12 +194,12 @@
 				  </label>
 				</li>
 				<li class="form-options-group">
-				  <label for="checkbox_link" class="form-options-label">
+				  <label for="switch-link" class="form-options-label">
 					<input
 					  type="checkbox"
-					  id="checkbox_link"
+					  id="switch-link"
 					  class="form-options-field form-options-field--checkbox"
-					  name="checkbox-tools"
+					  name="switch-renowify"
 					  value="3"
 					  role="switch"
 					/>

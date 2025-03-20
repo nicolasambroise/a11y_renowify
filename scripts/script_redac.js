@@ -1,6 +1,6 @@
 /* Script Check A11Y Renowify - Nicolas AMBROISE */
 
-if(document.body.classList.contains('panel-injected')){
+if(document.body.classList.contains('renowify-script-injected')){
 	// Variables config globale
 	const debug_flag = false; // true -> affiche les logs
 	const only_redactor = true; // true --> affiche uniquement les critères relatif au redacteur

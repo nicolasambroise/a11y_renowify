@@ -40,7 +40,9 @@ body {
 	background-color: #ffffff;
 }
 
-#checkA11YPopup #tools .form-options-content{padding-left:0 !important;}
+#checkA11YPopup .form-options-content{
+	padding-left:0 !important;
+}
 
 /* Radio Button */
 .label,

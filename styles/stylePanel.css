@@ -296,21 +296,42 @@ body.check-panel-active [role="dialog"]{
     text-transform: none !important;
     height: 17px !important;
     min-width: 30px !important;
+	clip: auto !important;
+}
+
+.checkA11YSpan__green{
+    background-color: green !important;
+    color: white !important;
+}
+
+.checkA11YSpan__blue{
+    background-color: blue !important;
+    color: white !important;
 }
 
 .checkA11YSpan__yellow{
-    background-color: yellow;
-    color: black;
+    background-color: yellow !important;
+    color: black !important;
 }
 
 .checkA11YSpan__orange{
-    background-color: orange;
-    color: black;
+    background-color: orange !important;
+    color: black !important;
 }
 
 .checkA11YSpan__red{
-    background-color: #ea0202;
-    color: white;
+    background-color: #ea0202 !important;
+    color: white !important;
+}
+
+.checkA11YOutline__green{
+    outline: green solid 3px !important;
+    outline-offset: 1px;
+}
+
+.checkA11YOutline__blue{
+    outline: blue solid 3px !important;
+    outline-offset: 1px;
 }
 
 .checkA11YOutline__yellow{
@@ -331,4 +352,18 @@ body.check-panel-active [role="dialog"]{
 .checkA11YOutline__parent{
     outline: #ea0202 dotted 3px !important;
     outline-offset: -2px;
+}
+
+#checkA11YBottomLine{
+	width: 100%;
+	display: block;
+	position: fixed;
+	bottom: 0;
+	background-color:#FFF;
+	padding: 5px 10px;
+	margin: 0;
+	color: #035384;
+	font-size: 1.6rem;
+	font-weight: 300;
+	border-top: 3px solid #035384
 }
