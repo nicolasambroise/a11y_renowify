@@ -1,6 +1,6 @@
 /* Script Check A11Y Renowify - Nicolas AMBROISE */
 
-if(!document.body.classList.contains('panel-injected')){
+if(!document.body.classList.contains('renowify-script-injected')){
 
 	// Environnement
 	const pluginUrl = "https://webux.gouv.etat.lu/a11y/a11y_renowify";
