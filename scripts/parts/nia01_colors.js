@@ -358,6 +358,11 @@ function check_part_01(){
 	}
 
 	// D. Opacité de l'outline
+	/*
+		// Commenté pour le moment : Trop de faux-positif
+		// Work only on Firefox ? https://caniuse.com/mdn-api_htmlelement_focus_options_focusvisible_parameter
+	*/
+	/*
 	if(!only_redactor){
 		const nia01d_nodes = document.querySelectorAll('*:not(.skiplinks) > a:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([disabled]), summary');
 		let nia01d_flag1 = false;
@@ -371,25 +376,23 @@ function check_part_01(){
 			for(let i = 0; i < nia01d_nodes.length; i++){
 				if(isItemVisible(nia01d_nodes[i])){
 					
+					nia01d_nodes[i].contentEditable = true;
 					nia01d_nodes[i].focus({ focusVisible: true });
-					
 					nia01d_outline = window.getComputedStyle(nia01d_nodes[i],null).getPropertyValue('outline');
 					nia01d_outline_style = window.getComputedStyle(nia01d_nodes[i],null).getPropertyValue('outline-style');
 					nia01d_outline_width = window.getComputedStyle(nia01d_nodes[i],null).getPropertyValue('outline-width');
+					nia01d_nodes[i].contentEditable = false;
 					
 					nia01d_has_pseudo = false;
 					if((window.getComputedStyle(nia01d_nodes[i],'::after').getPropertyValue('background') && window.getComputedStyle(nia01d_nodes[i],'::after').getPropertyValue('background') != "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box") || (window.getComputedStyle(nia01d_nodes[i],'::before').getPropertyValue('background') && window.getComputedStyle(nia01d_nodes[i],'::before').getPropertyValue('background') != "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box")){
 						nia01d_has_pseudo = true;
-						//console.log("HAS PSEUDO");
-						//console.log(window.getComputedStyle(nia01d_nodes[i],'::after').getPropertyValue('background'))
-						//console.log(window.getComputedStyle(nia01d_nodes[i],'::before').getPropertyValue('background'))
 					}
 
 					if((nia01d_outline && nia01d_outline == "0") || (nia01d_outline_style && nia01d_outline_style == "none")){
 						if(debug_flag){
 							console.log("Outline :"+nia01d_outline);
-							//console.log("Outline style :"+nia01d_outline_style);
-							//console.log("Outline width :"+nia01d_outline_width);
+							console.log("Outline style :"+nia01d_outline_style);
+							console.log("Outline width :"+nia01d_outline_width);
 						}
 						
 						if(nia01d_outline && nia01d_outline == "0"){
@@ -512,9 +515,11 @@ function check_part_01(){
 		  setItemToResultList("dev","<li><a href='#' data-destination='nia01d' class='result-focus label-orange'>01-D</a> : Présence d'élément dont l'outline est masqué</li>");
 		}
 	}
+	*/
 	
 	// E presence de dégradé sans couleur de replis
 	// Pour des soucis de perf, on ne test que certain element
+	/*
 	if(!only_redactor){
 		const nia01e_nodes = document.querySelectorAll('header, footer, .cmp-section, aside, article');
 		let nia01e_flag = false;
@@ -529,6 +534,6 @@ function check_part_01(){
 			}
 		}
 	}
-	
+	*/
 	
 }

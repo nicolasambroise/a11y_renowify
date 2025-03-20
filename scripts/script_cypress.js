@@ -18,7 +18,10 @@ if(!document.body.classList.contains('panel-injected')){
 		if (document.getElementById('injected-js-renowify') === null) document.head.append(script);
 	  });
 	
-	load_renowify.then(function() {setTimeout(run_renowify(debug_flag,only_redactor,only_error,save_to_db,pluginUrl), 100);}) 
+	load_renowify.then(function() {
+		only_error = true;
+		setTimeout(run_renowify(debug_flag,only_redactor,only_error,save_to_db,pluginUrl), 100);
+	}) 
 
 }
 else{

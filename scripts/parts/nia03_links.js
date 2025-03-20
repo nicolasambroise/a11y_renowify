@@ -224,7 +224,7 @@ function check_part_03(){
 	if(!only_error){
 		const nia03n_nodes = document.querySelectorAll("main *:not(li.nav-item) > p > a, main *:not(.cmp-autocompleteSearch__keywords) > li:not(.cmp-focus-list-item):not(.nav-item):not(.cmp-languagenavigation__item):not(.cmp-breadcrumb__item):not(.subnav-item):not(.cmp-grid__item ):not(.filter-item):not(.cmp-list__item) > a:not(.toc-anchor)");
 		let nia03n_flag = false;
-		if(nia03n_nodes && nia03n_nodes.length > 0 && isItemsVisible(nia03l_nodes)){	
+		if(nia03n_nodes && nia03n_nodes.length > 0 && isItemsVisible(nia03n_nodes)){	
 			for(let i = 0; i < nia03n_nodes.length; i++){
 				if(isItemVisible(nia03n_nodes[i]) && window.getComputedStyle(nia03n_nodes[i], null).textDecorationLine != "underline"){
 					setItemOutline(nia03n_nodes[i],"yellow","nia03n","03-N");

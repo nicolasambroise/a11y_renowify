@@ -1,9 +1,9 @@
 /* Script Check A11Y Renowify - Nicolas AMBROISE */
 
 // Current URL
-const currentUrl = window.location.href;
-const homepage = document.querySelector('h1.logo.logo--homepage');
-const homepageException = ["https://guichet.public.lu/fr/citoyens.html", "https://guichet.public.lu/fr/entreprises.html","https://guichet.public.lu/fr/leichte-sprache.html", "https://guichet.public.lu/en/citoyens.html", "https://guichet.public.lu/en/entreprises.html","https://guichet.public.lu/en/leichte-sprache.html","https://guichet.public.lu/de/citoyens.html", "https://guichet.public.lu/de/entreprises.html","https://guichet.public.lu/de/leichte-sprache.html"]
+let currentUrl = window.location.href;
+let homepage = document.querySelector('h1.logo.logo--homepage');
+let homepageException = ["https://guichet.public.lu/fr/citoyens.html", "https://guichet.public.lu/fr/entreprises.html","https://guichet.public.lu/fr/leichte-sprache.html", "https://guichet.public.lu/en/citoyens.html", "https://guichet.public.lu/en/entreprises.html","https://guichet.public.lu/en/leichte-sprache.html","https://guichet.public.lu/de/citoyens.html", "https://guichet.public.lu/de/entreprises.html","https://guichet.public.lu/de/leichte-sprache.html"]
 
 let isHomepage = false; // True s'il s'agit de la homepage du site
 let isPreview = false; // True s'il s'agit d'un environnement de dev (LOCAL, BUILD, INTEGR, QUAL)
@@ -32,10 +32,9 @@ else{
 	alert("Ce Bookmarklet est à utiliser seulement sur les sites étatiques luxembourgeois.");
 }
 
-
 // Current Size
-const currentWidth = window.innerWidth;
-const currentHeight = window.innerHeight;
+let currentWidth = window.innerWidth;
+let currentHeight = window.innerHeight;
 
 // Init result message
 let result_crit = "";

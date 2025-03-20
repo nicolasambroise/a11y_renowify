@@ -151,13 +151,17 @@ function removeClassToBody() {
   document.body.classList.remove("panel-injected");
 }
 function cleanRenowify() {
+  console.log("cleanRenowify");	
   document.getElementById('checkA11YPanel').remove();
   document.getElementById('checkA11YPanelBtn').remove();
   document.querySelectorAll('.checkA11YSpan').forEach(el => el.remove())
-  document.querySelectorAll('[class^=checkA11YSpan]').forEach(el => {
+  document.querySelectorAll('[class*="checkA11YSpan"],[class*="checkA11YOutline"],[class*="nia"]').forEach(el => {
+	  let className;
 	  for(let i = 0; i < el.classList.length; i++) {
-		const className = el.classList[i];
-		if(className.startsWith('checkA11YSpan') || className.startsWith('nia')) el.classList.remove(className);
+		  className = el.classList[i];
+		  if(className.startsWith('checkA11YOutline') || className.startsWith('checkA11YSpan') || className.startsWith('nia')){
+			el.classList.remove(className);
+		  }
 	  }
   });
 	chrome.storage.local.get(["renowifyData"], function(result){
@@ -217,6 +221,8 @@ function activeToolSwitch(checkboxId, checked, currentTabId){
 		});
 		addBadge(currentTabId);
 	} else {
+		console.log(styleFolder+"nia_"+checkboxId+".css")
+		console.log(currentTabId)
 		chrome.scripting.removeCSS({
 			files: [styleFolder+"nia_"+checkboxId+".css"],
 			target: {tabId: currentTabId}
@@ -262,7 +268,6 @@ chrome.tabs.onUpdated.addListener(function(currentTabId, changeInfo, tab) {
 
 
 // ==== Gestion du Badge 
-
 function addBadge(currentTabId){
 	chrome.action.setBadgeText({
 		tabId: currentTabId,
