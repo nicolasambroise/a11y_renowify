@@ -294,7 +294,7 @@ body.check-panel-active [role="dialog"]{
     text-decoration: none !important;
     text-shadow: none !important;
     text-transform: none !important;
-    height: 17px !important;
+    min-height: 17px !important;
     min-width: 30px !important;
 	clip: auto !important;
 }
@@ -364,6 +364,8 @@ body.check-panel-active [role="dialog"]{
 	margin: 0;
 	color: #035384;
 	font-size: 1.6rem;
-	font-weight: 300;
-	border-top: 3px solid #035384
+	font-weight: 400;
+	border-top: 3px solid #035384;
+	z-index: 70000;
+    line-height: normal;
 }

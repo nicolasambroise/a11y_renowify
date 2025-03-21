@@ -26,3 +26,14 @@
 	let nia_headRole = 0;
 	let nia_headHn = 0;
 	let nia_headBottomLine;
+	
+/* Forms */
+ 	const nia_formFields = document.querySelectorAll('input:not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]), select, textarea');
+	let nia_formElm = 0;
+	let nia_formWarning = 0;
+	let nia_formBottomLine;
+	
+/* Link */
+ 	const nia_linkElm = document.querySelectorAll('a[href],[role=link][href]');
+	let nia_linkWarning = 0;
+	let nia_linkBottomLine;

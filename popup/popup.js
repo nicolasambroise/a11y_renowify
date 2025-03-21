@@ -89,7 +89,7 @@ function activeSwitch(switchBtnId, checked, currentTabId){
 				runRenowify(switchBtnId, currentTabId)
 			}
 			// Inject JS
-			else if(switchBtnId == "images" || switchBtnId == "lang" || switchBtnId == "headings"){
+			else if(switchBtnId == "images" || switchBtnId == "lang" || switchBtnId == "headings" || switchBtnId == "autocomplete" || switchBtnId == "link"){
 				chrome.scripting.executeScript({
 						files: [scriptFolder+'tools/nia_'+switchBtnId+'.js'],
 						target : {tabId : currentTabId}
