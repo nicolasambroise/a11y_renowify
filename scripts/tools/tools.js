@@ -35,5 +35,11 @@
 	
 /* Link */
  	const nia_linkElm = document.querySelectorAll('a[href],[role=link][href]');
-	let nia_linkWarning = 0;
+	let nia_linkError = 0;
 	let nia_linkBottomLine;
+	
+/* Table */
+ 	const nia_tableElm = document.querySelectorAll('table, caption, th, td');
+	let nia_tableError = 0;
+	let nia_tableWarning = 0;
+	let nia_tableBottomLine;
