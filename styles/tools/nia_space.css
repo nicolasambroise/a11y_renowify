@@ -1,8 +1,8 @@
-* {
+body.space-style-injected * {
     line-height: 1.5em !important;
     letter-spacing: 0.12em !important;
     word-spacing: 0.16em !important;
 }
-p {
+body.space-style-injected p {
     margin-bottom: 2em !important;
 }

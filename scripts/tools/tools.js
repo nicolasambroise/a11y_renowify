@@ -1,5 +1,5 @@
 /* Images */ 
-	const nia_images = document.querySelectorAll('img,[role="img"],svg:not(.is-hidden),svg[role="img"],embed[type="image"],canvas,map,area,object[type="image"]');
+	const nia_images = document.querySelectorAll('*:not(.ol-overlay-container):not(.ol-control) > * > img,[role="img"],svg:not(.is-hidden),svg[role="img"],embed[type="image"],canvas,map,area,object[type="image"]');
 	let nia_imgElm = 0;
 	let nia_imgSvg = 0;
 	let nia_imgObject = 0;

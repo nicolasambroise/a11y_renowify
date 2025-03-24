@@ -8,15 +8,12 @@ function check_part_05(){
 
 	// A. Bloc vide
 	const nia05a_nodes = document.querySelectorAll('*:not(.ol-attribution) > :where(p, th, strong, em, a, q, blockquote, aside, ul, li):not([aria-hidden="true"]):not(.mapboxgl-ctrl-logo):empty');
-	let nia05a_container = "";
 	if(nia05a_nodes && nia05a_nodes.length > 0 && isItemsVisible(nia05a_nodes)){
 	  setItemToResultList("nc","<li><a href='#' data-destination='nia05a' class='result-focus label-red'>05-A</a> : Présence de balise vide [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-9-1' target='_blank'>RAWeb 8.9.1</a>]</li>");
 	  for(let i = 0; i < nia05a_nodes.length; i++){
 			if(isItemVisible(nia05a_nodes[i])){
 				setItemOutline(nia05a_nodes[i],"red","nia05a","05-A");
-				nia05a_container = nia05a_nodes[i].parentElement;
-				nia05a_container.style.outline = "3px dotted red";
-				nia05a_container.style.outlineOffset = "-2px";
+				nia05a_nodes[i].parentElement.classList.add("checkA11YOutline__parent");
 			}
 		}
 	}
@@ -24,7 +21,7 @@ function check_part_05(){
     // B. Bloc vide avec $nbsp; ou \n
 	const nia05b_nodes = document.querySelectorAll('*:not(.ol-attribution):not([aria-hidden="true"]) > :where(p, th, strong, em, a, q, blockquote, aside, ul, li):not([aria-hidden="true"]):not(.mapboxgl-ctrl-logo):not(:empty)');
 	let nia05b_flag = false;
-	let nia05b_clean_node = "", nia05b_container = "", nia05b_lang = "";
+	let nia05b_clean_node = "", nia05b_lang = "";
 	if(nia05b_nodes && nia05b_nodes.length > 0){
 		for(let i = 0; i < nia05b_nodes.length; i++){
 			if(nia05b_nodes[i].childElementCount == 0){
@@ -32,9 +29,7 @@ function check_part_05(){
 				nia05b_clean_node = sanitizeText(nia05b_nodes[i].innerText, nia05b_lang);
 				if(nia05b_clean_node == "" && isItemVisible(nia05b_nodes[i])){
 					setItemOutline(nia05b_nodes[i],"red","nia05b","05-B");
-					nia05b_container = nia05b_nodes[i].parentElement;
-					nia05b_container.style.outline = "3px dotted red";
-					nia05b_container.style.outlineOffset = "-2px";
+					nia05b_nodes[i].parentElement.classList.add("checkA11YOutline__parent");
 					nia05b_flag = true;
 				}
 			}
@@ -99,7 +94,7 @@ function check_part_05(){
 				}
 				else{
 					nia05f_flag = true;
-					setItemOutline(nia05f_nodes[i],"red","nia05f","05-F");
+					setItemOutline(nia05f_nodes[i],"orange","nia05f","05-F");
 					nia05f_duplicateId += "\""+nia05f_currentId+"\",";
 				}
 				nia05f_ids[nia05f_currentId]++;
@@ -107,7 +102,7 @@ function check_part_05(){
 		}
 		if(nia05f_flag == true){
 		  //console.log(nia05f_ids);
-		  setItemToResultList("dev","<li><a href='#' data-destination='nia05f' class='result-focus label-red'>05-F</a> : Présence d'Id dupliqué<span class='cy-hidden'> ("+nia05f_duplicateId+")</span> [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-2-1' target='_blank'>RAWeb 8.2.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-identifiant-html-nest-utilise-quune-seule-fois-par-page' target='_blank'>Opquast 229</a>]</li>");
+		  setItemToResultList("dev","<li><a href='#' data-destination='nia05f' class='result-focus label-orange'>05-F</a> : Présence d'Id dupliqué<span class='cy-hidden'> ("+nia05f_duplicateId+")</span> [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-2-1' target='_blank'>RAWeb 8.2.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-identifiant-html-nest-utilise-quune-seule-fois-par-page' target='_blank'>Opquast 229</a>]</li>");
 		}
 	}
 	

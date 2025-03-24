@@ -49,17 +49,20 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 }); 
 
 function initRenowify(currentTabId){
-	//enable style
-	const e1 = addStyle(currentTabId);
+	//enable style Renowify
+	const e1 = addStyleRenowify(currentTabId);
 	
-	//enable script
+	//enable script Renowify
 	const e2 = addScriptRenowify(currentTabId);
 	
-	//enable tools
-	const e3 = addScriptTools(currentTabId);
+	//enable style tools
+	const e3 = addStyleTools(currentTabId);
+
+	//enable script tools
+	const e4 = addScriptTools(currentTabId);
 	
 	// retrive switch state
-	Promise.all([e1, e2, e3]).then(() => {
+	Promise.all([e1, e2, e3, e4]).then(() => {
 		retrieveSwitch(currentTabId);
 		console.log("Renowify READY !");
 	});
@@ -89,41 +92,17 @@ function activeSwitch(switchBtnId, checked, currentTabId){
 				runRenowify(switchBtnId, currentTabId)
 			}
 			// Inject JS
-			else if(switchBtnId == "images" || switchBtnId == "lang" || switchBtnId == "headings" || switchBtnId == "autocomplete" || switchBtnId == "link" || switchBtnId == "table"){
+			else if(switchBtnId == "images" || switchBtnId == "lang" || switchBtnId == "headings" || switchBtnId == "autocomplete" || switchBtnId == "link" || switchBtnId == "table" || switchBtnId == "tab" || switchBtnId == "space"){
 				chrome.scripting.executeScript({
 						files: [scriptFolder+'tools/nia_'+switchBtnId+'.js'],
 						target : {tabId : currentTabId}
 					});
 			}
-			// Inject JS + CSS
-			else if(switchBtnId == "tab"){
-				chrome.scripting.executeScript({
-						files: [scriptFolder+'tools/nia_'+switchBtnId+'.js'],
-						target : {tabId : currentTabId}
-				});
-				chrome.scripting.insertCSS({
-					files: [styleFolder+"tools/nia_"+switchBtnId+".css"],
-					target: {tabId: currentTabId}
-				});
-			}
-			// Inject CSS
-			else if(switchBtnId == "space"){
-				chrome.scripting.insertCSS({
-					files: [styleFolder+"tools/nia_"+switchBtnId+".css"],
-					target: {tabId: currentTabId}
-				});
-			}	
 			else{
 				alert("Switch not configured !")
 			}
 			addBadge(currentTabId);
 		} else {
-			if(switchBtnId == "tab" || switchBtnId == "space"){
-				chrome.scripting.removeCSS({
-					files: [styleFolder+"tools/nia_"+switchBtnId+".css"],
-					target: {tabId: currentTabId}
-				});
-			}
 			removeBadge(currentTabId);
 		}
 	});
@@ -156,9 +135,9 @@ function resetSwitch(){
     }
 }
 
-// ==== Load Style 
+// ==== Load Style Renowify
 
-function addStyle(currentTabId){
+function addStyleRenowify(currentTabId){
 	
 	chrome.scripting.executeScript({
 		target : {tabId : currentTabId},
@@ -220,7 +199,6 @@ function cleanRenowify() {
   const cr_panel = document.getElementById('checkA11YPanel');
   const cr_panelBtn =  document.getElementById('checkA11YPanelBtn');
   const cr_bottomLine =  document.getElementById('checkA11YBottomLine');
-  
   if(cr_panel != null){cr_panel.remove();}
   if(cr_panelBtn != null){cr_panelBtn.remove();}
   if(cr_bottomLine != null){cr_bottomLine.remove();}
@@ -234,9 +212,11 @@ function cleanRenowify() {
 		  }
 	  }
   });
+  document.body.classList.remove("tab-style-injected");
+  document.body.classList.remove("space-style-injected"); 
 }
 
-// ==== Load Tools
+// ==== Load Tools Script 
 
 function addScriptTools(currentTabId){
 
@@ -253,7 +233,7 @@ function addScriptTools(currentTabId){
 				func : addToolsClassToBody,
 				target : {tabId : currentTabId}
 			});
-			Promise.all([t1, t2]).then(() => console.log("Renowify tools injected"));
+			Promise.all([t1, t2]).then(() => console.log("Tools script injected"));
 		}
 		else{
 			console.log("Renowify tools already injected !");
@@ -261,6 +241,26 @@ function addScriptTools(currentTabId){
 	});
 }
 
+
+// ==== Load Style Tools
+
+function addStyleTools(currentTabId){
+	
+	chrome.scripting.executeScript({
+		target : {tabId : currentTabId},
+		func : checkStyleClassInjected
+	}).then(styleInjected => {
+		if(styleInjected[0].result == false){
+			chrome.scripting.insertCSS({
+				files: [styleFolder+"tools/nia_tab.css",styleFolder+"tools/nia_space.css"],
+				target: { tabId: currentTabId }
+			}).then(() => {console.log("Tools styles injected");});
+		}
+		else{
+			console.log("Renowify style already injected !");
+		}
+	});
+}
 
 
 // ==== Gestion des multi-injections
@@ -281,10 +281,10 @@ function checkScriptClassInjected(){
 }
 
 function addToolsClassToBody() {
-	document.body.classList.add("renowify-tools-injected");
+	document.body.classList.add("tools-script-injected");
 }
 function checkToolsClassInjected(){
-	return document.body.classList.contains("renowify-tools-injected") ? true : false;
+	return document.body.classList.contains("tools-script-injected") ? true : false;
 }
 
 

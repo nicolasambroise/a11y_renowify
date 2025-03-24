@@ -267,15 +267,15 @@ function check_part_06(){
 	
 	// L Accordéon
 	if(isAEM && !only_redactor){
-		const nia06l1_nodes = document.querySelectorAll('.cmp-accordion > *:not(details), .cmp-accordion > details > *:not(summary):not(.cmp-accordion__panel), .filters-content > *:not(details), .filters-content > details > *:not(summary):not(.filter-content)');
+		const nia06l1_nodes = document.querySelectorAll('.cmp-accordion > *:not(details):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon), .cmp-accordion > details > *:not(summary):not(.cmp-accordion__panel), .filters-content > *:not(details), .filters-content > details > *:not(summary):not(.filter-content)');
 		if(nia06l1_nodes && nia06l1_nodes.length > 0 && isItemsVisible(nia06l1_nodes)){
 		  setItemToResultList("dev","<li><a href='#' data-destination='nia06l1' class='result-focus label-orange'>06-L</a> : Présence d'accordéon sans structure details/summary</li>");
 		  setItemsOutline(nia06l1_nodes,"orange","nia06l1","06-L");
 		}
 		
-		const nia06l2_nodes = document.querySelectorAll('details > summary > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not([role="heading"]):not(svg[aria-hidden="true"])');
+		const nia06l2_nodes = document.querySelectorAll('details > summary > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not([role="heading"]):not(svg[aria-hidden="true"]):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon)');
 		if(nia06l2_nodes && nia06l2_nodes.length > 0 && isItemsVisible(nia06l2_nodes)){
-		  setItemToResultList("dev","<li><a href='#' data-destination='nia06l1' class='result-focus label-orange'>06-L</a> : Présence d'accordéon avec qqch d'autre qu'une balise Hx dans la balise summary [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8.2.1' target='_blank'>RAWeb 8.2.1</a>]</li>");
+		  setItemToResultList("dev","<li><a href='#' data-destination='nia06l2' class='result-focus label-orange'>06-L</a> : Présence d'accordéon avec qqch d'autre qu'une balise Hx dans la balise summary [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8.2.1' target='_blank'>RAWeb 8.2.1</a>]</li>");
 		  setItemsOutline(nia06l2_nodes,"orange","nia06l2","06-L");
 		}
 	}
@@ -302,9 +302,8 @@ function check_part_06(){
 						nia06m_Contact = nia06m_Adress[0].querySelectorAll('dl');
 						nia06m_StreetAdress = nia06m_Adress[0].querySelectorAll('span[itemprop="streetAddress"]');
 						
-						console.log(nia06m_Contact)
-						console.log(nia06m_StreetAdress)
-						
+						//console.log(nia06m_Contact)
+						//console.log(nia06m_StreetAdress)
 						
 						if(!nia06m_Contact || nia06m_Contact.length != 1 || !isItemsVisible(nia06m_Contact)){nia06m5_flag=true;setItemOutline(nia06m_nodes[i],"orange","nia06m5","06-M");}
 						if(!only_error){

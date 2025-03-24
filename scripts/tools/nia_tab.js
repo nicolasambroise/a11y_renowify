@@ -7,6 +7,10 @@
 if(typeof nia_tabElm !== 'undefined'){
 	nia_tabError = 0;
 	
+	// Enable Style
+	document.body.classList.add("tab-style-injected");
+	
+	
 	nia_tabElm.forEach((item, index) => {
 		color = "green";	
 		if(item.hasAttribute("tabindex") && item.getAttribute("tabindex") > 0) {
@@ -18,7 +22,12 @@ if(typeof nia_tabElm !== 'undefined'){
 		spanLabel.classList.add("checkA11YSpan");
 		spanLabel.classList.add("checkA11YSpan__"+color);
 		spanLabel.innerHTML = label;
-		item.before(spanLabel);
+		if(item.tagName == "SUMMARY"){
+			item.parentElement.before(spanLabel);
+		}
+		else{
+			item.before(spanLabel);
+		}
 	});
 
 
@@ -29,16 +38,21 @@ if(typeof nia_tabElm !== 'undefined'){
 	nia_tabBottomLine.innerHTML = "Tab : "+nia_tabElm.length+" élément(s) dont "+nia_tabError+ " erreur(s)<br><span id='checkA11YResultTab'>No focus</span>";
 	document.body.appendChild(nia_tabBottomLine)
 
-	document.addEventListener('focusin', function(){
-		let activeElm = document.activeElement;
-		let activeElmAttrs = activeElm.attributes;
-		let attrsList = '';
-		console.log(activeElm)
+	//document.addEventListener('focusin', updateCheckA11YResultTab(), true);
+	document.addEventListener('focusin', function(){ 
+		const resultLine = document.getElementById("checkA11YResultTab");
+		if(resultLine){
+			let activeElm = document.activeElement;
+			let activeElmAttrs = activeElm.attributes;
+			let attrsList = '';
+			console.log(activeElm)
 
-		Array.from(activeElmAttrs).forEach(({ name, value }) => {
-			attrsList += ` ${name}="${value}"`;
-		})
+			Array.from(activeElmAttrs).forEach(({ name, value }) => {
+				attrsList += ` ${name}="${value}"`;
+			})
 
-		document.getElementById("checkA11YResultTab").innerHTML = "Current focus : &lt;"+activeElm.tagName.toLowerCase()+" "+attrsList+"&gt;";
-		}, true);
+			resultLine.innerHTML = "Current focus : &lt;"+activeElm.tagName.toLowerCase()+" "+attrsList+"&gt;";
+		}
+	}, true);	
 }
+

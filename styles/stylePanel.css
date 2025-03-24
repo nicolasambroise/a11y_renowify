@@ -297,6 +297,7 @@ body.check-panel-active [role="dialog"]{
     min-height: 17px !important;
     min-width: 30px !important;
 	clip: auto !important;
+	font-style: normal !important;
 }
 
 .checkA11YSpan__green{
@@ -360,6 +361,7 @@ body.check-panel-active [role="dialog"]{
 	display: block !important;
     padding: 2px 5px !important;
     margin: 2px !important;
+	font-style: normal !important;
 }
 
 #checkA11YBottomLine{

@@ -47,12 +47,12 @@ if(typeof nia_images !== 'undefined'){
 			if(!item.hasAttribute("aria-hidden") || item.getAttribute("aria-hidden") != "true") { 
 				color = "red";
 				label = 'SVG - Attribut aria-hidden="true" manquant';
-				imgError++;
+				nia_imgError++;
 			}
 			else if(!item.hasAttribute("focusable") || item.getAttribute("focusable") != "false") { 
 				color = "yellow";
 				label = 'SVG - Attribut focusable="false" manquant';
-				imgWarning++;
+				nia_imgWarning++;
 			}	
 		}
 		else{

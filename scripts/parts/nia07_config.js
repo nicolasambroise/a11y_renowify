@@ -500,18 +500,24 @@ function check_part_07(){
 				  if(nia07g3_nodes[i].hasAttribute("aria-current")){
 					  if(nia07g3_nodes[i].getAttribute("aria-current") == 'page'){
 						  nia07g5_counter++;
-						  if(nia07g3_nodes[i].parentElement.classList.contains("subnav-item")){
-							if(!nia07g3_nodes[i].parentElement.closest("has-subnav") || !nia07g3_nodes[i].parentElement.closest("has-subnav").firstElementChild.hasAttribute("aria-current") ||  nia07g3_nodes[i].parentElement.closest("has-subnav").firstElementChild.hasAttribute("aria-current") != 'true'){
+						  if(nia07g3_nodes[i].parentElement.classList.contains("subnav-item")){				  
+							if(!nia07g3_nodes[i].parentElement.closest("has-subnav") || !nia07g3_nodes[i].parentElement.closest("has-subnav").firstElementChild.hasAttribute("aria-current") ||  nia07g3_nodes[i].parentElement.closest("has-subnav").firstElementChild.getAttribute("aria-current") != 'true'){
+								if(debug_flag == true){
+									console.log(!nia07g3_nodes[i].parentElement.closest("has-subnav"));	
+									console.log(!nia07g3_nodes[i].parentElement.closest("has-subnav").firstElementChild.hasAttribute("aria-current"));
+									console.log(nia07g3_nodes[i].parentElement.closest("has-subnav").firstElementChild.getAttribute("aria-current") != 'true');
+									
+								}
 								nia07g3_flag = true;
-								setItemsOutline(nia07g3_nodes[i],"red","nia07g3","07-G");
+								setItemOutline(nia07g3_nodes[i],"red","nia07g3","07-G");
 							}
 						  }  
 					  }
 					  else if(nia07g3_nodes[i].getAttribute("aria-current") == 'true'){
-						  nia07g3_items = nia07g3_nodes[i].querySelectorAll('a[aria-current="page"]');
+						  nia07g3_items = nia07g3_nodes[i].parentElement.querySelectorAll('a[aria-current="page"]');
 						  if(!nia07g3_items || nia07g3_items.length != 1){
 							nia07g4_flag = true;
-							setItemsOutline(nia07g3_nodes[i],"red","nia07g4","07-G");
+							setItemOutline(nia07g3_nodes[i],"red","nia07g4","07-G");
 						  }
 					  }
 				  }
@@ -525,7 +531,8 @@ function check_part_07(){
 				 setItemToResultList("dev","<li><a href='#' data-destination='nia07g4' class='result-focus label-red'>07-G</a> : Une des pages enfant d'un menu actif doit avoir un attribut aria_current= 'page' </li>");
 			}
 			if(nia07g5_counter > 1){
-				setItemToResultList("dev","<li><a href='#' data-destination='nia07g4' class='result-focus label-red'>07-G</a> : Il ne peut y avoir qu'un seul élément dans le menu avec l'attribut aria-current=page </li>");
+				setItemToResultList("dev","<li><a href='#' data-destination='nia07g5' class='result-focus label-red'>07-G</a> : Il ne peut y avoir qu'un seul élément dans le menu avec l'attribut aria-current=page </li>");
+				setItemOutline(nia07g3_nodes[0].parentElement,"red","nia07g5","07-G");
 			}
 
 			
