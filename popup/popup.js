@@ -203,15 +203,22 @@ function cleanRenowify() {
   if(cr_panelBtn != null){cr_panelBtn.remove();}
   if(cr_bottomLine != null){cr_bottomLine.remove();}
   document.querySelectorAll('.checkA11YSpan').forEach(el => el.remove())
-  document.querySelectorAll('[class*="checkA11YOutline"],[class*="nia"],.check-panel-active').forEach(el => {
-	  let className;
-	  for(let i = 0; i < el.classList.length; i++) {
-		  className = el.classList[i];
-		  if(className.startsWith('checkA11YOutline') || className.startsWith('nia') || className == "check-panel-active"){
-			el.classList.remove(className);
+  const elemList = document.querySelectorAll('[class*="checkA11YOutline"],[class*="nia"]');
+  for(let i = 0; i <  elemList.length; i++) {
+	  let el = elemList[i];
+	  let elClassName;
+	  let elClassList = new Array();
+	  for(let j = 0; j <  el.classList.length; j++) {
+		  elClassName =  el.classList[j];
+		  if(elClassName.startsWith('checkA11YOutline') || elClassName.startsWith('nia')){
+			elClassList.push(elClassName);
 		  }
 	  }
-  });
+	  for(let k = 0; k < elClassList.length; k++){
+		 el.classList.remove(elClassList[k]); 
+	  }
+  }
+  document.body.classList.remove("check-panel-active");
   document.body.classList.remove("tab-style-injected");
   document.body.classList.remove("space-style-injected"); 
 }
