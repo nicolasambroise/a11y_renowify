@@ -7,18 +7,15 @@ Vous avez le choix entre installer Renowify sous forme de Bookmarklet ou sous fo
 - **Le bookmarklet** est simple d'utilisation : à l'activation, est affichagé dans une fenêtre modale une liste des non-conformités au RGAA/RAWeb/WCAG et des bonnes pratiques à mettre en place pour une meilleure accessibilité.
 - **L'extension chrome** : Permet de lancer le script du bookmarklet avec des filtres (uniquement les alertes, uniquement les recommandations pour le rédacteur, etc.) il possède également des scripts pour faciliter l'audit de site web.
 
-### Installation rapide du bookmarklet
-Pour installer le Bookmarklet il suffit de <strong>glisser le lien</strong> suivant sur votre barre de favoris :
-[Renowify](javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://webux.gouv.etat.lu/a11y/a11y_renowify/scripts/script_bookmarklet.js';})();)
 
 ### Installations manuelle du bookmarklet
-Alternative possible, faire un clic droit sur votre barre de favoris et sélectionner "Ajouter un favori" puis copier-coller la ligne ci-dessous dans le champ URL
+Faire un clic droit sur votre barre de favoris et sélectionner "Ajouter un favori" puis copier-coller la ligne ci-dessous dans le champ URL
 
-`javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://webux.gouv.etat.lu/a11y/a11y_renowify/scripts/script_bookmarklet.js';})();`
+`javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://[votre_url]/a11y_renowify/scripts/script_bookmarklet.js';})();`
 
 ### Installations de l'extension Chrome
 Il est également possible d'utiliser le bookmarklet en tant qu'extension Chrome. Pour se faire, cloner les sources de ce projet en local, Puis ouvrir la page des [extensions chrome](chrome://extensions/) et cliquer sur "charger l'extension non empaquetée" (le mode developpeur doit être activé) et selectionner le répertoire suivant : 
-> https://webux.gouv.etat.lu/a11y/a11y_renowify/
+> [votre_url]/a11y_renowify/
 
 
 ## Utilisation

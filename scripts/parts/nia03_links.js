@@ -198,7 +198,7 @@ function check_part_03(){
 
 	// L Présence de soulignement en dehors de lien
 	if(!only_error){
-		const nia03l_nodes = document.querySelectorAll("body *:not(a):not(mark)");
+		const nia03l_nodes = document.querySelectorAll("body *:not(a):not(mark):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(button)");
 		let nia03l_flag = false;
 		if(nia03l_nodes && nia03l_nodes.length > 0 && isItemsVisible(nia03l_nodes)){	
 			for(let i = 0; i < nia03l_nodes.length; i++){

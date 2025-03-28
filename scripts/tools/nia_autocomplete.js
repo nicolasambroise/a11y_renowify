@@ -17,12 +17,12 @@ if(typeof nia_formFields !== 'undefined'){
 			label = 'autocomplete="'+item.getAttribute("autocomplete")+'"';
 		}
 		
-		if(item.tagName == "INPUT" && (item.getAttribute("name") == "lastname" || item.getAttribute("name") == "name") && (!item.hasAttribute("autocomplete") || item.getAttribute("autocomplete") != "family-name")) {
+		if(item.tagName == "INPUT" && (item.getAttribute("name").toLowerCase() == "lastname" || item.getAttribute("name").toLowerCase() == "name") && (!item.hasAttribute("autocomplete") || item.getAttribute("autocomplete") != "family-name")) {
 			color="orange";
 			label = 'autocomplete="'+item.getAttribute("autocomplete")+'" --> family-name ?';
 			nia_formWarning++;
 		}
-		else if(item.tagName == "INPUT" && item.getAttribute("name") == "firstname" && (!item.hasAttribute("autocomplete") || item.getAttribute("autocomplete") != "given-name")) {
+		else if(item.tagName == "INPUT" && item.getAttribute("name").toLowerCase() == "firstname" && (!item.hasAttribute("autocomplete") || item.getAttribute("autocomplete") != "given-name")) {
 			color="orange";
 			label = 'autocomplete="'+item.getAttribute("autocomplete")+'" --> given-name ?';
 			nia_formWarning++;
