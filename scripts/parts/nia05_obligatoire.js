@@ -266,42 +266,65 @@ function check_part_05(){
 		}
 	}
 	
-	// Q Logo TODO !
+	// Q Logo
 	/*
 	Le lien sur le logo redirige vers la page d’accueil et possède un attribut title respectant la nomenclature suivante : « [XXX] – Accueil »
 	Si du texte est présent sur le logo, possibilité de saisir un texte alt
-	Si du texte rédigé dans une langue étangère est présente sur le logo, possibilité de préciser une langue.
 	Pas d'indication du mot "logo" dans le texte alt du logo
 	*/
-	/*
-	const nia05q_nodes = document.querySelectorAll('header .logo');
-	let nia05q_flag1 = false;
-	let nia05q_flag2 = false;
-	let nia05q_flag3 = false;
-	let nia05q_flag4 = false;
-	if(nia05q_nodes && nia05q_nodes.length > 0){
-		for(let i = 0; i < nia05q_nodes.length; i++){
-			
+	if(!only_error){
+		const nia05q_nodes = document.querySelectorAll('html[lang="fr"] header .logo a');
+		let nia05q_flag1 = false;
+		let nia05q_flag2 = false;
+		let nia05q_flag3 = false;
+		if(nia05q_nodes && nia05q_nodes.length > 0){
+			for(let i = 0; i < nia05q_nodes.length; i++){
+				if(!nia05q_nodes[i].hasAttribute("href") || (!nia05q_nodes[i].getAttribute("href").includes("fr.html") && !homepageException.includes(nia05q_nodes[i].getAttribute("href")))){
+					setItemOutline(nia05q_nodes[i],"yellow","nia05q1","05-Q");
+					nia05q_flag1=true;
+				}
+				else if(nia05q_nodes[i].hasAttribute("title") && !nia05q_nodes[i].getAttribute("title").includes("- Accueil")){
+					setItemOutline(nia05q_nodes[i],"yellow","nia05q1","05-Q");
+					nia05q_flag2=true;
+				}
+				if(nia05q_nodes[i].hasAttribute("title") && nia05q_nodes[i].getAttribute("title").includes("logo")){
+					setItemOutline(nia05q_nodes[i],"yellow","nia05q2","05-Q");
+					nia05q_flag2=true;
+				}
+				nia05q_img = nia05q_nodes[i].querySelector("img");
+				nia05q_tagline = nia05q_nodes[i].parentElement.querySelector(".logo-tagline");
+				
+				if(nia05q_img.hasAttribute("alt") && nia05q_img.getAttribute("alt") == "" && (!nia05q_tagline || nia05q_tagline.innerText == "")){
+					setItemOutline(nia05q_nodes[i],"yellow","nia05q3","05-Q");
+					nia05q_flag3=true;
+				}
+			}
+		}
+		if(nia05q_flag1 == true) {
+			  setItemToResultList("nth","<li><a href='#' data-destination='nia05q1' class='result-focus label-yellow'>05-Q</a> : Le lien sur le logo redirige vers la page d’accueil et possède un attribut title respectant la nomenclature suivante : « XXX – Accueil »</li>");
+		}
+		if(nia05q_flag2 == true) {
+			  setItemToResultList("nth","<li><a href='#' data-destination='nia05q2' class='result-focus label-yellow'>05-Q</a> : Pas d'indication du mot 'logo' dans le texte alt du logo</li>");
+		}
+		if(nia05q_flag3 == true) {
+			  setItemToResultList("man","<li><a href='#' data-destination='nia05q3' class='result-focus label-yellow'>05-Q</a> : Si du texte est présent sur le logo, veuillez saisir un texte alt</li>");
 		}
 	}
-	if(nia05q_flag1 == true) {
-		  setItemToResultList("nth","<li><a href='#' data-destination='nia05q' class='result-focus label-yellow'>05-Q</a> : xxx</li>");
+	
+	// R. Structure du titre de la page
+	// - Présence d’un <title> pertinent (par rapport à la Nomenclature : contient à minimum [h1] [Nom du site] [Luxembourg])	
+	if(isCTIE && !only_error){
+		let nia05r_title = document.getElementsByTagName("title")[0].innerText;
+		if(!nia05r_title.includes("Luxembourg")){
+			 setItemToResultList("man","<li><span class='result-focus label-yellow'>05-R</span> : Vérifier que le titre de l'onglet respecte la nomenclature du CTIE</li>");
+		}
 	}
-	if(nia05q_flag2 == true) {
-		  setItemToResultList("nth","<li><a href='#' data-destination='nia05q' class='result-focus label-yellow'>05-Q</a> : xxx</li>");
-	}
-	if(nia05q_flag3 == true) {
-		  setItemToResultList("nth","<li><a href='#' data-destination='nia05q' class='result-focus label-yellow'>05-Q</a> : xxx</li>");
-	}
-	if(nia05q_flag4 == true) {
-		  setItemToResultList("nth","<li><a href='#' data-destination='nia05q' class='result-focus label-yellow'>05-Q</a> : xxx</li>");
-	}
-	*/
+	
+	
 	// Y. TODO -->  Detect Overflow
 	// https://stackoverflow.com/questions/143815/determine-if-an-html-elements-content-overflows
 	// https://webtips.dev/webtips/javascript/find-overflowing-elements-with-javascript
 	// https://www.stevefenton.co.uk/blog/2022/12/detect-overflowing-elements/
 	
-	// - Présence d’un attribut lang sur le <html>
-	// - Présence d’un <title> pertinent (par rapport à la Nomenclature : contient à minimum [h1] [Nom du site] [Luxembourg])
+	
 }

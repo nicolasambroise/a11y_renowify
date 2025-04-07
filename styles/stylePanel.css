@@ -269,6 +269,8 @@ body.check-panel-active [role="dialog"]{
 
 #checkA11YPanel.active .cmp-accordion .cmp-accordion__panel{background-color:#FFF !important;display:block !important;padding: 1.5rem 2rem !important;}
 
+#checkA11YPanel.active .cmp-accordion .cmp-accordion__panel a:before,
+#checkA11YPanel.active .cmp-accordion .cmp-accordion__panel a:after{content: none !important;}
 
 .checkA11YSpan{
     display: inline-block !important;

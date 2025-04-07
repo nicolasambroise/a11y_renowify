@@ -224,7 +224,7 @@ function check_part_02(){
 	
 	// I Chaque image-lien est dotée d'une alternative textuelle appropriée.
 	if(!only_error){
-		const nia02i_nodes = document.querySelectorAll('a:not(.blocklink):has(> img),a:not(.blocklink):has(> svg)');
+		const nia02i_nodes = document.querySelectorAll('a:not(.blocklink):not([role="button"]):has(> img),a:not(.blocklink):not([role="button"]):has(> svg)');
 		let nia02i_title ="";
 		let nia02i_flag = false;
 		if(nia02i_nodes && nia02i_nodes.length > 0){

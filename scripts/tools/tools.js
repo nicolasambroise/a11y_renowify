@@ -28,13 +28,13 @@
 	let nia_headBottomLine;
 	
 /* Forms */
- 	const nia_formFields = document.querySelectorAll('input:not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]), select, textarea');
+ 	const nia_formFields = document.querySelectorAll('input[name]:not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="hidden"]), select, textarea');
 	let nia_formElm = 0;
 	let nia_formWarning = 0;
 	let nia_formBottomLine;
 	
 /* Link */
- 	const nia_linkElm = document.querySelectorAll('a[href],[role=link][href]');
+ 	const nia_linkElm = document.querySelectorAll('a[href]:not([role="button"]),[role="link"][href]');
 	let nia_linkError = 0;
 	let nia_linkBottomLine;
 	

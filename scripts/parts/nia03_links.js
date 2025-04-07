@@ -75,8 +75,10 @@ function check_part_03(){
 					}
 				}
 				nia03e_content = sanitizeText(nia03e_innerText,nia03e_lang);
-				if(!nia03e_title.includes(nia03e_content) && !nia03e_title.includes(nia03e_content.replace(" pdf"," pdf "))){
-					if(debug_flag) console.log("%cERROR","font-weight:700;color:darkred","["+nia03e_title+"] VS ["+nia03e_content+"] ");
+				if(!nia03e_title.includes(nia03e_content) && !nia03e_title.includes(nia03e_content.replace(/(pdf)([1-9])/,"$1 $2"))){
+					if(debug_flag){
+						console.log("%cERROR","font-weight:700;color:darkred","["+nia03e_title+"] VS ["+nia03e_content+"] ");
+					}
 					setItemOutline(nia03e_nodes[i],"red","nia03e","03-E");
 					nia03e_flag = true;
 				}

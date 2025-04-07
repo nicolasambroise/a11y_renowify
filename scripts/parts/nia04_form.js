@@ -495,7 +495,7 @@ function check_part_04(){
 		if(nia04m_nodes && nia04m_nodes.length > 0 && isItemsVisible(nia04m_nodes)){
 			for(let i = 0; i < nia04m_nodes.length; i++){
 				if(!nia04m_nodes[i].parentElement.closest("fieldset")){
-					if(nia04m_nodes[i].parentElement.closest("cmp-form-options").querySelectorAll('input[type="checkbox"],input[type="radio"]').length > 1){
+					if(nia04m_nodes[i].parentElement.closest("cmp-form-options") && nia04m_nodes[i].parentElement.closest("cmp-form-options").querySelectorAll('input[type="checkbox"],input[type="radio"]').length > 1){
 						nia04m_flag = true;
 						setItemsOutline(nia04m_nodes,"orange","nia04m","04-M");
 					}

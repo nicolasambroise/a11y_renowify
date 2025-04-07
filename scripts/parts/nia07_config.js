@@ -353,7 +353,8 @@ function check_part_07(){
 			
 				// Check si le menu mobile s'ouvre en disclosure ou en modale
 				const nia07f20_btn = document.querySelector('.topnav > button.anchor.anchor-scroll, .page-headernav > button.anchor.anchor-scroll, .page-headernavmobile > button.anchor.anchor-scroll');
-				if(nia07f20_btn && isItemVisible(nia07f20_btn)){
+				const nia07f21_btnClose = document.querySelector('[aria-modal="true"] button.anchor.anchor-close');
+				if(nia07f20_btn && (isItemVisible(nia07f20_btn) || (nia07f21_btnClose && isItemVisible(nia07f21_btnClose)))){
 					const nia07f20_btnText = nia07f20_btn.innerText;
 					const nia07f20_btnDest = nia07f20_btn.getAttribute("data-destination");
 					const nia07f30_Dest = document.querySelector(nia07f20_btnDest);
@@ -463,8 +464,9 @@ function check_part_07(){
 							setItemOutline(nia07f30_Dest,"red","nia07f69","07-F");
 						}
 					}
-					
-					nia07f20_btn.click();
+					// On ferme le menu
+					if(isItemVisible(nia07f20_btn)){nia07f20_btn.click();}
+					else if(nia07f21_btnClose && isItemVisible(nia07f21_btnClose)){nia07f21_btnClose.click();}
 				}
 			//window.resizeTo(currentWidth, currentHeight);
 
