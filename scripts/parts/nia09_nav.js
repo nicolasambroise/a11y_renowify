@@ -113,7 +113,7 @@ function check_part_09(){
 		const nia09d_nav = document.querySelector('nav #headernav, nav#headernav');
 		const nia09d_search = document.querySelector('div.topsearch[role="search"],div.topsearch-desk[role="search"],div.topsearch-desktop[role="search"]');
 		const nia09d_plan = document.querySelector('.page-footernav ul.nav--support > li.nav-item a[href*="plan"][href$=".html"]');
-		const nia09d_nav_btn = document.querySelector('[class^=page-headernav] button.anchor');
+		const nia09d_nav_btn = document.querySelector('[class^=page-headernav] button.anchor[data-destination^="#headernav"]');
 		const nia09d_search_btn = document.querySelector('div.topsearch[role="search"] button.anchor');
 		const nia09d_footer_links = document.querySelectorAll('footer .nav-item > a:not([target="_blank"])');
 		
@@ -179,7 +179,7 @@ function check_part_09(){
 
 		// Les skiplinks situé dans l’entête doivent être les premiers éléments tabulable de la page (hors modale des cookies)
 		if(!only_error){
-			const nia09e4_nodes = document.querySelectorAll('body > *:not(#orejime):not(#a42-ac):not(.checkA11YSpan)');
+			const nia09e4_nodes = document.querySelectorAll('body > *:not(#orejime):not(#a42-ac):not(.checkA11YSpan):not(link):not(svg.iconset)');
 			if(!nia09e4_nodes[0].classList.contains("skiplinks")){
 				setItemToResultList("nth","<li><a href='#' data-destination='nia09e4' class='result-focus label-yellow'>09-E</a> : Les skiplinks situé dans l’entête doivent être les premiers éléments tabulable de la page (hors modale des cookies)</li>");
 				setItemOutline(nia09e4_nodes[0],"yellow","nia09e4","09-E");

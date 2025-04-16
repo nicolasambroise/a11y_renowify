@@ -37,9 +37,14 @@ if(typeof nia_formFields !== 'undefined'){
 			label = 'autocomplete="'+item.getAttribute("autocomplete")+'" --> tel ?';
 			nia_formWarning++;
 		}
-		else if(item.getAttribute("name") == "country" && (!item.hasAttribute("autocomplete") || item.getAttribute("autocomplete") != "country-name" || item.getAttribute("autocomplete") != "country")) {
+		else if(item.getAttribute("name") == "country" && item.tagName == "SELECT" && (!item.hasAttribute("autocomplete") || item.getAttribute("autocomplete") != "country")) {
 			color="orange";
 			label = 'autocomplete="'+item.getAttribute("autocomplete")+'" --> country ?';
+			nia_formWarning++;
+		}
+		else if(item.getAttribute("name") == "country" && item.tagName == "INPUT" && (!item.hasAttribute("autocomplete") || item.getAttribute("autocomplete") != "country-name")) {
+			color="orange";
+			label = 'autocomplete="'+item.getAttribute("autocomplete")+'" --> country-name ?';
 			nia_formWarning++;
 		}
 
