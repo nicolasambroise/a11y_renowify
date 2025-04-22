@@ -172,7 +172,7 @@ function check_part_01(){
 
 	// B. Opacité Form Field Border
 	if(!only_redactor){
-		const nia01b_nodes = document.querySelectorAll('input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled])');
+		const nia01b_nodes = document.querySelectorAll('input:not([disabled]):not([type="file"]), select:not([disabled]), textarea:not([disabled]), button:not([disabled])');
 		let nia01b_flag1 = false;
 		let nia01b_flag2 = false;
 		let nia01b_flag3 = false;

@@ -198,7 +198,7 @@ function check_part_09(){
 
 	// F taille des éléments interactifs minimum attendue est de 24px par 24px.
 	if(!only_redactor  && !only_error){
-		const nia09f_nodes = document.querySelectorAll('*:not(.cmp-text) > *:not(p) > a:not(.feed-item-timing):not(.cmp-breadcrumb__item-link):not(.geoportail-skip):not(.cmp-image__link), button, input, select, details, textarea, [tabindex="0"], [tabindex="-1"]');
+		const nia09f_nodes = document.querySelectorAll('*:not(.cmp-text) > *:not(p) > a:not(.feed-item-timing):not(.cmp-breadcrumb__item-link):not(.geoportail-skip):not(.cmp-image__link), button, input:not([type="file"]), select, details, textarea, [tabindex="0"], [tabindex="-1"]');
 		let nia09f_flag = false;
 		let nia09f_rect, nia09f_rect_parent;
 		let nia09f_horizontal = 0, nia09f_vertical = 0;

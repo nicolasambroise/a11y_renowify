@@ -391,7 +391,7 @@ function check_part_04(){
 		if(nia04i_nodes && nia04i_nodes.length > 0){
 			for(let i = 0; i < nia04i_nodes.length; i++){
 				if(isItemVisible(nia04i_nodes[i])){
-					nia04i_id = nia04i_nodes[i].getAttribute("aria-describedby");
+					nia04i_id = nia04i_nodes[i].getAttribute("aria-describedby").trim();
 					if(!nia04i_id || nia04i_id == ""){
 						setItemOutline(nia04i_nodes[i],"red","nia04i","04-I");
 						nia04i_flag = true;

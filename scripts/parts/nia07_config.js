@@ -185,7 +185,7 @@ function check_part_07(){
 
 	// F1. Check si le menu existe
 	if(!only_redactor && isAEM){
-		const nia07f_menu = document.querySelector('nav.topnav > .page-headernav .navigation-container > ul.nav ,nav.page-headernav .navigation-container > ul.nav, nav.page-headernav-desk .navigation-container > ul.nav, nav.headernav-detached .navigation-container > ul.nav');
+		const nia07f_menu = document.querySelector('nav.topnav > .page-headernav .navigation-container > ul.nav ,nav.page-headernav .navigation-container > ul.nav, nav.page-headernav-desk .navigation-container > ul.nav, nav.headernav-detached .navigation-container > ul.nav, .page-headernav > nav .navigation-container > ul.nav');
 		let nia07f_hasPasserelle = false; 
 		let nia07f_isModal = false; 
 		if(nia07f_menu){
@@ -515,8 +515,9 @@ function check_part_07(){
 							}
 						  }  
 					  }
-					  else if(nia07g3_nodes[i].getAttribute("aria-current") == 'true'){
-						  nia07g3_items = nia07g3_nodes[i].parentElement.querySelectorAll('a[aria-current="page"]');
+					  else if(nia07g3_nodes[i].getAttribute("aria-current") == 'true' && nia07g3_nodes[i].parentElement.classList.contains("has-subnav")){
+						  nia07g3_items = nia07g3_nodes[i].parentElement.querySelectorAll('.subnav-item > a[aria-current="page"], .subnav-item > a[aria-current="true"]');
+						  console.log(nia07g3_items)
 						  if(!nia07g3_items || nia07g3_items.length != 1){
 							nia07g4_flag = true;
 							setItemOutline(nia07g3_nodes[i],"red","nia07g4","07-G");

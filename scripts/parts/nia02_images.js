@@ -251,16 +251,16 @@ function check_part_02(){
 		const nia02j_nodes = document.querySelectorAll('*:not(.feed-item-content > p):not(.feed-item-header):not(.ol-full-screen-false) > img:not([src$=".svg"])');
 		let nia02j_css_h ="", nia02j_css_w ="",nia02j_html_h ="", nia02j_html_w ="",nia02j_natural_h ="", nia02j_natural_w ="";
 		let nia02j_flag = false;
-		let nia02j_ratio_max = 2.5;
+		let nia02j_ratio_max = 3.5;
 		let nia02j_ratio_min = 0.5;
 		if(nia02j_nodes && nia02j_nodes.length > 0){
 			for(let i = 0; i < nia02j_nodes.length; i++){
 				if(isItemVisible(nia02j_nodes[i])){
-					nia02j_ratio_max = 2.5;
+					nia02j_ratio_max = 3.5;
 					if(Boolean(nia02j_nodes[i].closest(".search-result")) || Boolean(nia02j_nodes[i].closest(".cmp-focus"))){ 
 						nia02j_ratio_max = 5;
 						if(debug_flag) console.log(nia02j_ratio_max + " " + nia02j_nodes[i].getAttribute("src"));
-					} // ratio 5 pour search-result  2.5 sinon
+					} // ratio 5 pour search-result  3.5 sinon
 						
 					nia02j_css_h = nia02j_nodes[i].height;
 					nia02j_css_w = nia02j_nodes[i].width;
