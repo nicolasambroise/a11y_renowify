@@ -73,4 +73,4 @@ N'hésitez pas à me remonter les problèmes, faux-positifs ou vos suggessions d
 
 ## Licence
 
-Copyright : Nicolas AMBROISE - Licence MIT
+Copyright : Nicolas AMBROISE - CTIE - Licence MIT

@@ -260,7 +260,9 @@ body.check-panel-active [role="dialog"]{
 #checkA11YPanel.active .cmp-accordion .cmp-accordion__summary:hover,
 #checkA11YPanel.active .cmp-accordion .cmp-accordion__summary:hover:not(:focus) h2,
 #checkA11YPanel.active .cmp-accordion .cmp-accordion__summary:hover:not(:focus) .cmp-accordion__header svg{
-	background-color:#F5F5F5 !important;
+	background:#F5F5F5 !important;
+	animation: none !important;
+	transition: none !important;
 }
 
 #checkA11YPanel.active .cmp-accordion .cmp-accordion__summary:focus{

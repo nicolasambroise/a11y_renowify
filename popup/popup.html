@@ -10,10 +10,10 @@
 	<link rel="stylesheet" href="popup.css">
 </head>
 <body id="checkA11YPopup">
-	<header>
+	<header role="banner">
 		<h1>Plugin A11Y Renowify</h1>
 	</header>
-	<main>
+	<main role="main">
 		<div class="frame" id="check">
 		  <h2>Check Access</h2>	
 		  <div class="form-group">
@@ -136,7 +136,7 @@
 					  id="switch-space"
 					  class="form-options-field form-options-field--checkbox"
 					  name="switch-renowify"
-					  value="3"
+					  value="4"
 					  role="switch"
 					/>
 					<span class="state">
@@ -152,7 +152,7 @@
 					  id="switch-headings"
 					  class="form-options-field form-options-field--checkbox"
 					  name="switch-renowify"
-					  value="3"
+					  value="5"
 					  role="switch"
 					/>
 					<span class="state">
@@ -168,7 +168,7 @@
 					  id="switch-autocomplete"
 					  class="form-options-field form-options-field--checkbox"
 					  name="switch-renowify"
-					  value="3"
+					  value="6"
 					  role="switch"
 					/>
 					<span class="state">
@@ -184,7 +184,7 @@
 					  id="switch-table"
 					  class="form-options-field form-options-field--checkbox"
 					  name="switch-renowify"
-					  value="3"
+					  value="7"
 					  role="switch"
 					/>
 					<span class="state">
@@ -200,7 +200,7 @@
 					  id="switch-link"
 					  class="form-options-field form-options-field--checkbox"
 					  name="switch-renowify"
-					  value="3"
+					  value="8"
 					  role="switch"
 					/>
 					<span class="state">
@@ -209,13 +209,31 @@
 					<span class="form-options-description">Afficher les 'title' des liens</span>
 				  </label>
 				</li>
+				<li class="form-options-group">
+				  <label for="switch-bg" class="form-options-label">
+					<input
+					  type="checkbox"
+					  id="switch-bg"
+					  class="form-options-field form-options-field--checkbox"
+					  name="switch-renowify"
+					  value="9"
+					  role="switch"
+					/>
+					<span class="state">
+					  <span class="container"><span class="position"></span></span>
+					</span>
+					<span class="form-options-description">Cacher les images de background</span>
+				  </label>
+				</li>
 			  </ul>
 			</div>
 		  </fieldset>
 		</div>
-	</div>
+	  </div>
 	</main>
-
+	<footer role="contentinfo">
+		<span>V2.1</span>
+	</footer>
 	<script src="popup.js" type="module"></script>
 </body>
 </html>

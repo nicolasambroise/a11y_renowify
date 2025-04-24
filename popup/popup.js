@@ -92,7 +92,7 @@ function activeSwitch(switchBtnId, checked, currentTabId){
 				runRenowify(switchBtnId, currentTabId)
 			}
 			// Inject JS
-			else if(switchBtnId == "images" || switchBtnId == "lang" || switchBtnId == "headings" || switchBtnId == "autocomplete" || switchBtnId == "link" || switchBtnId == "table" || switchBtnId == "tab" || switchBtnId == "space"){
+			else if(switchBtnId == "images" || switchBtnId == "lang" || switchBtnId == "headings" || switchBtnId == "autocomplete" || switchBtnId == "link" || switchBtnId == "table" || switchBtnId == "tab" || switchBtnId == "space" || switchBtnId == "bg"){
 				chrome.scripting.executeScript({
 						files: [scriptFolder+'tools/nia_'+switchBtnId+'.js'],
 						target : {tabId : currentTabId}
@@ -170,7 +170,7 @@ function addScriptRenowify(currentTabId){
 	}).then(scriptInjected  => {
 		if(scriptInjected[0].result == false){
 			const p1 = chrome.scripting.executeScript({
-				files: [scriptFolder+'/parts/nia01_colors.js',scriptFolder+'/parts/nia02_images.js',scriptFolder+'/parts/nia03_links.js',scriptFolder+'/parts/nia04_form.js',scriptFolder+'/parts/nia05_obligatoire.js',scriptFolder+'/parts/nia06_structure.js',scriptFolder+'/parts/nia07_config.js',scriptFolder+'/parts/nia08_table.js',scriptFolder+'/parts/nia09_nav.js',scriptFolder+'/parts/nia10_oldtag.js',scriptFolder+'/parts/nia11_lang.js',scriptFolder+'/parts/nia12_button.js',scriptFolder+'/parts/nia13_lottie.js',scriptFolder+'/parts/nia14_title.js',scriptFolder+'/parts/nia15_secu.js',scriptFolder+'/parts/nia_functions.js',scriptFolder+'/parts/nia_resultpanel.js',scriptFolder+'/parts/nia_savebdd.js',scriptFolder+'/parts/nia_savedecla.js',scriptFolder+'/parts/nia_thirdservices.js',scriptFolder+'/renowify.js'],
+				files: [scriptFolder+'/parts/nia01_colors.js',scriptFolder+'/parts/nia02_images.js',scriptFolder+'/parts/nia03_links.js',scriptFolder+'/parts/nia04_form.js',scriptFolder+'/parts/nia05_obligatoire.js',scriptFolder+'/parts/nia06_structure.js',scriptFolder+'/parts/nia07_config.js',scriptFolder+'/parts/nia08_table.js',scriptFolder+'/parts/nia09_nav.js',scriptFolder+'/parts/nia10_oldtag.js',scriptFolder+'/parts/nia11_lang.js',scriptFolder+'/parts/nia12_button.js',scriptFolder+'/parts/nia13_lottie.js',scriptFolder+'/parts/nia14_title.js',scriptFolder+'/parts/nia15_secu.js',scriptFolder+'/features/nia_functions.js',scriptFolder+'/features/nia_resultpanel.js',scriptFolder+'/features/nia_savebdd.js',scriptFolder+'/features/nia_savedecla.js',scriptFolder+'/features/nia_thirdservices.js',scriptFolder+'/renowify.js'],
 				target: { tabId: currentTabId }
 			});
 			const p2 = chrome.scripting.executeScript({
@@ -221,6 +221,7 @@ function cleanRenowify() {
   document.body.classList.remove("check-panel-active");
   document.body.classList.remove("tab-style-injected");
   document.body.classList.remove("space-style-injected"); 
+  document.body.classList.remove("bg-style-injected"); 
 }
 
 // ==== Load Tools Script 
@@ -259,7 +260,7 @@ function addStyleTools(currentTabId){
 	}).then(styleInjected => {
 		if(styleInjected[0].result == false){
 			chrome.scripting.insertCSS({
-				files: [styleFolder+"tools/nia_tab.css",styleFolder+"tools/nia_space.css"],
+				files: [styleFolder+"tools/nia_tab.css",styleFolder+"tools/nia_space.css",styleFolder+"tools/nia_bg.css"],
 				target: { tabId: currentTabId }
 			}).then(() => {console.log("Tools styles injected");});
 		}

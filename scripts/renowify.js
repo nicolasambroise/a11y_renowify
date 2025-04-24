@@ -24,7 +24,7 @@ if(currentUrl.includes("plan-du-site.html") || currentUrl.includes("plan.html") 
 
 if(currentUrl.includes(".public.lu") || currentUrl.includes("gouvernement.lu") || currentUrl.includes(".etat.lu") || currentUrl.includes("sig-gr.eu") || currentUrl.includes(".mae.lu") || currentUrl.includes("lu-alert.lu")){
   isCTIE = true;
-  if(!currentUrl.includes("fpgun-jway") && !currentUrl.includes("demarches.services-publics") && !currentUrl.includes("fpgun-preintegr") && !currentUrl.includes("services-publics-test")){
+  if(!currentUrl.includes("fpgun-jway") && !currentUrl.includes("demarches.services-publics") && !currentUrl.includes("fpgun-preintegr") && !currentUrl.includes("services-publics-test") && !currentUrl.includes("accessibilite.public")){
 	isAEM = true;
   }
 }
@@ -108,9 +108,9 @@ function run_renowify(df,or,oe,std,pluginUrl){
 		/* Pour le bookmarklet */
 		console.log("== Start Bookmarklet Renowify ==");
 		loadStyle(pluginUrl)
-		var functions_loaded = loadScript('functions', '/scripts/parts/nia_functions.js',pluginUrl);
-		var resultpanel_loaded = loadScript('resultpanel', '/scripts/parts/nia_resultpanel.js',pluginUrl);
-		var thirdservices_loaded = loadScript('thirdservices', '/scripts/parts/nia_thirdservices.js',pluginUrl);
+		var functions_loaded = loadScript('functions', '/scripts/features/nia_functions.js',pluginUrl);
+		var resultpanel_loaded = loadScript('resultpanel', '/scripts/features/nia_resultpanel.js',pluginUrl);
+		var thirdservices_loaded = loadScript('thirdservices', '/scripts/features/nia_thirdservices.js',pluginUrl);
 		var p01_loaded = loadScript('p01', '/scripts/parts/nia01_colors.js',pluginUrl);
 		var p02_loaded = loadScript('p02', '/scripts/parts/nia02_images.js',pluginUrl);
 		var p03_loaded = loadScript('p03', '/scripts/parts/nia03_links.js',pluginUrl);

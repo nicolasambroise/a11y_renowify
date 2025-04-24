@@ -1,0 +1,4 @@
+body.bg-style-injected, 
+body.bg-style-injected * {
+    background-image: none !important;
+}
