@@ -369,7 +369,7 @@ body.check-panel-active [role="dialog"]{
 }
 
 #checkA11YBottomLine{
-	width: 100%;
+	width: calc(100% - 20px);
 	display: block;
 	position: fixed;
 	bottom: 0;
@@ -382,4 +382,50 @@ body.check-panel-active [role="dialog"]{
 	border-top: 3px solid #035384;
 	z-index: 70000;
     line-height: normal;
+	max-height: 400px;
+    overflow-y: auto;
+    right: 0;
+    left: 0; 
+}
+
+#checkA11YBottomLine ul li{
+	margin: 0 !important;
+	color: #035384;
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: normal;
+	list-style-type: none;
+}
+
+#checkA11YBottomLine ul li:before,
+#checkA11YBottomLine ul li:after{
+	content: none;	
+}
+
+#checkA11YBottomLine #checkA11YHeadBtn{
+	background-color: revert;
+    border: revert;
+    border-radius: revert;
+    box-sizing: border-box;
+    color: revert;
+    cursor: pointer;
+    display: revert;
+    font-size: unset;
+    font-weight: unset;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    line-height: normal;
+    padding: revert;
+    text-align: unset;
+    text-decoration: none;
+    width: auto;
+	position: absolute;
+    right: 10px;
+    top: 2px;
+}
+#checkA11YBottomLine #checkA11YHeadBtn:hover,
+#checkA11YBottomLine #checkA11YHeadBtn:focus{
+    background-color: revert;
+    color: revert;
 }
