@@ -149,7 +149,7 @@ function check_part_05(){
 	}
 	
 	// I. Le code source de chaque page contient une métadonnée qui en décrit le contenu. ==> Présence de meta name=description 
-	if(!only_error && !isSearchLogic){
+	if(!only_error && !isSearchLogic && !isSitemap){
 		const nia05i_node = document.querySelector('meta[name="description"]');
 		if(nia05i_node == null || nia05i_node.content == null || nia05i_node.content == "" ){
 			setItemToResultList("nth","<li><span class='result-focus label-yellow'>05-I</span> : Absence de métadonnée qui en décrit le contenu [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-code-source-de-chaque-page-contient-une-metadonnee-qui-en-decrit-le-contenu' target='_blank'>Opquast 3</a>]</li>");
@@ -247,14 +247,17 @@ function check_part_05(){
 	
 	// P. Section vide dans la page
 	if(!only_error){
-		const nia05p_nodes = document.querySelectorAll('section.cmp-section');
+		let nia05p_nodes = document.querySelectorAll('section.cmp-section');
+		if(only_redactor) nia05p_nodes = document.querySelectorAll('main section.cmp-section');		
 		let nia05p_flag = false;
 		let nia05p_clean_node = "", nia05p_container = "", nia05p_lang = "";
 		if(nia05p_nodes && nia05p_nodes.length > 0){
 			for(let i = 0; i < nia05p_nodes.length; i++){
 				nia05p_lang = nia05p_nodes[i].closest('[lang]').getAttribute('lang');
 				nia05p_clean_node = sanitizeText(nia05p_nodes[i].innerText, nia05p_lang);
-				if(nia05p_clean_node == "" && isItemVisible(nia05p_nodes[i])){
+				nia05p_img = nia05p_nodes[i].querySelectorAll('img');
+				
+				if(nia05p_clean_node == "" && isItemVisible(nia05p_nodes[i]) && nia05p_img.length == 0){
 					setItemOutline(nia05p_nodes[i],"yellow","nia05p","05-P");
 					nia05p_container = nia05p_nodes[i].parentElement;
 					nia05p_flag = true;

@@ -144,6 +144,10 @@ input[type=radio][disabled]::placeholder {
   font-weight: 400
 }
 
+.form-options .form-options-label strong{
+  text-decoration: underline;
+}
+
 .form-options .form-options-label .form-options-description {
   margin-left: .625rem;
   vertical-align: middle

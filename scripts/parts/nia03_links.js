@@ -223,7 +223,7 @@ function check_part_03(){
 	}
 
 	// N. Un lien non_souligné et inclus dans un paragraphe de texte doit être suffisamment contrasté avec le texte environnant (à l’état par défaut, hover et focus). Idéalement, toujours souligner les liens.
-	if(!only_error){
+	if(!only_redactor && !only_error){
 		const nia03n_nodes = document.querySelectorAll("main *:not(li.nav-item) > p > a, main *:not(.cmp-autocompleteSearch__keywords) > li:not(.cmp-focus-list-item):not(.nav-item):not(.cmp-languagenavigation__item):not(.cmp-breadcrumb__item):not(.subnav-item):not(.cmp-grid__item ):not(.filter-item):not(.cmp-list__item) > a:not(.toc-anchor)");
 		let nia03n_flag = false;
 		if(nia03n_nodes && nia03n_nodes.length > 0 && isItemsVisible(nia03n_nodes)){	

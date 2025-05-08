@@ -423,6 +423,7 @@ body.check-panel-active [role="dialog"]{
 	position: absolute;
     right: 10px;
     top: 2px;
+	text-transform: none;
 }
 #checkA11YBottomLine #checkA11YHeadBtn:hover,
 #checkA11YBottomLine #checkA11YHeadBtn:focus{
