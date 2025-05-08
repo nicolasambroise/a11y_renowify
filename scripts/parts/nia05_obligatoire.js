@@ -9,11 +9,11 @@ function check_part_05(){
 	// A. Bloc vide
 	const nia05a_nodes = document.querySelectorAll('*:not(.ol-attribution) > :where(p, th, strong, em, a, q, blockquote, aside, ul, li):not([aria-hidden="true"]):not(.mapboxgl-ctrl-logo):empty');
 	if(nia05a_nodes && nia05a_nodes.length > 0 && isItemsVisible(nia05a_nodes)){
-	  setItemToResultList("nc","<li><a href='#' data-destination='nia05a' class='result-focus label-red'>05-A</a> : Présence de balise vide [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-9-1' target='_blank'>RAWeb 8.9.1</a>]</li>");
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia05a' class='result-focus label-orange'>05-A</a> : Présence de balise vide [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-9-1' target='_blank'>RAWeb 8.9.1</a>]</li>");
 	  for(let i = 0; i < nia05a_nodes.length; i++){
 			if(isItemVisible(nia05a_nodes[i])){
-				setItemOutline(nia05a_nodes[i],"red","nia05a","05-A");
-				nia05a_nodes[i].parentElement.classList.add("checkA11YOutline__parent");
+				setItemOutline(nia05a_nodes[i],"orange","nia05a","05-A");
+				nia05a_nodes[i].parentElement.classList.add("checkA11YOutline__orange_parent");
 			}
 		}
 	}
@@ -28,15 +28,15 @@ function check_part_05(){
 				nia05b_lang = nia05b_nodes[i].closest('[lang]').getAttribute('lang');
 				nia05b_clean_node = sanitizeText(nia05b_nodes[i].innerText, nia05b_lang);
 				if(nia05b_clean_node == "" && isItemVisible(nia05b_nodes[i])){
-					setItemOutline(nia05b_nodes[i],"red","nia05b","05-B");
-					nia05b_nodes[i].parentElement.classList.add("checkA11YOutline__parent");
+					setItemOutline(nia05b_nodes[i],"orange","nia05b","05-B");
+					nia05b_nodes[i].parentElement.classList.add("checkA11YOutline__orange_parent");
 					nia05b_flag = true;
 				}
 			}
 		}
 	}
 	if(nia05b_flag == true) {
-	  setItemToResultList("nc","<li><a href='#' data-destination='nia05b' class='result-focus label-red'>05-B</a> : Présence de balises vides (ou avec un contenu assimilable à vide) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-9-1' target='_blank'>RAWeb 8.9.1</a>]</li>");
+	  setItemToResultList("nc","<li><a href='#' data-destination='nia05b' class='result-focus label-orange'>05-B</a> : Présence de balises vides (ou avec un contenu assimilable à vide) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-9-1' target='_blank'>RAWeb 8.9.1</a>]</li>");
 	}
 	
 	// C. Doctype
@@ -132,13 +132,13 @@ function check_part_05(){
 				if(nia05h_prev_n1.nodeName == "BR"){
 					setItemOutline(nia05h_nodes[i],"red","nia05h","05-H");
 					nia05h_container = nia05h_nodes[i].parentElement;
-					nia05h_container.classList.add("checkA11YOutline__parent");
+					nia05h_container.classList.add("checkA11YOutline__red_parent");
 					nia05h_flag = true;
 				}
 				else if(nia05h_prev_n2.nodeName == "BR" && (nia05h_prev_n1.nodeName == "#text" || nia05h_prev_n1.nodeName == "#comment") && (nia05h_prev_n1.textContent == " " || nia05h_prev_n1.textContent == "")){
 					setItemOutline(nia05h_nodes[i],"red","nia05h","05-H");
 					nia05h_container = nia05h_nodes[i].parentElement;
-					nia05h_container.classList.add("checkA11YOutline__parent");
+					nia05h_container.classList.add("checkA11YOutline__red_parent");
 					nia05h_flag = true;
 				}
 			}
@@ -255,7 +255,7 @@ function check_part_05(){
 			for(let i = 0; i < nia05p_nodes.length; i++){
 				nia05p_lang = nia05p_nodes[i].closest('[lang]').getAttribute('lang');
 				nia05p_clean_node = sanitizeText(nia05p_nodes[i].innerText, nia05p_lang);
-				nia05p_img = nia05p_nodes[i].querySelectorAll('img');
+				nia05p_img = nia05p_nodes[i].querySelectorAll('img,iframe');
 				
 				if(nia05p_clean_node == "" && isItemVisible(nia05p_nodes[i]) && nia05p_img.length == 0){
 					setItemOutline(nia05p_nodes[i],"yellow","nia05p","05-P");

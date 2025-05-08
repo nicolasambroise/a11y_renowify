@@ -172,13 +172,13 @@ function check_part_03(){
 		}
 	}
 	
-	// J Vérifie la présence de l'attribut target_blank sur les liens externe
+	// J Vérifie la présence de l'attribut target_blank sur les liens externe (Exception : On ne regarde pas dans les flux sociaux car le contenu provient d'un aggregateur)
 	if(!only_redactor){
 		const nia03j_nodes = document.querySelectorAll('a[href^="http"]:not([href*="'+url+'"]):not([target="_blank"])');
 		let nia03j_flag = false;
 		if(nia03j_nodes && nia03j_nodes.length > 0 && isItemsVisible(nia03j_nodes)){	
 			for(let i = 0; i < nia03j_nodes.length; i++){
-				if(isItemVisible(nia03j_nodes[i])){
+				if(isItemVisible(nia03j_nodes[i]) && nia03j_nodes[i].closest('.feed-wrapper') == null){
 					setItemOutline(nia03j_nodes[i],"orange","nia03j","03-J");
 					nia03j_flag = true;
 				}
@@ -224,7 +224,7 @@ function check_part_03(){
 
 	// N. Un lien non_souligné et inclus dans un paragraphe de texte doit être suffisamment contrasté avec le texte environnant (à l’état par défaut, hover et focus). Idéalement, toujours souligner les liens.
 	if(!only_redactor && !only_error){
-		const nia03n_nodes = document.querySelectorAll("main *:not(li.nav-item) > p > a, main *:not(.cmp-autocompleteSearch__keywords) > li:not(.cmp-focus-list-item):not(.nav-item):not(.cmp-languagenavigation__item):not(.cmp-breadcrumb__item):not(.subnav-item):not(.cmp-grid__item ):not(.filter-item):not(.cmp-list__item) > a:not(.toc-anchor)");
+		const nia03n_nodes = document.querySelectorAll("main *:not(li.nav-item) > p > a:not(.btn), main *:not(.cmp-autocompleteSearch__keywords) > li:not(.cmp-focus-list-item):not(.nav-item):not(.cmp-languagenavigation__item):not(.cmp-breadcrumb__item):not(.subnav-item):not(.cmp-grid__item ):not(.filter-item):not(.cmp-list__item) > a:not(.toc-anchor)");
 		let nia03n_flag = false;
 		if(nia03n_nodes && nia03n_nodes.length > 0 && isItemsVisible(nia03n_nodes)){	
 			for(let i = 0; i < nia03n_nodes.length; i++){
