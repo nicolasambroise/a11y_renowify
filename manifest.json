@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Renowify - Check Access",
   "description": "Vérification de l'accessibilité des sites web",
-  "version": "2.1",
+  "version": "2.2",
   "author": "Nicolas AMBROISE",
   "icons": {
     "16": "images/renow-16.png",
@@ -22,6 +22,10 @@
       "180": "images/renow-180.png"
     }
   },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
+  },
   "permissions": ["scripting", "activeTab", "storage"],
   "commands": {
     "_execute_action": {
@@ -30,6 +34,11 @@
         "mac": "Command+Insert"
       }
     }
+  },
+  "browser_specific_settings": {
+	"gecko": {
+	  "id": "noreply@renowify.lu"
+	}
   }
 }
 
