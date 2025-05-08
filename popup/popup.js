@@ -66,6 +66,22 @@ function initRenowify(currentTabId){
 		retrieveSwitch(currentTabId);
 		console.log("Renowify READY !");
 	});
+	
+	// Recuperer les options (profile)
+	chrome.storage.sync.get(["profile"], function(sync){
+		if(sync.profile && sync.profile != undefined && sync.profile != ""){
+			console.log("$_Sync : "+sync.profile);	
+			if(sync.profile == "dev"){
+				document.getElementById('switch-nc').closest("li").style.display = 'block';
+				document.getElementById('switch-all').closest("li").style.display = 'block';
+			}
+			else{
+				document.getElementById('switch-nc').closest("li").style.display = 'none';
+				document.getElementById('switch-all').closest("li").style.display = 'none';
+			}
+		}
+	});
+	
 }
 
 
