@@ -11,13 +11,11 @@ function check_part_09(){
 		const nia09a2_footer = document.querySelectorAll('.page-footernav a[href*="accessibilite"][href$=".html"]');
 		const nia09a3_footer = document.querySelectorAll('.page-footernav a[href*="aspects-legaux"][href$=".html"]');
 		const nia09a4_footer = document.querySelectorAll('.page-footernav a[href*="a-propos"][href$=".html"]');
-		const nia09a5_footer = document.querySelectorAll('.page-footernav a[href*="aide"][href$=".html"]');
 		
 		const nia09a1_sitemap = document.querySelectorAll('.cmp-sitemap a[href*="contact"][href$=".html"]');
 		const nia09a2_sitemap = document.querySelectorAll('.cmp-sitemap a[href*="accessibilite"][href$=".html"]');
 		const nia09a3_sitemap = document.querySelectorAll('.cmp-sitemap a[href*="aspects-legaux"][href$=".html"]');
 		const nia09a4_sitemap = document.querySelectorAll('.cmp-sitemap a[href*="a-propos"][href$=".html"]');
-		const nia09a5_sitemap = document.querySelectorAll('.cmp-sitemap a[href*="aide"][href$=".html"]');
 		
 		const nia09a5_support = document.querySelectorAll('.cmp-sitemap a[href$="support.html"]');
 		
@@ -223,8 +221,8 @@ function check_part_09(){
 							
 							if(nia09f_nodes[i].parentElement.tagName == "LI" || nia09f_nodes[i].parentElement.childElementCount == 1){
 								nia09f_rect_parent = nia09f_nodes[i].parentElement.getBoundingClientRect();
-								nia09f_horizontal_parent = nia09f_nodes[i].parentElement.getBoundingClientRect()["width"] + parseFloat(window.getComputedStyle(nia09f_nodes[i].parentElement)['marginLeft']) + parseFloat(window.getComputedStyle(nia09f_nodes[i].parentElement)['marginRight']);
-								nia09f_vertical_parent = nia09f_nodes[i].parentElement.getBoundingClientRect()["height"] + parseFloat(window.getComputedStyle(nia09f_nodes[i].parentElement)['marginTop']) + parseFloat(window.getComputedStyle(nia09f_nodes[i].parentElement)['marginBottom']);
+								nia09f_horizontal_parent = nia09f_rect_parent["width"] + parseFloat(window.getComputedStyle(nia09f_nodes[i].parentElement)['marginLeft']) + parseFloat(window.getComputedStyle(nia09f_nodes[i].parentElement)['marginRight']);
+								nia09f_vertical_parent = nia09f_rect_parent["height"] + parseFloat(window.getComputedStyle(nia09f_nodes[i].parentElement)['marginTop']) + parseFloat(window.getComputedStyle(nia09f_nodes[i].parentElement)['marginBottom']);
 								if(nia09f_horizontal_parent < 24 || nia09f_vertical_parent < 24){
 							
 									// console.log("09f1 : "+nia09f_horizontal+" "+nia09f_vertical);

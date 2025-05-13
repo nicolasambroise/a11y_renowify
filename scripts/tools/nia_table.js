@@ -44,7 +44,7 @@ if(typeof nia_tableElm !== 'undefined'){
 		const spanLabel = document.createElement('span');
 		spanLabel.classList.add("checkA11YSpan");
 		spanLabel.classList.add("checkA11YSpan__"+color);
-		spanLabel.innerHTML = label;
+		spanLabel.textContent = label;
 		item.before(spanLabel);
 
 	});
@@ -52,6 +52,6 @@ if(typeof nia_tableElm !== 'undefined'){
 	// RESULT
 	nia_linkBottomLine = document.createElement('p');
 	nia_linkBottomLine.id = "checkA11YBottomLine";
-	nia_linkBottomLine.innerHTML = "Attributs de tableau : "+nia_linkError+" erreur(s) et "+nia_tableWarning+" alerte(s)";
+	nia_linkBottomLine.textContent = "Attributs de tableau : "+nia_linkError+" erreur(s) et "+nia_tableWarning+" alerte(s)";
 	document.body.appendChild(nia_linkBottomLine)
 }

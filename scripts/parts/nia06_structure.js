@@ -151,9 +151,9 @@ function check_part_06(){
 	}
 	
 	// Todo Footer
-	// - Vérifier la hiérarchie des titres :  si des titres de rubriques sont affichés, les mettre en <h3> précédé par un élément <h2> visuellement masqué (classe .at ou .sr_only)
-	// - Le lien vers la page « déclaration d’accessibilité » doit être présent 
-	// - Le lien vers la page « plan du site » doit être présent (à l’exception des sites One_page) 
+	// - Vérifier la hiérarchie des titres : si des titres de rubriques sont affichés, les mettre en <h3> précédé par un élément <h2> visuellement masqué (classe .at ou .sr_only)
+	// - Le lien vers la page « déclaration d’accessibilité » doit être présent 
+	// - Le lien vers la page « plan du site » doit être présent (à l’exception des sites One_page) 
 	// - Les différents items sont présentés dans des structures de type liste <ul> 
 	
 	// H. Cadres iframe
@@ -202,7 +202,7 @@ function check_part_06(){
 		if(nia06i_nodes && nia06i_nodes.length > 0){
 			for(let i = 0; i < nia06i_nodes.length; i++){
 				if(isItemVisible(nia06i_nodes[i])){
-					nia06i_result = nia06i_nodes[i].innerText.match(/   +/g);
+					nia06i_result = nia06i_nodes[i].innerText.match(/\s{3,}/g);
 					if(nia06i_result && nia06i_result.length > 0) {
 						setItemOutline(nia06i_nodes[i],"yellow","nia06i","06-I");
 						nia06i_flag = true;
@@ -349,7 +349,7 @@ function check_part_06(){
 					if(nia06n_links[i].hasAttribute("aria-current") && (nia06n_links[i].getAttribute("aria-current") == "true" || nia06n_links[i].getAttribute("aria-current") == "step")){ nia06n3_count++;}
 				}
 				if(nia06n3_count == 0) {
-					setItemOutline(nia06n_links[i],"orange","nia06n3","06-N");
+					setItemsOutline(nia06n_links,"orange","nia06n3","06-N");
 					setItemToResultList("dev","<li><a href='#' data-destination='nia06n3' class='result-focus label-orange'>06-N</a> : Dans le sommaire, le lien ancre vers la section en cours de consultation doit être identifié par l’attribut aria_current=’true’ ou 'step' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-10-9-1' target='_blank'>RAWeb 10.9.1</a>]</li>");
 				}
 			}
@@ -656,17 +656,17 @@ function check_part_06(){
 	
 	// Les boutons d’actions côte à côte doivent être structurés dans une liste 
 	// Le nom de l’étape en cours présent dans le titre de la page.
-	// Etape « Votre panier »
-	// o   Les différentes meta doivent être présentées sous forme de liste (<ul> ou <dl>)
-	// Etape « Mode de livraison »
-	// o   RAS – Note : Un bouton radio ne devrait pas être seul _ A revoir par les UX ?
-	// Etape « Information de livraison »
-	// o   Vérifier la présence des attributs autocomplete
-	// o   Vérifier la présence des textes d’aides obligatoire annonçant le format
-	// o   Vérifier la pertinence des messages d’erreur
-	// Etape « Récapitulatif »
-	// o   Les différentes meta et ligne de prix doivent être présentées sous forme de liste (<ul> ou <dl>)
-	// o   Des titres de niveau approprié doivent être utiliser pour structurer la page
+	// Etape « Votre panier »
+	// o Les différentes meta doivent être présentées sous forme de liste (<ul> ou <dl>)
+	// Etape « Mode de livraison »
+	// o RAS – Note : Un bouton radio ne devrait pas être seul _ A revoir par les UX ?
+	// Etape « Information de livraison »
+	// o Vérifier la présence des attributs autocomplete
+	// o Vérifier la présence des textes d’aides obligatoire annonçant le format
+	// o Vérifier la pertinence des messages d’erreur
+	// Etape « Récapitulatif »
+	// o Les différentes meta et ligne de prix doivent être présentées sous forme de liste (<ul> ou <dl>)
+	// o Des titres de niveau approprié doivent être utiliser pour structurer la page
 
 
 

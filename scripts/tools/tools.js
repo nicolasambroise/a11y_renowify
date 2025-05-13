@@ -1,3 +1,5 @@
+	let color;
+
 /* Images */ 
 	const nia_images = document.querySelectorAll('*:not(.ol-overlay-container):not(.ol-control) > * > img,[role="img"],svg:not(.is-hidden),svg[role="img"],embed[type="image"],canvas,map,area,object[type="image"]');
 	let nia_imgElm = 0;

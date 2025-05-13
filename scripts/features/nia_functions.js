@@ -39,7 +39,7 @@ function setItemOutline(item,color,classname,label){
 	const spanLabel = document.createElement('span');
 	spanLabel.classList.add("checkA11YSpan");
 	spanLabel.classList.add("checkA11YSpan__"+color);
-	spanLabel.innerHTML = label;
+	spanLabel.textContent = label;
 	if(item.nodeName == "LI"){
 		item.prepend(spanLabel); //Element “span” not allowed as child of element “ul” in this context.
 	} 

@@ -32,7 +32,6 @@ function check_part_14(){
 	if(!only_error){
 		const nia14d_nodes = document.querySelectorAll('b,p:not(.cmp-form__mandatory-text) > strong:first-child ,span > strong:first-child ,div > strong:first-child , *:not(.accordionItem) > *:not(figcaption):not(.article-summary):not(.article-metas):not(.search-metas):not(.cmp-grid__textContainer):not(.feed-item-content):not(.meta-themes):not(.description):not(.meta-published-update) > p:not(.cmp-lastupdate):not(.cmp-form__mandatory-text):not(.at):not(.feed-item-author):not(.orejime-Notice-description):first-child');
 		let nia14d_flag = false;
-		let nia14d_fontSize;
 		if(nia14d_nodes && nia14d_nodes.length > 0){
 			for(let i = 0; i < nia14d_nodes.length; i++){
 				if(isItemVisible(nia14d_nodes[i]) && nia14d_nodes[i].length < 150){

@@ -95,7 +95,7 @@ if(typeof nia_headElm !== 'undefined'){
 		const spanLabel = document.createElement('span');
 		spanLabel.classList.add("checkA11YSpan");
 		spanLabel.classList.add("checkA11YSpan__"+color);
-		spanLabel.innerHTML = label;
+		spanLabel.textContent = label;
 		item.before(spanLabel);
 	});
 

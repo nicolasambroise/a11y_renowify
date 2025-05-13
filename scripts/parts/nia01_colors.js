@@ -14,7 +14,7 @@ function check_part_01(){
 		const nia01a_nodes = document.querySelectorAll('p, span:not(.checkA11YSpan), li, strong, h1, h2, h3, h4, h5, small, a:not([disabled]), button:not([disabled]), blockquote, q, dd, dt, label');
 		let nia01a_flag1 = false;
 		let nia01a_flag2 = false;
-		let nia01a_color1,nia01a_color2,nia01a_color1rbg, nia01a_color2rbg,nia01a_color1luminance, nia01a_color2luminance, nia01a_ratio,nia01a_ratio_inv, nia01a_bold, nia01a_large, nia01a_isbold;
+		let nia01a_color1, nia01a_color2, nia01a_position, nia01a_pseudo, nia01a_color1luminance, nia01a_color2luminance, nia01a_ratio,nia01a_ratio_inv, nia01a_bold, nia01a_large, nia01a_isbold, nia01a_basecolor2, nia01a_pseudoElementBefore, nia01a_pseudoElementAfter, nia01a_color1rgb, nia01a_color2rgb;
 		if(nia01a_nodes && nia01a_nodes.length > 0){
 			for(let i = 0; i < nia01a_nodes.length; i++){
 				if(isItemVisible(nia01a_nodes[i]) && !isItemSROnly(nia01a_nodes[i]) && isItemHasVisibleContent(nia01a_nodes[i]) && isItemHasDirectContent(nia01a_nodes[i])){

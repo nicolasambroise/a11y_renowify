@@ -33,7 +33,7 @@ function check_part_12(){
 	/* C. Anchor */
 	if(isAEM){
 		const nia12c_nodes = document.querySelectorAll('.topsearch button:not(.anchor-close), button.anchor[data-destination^="#headernav"]:not(.anchor-close), button.anchor[data-destination^="#filters"]:not(.anchor-close), button.anchor[data-destination^="#bloub"]:not(.anchor-close)');
-		let nia12c_title = "", nia12c_content = "", nia12c_lang = "";
+		let nia12c_title = "", nia12c_content = "", nia12c_lang = "", nia12c_label = "";
 		let nia12c1_flag = false,nia12c2_flag = false,nia12c3_flag = false;
 		if(nia12c_nodes && nia12c_nodes.length > 0){
 			if(nia12c_nodes && nia12c_nodes.length > 0 ){

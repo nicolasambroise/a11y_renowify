@@ -36,7 +36,6 @@ function check_part_07(){
 	let nia07b2_flag = false;
 	if(nia07b2_nodes && nia07b2_nodes.length > 0 && isItemsVisible(nia07b2_nodes)){
 	  for(let i = 0; i < nia07b2_nodes.length; i++){
-
 		if(nia07b2_nodes[i].hasAttribute("placeholder") && nia07b2_nodes[i].hasAttribute("title") && nia07b2_nodes[i].getAttribute("placeholder") != nia07b2_nodes[i].getAttribute("title")){
 			nia07b2_flag = true;
 			setItemOutline(nia07b2_nodes[i],"red","nia07b2","07-B");
@@ -116,7 +115,7 @@ function check_part_07(){
 		}
 	}
 	
-	// La page active doit avoir un aria_current= ‘page’
+	// La page active doit avoir un aria_current='page'
 	if(!only_redactor && isAEM){
 		const nia07b10_nodes = document.querySelectorAll('.pagination .pagination-page');
 		let nia07b10_flag = false;
@@ -163,11 +162,11 @@ function check_part_07(){
 		  setItemsOutline(nia07d2_nodes,"orange","nia07d2","07-D");
 		}
 		
-		// Les liens vers les versions linguistique doivent avoir l’attribut lang et posséder le title et le contenu textuel « de – Deutsch » 
+		// Les liens vers les versions linguistique doivent avoir l’attribut lang et posséder le title et le contenu textuel « de – Deutsch » 
 		const nia07d3_nodes = document.querySelectorAll('.cmp-languagenavigation__group .cmp-languagenavigation__item-link:not([title*=" - "]),.cmp-languagenavigation__group .cmp-languagenavigation__item-link:not([lang]),.cmp-languagenavigation__group .cmp-languagenavigation__item-link:not([hreflang])');
 		if(nia07d3_nodes && nia07d3_nodes.length > 0 && isItemsVisible(nia07d3_nodes)){
 		  setItemToResultList("dev","<li><a href='#' data-destination='nia07d3' class='result-focus label-orange'>07-D</a> : Les liens vers les versions linguistique doivent avoir les attributs lang, hreflang et posséder un attribut title dont le contenu textuel est tel que : « de – Deutsch » </li>");
-		  setItemsOutline(nia07d_nodes,"orange","nia07d3","07-D");
+		  setItemsOutline(nia07d3_nodes,"orange","nia07d3","07-D");
 		}
 	}
 
@@ -400,7 +399,7 @@ function check_part_07(){
 					
 					const lang = nia07f20_btn.closest('[lang]').getAttribute('lang');
 					
-					if(sanitizeText(nia07f20_btn.innerText) != sanitizeText(nia07f20_btnText)){
+					if(sanitizeText(nia07f20_btn.innerText,lang) != sanitizeText(nia07f20_btnText, lang)){
 						if(debug_flag) console.log(" - F6.1 Attention le texte du bouton d'ouverture du menu à changé cela ne devrai pas être le cas");
 						if(debug_flag) console.log(nia07f20_btn.innerText);
 						if(debug_flag) console.log(nia07f20_btnText);

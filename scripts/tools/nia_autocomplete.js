@@ -53,7 +53,7 @@ if(typeof nia_formFields !== 'undefined'){
 			const spanLabel = document.createElement('span');
 			spanLabel.classList.add("checkA11YSpan");
 			spanLabel.classList.add("checkA11YSpan__"+color);
-			spanLabel.innerHTML = label;
+			spanLabel.textContent = label;
 			item.before(spanLabel);
 		}
 	});
@@ -61,6 +61,6 @@ if(typeof nia_formFields !== 'undefined'){
 	// RESULT
 	nia_formBottomLine = document.createElement('p');
 	nia_formBottomLine.id = "checkA11YBottomLine";
-	nia_formBottomLine.innerHTML = "Forms : "+nia_formElm+" élément(s) avec attribut autocomplet - "+nia_formWarning+ " alertes(s)";
+	nia_formBottomLine.textContent = "Forms : "+nia_formElm+" élément(s) avec attribut autocomplet - "+nia_formWarning+ " alertes(s)";
 	document.body.appendChild(nia_formBottomLine)
 }

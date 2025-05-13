@@ -32,13 +32,13 @@ if(typeof nia_langElm !== 'undefined'){
 		const spanLabel = document.createElement('span');
 		spanLabel.classList.add("checkA11YSpan");
 		spanLabel.classList.add("checkA11YSpan__"+color);
-		spanLabel.innerHTML = label;
+		spanLabel.textContent = label;
 		item.before(spanLabel);
 	});
 
 	// RESULT
 	nia_langBottomLine = document.createElement('p');
 	nia_langBottomLine.id = "checkA11YBottomLine";
-	nia_langBottomLine.innerHTML = "Langue : [FR : "+nia_langFr+"] [EN : "+nia_langEn+"] [DE : "+nia_langDe+"] [LB : "+nia_langLb+"] [Other : "+nia_langOther+"]";
+	nia_langBottomLine.textContent = "Langue : [FR : "+nia_langFr+"] [EN : "+nia_langEn+"] [DE : "+nia_langDe+"] [LB : "+nia_langLb+"] [Other : "+nia_langOther+"]";
 	document.body.appendChild(nia_langBottomLine)
 }

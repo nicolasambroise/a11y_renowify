@@ -60,7 +60,7 @@ function check_part_03(){
 	// E. Vérifier que le title reprend à minimum le contenu textuel
 	const nia03e_nodes = document.querySelectorAll("a[title]");
 	let nia03e_flag = false;
-	let nia03e_content = "", nia03e_title = "", nia03e_lang = "";
+	let nia03e_content = "", nia03e_title = "", nia03e_lang = "", nia03e_innerText = "";
 	if(nia03e_nodes && nia03e_nodes.length > 0){
 		for(let i = 0; i < nia03e_nodes.length; i++){
 			if(isItemVisible(nia03e_nodes[i])){

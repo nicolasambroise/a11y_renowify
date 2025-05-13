@@ -11,7 +11,7 @@ if(typeof nia_linkElm !== 'undefined'){
 		color = "green";
 		
 		if(isItemVisible(item)){
-		
+			let label;
 			let title = "";
 			let content = item.innerText.replaceAll(/\n|\r/g, ' ').replaceAll(/\s+/g, ' ').trim();
 			let lang = item.closest('[lang]').getAttribute('lang')		
@@ -76,6 +76,6 @@ if(typeof nia_linkElm !== 'undefined'){
 	// RESULT
 	nia_linkBottomLine = document.createElement('p');
 	nia_linkBottomLine.id = "checkA11YBottomLine";
-	nia_linkBottomLine.innerHTML = "Labels de lien : "+nia_linkError+" erreur(s)";
+	nia_linkBottomLine.textContent = "Labels de lien : "+nia_linkError+" erreur(s)";
 	document.body.appendChild(nia_linkBottomLine)
 }

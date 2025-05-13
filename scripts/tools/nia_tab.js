@@ -21,7 +21,7 @@ if(typeof nia_tabElm !== 'undefined'){
 		const spanLabel = document.createElement('span');
 		spanLabel.classList.add("checkA11YSpan");
 		spanLabel.classList.add("checkA11YSpan__"+color);
-		spanLabel.innerHTML = label;
+		spanLabel.textContent = label;
 		if(item.tagName == "SUMMARY"){
 			item.parentElement.before(spanLabel);
 		}
@@ -51,7 +51,7 @@ if(typeof nia_tabElm !== 'undefined'){
 				attrsList += ` ${name}="${value}"`;
 			})
 
-			resultLine.innerHTML = "Current focus : &lt;"+activeElm.tagName.toLowerCase()+" "+attrsList+"&gt;";
+			resultLine.textContent = "Current focus : &lt;"+activeElm.tagName.toLowerCase()+" "+attrsList+"&gt;";
 		}
 	}, true);	
 }

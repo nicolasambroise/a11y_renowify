@@ -250,7 +250,7 @@ function check_part_05(){
 		let nia05p_nodes = document.querySelectorAll('section.cmp-section');
 		if(only_redactor) nia05p_nodes = document.querySelectorAll('main section.cmp-section');		
 		let nia05p_flag = false;
-		let nia05p_clean_node = "", nia05p_container = "", nia05p_lang = "";
+		let nia05p_clean_node = "", nia05p_lang = "", nia05p_img;
 		if(nia05p_nodes && nia05p_nodes.length > 0){
 			for(let i = 0; i < nia05p_nodes.length; i++){
 				nia05p_lang = nia05p_nodes[i].closest('[lang]').getAttribute('lang');
@@ -259,7 +259,6 @@ function check_part_05(){
 				
 				if(nia05p_clean_node == "" && isItemVisible(nia05p_nodes[i]) && nia05p_img.length == 0){
 					setItemOutline(nia05p_nodes[i],"yellow","nia05p","05-P");
-					nia05p_container = nia05p_nodes[i].parentElement;
 					nia05p_flag = true;
 				}
 			}
@@ -271,7 +270,7 @@ function check_part_05(){
 	
 	// Q Logo
 	/*
-	Le lien sur le logo redirige vers la page d’accueil et possède un attribut title respectant la nomenclature suivante : « [XXX] – Accueil »
+	Le lien sur le logo redirige vers la page d’accueil et possède un attribut title respectant la nomenclature suivante : « [XXX] – Accueil »
 	Si du texte est présent sur le logo, possibilité de saisir un texte alt
 	Pas d'indication du mot "logo" dans le texte alt du logo
 	*/
@@ -280,6 +279,7 @@ function check_part_05(){
 		let nia05q_flag1 = false;
 		let nia05q_flag2 = false;
 		let nia05q_flag3 = false;
+		let nia05q_img, nia05q_tagline;
 		if(nia05q_nodes && nia05q_nodes.length > 0){
 			for(let i = 0; i < nia05q_nodes.length; i++){
 				if(!nia05q_nodes[i].hasAttribute("href") || (!nia05q_nodes[i].getAttribute("href").includes("fr.html") && !homepageException.includes(nia05q_nodes[i].getAttribute("href")))){
