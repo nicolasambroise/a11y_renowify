@@ -31,7 +31,7 @@ if(typeof nia_images !== 'undefined'){
 				}
 				else if(item.closest("figure") != null){
 					color = "yellow";
-					label = 'Alt="" dans &lt;figure&gt;';
+					label = 'Alt="" dans <figure>';
 					nia_imgWarning++;
 				}
 			}	

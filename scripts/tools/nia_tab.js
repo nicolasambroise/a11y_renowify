@@ -51,7 +51,7 @@ if(typeof nia_tabElm !== 'undefined'){
 				attrsList += ` ${name}="${value}"`;
 			})
 
-			resultLine.textContent = "Current focus : &lt;"+activeElm.tagName.toLowerCase()+" "+attrsList+"&gt;";
+			resultLine.textContent = "Current focus : <"+activeElm.tagName.toLowerCase()+" "+attrsList+">";
 		}
 	}, true);	
 }

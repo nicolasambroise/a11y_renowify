@@ -177,7 +177,7 @@ function check_part_09(){
 		// Les skiplinks situé dans l’entête doivent être dans un élément <nav role=’navigation’> avec un aria_label
 		if(!only_error){
 			const nia09e3_nodes = document.querySelector('body > .skiplinks');		
-			if(nia09e3_nodes && (nia09e3_nodes.nodeName != "NAV" || !nia09e3_nodes.hasAttribute("aria-label") || !nia09e3_nodes.hasAttribute("role") || nia09e3_nodes.getAttribute("role") != "navigation")){
+			if(nia09e3_nodes.firstElementChild && (nia09e3_nodes.firstElementChild.nodeName != "NAV" || !nia09e3_nodes.firstElementChild.hasAttribute("aria-label") || !nia09e3_nodes.firstElementChild.hasAttribute("role") || nia09e3_nodes.firstElementChild.getAttribute("role") != "navigation")){
 				setItemToResultList("nth","<li><a href='#' data-destination='nia09e3' class='result-focus label-yellow'>09-E</a> : Les skiplinks doivent se trouver dans un element nav avec un aria-label et un role=navigation</li>");
 				setItemOutline(nia09e3_nodes,"yellow","nia09e3","09-E");
 			}
@@ -195,7 +195,7 @@ function check_part_09(){
 		// S’il y a plusieurs Skiplinks, ils doivent être structurée sous forme de liste <ul>
 		if(!only_error){
 		const nia09e5_nodes = document.querySelectorAll('body > .skiplinks a[href]');
-			if(nia09e5_nodes && nia09e5_nodes.length > 1 && nia09e5_nodes[0].parentElement.nodeName != "UL" && nia09e5_nodes[0].nodeName != "LI"){
+			if(nia09e5_nodes && nia09e5_nodes.length > 1 && nia09e5_nodes[0].parentElement.nodeName != "LI"){
 				setItemToResultList("nth","<li><a href='#' data-destination='nia09e5' class='result-focus label-yellow'>09-E</a> : S’il y a plusieurs Skiplinks, ils doivent être structurée sous forme de liste 'ul'</li>");
 				setItemOutline(nia09e5_nodes[0].parentElement,"yellow","nia09e5","09-E");
 			}

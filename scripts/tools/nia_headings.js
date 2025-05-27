@@ -35,7 +35,7 @@ if(typeof nia_headElm !== 'undefined'){
 		if(item.hasAttribute("role") && item.getAttribute("role") == "heading"){
 			if(color != "red") color = "blue";
 			nia_headRole++;
-			label = '&lt;'+item.tagName.toLowerCase()+' role="heading"';
+			label = '<'+item.tagName.toLowerCase()+' role="heading"';
 			if(item.hasAttribute("aria-level")){
 			  label +=' aria-level="'+item.getAttribute("aria-level")+'"'
 			  
@@ -64,11 +64,11 @@ if(typeof nia_headElm !== 'undefined'){
 			else{
 				nia_headMsg += "<li>..2 - "+ item.innerText + suffix + "</li>";
 			}
-			label += "&gt;";
+			label += ">";
 		}
 		else{
 			nia_headHn++;
-			label = '&lt;'+item.tagName.toLowerCase()+'&gt;' ;
+			label = '<'+item.tagName.toLowerCase()+'>' ;
 			if(item.tagName.toLowerCase() == "h1"){
 				nia_headMsg += "<li>1 - "+ item_title + suffix + "</li>";
 			}

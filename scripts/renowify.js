@@ -16,15 +16,15 @@ let isSearchLogic = false; // True s'il s'agit d'une page présentant des résul
 
 if(homepage || homepageException.includes(currentUrl)) {isHomepage = true;}
 if((currentUrl.includes("preview-") || currentUrl.includes("wcm")) && currentUrl.includes(".etat.lu")){isPreview = true;}
-else if(currentUrl.includes("aem-test-")){isPreview = true;}
+else if(currentUrl.includes("aem-test-") || currentUrl.includes("localhost:4502")){isPreview = true;}
 if(currentUrl.includes("/prototype/")){isPrototype = true;}
 if(currentUrl.includes("/actualites.html") || currentUrl.includes("/publications.html") || currentUrl.includes("/recherche.html")){isSearchLogic = true;}
 if(currentUrl.includes("/support/accessibilite.html") || currentUrl.includes("/support/accessibilite/accessibilite-guichet.html")){isDecla = true;}
 if(currentUrl.includes("plan-du-site.html") || currentUrl.includes("plan.html") || currentUrl.includes("plan-site.html")){isSitemap = true;}
 
-if(currentUrl.includes(".public.lu") || currentUrl.includes("gouvernement.lu") || currentUrl.includes(".etat.lu") || currentUrl.includes("sig-gr.eu") || currentUrl.includes(".mae.lu") || currentUrl.includes("lu-alert.lu")){
+if(currentUrl.includes(".public.lu") || currentUrl.includes("gouvernement.lu") || currentUrl.includes(".etat.lu") || currentUrl.includes("sig-gr.eu") || currentUrl.includes(".mae.lu") || currentUrl.includes("lu-alert.lu") || isPreview == true){
   isCTIE = true;
-  if(!currentUrl.includes("fpgun-jway") && !currentUrl.includes("demarches.services-publics") && !currentUrl.includes("fpgun-preintegr") && !currentUrl.includes("services-publics-test") && !currentUrl.includes("accessibilite.public")){
+  if(!currentUrl.includes("fpgun-jway") && !currentUrl.includes("demarches.services-publics") && !currentUrl.includes("fpgun-preintegr") && !currentUrl.includes("services-publics-test") && !currentUrl.includes("accessibilite.public.lu")){
 	isAEM = true;
   }
 }
