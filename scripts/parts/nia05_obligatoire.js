@@ -7,7 +7,7 @@ function check_part_05(){
 	if(debug_flag) console.log("05 Element Obligatoire");
 
 	// A. Bloc vide
-	const nia05a_nodes = document.querySelectorAll('*:not(.ol-attribution) > :where(p, th, strong, em, a, q, blockquote, aside, ul, li):not([aria-hidden="true"]):not(.mapboxgl-ctrl-logo):empty');
+	const nia05a_nodes = document.querySelectorAll('*:not(.ol-attribution) > :where(p, th, strong, em, a, q, blockquote, aside, ul, li, dl, dd, dt):not([aria-hidden="true"]):not(.mapboxgl-ctrl-logo):empty');
 	if(nia05a_nodes && nia05a_nodes.length > 0 && isItemsVisible(nia05a_nodes)){
 	  setItemToResultList("nc","<li><a href='#' data-destination='nia05a' class='result-focus label-orange'>05-A</a> : Présence de balise vide [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-9-1' target='_blank'>RAWeb 8.9.1</a>]</li>");
 	  for(let i = 0; i < nia05a_nodes.length; i++){
@@ -19,7 +19,7 @@ function check_part_05(){
 	}
 
     // B. Bloc vide avec $nbsp; ou \n
-	const nia05b_nodes = document.querySelectorAll('*:not(.ol-attribution):not([aria-hidden="true"]) > :where(p, th, strong, em, a, q, blockquote, aside, ul, li):not([aria-hidden="true"]):not(.mapboxgl-ctrl-logo):not(:empty)');
+	const nia05b_nodes = document.querySelectorAll('*:not(.ol-attribution):not([aria-hidden="true"]) > :where(p, th, strong, em, a, q, blockquote, aside, ul, li, dl, dd, dt):not([aria-hidden="true"]):not(.mapboxgl-ctrl-logo):not(:empty)');
 	let nia05b_flag = false;
 	let nia05b_clean_node = "", nia05b_lang = "";
 	if(nia05b_nodes && nia05b_nodes.length > 0){

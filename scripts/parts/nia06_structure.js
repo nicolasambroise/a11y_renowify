@@ -198,12 +198,17 @@ function check_part_06(){
 	if(!only_error){
 		const nia06i_nodes = document.querySelectorAll('.cmp-text, *:not(.cmp-text) > p');
 		let nia06i_flag = false;
-		let nia06i_result;
+		let nia06i_result1,nia06i_result2;
 		if(nia06i_nodes && nia06i_nodes.length > 0){
 			for(let i = 0; i < nia06i_nodes.length; i++){
 				if(isItemVisible(nia06i_nodes[i])){
-					nia06i_result = nia06i_nodes[i].innerText.match(/\s{3,}/g);
-					if(nia06i_result && nia06i_result.length > 0) {
+					nia06i_result1 = nia06i_nodes[i].innerText.match(/ {3,}/g);
+					nia06i_result2 = nia06i_nodes[i].innerText.match(/\s{4,}/g);
+					if(nia06i_resul1t && nia06i_result1.length > 0) {
+						setItemOutline(nia06i_nodes[i],"yellow","nia06i","06-I");
+						nia06i_flag = true;
+					}
+					if(nia06i_result2 && nia06i_result2.length > 0) {
 						setItemOutline(nia06i_nodes[i],"yellow","nia06i","06-I");
 						nia06i_flag = true;
 					}
@@ -211,7 +216,7 @@ function check_part_06(){
 			}
 		}	
 		if(nia06i_flag == true) {
-		  setItemToResultList("nth","<li><a href='#' data-destination='nia06i' class='result-focus label-yellow'>06-I</a> : Présence d'espace pour créer des effets de marges ou d'alignement [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-10-1-3' target='_blank'>RAWeb 10.1.3</a>]</li>");
+		  setItemToResultList("nth","<li><a href='#' data-destination='nia06i' class='result-focus label-yellow'>06-I</a> : Présence d'espaces pour créer des effets de marges ou d'alignement (touche espace ou retour à la ligne) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-10-1-3' target='_blank'>RAWeb 10.1.3</a>]</li>");
 		}
 	}
 	
@@ -540,7 +545,7 @@ function check_part_06(){
 	if(isAEM){
 		// Utilisation de la structure avec les roles
 		if(!only_redactor){
-			const nia06q1_nodes = document.querySelectorAll('.cmp-tabs > *:not([role="tablist"]):not([role="tabpanel"]), .cmp-tabs > [role="tablist"] > *:not([role=tab])');
+			const nia06q1_nodes = document.querySelectorAll('.cmp-tabs > *:not([role="tablist"]):not([role="tabpanel"]), .cmp-tabs > [role="tablist"] > *:not([role="tab"])');
 			if(!nia06q1_nodes || nia06q1_nodes.length > 0){
 			  setItemToResultList("dev","<li><a href='#' data-destination='nia06q1' class='result-focus label-orange'>06-Q</a> : Vérifier les attributs role dans le système d'onglet </li>");
 			  setItemsOutline(nia06q1_nodes,"orange","nia06q1","06-Q");
