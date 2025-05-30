@@ -401,10 +401,7 @@ function check_part_01() {
     const nia01b_nodes = document.querySelectorAll(
       'input:not([disabled]):not([type="file"]), select:not([disabled]), textarea:not([disabled]), button:not([disabled])'
     );
-    let nia01b_flag1 = false;
-    let nia01b_flag2 = false;
-    let nia01b_flag3 = false;
-    let nia01b_flag4 = false;
+    let nia01b_flag1 = false, nia01b_flag2 = false, nia01b_flag3 = false, nia01b_flag4 = false, nia01b_flag5 = false;
     let nia01b_color1,
       nia01b_color2,
       nia01b_color3,
@@ -438,10 +435,10 @@ function check_part_01() {
           ); // Out BG Color
           nia01b_border = window
             .getComputedStyle(nia01b_nodes[i], null)
-            .getPropertyValue('border-width'); // Border
+            .getPropertyValue('border-width'); // Border-width
           nia01b_position = window
             .getComputedStyle(nia01b_nodes[i], null)
-            .getPropertyValue('position'); // Border
+            .getPropertyValue('position'); // Position
 
           if (nia01b_color1.length > 20)
             nia01b_color1 = window
@@ -656,8 +653,15 @@ function check_part_01() {
                     nia01b_color3 +
                     ')'
                 );
-              setItemOutline(nia01b_nodes[i], 'orange', 'nia01b2', '01-B');
-              nia01b_flag3 = true;
+			  if(nia01b_position == 'absolute' || nia01b_position == 'fixed'){
+				  setItemOutline(nia01b_nodes[i], 'yellow', 'nia01b2', '01-B');
+				  nia01b_flag5 = true;
+
+			  }
+			  else{
+				  setItemOutline(nia01b_nodes[i], 'orange', 'nia01b2', '01-B');
+				  nia01b_flag3 = true;
+			  }
             }
           } else {
             console.log('couleur de bordure inconnu');
@@ -687,6 +691,12 @@ function check_part_01() {
       setItemToResultList(
         'man',
         "<li><a href='#' data-destination='nia01b1' class='result-focus label-yellow'>01-B</a> : Présence d'élément graphique avec background identique au fond de page - Contraste à vérifier manuellement</li>"
+      );
+    }
+	if (nia01b_flag5 == true) {
+      setItemToResultList(
+        'man',
+        "<li><a href='#' data-destination='nia01b1' class='result-focus label-yellow'>01-B</a> : Présence d'élément graphique sur un élément en position absolute - Contraste à vérifier manuellement</li>"
       );
     }
   }
@@ -973,7 +983,7 @@ function check_part_01() {
 
   // E presence de dégradé sans couleur de replis
   // Pour des soucis de perf, on ne test que certain element
-  /*
+  
 	if(!only_redactor){
 		const nia01e_nodes = document.querySelectorAll('header, footer, .cmp-section, aside, article');
 		let nia01e_flag = false;
@@ -982,11 +992,12 @@ function check_part_01() {
 				if(isItemVisible(nia01e_nodes[i])){
 					nia01e_bgi = window.getComputedStyle(nia01e_nodes[i],null).getPropertyValue('background-image');
 					nia01e_bgc = window.getComputedStyle(nia01e_nodes[i],null).getPropertyValue('background-color');
-					//TODO A FINIR !
-					
+					if(nia01e_bgi.indexOf("linear-gradient") >= 0 && nia01e_bgc=="rgba(0, 0, 0, 0)"){
+						 setItemToResultList("man","<li><a href='#' data-destination='nia01e' class='result-focus label-yellow'>01-E</a> : Vérifier la présence d'une couleur de replis sur des éléments avec fond en dégradé.</li>");
+						 setItemOutline(nia01e_nodes[i],"yellow","nia01e","01-E");
+					}
 				}
 			}
 		}
 	}
-	*/
 }

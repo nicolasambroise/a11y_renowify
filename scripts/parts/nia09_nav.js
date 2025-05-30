@@ -199,12 +199,12 @@ function check_part_09() {
 
   // D. 2 systemes de navigation (plan du site, recherche, menu)
   if (isAEM) {
-    const nia09d_nav = document.querySelector('nav #headernav, nav#headernav');
+    const nia09d_nav = document.querySelector('nav #headernav, nav#headernav, nav[class^="page-headernav"]');
     const nia09d_nav_fixed = document.querySelector(
       '.header-icons > nav.headernav-fixed'
     );
     const nia09d_nav_btn = document.querySelector(
-      '[class^=page-headernav] button.anchor[data-destination^="#headernav"]'
+      '[class^="page-headernav"] button.anchor[data-destination^="#headernav"]'
     );
 
     const nia09d_search = document.querySelector(
@@ -218,7 +218,7 @@ function check_part_09() {
     );
 
     const nia09d_plan = document.querySelector(
-      '.page-footernav ul.nav--support > li.nav-item a[href*="plan"][href$=".html"]'
+      '.page-footernav ul > li.nav-item a[href*="plan"][href$=".html"]'
     );
     const nia09d_footer_links = document.querySelectorAll(
       'footer .nav-item > a:not([target="_blank"])'
@@ -254,7 +254,7 @@ function check_part_09() {
     ) {
       nia09d_counter++;
     } else if (debug_flag) {
-      console.log('recherche non trouvé');
+      console.log('recherche non trouvée');
     }
 
     if (nia09d_plan && isItemVisible(nia09d_plan)) {

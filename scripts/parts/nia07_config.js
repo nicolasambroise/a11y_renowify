@@ -1068,7 +1068,7 @@ function check_part_07() {
     } else if (!only_error) {
       setItemToResultList(
         'man',
-        "<li><span class='result-focus label-yellow'>07-F</span> : Absence de barre de navigation</li>"
+        "<li><span class='result-focus label-gray'>07-F</span> : Absence de barre de navigation</li>"
       );
     }
   }
