@@ -22,7 +22,7 @@ const saveOptions = () => {
 // stored in chrome.storage.
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    { profile: 'redac', save_bdd: false, debug: false },
+    { profile: 'dev', save_bdd: false, debug: false },
     (items) => {
       document.getElementById('profile').value = items.profile;
       document.getElementById('save_bdd').checked = items.save_bdd;
