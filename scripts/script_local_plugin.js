@@ -1,18 +1,17 @@
 /* Script Check A11Y Renowify - Nicolas AMBROISE */
 
-if(document.body.classList.contains('renowify-script-injected')){
-	// Variables config globale
-	const debug_flag = true; // true -> affiche les logs
-	const only_redactor = false; // true --> affiche uniquement les critères relatif au redacteur
-	const only_error = false; // true --> affiche uniquement les Non-conformités critiques
-	const save_to_db = false; // true --> autorise la sauvegarde des resultats en base de données
+if (document.body.classList.contains('renowify-script-injected')) {
+  // Variables config globale
+  const debug_flag = true; // true -> affiche les logs
+  const only_redactor = false; // true --> affiche uniquement les critères relatif au redacteur
+  const only_error = false; // true --> affiche uniquement les Non-conformités critiques
+  const save_to_db = false; // true --> autorise la sauvegarde des resultats en base de données
 
-	// Environnement
-	const pluginUrl = "https://nicolasambroise.github.io/a11y";
+  // Environnement
+  const pluginUrl = 'https://nicolasambroise.github.io/a11y';
 
-	console.log("Run Renowify (script_redac)")
-	run_renowify(debug_flag,only_redactor,only_error,save_to_db,pluginUrl);
-}
-else{
-	toggleCheckA11YPanel();
+  console.log('Run Renowify (script_redac)');
+  run_renowify(debug_flag, only_redactor, only_error, save_to_db, pluginUrl);
+} else {
+  toggleCheckA11YPanel();
 }

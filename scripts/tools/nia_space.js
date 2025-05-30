@@ -1,2 +1,2 @@
 // Enable Style
-document.body.classList.add("space-style-injected");
+document.body.classList.add('space-style-injected');

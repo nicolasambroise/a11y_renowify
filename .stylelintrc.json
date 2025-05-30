@@ -1,0 +1,48 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "customSyntax": "postcss-less",
+  "rules": {
+    "no-duplicate-selectors": true,
+    "color-named": "never",
+    "selector-attribute-quotes": "always",
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "function-url-quotes": "always",
+    "comment-whitespace-inside": "always",
+    "at-rule-no-vendor-prefix": true,
+    "rule-empty-line-before": [
+      "always-multi-line",
+      {
+        "except": ["after-single-line-comment", "first-nested"]
+      }
+    ],
+    "selector-pseudo-element-colon-notation": "double",
+    "selector-no-vendor-prefix": true,
+    "no-invalid-position-at-import-rule": null,
+    "selector-class-pattern": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "no-empty-source": null,
+    "color-hex-length": null,
+    "at-rule-no-unknown": null,
+    "no-descending-specificity": null,
+    "number-max-precision": null,
+    "selector-id-pattern": null,
+    "keyframes-name-pattern": null,
+    "function-no-unknown": null,
+    "font-family-name-quotes": "always-where-required",
+    "value-keyword-case": [
+      "lower",
+      {
+        "ignoreKeywords": ["currentColor"]
+      }
+    ],
+    "import-notation": "string",
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        "ignoreShorthands": ["grid-template"]
+      }
+    ]
+  }
+}

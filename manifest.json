@@ -36,10 +36,9 @@
     }
   },
   "browser_specific_settings": {
-	"gecko": {
-	  "id": "noreply@renowify.lu",
-	  "strict_min_version": "109.0"
-	}
+    "gecko": {
+      "id": "noreply@renowify.lu",
+      "strict_min_version": "109.0"
+    }
   }
 }
-

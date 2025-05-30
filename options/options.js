@@ -1,6 +1,5 @@
 // Saves options to chrome.storage
 const saveOptions = () => {
-
   const profile = document.getElementById('profile').value;
   const save_bdd = document.getElementById('switch-save-bdd').checked;
   const debug = document.getElementById('switch-debug').checked;
@@ -13,7 +12,7 @@ const saveOptions = () => {
       status.textContent = 'Vos options ont été sauvegardées.';
       setTimeout(() => {
         status.textContent = '';
-		window.close();
+        window.close();
       }, 1500);
     }
   );

@@ -1,2 +1,3 @@
-body.tab-style-injected *:focus{outline:5px solid orange!important;}
-
+body.tab-style-injected *:focus {
+  outline: 5px solid #ffa500 !important;
+}
