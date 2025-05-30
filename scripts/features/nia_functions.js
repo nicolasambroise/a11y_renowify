@@ -179,12 +179,14 @@ function isItemHasDirectContent(item) {
 }
 
 // Fonction Sanitize Text = No extra space, trimmed
+// Enlever les balises <span class="checkA11YSpan"> avant de prendre le text_content
 function sanitizeText(txt, locale) {
   return txt
     .toLowerCase()
     .toLocaleLowerCase(locale)
+	.replaceAll(/<span class="checkA11YSpan".*?<\/span>/gis, "")
     .replaceAll(/\n|\r/g, ' ')
-    .replaceAll(/[.:;,?!{}$()|'"-\\/]/g, ' ')
+    .replaceAll(/[.:;,?!{}$()|©'"-\/]/g, ' ')
     .replaceAll(/\s+/g, ' ')
     .trim();
 }

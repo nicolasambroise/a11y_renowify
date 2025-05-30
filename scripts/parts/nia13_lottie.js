@@ -23,7 +23,7 @@ function check_part_13() {
           ) {
             setItemToResultList(
               'man',
-              "<li><a href='#' data-destination='nia13a0' class='result-focus label-orange'>13-A</a> : Les animations lues automatiquement et qui boucles ou qui dure plue de 5s doivent avoir un controleur play/pause [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
+              "<li><a href='#' data-destination='nia13a0' class='result-focus label-orange'>13-A</a> : Les animations lues automatiquement et qui boucles ou qui dure plus de 5s doivent avoir un controleur play/pause [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
             );
             setItemOutline(nia13a_nodes[i], 'orange', 'nia13a0', '13-A');
           } else {

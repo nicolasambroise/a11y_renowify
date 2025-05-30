@@ -47,7 +47,7 @@ function check_part_03() {
     }
     if (nia03a_flag == true) {
       setItemToResultList(
-        'dev',
+        'nth',
         "<li><a href='#' data-destination='nia03a' class='result-focus label-yellow'>03-A</a> : Vérifier la présence de suffixe sur les liens externes [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/lutilisateur-est-averti-des-ouvertures-de-nouvelles-fenetres' target='_blank'>Opquast 141</a>]</li>"
       );
     }

@@ -147,7 +147,7 @@ function check_part_06() {
 
   if (!only_redactor && isAEM) {
     const nia06e2_nodes = document.querySelectorAll(
-      '*:not(.page-langs):not(.right-part):not(.cmp-directory):not(.top-container):not(.skiplinks) > nav:not(.page-headernav):not(.page-headernavmobile):not(.page-headernav-desk):not(.automaticnav):not(.cmp-breadcrumb):not(.page-localnav):not(.cmp-backtonav):not(.cmp-breadcrumb-demarches):not(.topnav):not(.page-bloub):not(#headernav):not(.headernav-detached):not(.headernav):not(.headernav-fixed)'
+      '*:not(.page-langs):not(.right-part):not(.cmp-directory):not(.top-container):not(.skiplinks):not(.navigation-wrapper) > nav:not(.page-headernav):not(.page-headernavmobile):not(.page-headernav-desk):not(.automaticnav):not(.cmp-breadcrumb):not(.page-localnav):not(.cmp-backtonav):not(.cmp-breadcrumb-demarches):not(.topnav):not(.page-bloub):not(#headernav):not(.headernav-detached):not(.headernav):not(.headernav-fixed)'
     );
     if (
       nia06e2_nodes &&
@@ -210,7 +210,7 @@ function check_part_06() {
     ) {
       setItemToResultList(
         'nth',
-        "<li><a href='#' data-destination='nia06g1' class='result-focus label-yellow'>06-G</a> : Présence d'une zone de pied de page sans attribut role</li>"
+        "<li><a href='#' data-destination='nia06g1' class='result-focus label-red'>06-G</a> : Présence d'une zone de pied de page sans attribut role</li>"
       );
       setItemsOutline(nia06g1_nodes, 'red', 'nia06g1', '06-G');
     }
@@ -226,12 +226,42 @@ function check_part_06() {
       );
     }
   }
-
-  // Todo Footer
-  // - Vérifier la hiérarchie des titres : si des titres de rubriques sont affichés, les mettre en <h3> précédé par un élément <h2> visuellement masqué (classe .at ou .sr_only)
-  // - Le lien vers la page « déclaration d’accessibilité » doit être présent
-  // - Le lien vers la page « plan du site » doit être présent (à l’exception des sites One_page)
-  // - Les différents items sont présentés dans des structures de type liste <ul>
+  
+  if (!only_redactor && !only_error && isAEM) {
+    const nia06g3_nodes = document.querySelectorAll(
+      'footer h3, footer [role="heading"][aria-level="3"]'
+    );
+    if (nia06g3_nodes && nia06g3_nodes.length > 1) {
+      for (let i = 0; i < nia06g3_nodes.length; i++) {
+        if (nia06g3_nodes[i].closest("footer").querySelector('h2,[role="heading"][aria-level="2"]') == null ) {
+          setItemToResultList(
+            'dev',
+            "<li><a href='#' data-destination='nia06g3' class='result-focus label-yellow'>06-G</a> : Absence d'un titre principal pour le footer</li>"
+          );
+          setItemOutline(nia06g3_nodes[i], 'yellow', 'nia06g3', '06-G');
+        }
+      }
+    }
+  }
+  
+  if (!only_redactor && isAEM) {
+    const nia06g4_nodes = document.querySelector(
+      'footer a[href$="accessibilite.html"], footer a[href$="barrierefreiheit.html"], footer a[href$="accessibility.html"]'
+    );
+    if (nia06g4_nodes == null) {
+      setItemToResultList(
+        'nc',
+        "<li><span data-destination='nia06g4' class='result-focus label-red'>06-G</span> : Absence de la déclaration d'accessibilité dans le footer </li>"
+      );
+    }
+	else if(nia06g4_nodes.closest("ul") == null){
+	  setItemToResultList(
+        'nc',
+        "<li><a href='#' data-destination='nia06g5' class='result-focus label-red'>06-G</a> : Les liens du footer doivent être structurés sous forme de liste </li>"
+      );
+	  setItemOutline(nia06g4_nodes, 'red', 'nia06g5', '06-G');
+	}
+  }
 
   // H. Cadres iframe
   // H1 Présence de titre
@@ -273,10 +303,10 @@ function check_part_06() {
       isItemsVisible(nia06h3_nodes)
     ) {
       setItemToResultList(
-        'nc',
-        "<li><a href='#' data-destination='nia06h3' class='result-focus label-red'>06-H</a> : Présence de cadre avec attribut scrolling désactivé</li>"
+        'dev',
+        "<li><a href='#' data-destination='nia06h3' class='result-focus label-orange'>06-H</a> : Présence de cadre avec attribut obsolète scrolling=no</li>"
       );
-      setItemsOutline(nia06h3_nodes, 'yellow', 'nia06h3', '06-H');
+      setItemsOutline(nia06h3_nodes, 'orange', 'nia06h3', '06-H');
     }
 
     // H4 iframe vide
@@ -324,7 +354,7 @@ function check_part_06() {
         if (isItemVisible(nia06i_nodes[i])) {
           nia06i_result1 = nia06i_nodes[i].innerText.match(/ {3,}/g);
           nia06i_result2 = nia06i_nodes[i].innerText.match(/\s{4,}/g);
-          if (nia06i_resul1t && nia06i_result1.length > 0) {
+          if (nia06i_result1 && nia06i_result1.length > 0) {
             setItemOutline(nia06i_nodes[i], 'yellow', 'nia06i', '06-I');
             nia06i_flag = true;
           }
@@ -679,14 +709,7 @@ function check_part_06() {
           for (let j = 0; j < nia06o2_items.length; j++) {
             nia06o2_itemTitle = nia06o2_items[j].querySelector(
               ':is(h3, h4, h5, h6)'
-            );
-
-            /* TODO 
-							Faire un clone de nia06o2_items[j], lui enlever les balise <span class="checkA11YSpan">avant de prendre le text_content
-						
-						
-						*/
-
+            );					
             nia06o2_itemContent = sanitizeText(nia06o2_items[j].textContent);
 
             if (nia06o2_itemTitle) {
@@ -712,7 +735,7 @@ function check_part_06() {
             }
             if (nia06o2_itemContent == '') {
               nia06o6_flag = true;
-              setItemOutline(nia06o2_items, 'orange', 'nia06o6', '06-O');
+              setItemOutline(nia06o2_items[j], 'orange', 'nia06o6', '06-O');
             }
           }
 
@@ -1034,20 +1057,72 @@ function check_part_06() {
   }
 
   // T Cart
+  
+  if (!only_redactor && !isHomepage && isAEM && currentUrl.includes('/cart.html')) {
+	
+    // Le nom de l’étape en cours est présent dans le titre de la page.	
+	const nia06t1_title = document.title;
+	const nia06t1_h2 = document.querySelector(
+      '.basket h2'
+    );
+	if (!nia06t1_h2 || !nia06t1_title.includes(nia06t1_h2.textContent)) {
+      setItemToResultList(
+        'nc',
+        "<li><a href='#' data-destination='nia06t1' class='result-focus label-red'>06-T</a> : Le titre de la page doit reprendre le titre de l'étape du panier.</li>"
+      );
+      setItemOutline(nia06t1_h2, 'red', 'nia06t1', '06-T');
+    }
+	
+	// Etape « Votre panier » : Les différentes meta doivent être présentées sous forme de liste (<ul> ou <dl>)
+	const nia06t2_nodes = document.querySelector(
+      '.basket-order-item-metas'
+    );
+    if (nia06t2_nodes && nia06t2_nodes.nodeName != "UL" && nia06t2_nodes.nodeName != "DL" ) {
+      setItemToResultList(
+        'dev',
+        "<li><a href='#' data-destination='nia06t2' class='result-focus label-orange'>06-T</a> : Les différentes meta doivent être présentées sous forme de liste (<ul> ou <dl>)</li>"
+      );
+      setItemsOutline(nia06t2_nodes, 'orange', 'nia06t2', '06-T');
+    }
+	
+	// Etape « Votre panier » : Liste de selection pour la quantité doit être liée au titre de la publication
+	const nia06t3_nodes = document.querySelector(
+      '.basket-order-item-actions select.basket-order-item-qty'
+    );
+    if (nia06t3_nodes && (nia06t3_nodes.previousElementSibling.nodeName != "LABEL" || !nia06t3_nodes.hasAttribute("aria-describedby"))) {
+      setItemToResultList(
+        'dev',
+        "<li><a href='#' data-destination='nia06t3' class='result-focus label-orange'>06-T</a> : Liste de selection pour la quantité doit être liée au titre de la publication</li>"
+      );
+      setItemsOutline(nia06t3_nodes, 'orange', 'nia06t3', '06-T');
+    }
+	  
+	// Etape « Mode de livraison » Un bouton radio ne devrait pas être seul
+	const nia06t4_nodes = document.querySelector(
+      '.basket input[type="radio"]'
+    );
+    if (nia06t4_nodes && nia06t4_nodes.closest('fieldset, [role="group"]') == "null") {
+      setItemToResultList(
+        'dev',
+        "<li><a href='#' data-destination='nia06t4' class='result-focus label-orange'>06-T</a> : Présence d'un bouton radio hors d'une balise fieldset</li>"
+      );
+      setItemsOutline(nia06t4_nodes, 'orange', 'nia06t4', '06-T');
+    }
+	else{
+		const nia06t5_nodes = nia06t4_nodes.closest('fieldset, [role="group"]').querySelector(
+		  'input[type="radio"]'
+		)
+		if (nia06t5_nodes && nia06t5_nodes.length < 2) {
+		  setItemToResultList(
+			'dev',
+			"<li><a href='#' data-destination='nia06t5' class='result-focus label-orange'>06-T</a> : Un bouton radio ne devrait pas être seul</li>"
+		  );
+		  setItemsOutline(nia06t4_nodes, 'orange', 'nia06t5', '06-T');
+		}
+	}
+	
+  }
 
-  // Les boutons d’actions côte à côte doivent être structurés dans une liste
-  // Le nom de l’étape en cours présent dans le titre de la page.
-  // Etape « Votre panier »
-  // o Les différentes meta doivent être présentées sous forme de liste (<ul> ou <dl>)
-  // Etape « Mode de livraison »
-  // o RAS – Note : Un bouton radio ne devrait pas être seul _ A revoir par les UX ?
-  // Etape « Information de livraison »
-  // o Vérifier la présence des attributs autocomplete
-  // o Vérifier la présence des textes d’aides obligatoire annonçant le format
-  // o Vérifier la pertinence des messages d’erreur
-  // Etape « Récapitulatif »
-  // o Les différentes meta et ligne de prix doivent être présentées sous forme de liste (<ul> ou <dl>)
-  // o Des titres de niveau approprié doivent être utiliser pour structurer la page
 
   // U Localnav
   // Les différents items sont dans une structure de type liste <ul>

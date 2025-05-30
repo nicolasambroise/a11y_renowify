@@ -188,7 +188,7 @@ function check_part_05() {
     if (nia05g_govbar == null || !isItemVisible(nia05g_govbar)) {
       setItemToResultList(
         'nth',
-        "<li><span class='result-focus label-yellow'>05-G</span> : Absence de la govbar, vérifier si ce n'est pas un oubli</li>"
+        "<li><span class='result-focus label-gray'>05-G</span> : Absence de la govbar, vérifier si ce n'est pas un oubli</li>"
       );
     }
   }
