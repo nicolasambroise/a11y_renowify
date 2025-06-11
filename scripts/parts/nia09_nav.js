@@ -199,7 +199,7 @@ function check_part_09() {
 
   // D. 2 systemes de navigation (plan du site, recherche, menu)
   if (isAEM) {
-    const nia09d_nav = document.querySelector('nav #headernav, nav#headernav, nav[class^="page-headernav"]');
+    const nia09d_nav = document.querySelector('nav #headernav, nav#headernav, *:not(#headerwrapper-mobile) > nav[class^="page-headernav"]');
     const nia09d_nav_fixed = document.querySelector(
       '.header-icons > nav.headernav-fixed'
     );
@@ -208,7 +208,7 @@ function check_part_09() {
     );
 
     const nia09d_search = document.querySelector(
-      'div.topsearch[role="search"],div.topsearch-desk[role="search"],div.topsearch-desktop[role="search"]'
+      '*:not(#headerwrapper-mobile) > div.topsearch[role="search"], div.topsearch-desk[role="search"], div.topsearch-desktop[role="search"]'
     );
     const nia09d_search_fixed = document.querySelector(
       '.header-icons > div.topsearch[role="search"]'
@@ -225,9 +225,13 @@ function check_part_09() {
     );
 
     let nia09d_counter = 0;
-    if (nia09d_nav && isItemVisible(nia09d_nav)) {
+    if (
+	  nia09d_nav && isItemVisible(nia09d_nav)) {
       nia09d_counter++;
-    } else if (nia09d_nav && nia09d_nav_btn && isItemVisible(nia09d_nav_btn)) {
+    } else if (
+	  nia09d_nav && 
+	  nia09d_nav_btn && 
+	  isItemVisible(nia09d_nav_btn)) {
       nia09d_counter++;
     } else if (
       nia09d_nav &&
@@ -239,7 +243,9 @@ function check_part_09() {
       console.log('navigation principale non trouvé');
     }
 
-    if (nia09d_search && isItemVisible(nia09d_search)) {
+    if (
+	  nia09d_search && 
+	  isItemVisible(nia09d_search)) {
       nia09d_counter++;
     } else if (
       nia09d_search &&
@@ -282,7 +288,7 @@ function check_part_09() {
   // E. Skiplinks
   if (!only_redactor && isAEM) {
     const nia09e1_nodes = document.querySelector(
-      'body > .skiplinks a[href="#main"]'
+      'body > .skiplinks a[href="#main"], body > .xfpage > .skiplinks a[href="#main"]'
     );
     if (nia09e1_nodes == null) {
       setItemToResultList(
@@ -323,7 +329,7 @@ function check_part_09() {
 
     // Les skiplinks situé dans l’entête doivent être dans un élément <nav role=’navigation’> avec un aria_label
     if (!only_error) {
-      const nia09e3_nodes = document.querySelector('body > .skiplinks');
+      const nia09e3_nodes = document.querySelector('body > .skiplinks, body > .xfpage > .skiplinks');
       if (
         nia09e3_nodes.firstElementChild &&
         (nia09e3_nodes.firstElementChild.nodeName != 'NAV' ||
@@ -344,7 +350,7 @@ function check_part_09() {
       const nia09e4_nodes = document.querySelectorAll(
         'body > *:not(#orejime):not(#a42-ac):not(.checkA11YSpan):not(link):not(svg.iconset)'
       );
-      if (!nia09e4_nodes[0].classList.contains('skiplinks')) {
+      if (!nia09e4_nodes[0].classList.contains('skiplinks') && !nia09e4_nodes[0].firstElementChild.classList.contains('skiplinks')) {
         setItemToResultList(
           'nth',
           "<li><a href='#' data-destination='nia09e4' class='result-focus label-yellow'>09-E</a> : Les skiplinks situé dans l’entête doivent être les premiers éléments tabulable de la page (hors modale des cookies)</li>"

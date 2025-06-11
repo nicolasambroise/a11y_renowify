@@ -81,6 +81,7 @@ function check_part_07() {
     isItemsVisible(nia07b3_nodes)
   ) {
     for (let i = 0; i < nia07b3_nodes.length; i++) {
+		// Rechercher / Recherche / Suchen / Search --> Concidéré comme pas assez précis.
       if (
         nia07b3_nodes[i].hasAttribute('title') &&
         nia07b3_nodes[i].getAttribute('title').length < 15
@@ -1031,7 +1032,7 @@ function check_part_07() {
               nia07g3_items = nia07g3_nodes[i].parentElement.querySelectorAll(
                 '.subnav-item > a[aria-current="page"], .subnav-item > a[aria-current="true"]'
               );
-              console.log(nia07g3_items);
+              //console.log(nia07g3_items);
               if (!nia07g3_items || nia07g3_items.length != 1) {
                 nia07g4_flag = true;
                 setItemOutline(nia07g3_nodes[i], 'red', 'nia07g4', '07-G');
