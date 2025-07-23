@@ -98,22 +98,33 @@ let result_nc = '';
 let result_nth = '';
 let result_dev = '';
 let result_man = '';
-let result_crit_nb = '';
-let result_nc_nb = '';
-let result_nth_nb = '';
-let result_dev_nb = '';
-let result_man_nb = '';
+let result_crit_nb = 0;
+let result_nc_nb = 0;
+let result_nth_nb = 0;
+let result_dev_nb = 0;
+let result_man_nb = 0;
 let result_html5 = '';
+let result_html5_nb = 0;
 let result_wave = '';
 let result_lighthouse = '';
+let result_lighthouse_access = '';
+let result_lighthouse_bp = '';
+let result_lighthouse_seo = '';
 
 // Init Var
 let debug_flag = false;
 let only_redactor = false;
 let only_error = false;
 let save_to_db = false;
+let run_html5 = false;
+let run_lighthouse = false;
+let run_wave = false;
 
-function run_renowify(df, or, oe, std, pluginUrl) {
+// Credential --> To fill in nia_thirdservices_config.js
+let lighthouseAPIKey = '';
+let waveAPIKey = '';
+
+function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw, kl, kw) {
   /*- -------------------------------------------------------------------------------- */
   /* Pre-processing */
 
@@ -126,6 +137,11 @@ function run_renowify(df, or, oe, std, pluginUrl) {
   if (or != null) only_redactor = or;
   if (oe != null) only_error = oe;
   if (std != null) save_to_db = std;
+  if (rh != null) run_html5 = rh;
+  if (rl != null) run_lighthouse = rl;
+  if (rw != null) run_wave = rw;
+  if (kl != null) lighthouseAPIKey = kl;
+  if (kw != null) waveAPIKey = kw;
 
   // Check Page
   if (isHomepage) console.log('$ isHomepage');

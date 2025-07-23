@@ -156,7 +156,6 @@ function saveDeclaInBdd() {
     sensible_cmp += 'Tableaux complexes,';
   if (sensible_cmp != '') sensible_cmp = sensible_cmp.slice(0, -1); // Remove last ,
 
-  /*
 	let dataToSave = {
 		"url":  currentUrl, // URL de la décla
 		"conf": conf, // conformité indiquée dans le décla
@@ -178,7 +177,7 @@ function saveDeclaInBdd() {
 	};
 
 	console.log(dataToSave);
-	*/
+	
   if (isDecla && !isPreview && save_to_db) {
     /*
 		const db_api_url = "https://webux.gouv.etat.lu/a11y/a11y_bookmarklet/backend/save_decla.php"; 
@@ -203,8 +202,7 @@ function saveDeclaInBdd() {
 }
 
 // Fonction pour enlever les crochets et leur contenu à l'interieur de ceux-ci
-/*
 function removeBracket(data){
 	return data ? data.replaceAll(/(\r\n|\n|\r)/g, "").replaceAll(/\[.+?\]/g, "").replaceAll(/'/g, '"') : "";	
 }
-*/
+

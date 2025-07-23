@@ -1,6 +1,6 @@
 // Fonction Validation Third-part : HTML5 Wave Lighthouse
 function thirdPartValidation() {
-  if (!only_redactor && !only_error) {
+  if (!only_redactor && !only_error && run_html5) {
     // Fonction Validator HTML5
     const validatorUrl = 'https://validator.nu/?out=json';
     async function validator(url = validatorUrl) {
@@ -53,6 +53,7 @@ function thirdPartValidation() {
             'color:#D93025'
           );
           console.table(msg);
+		  result_html5_nb++;
           msg_html5 +=
             '<li>' + msg.message + ' (line: ' + msg.lastLine + ')</li>';
           console.groupEnd();
@@ -68,14 +69,15 @@ function thirdPartValidation() {
       }
     });
 
-    if (!isPreview) {
+    if (!isPreview && run_lighthouse) {
       // Fonction LightHouse
       const lighthouseUrl =
         'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
       // "https://pagespeed.web.dev/analysis?url='+encodeURIComponent(currentUrl)+'"
       let lighthouseOptions =
         'locale=fr-FR&category=accessibility&category=best-practices&category=seo';
-
+	  
+	  lighthouseOptions += '&key='+lighthouseAPIKey;
       if (currentWidth > 500) {
         lighthouseOptions += '&strategy=desktop';
       } else {
@@ -101,89 +103,106 @@ function thirdPartValidation() {
         );
         return response.json();
       }
-
+	  console.log(lighthouseUrl +
+            '?' +
+            lighthouseOptions +
+            '&url=' +
+            encodeURIComponent(currentUrl))
       let lighthouse_p = Promise.resolve(lighthouse());
       lighthouse_p.then((data) => {
-        console.log(data.lighthouseResult.categories);
+		if(data.lighthouseResult){		
+			console.log(data.lighthouseResult.categories);
 
-        // Filter data result
-        let lighthouse_access_score =
-          data.lighthouseResult.categories['accessibility'].score * 100;
-        let lighthouse_bp_score =
-          data.lighthouseResult.categories['best-practices'].score * 100;
-        let lighthouse_seo_score =
-          data.lighthouseResult.categories['seo'].score * 100;
+			// Filter data result
+			let lighthouse_access_score =
+			  data.lighthouseResult.categories['accessibility'].score * 100;
+			let lighthouse_bp_score =
+			  data.lighthouseResult.categories['best-practices'].score * 100;
+			let lighthouse_seo_score =
+			  data.lighthouseResult.categories['seo'].score * 100;
 
-        if (lighthouse_access_score < 80)
-          lighthouse_access_score =
-            '<span style="color:red;" class="result_lighthouse_access">' +
-            lighthouse_access_score +
-            '</span>';
-        else
-          lighthouse_access_score =
-            '<span class="result_lighthouse_access">' +
-            lighthouse_access_score +
-            '</span>';
-        lighthouse_access_score =
-          'Accessibility : ' + lighthouse_access_score + '/100</li>';
-        if (lighthouse_access_score < 80)
-          '<li class="label-error">' + lighthouse_access_score;
-        else lighthouse_access_score = '<li>' + lighthouse_access_score;
+			//Save values for bdd
+			result_lighthouse_access = lighthouse_access_score;
+			result_lighthouse_bp = lighthouse_bp_score;
+			result_lighthouse_seo = lighthouse_seo_score;
 
-        if (lighthouse_bp_score < 80)
-          lighthouse_bp_score =
-            '<span style="color:red;" class="result_lighthouse_bp">' +
-            lighthouse_bp_score +
-            '</span>';
-        else
-          lighthouse_bp_score =
-            '<span class="result_lighthouse_bp">' +
-            lighthouse_bp_score +
-            '</span>';
-        lighthouse_bp_score =
-          'Best practices : ' + lighthouse_bp_score + '/100</li>';
-        if (lighthouse_bp_score < 80)
-          '<li class="label-error">' + lighthouse_bp_score;
-        else lighthouse_bp_score = '<li>' + lighthouse_bp_score;
+			if (lighthouse_access_score < 80)
+			  lighthouse_access_score =
+				'<span style="color:red;" class="result_lighthouse_access">' +
+				lighthouse_access_score +
+				'</span>';
+			else
+			  lighthouse_access_score =
+				'<span class="result_lighthouse_access">' +
+				lighthouse_access_score +
+				'</span>';
+			lighthouse_access_score =
+			  'Accessibility : ' + lighthouse_access_score + '/100</li>';
+			if (lighthouse_access_score < 80)
+			  '<li class="label-error">' + lighthouse_access_score;
+			else lighthouse_access_score = '<li>' + lighthouse_access_score;
 
-        if (lighthouse_seo_score < 80)
-          lighthouse_seo_score =
-            '<span style="color:red;" class="result_lighthouse_seo">' +
-            lighthouse_seo_score +
-            '</span>';
-        else
-          lighthouse_seo_score =
-            '<span class="result_lighthouse_seo">' +
-            lighthouse_seo_score +
-            '</span>';
-        lighthouse_seo_score = 'SEO : ' + lighthouse_seo_score + '/100</li>';
-        if (lighthouse_seo_score < 80)
-          '<li class="label-error">' + lighthouse_seo_score;
-        else lighthouse_seo_score = '<li>' + lighthouse_seo_score;
+			if (lighthouse_bp_score < 80)
+			  lighthouse_bp_score =
+				'<span style="color:red;" class="result_lighthouse_bp">' +
+				lighthouse_bp_score +
+				'</span>';
+			else
+			  lighthouse_bp_score =
+				'<span class="result_lighthouse_bp">' +
+				lighthouse_bp_score +
+				'</span>';
+			lighthouse_bp_score =
+			  'Best practices : ' + lighthouse_bp_score + '/100</li>';
+			if (lighthouse_bp_score < 80)
+			  '<li class="label-error">' + lighthouse_bp_score;
+			else lighthouse_bp_score = '<li>' + lighthouse_bp_score;
 
-        const lighthouse_msg =
-          lighthouse_access_score + lighthouse_bp_score + lighthouse_seo_score;
+			if (lighthouse_seo_score < 80)
+			  lighthouse_seo_score =
+				'<span style="color:red;" class="result_lighthouse_seo">' +
+				lighthouse_seo_score +
+				'</span>';
+			else
+			  lighthouse_seo_score =
+				'<span class="result_lighthouse_seo">' +
+				lighthouse_seo_score +
+				'</span>';
+			lighthouse_seo_score = 'SEO : ' + lighthouse_seo_score + '/100</li>';
+			if (lighthouse_seo_score < 80)
+			  '<li class="label-error">' + lighthouse_seo_score;
+			else lighthouse_seo_score = '<li>' + lighthouse_seo_score;
 
-        let elem = document.getElementById('result_lighthouse');
-        elem.innerHTML += '<ul>' + lighthouse_msg + '</ul>';
-        result_lighthouse =
-          '{Accessibility : ' +
-          lighthouse_access_score +
-          ',"Best practices" : ' +
-          lighthouse_bp_score +
-          ',Seo : ' +
-          lighthouse_seo_score +
-          '}';
+			const lighthouse_msg =
+			  lighthouse_access_score + lighthouse_bp_score + lighthouse_seo_score;
+
+			let elem = document.getElementById('result_lighthouse');
+			elem.innerHTML += '<ul>' + lighthouse_msg + '</ul>';
+			result_lighthouse =
+			  '{Accessibility : ' +
+			  lighthouse_access_score +
+			  ',"Best practices" : ' +
+			  lighthouse_bp_score +
+			  ',Seo : ' +
+			  lighthouse_seo_score +
+			  '}';
+		}
+		else if(data.error){
+			console.log(data.error.message);
+		}
+		else {
+			console.log("Lighthouse error");
+		}
       });
 
       /*
-			if(wave_allow_credit){
+			if(run_wave && wave_allow_credit){
 				// Fonction Wave
 				const waveUrl = "https://wave.webaim.org/api/request?&url=https://google.com/";
-				let waveOptions = "key={yourAPIkey}&format=json&reporttype=1";
+				let waveOptions = "key="+waveAPIKey+"&format=json&reporttype=1";
 				
 				async function wave(url = waveUrl) {
-				  const response = await fetch(url+'?'+lighthouseOptions+'&url='+encodeURIComponent(currentUrl), {
+				  const response = await fetch(url+'?'+waveOptions+'&url='+encodeURIComponent(currentUrl), {
 					method: 'GET',
 					mode: 'cors',
 					cache: 'no-cache',
@@ -225,13 +244,15 @@ function thirdPartValidation() {
 				Promise.all([lighthouse_p,validator_p])
 				.then(function() {setTimeout(saveInBdd(), 100);});
 			}*/
+				
+		Promise.all([lighthouse_p,validator_p])
+		.then(function() {setTimeout(saveResultsInBdd(), 1000);});
     }
+	
 
     // Sauvegarde les infos de la decla en Bdd
-    /*
-		if(isDecla && !isPreview && save_to_db){
-			saveDeclaInBdd();
-		}
-		*/
+	if(isDecla && !isPreview && save_to_db){
+	  saveDeclaInBdd();
+	}
   }
 }
