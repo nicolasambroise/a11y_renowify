@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Renowify - Check Access",
   "description": "Vérification de l'accessibilité des sites web",
-  "version": "2.2",
+  "version": "2.3.0",
   "author": "Nicolas AMBROISE",
   "icons": {
     "16": "images/renow-16.png",
@@ -26,6 +26,7 @@
     "page": "options/options.html",
     "open_in_tab": false
   },
+  "minimum_chrome_version": "120",
   "permissions": ["scripting", "activeTab", "storage"],
   "commands": {
     "_execute_action": {

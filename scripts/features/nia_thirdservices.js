@@ -1,5 +1,8 @@
 // Fonction Validation Third-part : HTML5 Wave Lighthouse
 function thirdPartValidation() {
+	
+	let validator_p, wave_p, lighthouse_p;
+	
   if (!only_redactor && !only_error && run_html5) {
     // Fonction Validator HTML5
     const validatorUrl = 'https://validator.nu/?out=json';
@@ -17,7 +20,7 @@ function thirdPartValidation() {
       return response.json();
     }
 
-    let validator_p = Promise.resolve(validator());
+    validator_p = Promise.resolve(validator());
     validator_p.then((data) => {
       //console.log(data);
       let elem = document.getElementById('result_html5');
@@ -69,15 +72,15 @@ function thirdPartValidation() {
       }
     });
 
-    if (!isPreview && run_lighthouse) {
+    if (!isPreview && isAEM && run_lighthouse) {
       // Fonction LightHouse
       const lighthouseUrl =
         'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
-      // "https://pagespeed.web.dev/analysis?url='+encodeURIComponent(currentUrl)+'"
+      
       let lighthouseOptions =
         'locale=fr-FR&category=accessibility&category=best-practices&category=seo';
 	  
-	  lighthouseOptions += '&key='+lighthouseAPIKey;
+	  if (lighthouseAPIKey != "") {lighthouseOptions += '&key='+lighthouseAPIKey; }
       if (currentWidth > 500) {
         lighthouseOptions += '&strategy=desktop';
       } else {
@@ -108,7 +111,7 @@ function thirdPartValidation() {
             lighthouseOptions +
             '&url=' +
             encodeURIComponent(currentUrl))
-      let lighthouse_p = Promise.resolve(lighthouse());
+      lighthouse_p = Promise.resolve(lighthouse());
       lighthouse_p.then((data) => {
 		if(data.lighthouseResult){		
 			console.log(data.lighthouseResult.categories);
@@ -194,62 +197,57 @@ function thirdPartValidation() {
 			console.log("Lighthouse error");
 		}
       });
-
-      /*
-			if(run_wave && wave_allow_credit){
-				// Fonction Wave
-				const waveUrl = "https://wave.webaim.org/api/request?&url=https://google.com/";
-				let waveOptions = "key="+waveAPIKey+"&format=json&reporttype=1";
-				
-				async function wave(url = waveUrl) {
-				  const response = await fetch(url+'?'+waveOptions+'&url='+encodeURIComponent(currentUrl), {
-					method: 'GET',
-					mode: 'cors',
-					cache: 'no-cache',
-					credentials: 'same-origin',
-					headers: { 'Content-Type': 'text/html;charset=UTF-8' },
-					redirect: 'follow',
-					referrerPolicy: 'no-referrer'
-				  });
-				  return response.json();
-				}
-				
-				let wave_p = Promise.resolve(wave());
-				wave_p.then(data => {
-				  console.log(data);
-				  
-				  // Filter data result
-				  const creditsremaining = data.statistics.creditsremaining;
-				  const wave_error = data.categories.error.count;
-				  const wave_contrast = data.categories.contrast.count;
-				  const wave_alert = data.categories.alert.count;
-				  const wave_feature = data.categories.feature.count;
-				  const wave_structure = data.categories.structure.count;
-				  const wave_aria = data.categories.aria.count;
-				
-				  let wave_msg = "<li>Error : "+wave_error+"</li><li>Contrast : "+wave_contrast+"</li><li>Alert : "+wave_alert+"</li><li>Feature : "+wave_feature+"</li><li>Structure : "+wave_structure+"</li><li>Aria : "+wave_aria+"</li>";
-				  
-				  let elem = document.getElementById("result_wave");
-				  elem.innerHTML += "<ul>"+wave_msg+"</ul>";
-				  
-				  result_wave = "{Error : "+wave_error+",Contrast : "+wave_contrast+",Alert : "+wave_alert+",Feature : "+wave_feature+",Structure : "+wave_structure+",Aria : "+wave_aria+"}";
-				})
-			
-				// Set data to Bdd
-				Promise.all([lighthouse_p,validator_p,wave_p])
-				.then(function() {setTimeout(saveInBdd(), 100);});
-			}
-			else{
-				// Set data to Bdd
-				Promise.all([lighthouse_p,validator_p])
-				.then(function() {setTimeout(saveInBdd(), 100);});
-			}*/
-				
-		Promise.all([lighthouse_p,validator_p])
-		.then(function() {setTimeout(saveResultsInBdd(), 1000);});
     }
+	if (!isPreview && isAEM && run_wave && waveAPIKey != "") {
+		// Fonction Wave
+		const waveUrl = "https://wave.webaim.org/api/request?&url=https://google.com/";
+		let waveOptions = "key="+waveAPIKey+"&format=json&reporttype=1";
+		
+		async function wave(url = waveUrl) {
+		  const response = await fetch(url+'?'+waveOptions+'&url='+encodeURIComponent(currentUrl), {
+			method: 'GET',
+			mode: 'cors',
+			cache: 'no-cache',
+			credentials: 'same-origin',
+			headers: { 'Content-Type': 'text/html;charset=UTF-8' },
+			redirect: 'follow',
+			referrerPolicy: 'no-referrer'
+		  });
+		  return response.json();
+		}
+		
+		let wave_p = Promise.resolve(wave());
+		wave_p.then(data => {
+		  console.log(data);
+		  
+		  // Filter data result
+		  const creditsremaining = data.statistics.creditsremaining;
+		  const wave_error = data.categories.error.count;
+		  const wave_contrast = data.categories.contrast.count;
+		  const wave_alert = data.categories.alert.count;
+		  const wave_feature = data.categories.feature.count;
+		  const wave_structure = data.categories.structure.count;
+		  const wave_aria = data.categories.aria.count;
+		
+		  let wave_msg = "<li>Error : "+wave_error+"</li><li>Contrast : "+wave_contrast+"</li><li>Alert : "+wave_alert+"</li><li>Feature : "+wave_feature+"</li><li>Structure : "+wave_structure+"</li><li>Aria : "+wave_aria+"</li>";
+		  
+		  let elem = document.getElementById("result_wave");
+		  elem.innerHTML += "<ul>"+wave_msg+"</ul>";
+		  
+		  result_wave = "{Error : "+wave_error+",Contrast : "+wave_contrast+",Alert : "+wave_alert+",Feature : "+wave_feature+",Structure : "+wave_structure+",Aria : "+wave_aria+"}";
+		})
+	}
 	
-
+	if(run_html5 && run_lighthouse && run_wave){
+		// Set data to Bdd
+		Promise.all([lighthouse_p,validator_p,wave_p])
+		.then(function() {setTimeout(saveResultsInBdd(), 100);});
+	}
+	else if(run_html5, run_lighthouse){
+		// Set data to Bdd
+		Promise.all([lighthouse_p,validator_p])
+		.then(function() {setTimeout(saveResultsInBdd(), 100);});
+	}
     // Sauvegarde les infos de la decla en Bdd
 	if(isDecla && !isPreview && save_to_db){
 	  saveDeclaInBdd();

@@ -7,7 +7,7 @@ if (document.body.classList.contains('renowify-script-injected')) {
   const only_error = false; // true --> affiche uniquement les Non-conformités critiques
   const save_to_db = true; // true --> autorise la sauvegarde des resultats en base de données
   const run_html5 = true; // true --> lance le script W3C de detection d'erreur HTML5
-  const run_lighthouse = true; // true --> lance le script Lighthouse de Google (Attention aux Quotas)
+  const run_lighthouse = false; // true --> lance le script Lighthouse de Google (Attention aux Quotas)
   const run_wave = false; // true --> lance le script Wave (Attention aux Quotas)
 
   // Environnement

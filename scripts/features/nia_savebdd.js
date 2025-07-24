@@ -66,7 +66,7 @@ function saveResultsInBdd() {
 		*/
     // Version 2025
 
-    const db_api_url = 'http://127.0.0.1:3005/'; // Projet ciwuxacc_api
+    const db_api_url = 'http://127.0.0.1:3005/'; // Projet Express ciwuxacc_api
 
     const db_api_endpoint_page = 'page/url/';
     const db_api_endpoint_ta = 'ta/';

@@ -213,27 +213,13 @@ function addScriptRenowify(currentTabId) {
       if (scriptInjected[0].result == false) {
         const p1 = chrome.scripting.executeScript({
           files: [
-            scriptFolder + '/parts/nia01_colors.js',
-            scriptFolder + '/parts/nia02_images.js',
-            scriptFolder + '/parts/nia03_links.js',
-            scriptFolder + '/parts/nia04_form.js',
-            scriptFolder + '/parts/nia05_obligatoire.js',
-            scriptFolder + '/parts/nia06_structure.js',
-            scriptFolder + '/parts/nia07_config.js',
-            scriptFolder + '/parts/nia08_table.js',
-            scriptFolder + '/parts/nia09_nav.js',
-            scriptFolder + '/parts/nia10_oldtag.js',
-            scriptFolder + '/parts/nia11_lang.js',
-            scriptFolder + '/parts/nia12_button.js',
-            scriptFolder + '/parts/nia13_lottie.js',
-            scriptFolder + '/parts/nia14_title.js',
-            scriptFolder + '/parts/nia15_secu.js',
-            scriptFolder + '/features/nia_functions.js',
-            scriptFolder + '/features/nia_resultpanel.js',
-            scriptFolder + '/features/nia_savebdd.js',
-            scriptFolder + '/features/nia_savedecla.js',
-            scriptFolder + '/features/nia_thirdservices.js',
-            scriptFolder + '/renowify.js'
+            scriptFolder + 'dist/checks.js',
+            scriptFolder + 'features/nia_functions.js',
+            scriptFolder + 'features/nia_resultpanel.js',
+            scriptFolder + 'features/nia_savebdd.js',
+            scriptFolder + 'features/nia_savedecla.js',
+            scriptFolder + 'features/nia_thirdservices.js',
+            scriptFolder + 'renowify.js'
           ],
           target: { tabId: currentTabId }
         });
@@ -253,7 +239,7 @@ function addScriptRenowify(currentTabId) {
 function runRenowify(switchBtnId, currentTabId) {
   console.log('Run : script_' + switchBtnId + '.js');
   chrome.scripting.executeScript({
-    files: [scriptFolder + '/script_' + switchBtnId + '.js'],
+    files: [scriptFolder + 'script_' + switchBtnId + '.js'],
     target: { tabId: currentTabId }
   });
 }

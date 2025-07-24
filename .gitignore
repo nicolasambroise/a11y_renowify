@@ -1,1 +1,3 @@
 node_modules
+
+/scripts/private/nia_thirdservices_config.js
