@@ -1,7 +1,7 @@
 {
   "name": "a11y_renowify",
   "version": "2.3.0",
-  "description": "Plugin A11Y Renowify",
+  "description": "Plugin A11Y Renowify TEST",
   "scripts": {
     "eslint-fix": "eslint scripts/** --color --fix",
     "stylelint-fix": "stylelint styles/** --color --config='.stylelintrc.json' --formatter=verbose --fix",
