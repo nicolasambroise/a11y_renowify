@@ -184,9 +184,9 @@ function sanitizeText(txt, locale) {
   return txt
     .toLowerCase()
     .toLocaleLowerCase(locale)
-	.replaceAll(/<span class="checkA11YSpan".*?<\/span>/gis, "")
+    .replaceAll(/<span class="checkA11YSpan".*?<\/span>/gis, '')
     .replaceAll(/\n|\r/g, ' ')
-    .replaceAll(/[.:;,?!{}$()|©'"-\/]/g, ' ')
+    .replaceAll(/[.:;,?!{}$()|©'"-\\/]/g, ' ')
     .replaceAll(/\s+/g, ' ')
     .trim();
 }

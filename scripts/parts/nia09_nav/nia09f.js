@@ -38,24 +38,24 @@ function check_test_09f() {
                   parseFloat(
                     window.getComputedStyle(nia09f_nodes[i].parentElement)[
                       'marginLeft'
-                      ]
+                    ]
                   ) +
                   parseFloat(
                     window.getComputedStyle(nia09f_nodes[i].parentElement)[
                       'marginRight'
-                      ]
+                    ]
                   );
                 nia09f_vertical_parent =
                   nia09f_rect_parent['height'] +
                   parseFloat(
                     window.getComputedStyle(nia09f_nodes[i].parentElement)[
                       'marginTop'
-                      ]
+                    ]
                   ) +
                   parseFloat(
                     window.getComputedStyle(nia09f_nodes[i].parentElement)[
                       'marginBottom'
-                      ]
+                    ]
                   );
                 if (
                   nia09f_horizontal_parent < 24 ||

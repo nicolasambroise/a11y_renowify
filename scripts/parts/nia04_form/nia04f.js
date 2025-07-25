@@ -1,6 +1,5 @@
 // F. Required ou aria-required="true" possède un asterisque dans le label
 function check_test_04f() {
-
   if (!only_redactor && isAEM) {
     const nia04f_nodes = document.querySelectorAll(
       'form [required]:not([required="false"]), form [aria-required="true"]'

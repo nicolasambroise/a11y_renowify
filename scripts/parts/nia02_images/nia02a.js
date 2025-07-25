@@ -11,8 +11,8 @@ function check_test_02a() {
     setItemToResultList(
       'nc',
       "<li><a href='#' data-destination='nia02a1' class='result-focus label-red'>02-A</a> : Présence de " +
-      nia02a1_nodes.length +
-      " images sans alternative textuelle [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>"
+        nia02a1_nodes.length +
+        " images sans alternative textuelle [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>"
     );
     setItemsOutline(nia02a1_nodes, 'red', 'nia02a1', '02-A');
   }
@@ -29,8 +29,8 @@ function check_test_02a() {
       setItemToResultList(
         'nth',
         "<li><a href='#' data-destination='nia02a2' class='result-focus label-yellow'>02-A</a> : Présence de " +
-        nia02a2_nodes.length +
-        " images sans attribut alt [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>"
+          nia02a2_nodes.length +
+          " images sans attribut alt [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>"
       );
       setItemsOutline(nia02a2_nodes, 'yellow', 'nia02a2', '02-A');
     }

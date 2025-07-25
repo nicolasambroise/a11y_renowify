@@ -1,5 +1,10 @@
 // J Vérifie la présence de l'attribut target_blank sur les liens externe (Exception : On ne regarde pas dans les flux sociaux car le contenu provient d'un aggregateur)
 function check_test_03j() {
+  let url = window.location.host;
+  if (!url) {
+    return '';
+  }
+
   if (!only_redactor) {
     const nia03j_nodes = document.querySelectorAll(
       'a[href^="http"]:not([href*="' + url + '"]):not([target="_blank"])'

@@ -1,6 +1,5 @@
 // A. Position de bouton menu
 function check_test_07a() {
-
   if (!only_redactor && isAEM) {
     const nia07a_nodes = document.querySelectorAll(
       'button.anchor[data-destination^="#headernav"]:not(.anchor-close)'

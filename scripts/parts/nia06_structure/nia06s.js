@@ -1,6 +1,5 @@
 // S Breadcrumb
 function check_test_06s() {
-
   // Les pages secondaires doivent disposer d’un breadcrumb
   //L’intégralité de la hiérarchie doit pouvoir être affiché (possibilité de les mettre dans un accordéon) et cliquable.
   // Les liens du breadcrumb doivent être présenté dans une liste ul/ol

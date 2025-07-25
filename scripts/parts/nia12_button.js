@@ -11,5 +11,4 @@ function check_part_12() {
   check_test_12b();
   check_test_12c();
   check_test_12d();
-
 }

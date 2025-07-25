@@ -12,8 +12,8 @@ function check_test_03k() {
       setItemToResultList(
         'nth',
         "<li><a href='#' data-destination='nia03k' class='result-focus label-yellow'>03-K</a> : Trop de liens Pour en savoir plus (" +
-        nia03k_nodes.length +
-        ')</li>'
+          nia03k_nodes.length +
+          ')</li>'
       );
       setItemsOutline(nia03k_nodes, 'yellow', 'nia03k', '03-K');
     }

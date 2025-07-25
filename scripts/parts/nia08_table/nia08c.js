@@ -14,5 +14,4 @@ function check_test_08c() {
       setItemsOutline(nia08c_nodes, 'yellow', 'nia08c', '08-C');
     }
   }
-
 }

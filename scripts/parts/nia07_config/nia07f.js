@@ -1,6 +1,5 @@
 // F. Menu
 function check_test_07f() {
-
   // F1. Check si le menu existe
   if (!only_redactor && isAEM) {
     const nia07f_menu = document.querySelector(
@@ -79,7 +78,7 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F2.1 Absence de lien pour se rendre à la page passerelle pour l'élément de menu n°" +
-                      iplusun
+                        iplusun
                     );
                   nia07f_list21 += iplusun + ',';
                   setItemOutline(
@@ -92,7 +91,7 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F2.2 Absence de bouton pour déplier le sous-menu pour l'élement de menu n°" +
-                      iplusun
+                        iplusun
                     );
                   nia07f_list22 += iplusun + ',';
                   setItemOutline(
@@ -105,8 +104,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F2.3 Un problème a été detecté pour l'élement de menu n°" +
-                      iplusun +
-                      ' (absence de sous-menu alors que la classe has-subnav est présente)'
+                        iplusun +
+                        ' (absence de sous-menu alors que la classe has-subnav est présente)'
                     );
                   nia07f_list23 += iplusun + ',';
                   setItemOutline(
@@ -122,8 +121,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F2.4 Un problème a été detecté pour l'élement de menu n°" +
-                      iplusun +
-                      " (absence de l'attribut aria-expanded)"
+                        iplusun +
+                        " (absence de l'attribut aria-expanded)"
                     );
                   nia07f_list24 += iplusun + ',';
                   setItemOutline(
@@ -136,20 +135,20 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - L'item de menu " +
-                      iplusun +
-                      ' avec page passerelles et sous-menu est OK'
+                        iplusun +
+                        ' avec page passerelles et sous-menu est OK'
                     );
                 }
               }
 
-                // F3. Sans l’accès aux pages passerelles depuis la navigation:
+              // F3. Sans l’accès aux pages passerelles depuis la navigation:
               // Sur l'item de rubrique vérifier existance de (li.has-subnav > button) + cette item doit avoir l'attribut aria-expanded
               else {
                 if (nia07f11_nodes && nia07f11_nodes.length > 0) {
                   if (debug_flag)
                     console.log(
                       " - F3.1 Présence d'un lien pour se rendre à une page passerelle sur l'élement de menu n°" +
-                      iplusun
+                        iplusun
                     );
                   nia07f_list31 += iplusun + ',';
                   setItemOutline(
@@ -162,7 +161,7 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F3.2 Absence de bouton pour déplier le sous-menu pour l'élement de menu n°" +
-                      iplusun
+                        iplusun
                     );
                   nia07f_list32 += iplusun + ',';
                   setItemOutline(
@@ -175,8 +174,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F3.3 Un problème a été detecté pour l'élement de menu n°" +
-                      iplusun +
-                      ' (absence de sous-menu alors que la classe has-subnav est présente)'
+                        iplusun +
+                        ' (absence de sous-menu alors que la classe has-subnav est présente)'
                     );
                   nia07f_list33 += iplusun + ',';
                   setItemOutline(
@@ -192,8 +191,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F3.4 Un problème a été detecté pour l'élement de menu n°" +
-                      iplusun +
-                      " (absence de l'attribut aria-expanded)"
+                        iplusun +
+                        " (absence de l'attribut aria-expanded)"
                     );
                   nia07f_list34 += iplusun + ',';
                   setItemOutline(
@@ -206,8 +205,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - L'item de menu " +
-                      iplusun +
-                      ' sans page passerelles et sous-menu est OK'
+                        iplusun +
+                        ' sans page passerelles et sous-menu est OK'
                     );
                 }
               }
@@ -217,7 +216,7 @@ function check_test_07f() {
                 if (debug_flag)
                   console.log(
                     " - F4.1 Un problème a été detecté pour l'élement de menu n°" +
-                    iplusun
+                      iplusun
                   );
                 nia07f_list41 += iplusun + ',';
                 setItemOutline(nia07f10_nodes[i], 'orange', 'nia07f41', '07-F');
@@ -225,7 +224,7 @@ function check_test_07f() {
                 if (debug_flag)
                   console.log(
                     " - F4.2 Un problème a été detecté pour l'élement de menu n°" +
-                    iplusun
+                      iplusun
                   );
                 nia07f_list42 += iplusun + ',';
                 setItemOutline(nia07f10_nodes[i], 'orange', 'nia07f42', '07-F');
@@ -233,7 +232,7 @@ function check_test_07f() {
                 if (debug_flag)
                   console.log(
                     " - F4.3 Un problème a été detecté pour l'élement de menu n°" +
-                    iplusun
+                      iplusun
                   );
                 nia07f_list43 += iplusun + ',';
                 setItemOutline(nia07f10_nodes[i], 'orange', 'nia07f43', '07-F');
@@ -245,7 +244,7 @@ function check_test_07f() {
                 if (debug_flag)
                   console.log(
                     " - F4.4 Un problème a été detecté pour l'élement de menu n°" +
-                    iplusun
+                      iplusun
                   );
                 nia07f_list44 += iplusun + ',';
                 setItemOutline(nia07f10_nodes[i], 'orange', 'nia07f44', '07-F');
@@ -263,96 +262,96 @@ function check_test_07f() {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f21' class='result-focus label-orange'>07-F</a> Absence de lien pour se rendre à la page passerelle <span class='cy-hidden'>pour l'élément de menu n°" +
-            nia07f_list21.slice(0, -1) +
-            '</span></li>'
+              nia07f_list21.slice(0, -1) +
+              '</span></li>'
           );
         }
         if (nia07f_list22 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f22' class='result-focus label-orange'>07-F</a> : Absence de bouton pour déplier le sous-menu<span class='cy-hidden'> pour l'élement de menu n°" +
-            nia07f_list22.slice(0, -1) +
-            '</span></li>'
+              nia07f_list22.slice(0, -1) +
+              '</span></li>'
           );
         }
         if (nia07f_list23 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f23' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list23.slice(0, -1) +
-            '</span>: absence de sous-menu alors que la classe has-subnav est présente</li>'
+              nia07f_list23.slice(0, -1) +
+              '</span>: absence de sous-menu alors que la classe has-subnav est présente</li>'
           );
         }
         if (nia07f_list24 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f24' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list24.slice(0, -1) +
-            "</span>: absence de l'attribut aria-expanded</li>"
+              nia07f_list24.slice(0, -1) +
+              "</span>: absence de l'attribut aria-expanded</li>"
           );
         }
         if (nia07f_list31 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f31' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list31.slice(0, -1) +
-            '</span>: conflit sur le lien pour aller sur la page passerelle</li>'
+              nia07f_list31.slice(0, -1) +
+              '</span>: conflit sur le lien pour aller sur la page passerelle</li>'
           );
         }
         if (nia07f_list32 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f32' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list32.slice(0, -1) +
-            '</span>: absence de bouton pour déplier le sous-menu</li>'
+              nia07f_list32.slice(0, -1) +
+              '</span>: absence de bouton pour déplier le sous-menu</li>'
           );
         }
         if (nia07f_list33 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f33' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list33.slice(0, -1) +
-            '</span>: absence de sous-menu alors que la classe has-subnav est présente)</li>'
+              nia07f_list33.slice(0, -1) +
+              '</span>: absence de sous-menu alors que la classe has-subnav est présente)</li>'
           );
         }
         if (nia07f_list34 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f34' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list34.slice(0, -1) +
-            "</span>: absence de l'attribut aria-expanded</li>"
+              nia07f_list34.slice(0, -1) +
+              "</span>: absence de l'attribut aria-expanded</li>"
           );
         }
         if (nia07f_list41 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f41' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list41.slice(0, -1) +
-            '</span>: absence de lien pour acceder aux pages passerelle.</li>'
+              nia07f_list41.slice(0, -1) +
+              '</span>: absence de lien pour acceder aux pages passerelle.</li>'
           );
         }
         if (nia07f_list42 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f42' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list42.slice(0, -1) +
-            '</span>: remplacer les boutons par des liens de navigation</li>'
+              nia07f_list42.slice(0, -1) +
+              '</span>: remplacer les boutons par des liens de navigation</li>'
           );
         }
         if (nia07f_list43 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f43' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list43.slice(0, -1) +
-            '</span>: un item du menu sans sous-menu contient une liste ul</li>'
+              nia07f_list43.slice(0, -1) +
+              '</span>: un item du menu sans sous-menu contient une liste ul</li>'
           );
         }
         if (nia07f_list44 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f44' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list44.slice(0, -1) +
-            "</span>: présence d'attributs aria-expanded ou aria-haspopup sur un item du menu</li>"
+              nia07f_list44.slice(0, -1) +
+              "</span>: présence d'attributs aria-expanded ou aria-haspopup sur un item du menu</li>"
           );
         }
       }

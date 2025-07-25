@@ -16,5 +16,4 @@ function check_test_03g() {
       setItemsOutline(nia03g_nodes, 'yellow', 'nia03g', '03-G');
     }
   }
-
 }

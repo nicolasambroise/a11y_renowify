@@ -1,6 +1,5 @@
 // N Composant Sommaire : Bloub
 function check_test_06n() {
-
   if (isAEM && !only_redactor) {
     const nia06n_node = document.querySelector('.page-bloub');
     if (nia06n_node) {
@@ -44,4 +43,5 @@ function check_test_06n() {
         );
       }
     }
-  }}
+  }
+}

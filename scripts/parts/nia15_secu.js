@@ -14,5 +14,4 @@ function check_part_15() {
 	Règle n°185 : Une famille générique de police est indiquée comme dernier élément de substitution.
 	Règle n°208 : Le serveur ne communique pas d'informations sur les logiciels et langages utilisés.
 	*/
-
 }

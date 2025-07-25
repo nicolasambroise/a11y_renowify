@@ -1,7 +1,9 @@
 // D. Présence de 2 systemes de navigation (plan du site, recherche, menu)
 function check_test_09d() {
   if (isAEM) {
-    const nia09d_nav = document.querySelector('nav #headernav, nav#headernav, *:not(#headerwrapper-mobile) > nav[class^="page-headernav"]');
+    const nia09d_nav = document.querySelector(
+      'nav #headernav, nav#headernav, *:not(#headerwrapper-mobile) > nav[class^="page-headernav"]'
+    );
     const nia09d_nav_fixed = document.querySelector(
       '.header-icons > nav.headernav-fixed'
     );
@@ -27,13 +29,9 @@ function check_test_09d() {
     );
 
     let nia09d_counter = 0;
-    if (
-      nia09d_nav && isItemVisible(nia09d_nav)) {
+    if (nia09d_nav && isItemVisible(nia09d_nav)) {
       nia09d_counter++;
-    } else if (
-      nia09d_nav &&
-      nia09d_nav_btn &&
-      isItemVisible(nia09d_nav_btn)) {
+    } else if (nia09d_nav && nia09d_nav_btn && isItemVisible(nia09d_nav_btn)) {
       nia09d_counter++;
     } else if (
       nia09d_nav &&
@@ -45,9 +43,7 @@ function check_test_09d() {
       console.log('navigation principale non trouvé');
     }
 
-    if (
-      nia09d_search &&
-      isItemVisible(nia09d_search)) {
+    if (nia09d_search && isItemVisible(nia09d_search)) {
       nia09d_counter++;
     } else if (
       nia09d_search &&

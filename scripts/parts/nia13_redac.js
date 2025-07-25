@@ -5,5 +5,4 @@ function check_part_13() {
   if (debug_flag) console.log('13 Rédaction');
 
   check_test_13a();
-
 }

@@ -9,5 +9,4 @@ function check_part_10() {
   check_test_10b();
   check_test_10c();
   check_test_10d();
-
 }

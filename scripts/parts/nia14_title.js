@@ -11,5 +11,4 @@ function check_part_14() {
   check_test_14d();
   check_test_14e();
   check_test_14f();
-  
 }

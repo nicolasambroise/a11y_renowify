@@ -43,7 +43,9 @@ function check_test_09e() {
 
     // Les skiplinks situé dans l’entête doivent être dans un élément <nav role=’navigation’> avec un aria_label
     if (!only_error) {
-      const nia09e3_nodes = document.querySelector('body > .skiplinks, body > .xfpage > .skiplinks');
+      const nia09e3_nodes = document.querySelector(
+        'body > .skiplinks, body > .xfpage > .skiplinks'
+      );
       if (
         nia09e3_nodes.firstElementChild &&
         (nia09e3_nodes.firstElementChild.nodeName != 'NAV' ||
@@ -64,7 +66,10 @@ function check_test_09e() {
       const nia09e4_nodes = document.querySelectorAll(
         'body > *:not(#orejime):not(#a42-ac):not(.checkA11YSpan):not(link):not(svg.iconset)'
       );
-      if (!nia09e4_nodes[0].classList.contains('skiplinks') && !nia09e4_nodes[0].firstElementChild.classList.contains('skiplinks')) {
+      if (
+        !nia09e4_nodes[0].classList.contains('skiplinks') &&
+        !nia09e4_nodes[0].firstElementChild.classList.contains('skiplinks')
+      ) {
         setItemToResultList(
           'nth',
           "<li><a href='#' data-destination='nia09e4' class='result-focus label-yellow'>09-E</a> : Les skiplinks situé dans l’entête doivent être les premiers éléments tabulable de la page (hors modale des cookies)</li>"

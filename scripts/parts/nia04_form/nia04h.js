@@ -84,10 +84,10 @@ function check_test_04h() {
                 if (debug_flag)
                   console.log(
                     '[nia04h] distance : [' +
-                    nia04h_distance_horizontal +
-                    ':' +
-                    nia04h_distance_vertical +
-                    ']'
+                      nia04h_distance_horizontal +
+                      ':' +
+                      nia04h_distance_vertical +
+                      ']'
                   );
                 // Exception pour les élément de type radio/checkbox/file dont l'input est inclus dans la balise label
                 if (nia04h_nodes[i].parentElement == nia04h_label[0]) {
@@ -99,8 +99,8 @@ function check_test_04h() {
                   if (debug_flag)
                     console.log(
                       '[nia04h] wrap distance : [' +
-                      nia04h_distance_wrapper +
-                      ']'
+                        nia04h_distance_wrapper +
+                        ']'
                     );
                   if (nia04h_distance_wrapper > 100) {
                     setItemOutline(nia04h_nodes[i], 'orange', 'nia04h', '04-H');

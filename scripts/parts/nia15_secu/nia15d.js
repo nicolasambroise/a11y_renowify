@@ -1,6 +1,5 @@
 // D. Le code source de chaque page contient une métadonnée qui définit le jeu de caractères UTF-8
 function check_test_15d() {
-
   if (!only_redactor && !only_error) {
     const nia15d_node = document.querySelector('meta[charset="UTF-8"]');
     if (nia15d_node == null) {

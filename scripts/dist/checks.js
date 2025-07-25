@@ -5,7 +5,7 @@ Vérification de plusieurs points concernant les contrastes de couleur :
  o Contraste des bordures de champ et du placeholder
  o Contraste de l'outline [A FINIR]
  o Présence de dégradé sans couleur de replis
- o Présence d'une déclaration de couleur de texte et de BG sur la balise <body> [TODO]
+ o Présence d'une déclaration de couleur de texte et de BG sur la balise <body>
  */
 function check_part_01() {
   if (debug_flag) console.log('01 Couleur');
@@ -15,7 +15,7 @@ function check_part_01() {
   check_test_01c();
   check_test_01d();
   check_test_01e();
-
+  check_test_01f();
 }
 
 // A Check All text
@@ -407,13 +407,18 @@ function check_test_01a() {
     }
   }
 }
+
 // B. Opacité Form Field Border
 function check_test_01b() {
   if (!only_redactor) {
     const nia01b_nodes = document.querySelectorAll(
       'input:not([disabled]):not([type="file"]), select:not([disabled]), textarea:not([disabled]), button:not([disabled])'
     );
-    let nia01b_flag1 = false, nia01b_flag2 = false, nia01b_flag3 = false, nia01b_flag4 = false, nia01b_flag5 = false;
+    let nia01b_flag1 = false,
+      nia01b_flag2 = false,
+      nia01b_flag3 = false,
+      nia01b_flag4 = false,
+      nia01b_flag5 = false;
     let nia01b_color1,
       nia01b_color2,
       nia01b_color3,
@@ -539,9 +544,9 @@ function check_test_01b() {
             nia01b_ratio23 =
               nia01b_color2luminance > nia01b_color3luminance
                 ? (nia01b_color2luminance + 0.05) /
-                (nia01b_color3luminance + 0.05)
+                  (nia01b_color3luminance + 0.05)
                 : (nia01b_color3luminance + 0.05) /
-                (nia01b_color2luminance + 0.05);
+                  (nia01b_color2luminance + 0.05);
 
             nia01b_ratio23_inv = 1 / nia01b_ratio23;
 
@@ -553,12 +558,12 @@ function check_test_01b() {
                 console.log(nia01b_ratio23_inv);
                 console.log(
                   '01B - FAIL 3.3.3 Standard ratio : ' +
-                  nia01b_ratio23_inv +
-                  ' (' +
-                  nia01b_color2 +
-                  ' vs ' +
-                  nia01b_color3 +
-                  ')'
+                    nia01b_ratio23_inv +
+                    ' (' +
+                    nia01b_color2 +
+                    ' vs ' +
+                    nia01b_color3 +
+                    ')'
                 );
               }
               setItemOutline(nia01b_nodes[i], 'orange', 'nia01b2', '01-B');
@@ -602,23 +607,23 @@ function check_test_01b() {
             nia01b_ratio12 =
               nia01b_color1luminance > nia01b_color2luminance
                 ? (nia01b_color2luminance + 0.05) /
-                (nia01b_color1luminance + 0.05)
+                  (nia01b_color1luminance + 0.05)
                 : (nia01b_color1luminance + 0.05) /
-                (nia01b_color2luminance + 0.05);
+                  (nia01b_color2luminance + 0.05);
             nia01b_ratio12_inv = 1 / nia01b_ratio12;
             nia01b_ratio13 =
               nia01b_color1luminance > nia01b_color3luminance
                 ? (nia01b_color3luminance + 0.05) /
-                (nia01b_color1luminance + 0.05)
+                  (nia01b_color1luminance + 0.05)
                 : (nia01b_color1luminance + 0.05) /
-                (nia01b_color3luminance + 0.05);
+                  (nia01b_color3luminance + 0.05);
             nia01b_ratio13_inv = 1 / nia01b_ratio13;
             nia01b_ratio23 =
               nia01b_color2luminance > nia01b_color3luminance
                 ? (nia01b_color2luminance + 0.05) /
-                (nia01b_color3luminance + 0.05)
+                  (nia01b_color3luminance + 0.05)
                 : (nia01b_color3luminance + 0.05) /
-                (nia01b_color2luminance + 0.05);
+                  (nia01b_color2luminance + 0.05);
             nia01b_ratio23_inv = 1 / nia01b_ratio23;
 
             if (
@@ -638,37 +643,36 @@ function check_test_01b() {
               if (debug_flag && nia01b_ratio12_inv < 3)
                 console.log(
                   '01B - FAIL 3.3.3 Standard ratio : ' +
-                  nia01b_ratio12_inv +
-                  ' (' +
-                  nia01b_color1 +
-                  ' vs ' +
-                  nia01b_color2 +
-                  ')'
+                    nia01b_ratio12_inv +
+                    ' (' +
+                    nia01b_color1 +
+                    ' vs ' +
+                    nia01b_color2 +
+                    ')'
                 );
               else if (debug_flag && nia01b_ratio13_inv < 3)
                 console.log(
                   '01B - FAIL 3.3.3 Standard ratio : ' +
-                  nia01b_ratio13_inv +
-                  ' (' +
-                  nia01b_color1 +
-                  ' vs ' +
-                  nia01b_color3 +
-                  ')'
+                    nia01b_ratio13_inv +
+                    ' (' +
+                    nia01b_color1 +
+                    ' vs ' +
+                    nia01b_color3 +
+                    ')'
                 );
               else if (debug_flag && nia01b_ratio23_inv < 3)
                 console.log(
                   '01B - FAIL 3.3.3 Standard ratio : ' +
-                  nia01b_ratio23_inv +
-                  ' (' +
-                  nia01b_color2 +
-                  ' vs ' +
-                  nia01b_color3 +
-                  ')'
+                    nia01b_ratio23_inv +
+                    ' (' +
+                    nia01b_color2 +
+                    ' vs ' +
+                    nia01b_color3 +
+                    ')'
                 );
               if (nia01b_position == 'absolute' || nia01b_position == 'fixed') {
                 setItemOutline(nia01b_nodes[i], 'yellow', 'nia01b2', '01-B');
                 nia01b_flag5 = true;
-
               } else {
                 setItemOutline(nia01b_nodes[i], 'orange', 'nia01b2', '01-B');
                 nia01b_flag3 = true;
@@ -712,6 +716,7 @@ function check_test_01b() {
     }
   }
 }
+
 // C. Opacité Placeholder
 function check_test_01c() {
   // Open si topsearch ancre présent
@@ -775,21 +780,21 @@ function check_test_01c() {
             nia01c_ratio =
               nia01c_color1luminance > nia01c_color2luminance
                 ? (nia01c_color2luminance + 0.05) /
-                (nia01c_color1luminance + 0.05)
+                  (nia01c_color1luminance + 0.05)
                 : (nia01c_color1luminance + 0.05) /
-                (nia01c_color2luminance + 0.05);
+                  (nia01c_color2luminance + 0.05);
             nia01c_ratio_inv = 1 / nia01c_ratio;
             //console.log(color1+" vs "+color2+" = "+ nia01c_ratio_inv)
             if (nia01c_ratio_inv < 4.5) {
               if (debug_flag)
                 console.log(
                   '01C - FAIL 3.2.1 Standard ratio : ' +
-                  nia01c_ratio_inv +
-                  ' (' +
-                  nia01c_color1 +
-                  ' vs ' +
-                  nia01c_color2 +
-                  ')'
+                    nia01c_ratio_inv +
+                    ' (' +
+                    nia01c_color1 +
+                    ' vs ' +
+                    nia01c_color2 +
+                    ')'
                 );
               setItemOutline(nia01c_nodes[i], 'orange', 'nia01c1', '01-C');
               nia01c_flag1 = true;
@@ -833,6 +838,7 @@ function check_test_01c() {
     }
   }
 }
+
 // D. Opacité de l'outline
 function check_test_01d() {
   /*
@@ -994,29 +1000,94 @@ function check_test_01d() {
   }
   */
 }
+
 // E presence de dégradé sans couleur de replis
 // Pour des soucis de perf, on ne test que certain element
 function check_test_01e() {
   if (!only_redactor) {
-    const nia01e_nodes = document.querySelectorAll('header, footer, .cmp-section, aside, article');
+    const nia01e_nodes = document.querySelectorAll(
+      'header, footer, .cmp-section, aside, article'
+    );
     let nia01e_flag = false;
     if (nia01e_nodes && nia01e_nodes.length > 0) {
       for (let i = 0; i < nia01e_nodes.length; i++) {
         if (isItemVisible(nia01e_nodes[i])) {
-          nia01e_bgi = window.getComputedStyle(nia01e_nodes[i], null).getPropertyValue('background-image');
-          nia01e_bgc = window.getComputedStyle(nia01e_nodes[i], null).getPropertyValue('background-color');
-          if (nia01e_bgi.indexOf("linear-gradient") >= 0 && nia01e_bgc == "rgba(0, 0, 0, 0)") {
+          nia01e_bgi = window
+            .getComputedStyle(nia01e_nodes[i], null)
+            .getPropertyValue('background-image');
+          nia01e_bgc = window
+            .getComputedStyle(nia01e_nodes[i], null)
+            .getPropertyValue('background-color');
+          if (
+            nia01e_bgi.indexOf('linear-gradient') >= 0 &&
+            nia01e_bgc == 'rgba(0, 0, 0, 0)'
+          ) {
             nia01e_flag = true;
-            setItemOutline(nia01e_nodes[i], "yellow", "nia01e", "01-E");
+            setItemOutline(nia01e_nodes[i], 'yellow', 'nia01e', '01-E');
           }
         }
       }
     }
     if (nia01e_flag == true) {
-      setItemToResultList("man", "<li><a href='#' data-destination='nia01e' class='result-focus label-yellow'>01-E</a> : Vérifier la présence d'une couleur de replis sur des éléments avec fond en dégradé.</li>");
+      setItemToResultList(
+        'man',
+        "<li><a href='#' data-destination='nia01e' class='result-focus label-yellow'>01-E</a> : Vérifier la présence d'une couleur de replis sur des éléments avec fond en dégradé.</li>"
+      );
     }
   }
 }
+
+// F. Présence de déclaration de couleur sur le <body>
+function check_test_01f() {
+  if (!only_redactor && !only_error) {
+    const nia01f_color = document.body.style.color;
+    const nia01f_bg = document.body.style.backgroundColor;
+
+    console.log(nia01f_color);
+    console.log(nia01f_bg);
+
+    if (
+      nia01f_color == '' ||
+      nia01f_color == 'rgba(0, 0, 0, 0)' ||
+      nia01f_bg == '' ||
+      nia01f_bg == 'rgba(0, 0, 0, 0)'
+    ) {
+      setItemToResultList(
+        'dev',
+        "<li><span class='result-focus label-orange'>01-F</span> : Absence de déclaration de couleurs sur la balise body</li>"
+      );
+    } else {
+      const nia01f_color_rgb = hexToRgbArray(nia01f_color);
+      const nia01f_bg_rgb = rgbToRgbArray(nia01f_bg);
+
+      const nia01f_color_luminance = luminance(
+        nia01f_color_rgb.r,
+        nia01f_color_rgb.g,
+        nia01f_color_rgb.b
+      );
+      const nia01f_bg_rgb_luminance = luminance(
+        nia01f_bg_rgb.r,
+        nia01f_bg_rgb.g,
+        nia01f_bg_rgb.b
+      );
+
+      // Calcul ratio
+      const nia01f_ratio =
+        nia01f_color_luminance > nia01f_bg_rgb_luminance
+          ? (nia01f_bg_rgb_luminance + 0.05) / (nia01f_bg_rgb_luminance + 0.05)
+          : (nia01f_bg_rgb_luminance + 0.05) / (nia01f_bg_rgb_luminance + 0.05);
+      const nia01f_ratio_inv = 1 / nia01f_ratio;
+
+      if (nia01f_ratio_inv < 4.5) {
+        setItemToResultList(
+          'dev',
+          "<li><span class='result-focus label-orange'>01-F</span> : Le jeu de couleurs par défaut sur la balise body n'est pas assez contrasté</li>"
+        );
+      }
+    }
+  }
+}
+
 // I. Presence de triple espace (double concidéré comme erreur d'inattention)
 function check_test_13a() {
   if (!only_error) {
@@ -1049,6 +1120,7 @@ function check_test_13a() {
     }
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 02 Images : Thématique RAWeb 1
 Vérification de plusieurs points concernant les images :
@@ -1061,7 +1133,6 @@ o	Images v1 légendés presence du aria-label sur le figure
 
 function check_part_02() {
   if (debug_flag) console.log('02 Images');
-
 
   check_test_02a();
   check_test_02b();
@@ -1088,8 +1159,8 @@ function check_test_02a() {
     setItemToResultList(
       'nc',
       "<li><a href='#' data-destination='nia02a1' class='result-focus label-red'>02-A</a> : Présence de " +
-      nia02a1_nodes.length +
-      " images sans alternative textuelle [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>"
+        nia02a1_nodes.length +
+        " images sans alternative textuelle [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>"
     );
     setItemsOutline(nia02a1_nodes, 'red', 'nia02a1', '02-A');
   }
@@ -1106,13 +1177,14 @@ function check_test_02a() {
       setItemToResultList(
         'nth',
         "<li><a href='#' data-destination='nia02a2' class='result-focus label-yellow'>02-A</a> : Présence de " +
-        nia02a2_nodes.length +
-        " images sans attribut alt [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>"
+          nia02a2_nodes.length +
+          " images sans attribut alt [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-1' target='_blank'>RAWeb 1.1.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-decorative-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 111</a>]</li>"
       );
       setItemsOutline(nia02a2_nodes, 'yellow', 'nia02a2', '02-A');
     }
   }
 }
+
 // B. Vérification des attributs des svg
 function check_test_02b() {
   const nia02b1_nodes = document.querySelectorAll(
@@ -1185,7 +1257,7 @@ function check_test_02b() {
       if (
         isItemsVisible(nia02b5_nodes[i]) &&
         ((nia02b5_nodes[i].hasAttribute('title') &&
-            nia02b5_nodes[i].getAttribute('title').length > 0) ||
+          nia02b5_nodes[i].getAttribute('title').length > 0) ||
           (nia02b5_nodes[i].hasAttribute('desc') &&
             nia02b5_nodes[i].getAttribute('desc').length > 0))
       ) {
@@ -1201,6 +1273,7 @@ function check_test_02b() {
     );
   }
 }
+
 // C. Alt vide sur les images de search logique.
 function check_test_02c() {
   if (!only_redactor && isAEM) {
@@ -1215,13 +1288,14 @@ function check_test_02c() {
       setItemToResultList(
         'dev',
         "<li><a href='#' data-destination='nia02c' class='result-focus label-red'>02-C</a> : Présence de " +
-        nia02c_nodes.length +
-        ' image de search-logic sans attribut alt vide</li>'
+          nia02c_nodes.length +
+          ' image de search-logic sans attribut alt vide</li>'
       );
       setItemsOutline(nia02c_nodes, 'red', 'nia02c', '02-C');
     }
   }
 }
+
 // D. Absence de copyright/caption/légende sur une image Core V3
 function check_test_02d() {
   if (!only_redactor && isAEM) {
@@ -1241,6 +1315,7 @@ function check_test_02d() {
     }
   }
 }
+
 // E. Images légendés presence du aria-label sur le figure
 function check_test_02e() {
   if (!only_redactor && isAEM) {
@@ -1260,6 +1335,7 @@ function check_test_02e() {
     }
   }
 }
+
 // F. Vérification sur les images atypique
 function check_test_02f() {
   if (!only_redactor) {
@@ -1339,6 +1415,7 @@ function check_test_02f() {
     }
   }
 }
+
 // G. Les images de décoration ne doivent pas avoir d'attributs permettant de fournir une alternative textuelle
 function check_test_02g() {
   const nia02g1_nodes = document.querySelectorAll(
@@ -1462,6 +1539,7 @@ function check_test_02g() {
     }
   }
 }
+
 // H. L'alternative doit être courte et concise - estimation max 150 caractères
 function check_test_02h() {
   const nia02h_nodes = document.querySelectorAll(
@@ -1502,7 +1580,7 @@ function check_test_02h() {
         !only_error &&
         nia02h_nodes[i].hasAttribute('alt') &&
         sanitizeText(nia02h_nodes[i].getAttribute('alt'), nia02h_lang).length >
-        150
+          150
       ) {
         setItemOutline(nia02h_nodes[i], 'yellow', 'nia02h', '02-H');
         nia02h_flag = true;
@@ -1524,6 +1602,7 @@ function check_test_02h() {
     );
   }
 }
+
 // I Chaque image-lien est dotée d'une alternative textuelle appropriée.
 function check_test_02i() {
   if (!only_error) {
@@ -1562,6 +1641,7 @@ function check_test_02i() {
     }
   }
 }
+
 // J.Les vignettes et aperçus ne sont pas des images de taille supérieure redimensionnées côté client.
 function check_test_02j() {
   if (!only_error && isAEM) {
@@ -1655,6 +1735,7 @@ function check_test_02j() {
     }
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-03 Lien - Thématique RAWeb 6
 Vérification de plusieurs points concernant les liens :
@@ -1664,10 +1745,6 @@ Vérification de plusieurs points concernant les liens :
  */
 function check_part_03() {
   if (debug_flag) console.log('03 Liens');
-  let url = window.location.host;
-  if (!url) {
-    return '';
-  }
 
   check_test_03a();
   check_test_03b();
@@ -1683,7 +1760,7 @@ function check_part_03() {
   check_test_03l();
   check_test_03m();
   check_test_03n();
-
+  check_test_03o();
 }
 
 // A. Verification de la présence du suffix sur les liens externe
@@ -1731,6 +1808,7 @@ function check_test_03a() {
     }
   }
 }
+
 // B. Verification de titre vide
 function check_test_03b() {
   const nia03b_nodes = document.querySelectorAll(
@@ -1744,6 +1822,7 @@ function check_test_03b() {
     setItemsOutline(nia03b_nodes, 'red', 'nia03b', '03-B');
   }
 }
+
 // C. Probleme de lang
 function check_test_03c() {
   if (!only_redactor) {
@@ -1763,6 +1842,7 @@ function check_test_03c() {
     }
   }
 }
+
 // D. Présence d'un conflit dans les attribut de liens
 function check_test_03d() {
   if (!only_redactor) {
@@ -1782,6 +1862,7 @@ function check_test_03d() {
     }
   }
 }
+
 // E. Vérifier que le title reprend à minimum le contenu textuel
 function check_test_03e() {
   const nia03e_nodes = document.querySelectorAll('a[title]');
@@ -1843,6 +1924,7 @@ function check_test_03e() {
     );
   }
 }
+
 // F. Chaque lien a t'il un intitulé
 function check_test_03f() {
   const nia03f_nodes = document.querySelectorAll(
@@ -1879,6 +1961,7 @@ function check_test_03f() {
     );
   }
 }
+
 // G. Présence de liens sans href
 function check_test_03g() {
   if (!only_error) {
@@ -1897,8 +1980,8 @@ function check_test_03g() {
       setItemsOutline(nia03g_nodes, 'yellow', 'nia03g', '03-G');
     }
   }
-
 }
+
 // H. Liens tel: mailto: fax:
 function check_test_03h() {
   const nia03h_nodes = document.querySelectorAll(
@@ -1907,8 +1990,7 @@ function check_test_03h() {
   let nia03h_flag = false;
   let nia03h_regexmail =
     /^((?=.+@)[A-Za-z0-9_-]+(\.[A-Za-z0-9_-]+)*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*(?:\.[A-Za-z]{2,}))$/;
-  let nia03h_regexphone =
-    /^((\+|00)|\((\+|00)[0-9]{1,4}\))?[0-9+\-\s().]*$/;
+  let nia03h_regexphone = /^((\+|00)|\((\+|00)[0-9]{1,4}\))?[0-9+\-\s().]*$/;
   let nia03h_content = '';
 
   if (nia03h_nodes && nia03h_nodes.length > 0) {
@@ -1947,6 +2029,7 @@ function check_test_03h() {
     );
   }
 }
+
 // I Lien sur "ici" ou sur "lien"
 function check_test_03i() {
   if (!only_error) {
@@ -1978,8 +2061,14 @@ function check_test_03i() {
     }
   }
 }
+
 // J Vérifie la présence de l'attribut target_blank sur les liens externe (Exception : On ne regarde pas dans les flux sociaux car le contenu provient d'un aggregateur)
 function check_test_03j() {
+  let url = window.location.host;
+  if (!url) {
+    return '';
+  }
+
   if (!only_redactor) {
     const nia03j_nodes = document.querySelectorAll(
       'a[href^="http"]:not([href*="' + url + '"]):not([target="_blank"])'
@@ -2008,6 +2097,7 @@ function check_test_03j() {
     }
   }
 }
+
 //K Liens Pour en savoir plus
 function check_test_03k() {
   if (!only_error && isAEM) {
@@ -2022,13 +2112,14 @@ function check_test_03k() {
       setItemToResultList(
         'nth',
         "<li><a href='#' data-destination='nia03k' class='result-focus label-yellow'>03-K</a> : Trop de liens Pour en savoir plus (" +
-        nia03k_nodes.length +
-        ')</li>'
+          nia03k_nodes.length +
+          ')</li>'
       );
       setItemsOutline(nia03k_nodes, 'yellow', 'nia03k', '03-K');
     }
   }
 }
+
 // L Présence de soulignement en dehors de lien
 function check_test_03l() {
   if (!only_error) {
@@ -2045,7 +2136,7 @@ function check_test_03l() {
         if (
           isItemVisible(nia03l_nodes[i]) &&
           window.getComputedStyle(nia03l_nodes[i], null).textDecorationLine ==
-          'underline'
+            'underline'
         ) {
           setItemOutline(nia03l_nodes[i], 'yellow', 'nia03l', '03-L');
           nia03l_flag = true;
@@ -2060,6 +2151,7 @@ function check_test_03l() {
     }
   }
 }
+
 // M. Présence de liens avec un espace dans le href
 function check_test_03m() {
   const nia03m_nodes = document.querySelectorAll(
@@ -2073,6 +2165,7 @@ function check_test_03m() {
     setItemsOutline(nia03m_nodes, 'orange', 'nia03m', '03-M');
   }
 }
+
 // N. Un lien non_souligné et inclus dans un paragraphe de texte doit être suffisamment contrasté avec le texte environnant (à l’état par défaut, hover et focus). Idéalement, toujours souligner les liens.
 function check_test_03n() {
   if (!only_redactor && !only_error) {
@@ -2089,7 +2182,7 @@ function check_test_03n() {
         if (
           isItemVisible(nia03n_nodes[i]) &&
           window.getComputedStyle(nia03n_nodes[i], null).textDecorationLine !=
-          'underline'
+            'underline'
         ) {
           setItemOutline(nia03n_nodes[i], 'yellow', 'nia03n', '03-N');
           nia03n_flag = true;
@@ -2104,6 +2197,33 @@ function check_test_03n() {
     }
   }
 }
+
+// O. Ajouter un test pour detecter les liens vers le QUAL
+function check_test_03o() {
+  if (!only_redactor && !only_error && isAEM && !isPreview) {
+    const nia03o_nodes = document.querySelectorAll('a');
+    let nia03o_flag = false;
+    if (nia03o_nodes && nia03o_nodes.length > 0) {
+      for (let i = 0; i < nia03o_nodes.length; i++) {
+        if (
+          isItemVisible(nia03o_nodes[i]) &&
+          nia03o_nodes[i].hasAttribute('href') &&
+          nia03o_nodes[i].getAttribute('href').includes('wcm-')
+        ) {
+          setItemOutline(nia03o_nodes[i], 'orange', 'nia03o', '03-O');
+          nia03o_flag = true;
+        }
+      }
+    }
+    if (nia03o_flag == true) {
+      setItemToResultList(
+        'man',
+        "<li><a href='#' data-destination='nia03o' class='result-focus label-orange'>03-O</a> : Présence d'un lien vers un environnement de test.</li>"
+      );
+    }
+  }
+}
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-04 Formulaire - Thématique RAWeb 11
 Vérification de plusieurs points concernant les champs de formulaire :
@@ -2313,6 +2433,7 @@ function check_test_04a() {
     }
   }
 }
+
 // B. Vérifier le format sur l'email
 function check_test_04b() {
   const nia04b_nodes = document.querySelectorAll('input[type="email"]');
@@ -2363,6 +2484,7 @@ function check_test_04b() {
     );
   }
 }
+
 // C. Check intitulé bouton envoi
 function check_test_04c() {
   if (!only_error && isAEM) {
@@ -2378,6 +2500,7 @@ function check_test_04c() {
     }
   }
 }
+
 // D. Vérifier si les champs ont bien un label
 function check_test_04d() {
   const nia04d_nodes = document.querySelectorAll(
@@ -2422,6 +2545,7 @@ function check_test_04d() {
     );
   }
 }
+
 // E. fieldset avec legend
 function check_test_04e() {
   const nia04e_nodes = document.querySelectorAll('fieldset');
@@ -2438,7 +2562,7 @@ function check_test_04e() {
           nia04e_nodes[i].firstElementChild.firstElementChild &&
           nia04e_nodes[i].firstElementChild.firstElementChild.tagName &&
           nia04e_nodes[i].firstElementChild.firstElementChild.tagName ==
-          'LEGEND'
+            'LEGEND'
         ) {
           // La balise légend est encapsulée dans un container
         } else if (
@@ -2460,11 +2584,10 @@ function check_test_04e() {
       "<li><a href='#' data-destination='nia04e' class='result-focus label-red'>04-E</a> : Absence de la légende dans un filedset [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-6-1' target='_blank'>RAWeb 11.6.1</a>]'</li>"
     );
   }
-
 }
+
 // F. Required ou aria-required="true" possède un asterisque dans le label
 function check_test_04f() {
-
   if (!only_redactor && isAEM) {
     const nia04f_nodes = document.querySelectorAll(
       'form [required]:not([required="false"]), form [aria-required="true"]'
@@ -2531,9 +2654,9 @@ function check_test_04f() {
     }
   }
 }
+
 // G. Pas d'autocomplete sur les champs radio/checkbox
 function check_test_04g() {
-
   const nia04g_nodes = document.querySelectorAll(
     'input[type="checkbox"][autocomplete]:not([autocomplete="off"]),input[type="radio"][autocomplete]:not([autocomplete="off"])'
   );
@@ -2545,6 +2668,7 @@ function check_test_04g() {
     setItemsOutline(nia04g_nodes, 'red', 'nia04g', '04-G');
   }
 }
+
 // H. Champ et étiquette accolé en recupérant les positions des centres : Estimé à max 100px pour une distance correcte
 function check_test_04h() {
   if (!only_redactor) {
@@ -2631,10 +2755,10 @@ function check_test_04h() {
                 if (debug_flag)
                   console.log(
                     '[nia04h] distance : [' +
-                    nia04h_distance_horizontal +
-                    ':' +
-                    nia04h_distance_vertical +
-                    ']'
+                      nia04h_distance_horizontal +
+                      ':' +
+                      nia04h_distance_vertical +
+                      ']'
                   );
                 // Exception pour les élément de type radio/checkbox/file dont l'input est inclus dans la balise label
                 if (nia04h_nodes[i].parentElement == nia04h_label[0]) {
@@ -2646,8 +2770,8 @@ function check_test_04h() {
                   if (debug_flag)
                     console.log(
                       '[nia04h] wrap distance : [' +
-                      nia04h_distance_wrapper +
-                      ']'
+                        nia04h_distance_wrapper +
+                        ']'
                     );
                   if (nia04h_distance_wrapper > 100) {
                     setItemOutline(nia04h_nodes[i], 'orange', 'nia04h', '04-H');
@@ -2671,6 +2795,7 @@ function check_test_04h() {
     }
   }
 }
+
 // I Les informations complétant l'étiquette d'un champ sont associées à celui-ci dans le code source
 function check_test_04i() {
   if (!only_redactor) {
@@ -2703,6 +2828,7 @@ function check_test_04i() {
     }
   }
 }
+
 // J Le format de saisie des champs de formulaire qui le nécessitent est indiqué (soit un aria-descibedby, soit des paranthèses dans le label)
 function check_test_04j() {
   const nia04j_nodes = document.querySelectorAll(
@@ -2738,6 +2864,7 @@ function check_test_04j() {
     );
   }
 }
+
 // K Présence de label de bouton insuffisament pertinent
 function check_test_04k() {
   if (!only_error && isAEM) {
@@ -2774,6 +2901,7 @@ function check_test_04k() {
     }
   }
 }
+
 // L Formulaire : bouton avant la fin du formulaire
 function check_test_04l() {
   if (!only_error) {
@@ -2807,8 +2935,8 @@ function check_test_04l() {
       );
     }
   }
-
 }
+
 // M Un groupe de Checkbox/Radio doit être structuré dans un fieldset
 function check_test_04m() {
   if (!only_redactor) {
@@ -2843,8 +2971,8 @@ function check_test_04m() {
       );
     }
   }
-
 }
+
 // N Le format de saisie du datepicker est indiqué (soit un aria-descibedby, soit des paranthèses dans le label)
 function check_test_04n() {
   const nia04n_nodes = document.querySelectorAll(
@@ -2880,6 +3008,7 @@ function check_test_04n() {
     );
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-05 Element Obligatoire - Thématique RAWeb 8
 Vérification de plusieurs points concernant des obligations dans le DOM
@@ -2891,7 +3020,6 @@ Vérification de plusieurs points concernant des obligations dans le DOM
 // https://stackoverflow.com/questions/143815/determine-if-an-html-elements-content-overflows
 // https://webtips.dev/webtips/javascript/find-overflowing-elements-with-javascript
 // https://www.stevefenton.co.uk/blog/2022/12/detect-overflowing-elements/
-
 
 function check_part_05() {
   if (debug_flag) console.log('05 Element Obligatoire');
@@ -2915,6 +3043,7 @@ function check_part_05() {
   check_test_05q();
   check_test_05r();
 }
+
 // A. Bloc vide
 function check_test_05a() {
   const nia05a_nodes = document.querySelectorAll(
@@ -2935,6 +3064,7 @@ function check_test_05a() {
     }
   }
 }
+
 // B. Bloc vide avec $nbsp; ou \n
 function check_test_05b() {
   const nia05b_nodes = document.querySelectorAll(
@@ -2968,6 +3098,7 @@ function check_test_05b() {
     );
   }
 }
+
 // C. Doctype
 function check_test_05c() {
   if (!only_redactor) {
@@ -2982,6 +3113,7 @@ function check_test_05c() {
     }
   }
 }
+
 // D. Page title
 function check_test_05d() {
   const nia05d_title = document.title;
@@ -2992,6 +3124,7 @@ function check_test_05d() {
     );
   }
 }
+
 // E. Changement de sens de lecture
 function check_test_05e() {
   if (!only_redactor) {
@@ -3062,6 +3195,7 @@ function check_test_05e() {
     }
   }
 }
+
 // F. Id dupliqué
 function check_test_05f() {
   if (!only_redactor) {
@@ -3092,12 +3226,13 @@ function check_test_05f() {
       setItemToResultList(
         'dev',
         "<li><a href='#' data-destination='nia05f' class='result-focus label-orange'>05-F</a> : Présence d'Id dupliqué<span class='cy-hidden'> (" +
-        nia05f_duplicateId +
-        ")</span> [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-2-1' target='_blank'>RAWeb 8.2.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-identifiant-html-nest-utilise-quune-seule-fois-par-page' target='_blank'>Opquast 229</a>]</li>"
+          nia05f_duplicateId +
+          ")</span> [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-2-1' target='_blank'>RAWeb 8.2.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-identifiant-html-nest-utilise-quune-seule-fois-par-page' target='_blank'>Opquast 229</a>]</li>"
       );
     }
   }
 }
+
 // G. Présence de la Govbar
 function check_test_05g() {
   if (isCTIE && !only_error) {
@@ -3110,6 +3245,7 @@ function check_test_05g() {
     }
   }
 }
+
 // H. Detect double <br>
 function check_test_05h() {
   const nia05h_nodes = document.querySelectorAll('br + br');
@@ -3153,6 +3289,7 @@ function check_test_05h() {
     );
   }
 }
+
 // I. Le code source de chaque page contient une métadonnée qui en décrit le contenu. ==> Présence de meta name=description
 function check_test_05i() {
   if (!only_error && !isSearchLogic && !isSitemap) {
@@ -3169,6 +3306,7 @@ function check_test_05i() {
     }
   }
 }
+
 // J. Le code source des pages contient un appel valide à une icône de favori.
 function check_test_05j() {
   if (!only_error) {
@@ -3185,6 +3323,7 @@ function check_test_05j() {
     }
   }
 }
+
 // K. Chaque page affiche une information permettant de connaître son emplacement dans l'arborescence du site.
 function check_test_05k() {
   if (!isHomepage && !only_redactor && isAEM && !only_error) {
@@ -3199,6 +3338,7 @@ function check_test_05k() {
     }
   }
 }
+
 // L. Le focus clavier n'est ni supprimé ni masqué sur le summary
 function check_test_05l() {
   if (!only_redactor) {
@@ -3218,6 +3358,7 @@ function check_test_05l() {
     }
   }
 }
+
 // M. Les styles ne justifient pas le texte.
 function check_test_05m() {
   if (!only_error) {
@@ -3231,6 +3372,7 @@ function check_test_05m() {
     }
   }
 }
+
 // N. Les mises en majuscules à des fins décoratives sont effectuées à l'aide des styles.
 function check_test_05n() {
   if (!only_error) {
@@ -3287,6 +3429,7 @@ function check_test_05n() {
     }
   }
 }
+
 // O. La page des résultats de recherche indique le nombre de résultats
 function check_test_05o() {
   if (!only_redactor && isSearchLogic && isAEM) {
@@ -3303,6 +3446,7 @@ function check_test_05o() {
     }
   }
 }
+
 // P. Section vide dans la page
 function check_test_05p() {
   if (!only_error) {
@@ -3340,6 +3484,7 @@ function check_test_05p() {
     }
   }
 }
+
 // Q Logo
 function check_test_05q() {
   /*
@@ -3412,6 +3557,7 @@ function check_test_05q() {
     }
   }
 }
+
 // R. Structure du titre de la page
 function check_test_05r() {
   // - Présence d’un <title> pertinent (par rapport à la Nomenclature : contient à minimum [h1] [Nom du site] [Luxembourg])
@@ -3425,6 +3571,7 @@ function check_test_05r() {
     }
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-06 Structure de l'information - Thématique RAWeb 9 
 Vérification de plusieurs points concernant la structure des composants
@@ -3454,7 +3601,7 @@ function check_part_06() {
   check_test_06o();
   check_test_06p();
   check_test_06q();
-  check_test_06r();  
+  check_test_06r();
   check_test_06s();
   check_test_06t();
   check_test_06u();
@@ -3479,7 +3626,7 @@ function check_test_06a() {
               (nia06a_nodes[i].parentElement.tagName == 'UL' ||
                 nia06a_nodes[i].parentElement.tagName == 'OL') &&
               ((nia06a_nodes[i].getAttribute('tabindex') == '0' &&
-                  nia06a_nodes[i].getAttribute('aria-selected') == 'true') ||
+                nia06a_nodes[i].getAttribute('aria-selected') == 'true') ||
                 (nia06a_nodes[i].getAttribute('tabindex') == '-1' &&
                   nia06a_nodes[i].getAttribute('aria-selected') != 'true'))
             )
@@ -3498,6 +3645,7 @@ function check_test_06a() {
     }
   }
 }
+
 // B. Vérifier que le liste <ul> et <ol> ne contienne que des <li> ou [role="listitem"]
 function check_test_06b() {
   const nia06b_nodes = document.querySelectorAll(
@@ -3511,6 +3659,7 @@ function check_test_06b() {
     setItemsOutline(nia06b_nodes, 'red', 'nia06b', '06-B');
   }
 }
+
 // C. Vérifier que la zone d’en-tête est structurée au moyen d’un élément <header> ;
 function check_test_06c() {
   // <header class="page-header" role="banner">
@@ -3558,6 +3707,7 @@ function check_test_06c() {
     }
   }
 }
+
 // D. Vérifier que les zones de navigation principales et secondaires sont structurées au moyen d’un élément <nav> ;
 function check_test_06d() {
   // <nav class="page-headernav" role="navigation" aria-label="Menu principal" id="headernav">
@@ -3573,6 +3723,7 @@ function check_test_06d() {
     }
   }
 }
+
 // E. Vérifier que l’élément <nav> n’est pas utilisé en dehors de la structuration des zones de navigation principales et secondaires ;
 function check_test_06e() {
   if (!only_redactor) {
@@ -3621,6 +3772,7 @@ function check_test_06e() {
     }
   }
 }
+
 // F. Vérifier que la zone de contenu principal est structurée au moyen d’un élément <main> ;
 function check_test_06f() {
   // Si le document possède plusieurs éléments <main>, vérifier qu’un seul de ces éléments est visible (les autres occurrences de l’élément sont pourvues d’un attribut hidden) ;
@@ -3658,6 +3810,7 @@ function check_test_06f() {
     }
   }
 }
+
 // G. Vérifier que la zone de pied de page est structurée au moyen d’un élément <footer>.
 function check_test_06g() {
   if (!only_redactor && isAEM) {
@@ -3694,7 +3847,11 @@ function check_test_06g() {
     );
     if (nia06g3_nodes && nia06g3_nodes.length > 1) {
       for (let i = 0; i < nia06g3_nodes.length; i++) {
-        if (nia06g3_nodes[i].closest("footer").querySelector('h2,[role="heading"][aria-level="2"]') == null ) {
+        if (
+          nia06g3_nodes[i]
+            .closest('footer')
+            .querySelector('h2,[role="heading"][aria-level="2"]') == null
+        ) {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia06g3' class='result-focus label-yellow'>06-G</a> : Absence d'un titre principal pour le footer</li>"
@@ -3714,8 +3871,7 @@ function check_test_06g() {
         'nc',
         "<li><span data-destination='nia06g4' class='result-focus label-red'>06-G</span> : Absence de la déclaration d'accessibilité dans le footer </li>"
       );
-    }
-    else if(nia06g4_nodes.closest("ul") == null){
+    } else if (nia06g4_nodes.closest('ul') == null) {
       setItemToResultList(
         'nc',
         "<li><a href='#' data-destination='nia06g5' class='result-focus label-red'>06-G</a> : Les liens du footer doivent être structurés sous forme de liste </li>"
@@ -3724,6 +3880,7 @@ function check_test_06g() {
     }
   }
 }
+
 // H. Cadres iframe
 function check_test_06h() {
   // H1 Présence de titre
@@ -3804,6 +3961,7 @@ function check_test_06h() {
     }
   }
 }
+
 // I. Presence de triple espace (double concidéré comme erreur d'inattention)
 function check_test_06i() {
   // A. Max duration = 5s si autoplay / Pas de loop
@@ -3840,9 +3998,9 @@ function check_test_06i() {
             if (debug_flag)
               console.log(
                 'autoplay : ' +
-                nia06i_autoplay +
-                ' | controls : ' +
-                nia06i_controls
+                  nia06i_autoplay +
+                  ' | controls : ' +
+                  nia06i_controls
               );
             if (nia06i_controls == false) {
               if (nia06i_loop == true) {
@@ -3871,6 +4029,7 @@ function check_test_06i() {
     }
   }
 }
+
 // J. Vérifier que le liste <ul> et <ol> contiennent plusieurs éléments
 function check_test_06j() {
   const nia06j_nodes = document.querySelectorAll(
@@ -3922,6 +4081,7 @@ function check_test_06j() {
     }
   }
 }
+
 // K Abréviations : mise en évidence
 function check_test_06k() {
   if (!only_error && !only_redactor) {
@@ -3939,6 +4099,7 @@ function check_test_06k() {
     }
   }
 }
+
 // L Accordéon
 function check_test_06l() {
   if (isAEM && !only_redactor) {
@@ -3973,6 +4134,7 @@ function check_test_06l() {
     }
   }
 }
+
 // M Geoportail Adresse
 function check_test_06m() {
   if (isAEM && !only_redactor) {
@@ -4097,9 +4259,9 @@ function check_test_06m() {
     }
   }
 }
+
 // N Composant Sommaire : Bloub
 function check_test_06n() {
-
   if (isAEM && !only_redactor) {
     const nia06n_node = document.querySelector('.page-bloub');
     if (nia06n_node) {
@@ -4143,7 +4305,9 @@ function check_test_06n() {
         );
       }
     }
-  }}
+  }
+}
+
 // O Composant Focus
 function check_test_06o() {
   // Le composant focus doit avoir un titre même si celui_ci est visuellement masqué (.at ou .sr_only). Ce titre de composant doit être d’ 1 niveau supérieur à celui des titres des items
@@ -4297,6 +4461,7 @@ function check_test_06o() {
     }
   }
 }
+
 // P Composant Grid
 function check_test_06p() {
   // Les items du grid doivent est structuré sous forme de liste (ul, ol ou dl)
@@ -4379,6 +4544,7 @@ function check_test_06p() {
     }
   }
 }
+
 // Q Composant Tabs
 function check_test_06q() {
   if (isAEM) {
@@ -4451,6 +4617,7 @@ function check_test_06q() {
     }
   }
 }
+
 // R Back-To-Top
 function check_test_06r() {
   // L’élément Back_to_Top présent en Desktop doit également être présent en mobile
@@ -4488,9 +4655,9 @@ function check_test_06r() {
     }
   }
 }
+
 // S Breadcrumb
 function check_test_06s() {
-
   // Les pages secondaires doivent disposer d’un breadcrumb
   //L’intégralité de la hiérarchie doit pouvoir être affiché (possibilité de les mettre dans un accordéon) et cliquable.
   // Les liens du breadcrumb doivent être présenté dans une liste ul/ol
@@ -4563,14 +4730,18 @@ function check_test_06s() {
     }
   }
 }
+
 // T Composant Panier (Cart)
 function check_test_06t() {
-  if (!only_redactor && !isHomepage && isAEM && currentUrl.includes('/cart.html')) {
+  if (
+    !only_redactor &&
+    !isHomepage &&
+    isAEM &&
+    currentUrl.includes('/cart.html')
+  ) {
     // Le nom de l’étape en cours est présent dans le titre de la page.
     const nia06t1_title = document.title;
-    const nia06t1_h2 = document.querySelector(
-      '.basket h2'
-    );
+    const nia06t1_h2 = document.querySelector('.basket h2');
     if (!nia06t1_h2 || !nia06t1_title.includes(nia06t1_h2.textContent)) {
       setItemToResultList(
         'nc',
@@ -4580,10 +4751,12 @@ function check_test_06t() {
     }
 
     // Etape « Votre panier » : Les différentes meta doivent être présentées sous forme de liste (<ul> ou <dl>)
-    const nia06t2_nodes = document.querySelector(
-      '.basket-order-item-metas'
-    );
-    if (nia06t2_nodes && nia06t2_nodes.nodeName != "UL" && nia06t2_nodes.nodeName != "DL" ) {
+    const nia06t2_nodes = document.querySelector('.basket-order-item-metas');
+    if (
+      nia06t2_nodes &&
+      nia06t2_nodes.nodeName != 'UL' &&
+      nia06t2_nodes.nodeName != 'DL'
+    ) {
       setItemToResultList(
         'dev',
         "<li><a href='#' data-destination='nia06t2' class='result-focus label-orange'>06-T</a> : Les différentes meta doivent être présentées sous forme de liste (<ul> ou <dl>)</li>"
@@ -4595,7 +4768,11 @@ function check_test_06t() {
     const nia06t3_nodes = document.querySelector(
       '.basket-order-item-actions select.basket-order-item-qty'
     );
-    if (nia06t3_nodes && (nia06t3_nodes.previousElementSibling.nodeName != "LABEL" || !nia06t3_nodes.hasAttribute("aria-describedby"))) {
+    if (
+      nia06t3_nodes &&
+      (nia06t3_nodes.previousElementSibling.nodeName != 'LABEL' ||
+        !nia06t3_nodes.hasAttribute('aria-describedby'))
+    ) {
       setItemToResultList(
         'dev',
         "<li><a href='#' data-destination='nia06t3' class='result-focus label-orange'>06-T</a> : Liste de selection pour la quantité doit être liée au titre de la publication</li>"
@@ -4604,20 +4781,20 @@ function check_test_06t() {
     }
 
     // Etape « Mode de livraison » Un bouton radio ne devrait pas être seul
-    const nia06t4_nodes = document.querySelector(
-      '.basket input[type="radio"]'
-    );
-    if (nia06t4_nodes && nia06t4_nodes.closest('fieldset, [role="group"]') == "null") {
+    const nia06t4_nodes = document.querySelector('.basket input[type="radio"]');
+    if (
+      nia06t4_nodes &&
+      nia06t4_nodes.closest('fieldset, [role="group"]') == 'null'
+    ) {
       setItemToResultList(
         'dev',
         "<li><a href='#' data-destination='nia06t4' class='result-focus label-orange'>06-T</a> : Présence d'un bouton radio hors d'une balise fieldset</li>"
       );
       setItemsOutline(nia06t4_nodes, 'orange', 'nia06t4', '06-T');
-    }
-    else{
-      const nia06t5_nodes = nia06t4_nodes.closest('fieldset, [role="group"]').querySelector(
-        'input[type="radio"]'
-      )
+    } else {
+      const nia06t5_nodes = nia06t4_nodes
+        .closest('fieldset, [role="group"]')
+        .querySelector('input[type="radio"]');
       if (nia06t5_nodes && nia06t5_nodes.length < 2) {
         setItemToResultList(
           'dev',
@@ -4626,9 +4803,9 @@ function check_test_06t() {
         setItemsOutline(nia06t4_nodes, 'orange', 'nia06t5', '06-T');
       }
     }
-
   }
 }
+
 // U Composant Localnav
 function check_test_06u() {
   // Les différents items sont dans une structure de type liste <ul>
@@ -4690,6 +4867,7 @@ function check_test_06u() {
     }
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-07 AEM Component 
 Vérification de plusieurs points concernant la configuration des composants AEM suivant :
@@ -4710,12 +4888,10 @@ function check_part_07() {
   check_test_07e();
   check_test_07f();
   check_test_07g();
-  
 }
 
 // A. Position de bouton menu
 function check_test_07a() {
-
   if (!only_redactor && isAEM) {
     const nia07a_nodes = document.querySelectorAll(
       'button.anchor[data-destination^="#headernav"]:not(.anchor-close)'
@@ -4737,6 +4913,7 @@ function check_test_07a() {
     }
   }
 }
+
 // B. Recherche
 function check_test_07b() {
   // Presence de l'aria label
@@ -4768,7 +4945,7 @@ function check_test_07b() {
         nia07b2_nodes[i].hasAttribute('placeholder') &&
         nia07b2_nodes[i].hasAttribute('title') &&
         nia07b2_nodes[i].getAttribute('placeholder') !=
-        nia07b2_nodes[i].getAttribute('title')
+          nia07b2_nodes[i].getAttribute('title')
       ) {
         nia07b2_flag = true;
         setItemOutline(nia07b2_nodes[i], 'red', 'nia07b2', '07-B');
@@ -4964,6 +5141,7 @@ function check_test_07b() {
     }
   }
 }
+
 // C. Tooltip
 function check_test_07c() {
   if (isAEM) {
@@ -4981,6 +5159,7 @@ function check_test_07c() {
     }
   }
 }
+
 // D. Menu langue
 function check_test_07d() {
   if (!only_redactor && isAEM) {
@@ -5028,6 +5207,7 @@ function check_test_07d() {
     }
   }
 }
+
 // E. Video player
 function check_test_07e() {
   if (!only_redactor && isAEM) {
@@ -5047,9 +5227,9 @@ function check_test_07e() {
     }
   }
 }
+
 // F. Menu
 function check_test_07f() {
-
   // F1. Check si le menu existe
   if (!only_redactor && isAEM) {
     const nia07f_menu = document.querySelector(
@@ -5128,7 +5308,7 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F2.1 Absence de lien pour se rendre à la page passerelle pour l'élément de menu n°" +
-                      iplusun
+                        iplusun
                     );
                   nia07f_list21 += iplusun + ',';
                   setItemOutline(
@@ -5141,7 +5321,7 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F2.2 Absence de bouton pour déplier le sous-menu pour l'élement de menu n°" +
-                      iplusun
+                        iplusun
                     );
                   nia07f_list22 += iplusun + ',';
                   setItemOutline(
@@ -5154,8 +5334,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F2.3 Un problème a été detecté pour l'élement de menu n°" +
-                      iplusun +
-                      ' (absence de sous-menu alors que la classe has-subnav est présente)'
+                        iplusun +
+                        ' (absence de sous-menu alors que la classe has-subnav est présente)'
                     );
                   nia07f_list23 += iplusun + ',';
                   setItemOutline(
@@ -5171,8 +5351,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F2.4 Un problème a été detecté pour l'élement de menu n°" +
-                      iplusun +
-                      " (absence de l'attribut aria-expanded)"
+                        iplusun +
+                        " (absence de l'attribut aria-expanded)"
                     );
                   nia07f_list24 += iplusun + ',';
                   setItemOutline(
@@ -5185,20 +5365,20 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - L'item de menu " +
-                      iplusun +
-                      ' avec page passerelles et sous-menu est OK'
+                        iplusun +
+                        ' avec page passerelles et sous-menu est OK'
                     );
                 }
               }
 
-                // F3. Sans l’accès aux pages passerelles depuis la navigation:
+              // F3. Sans l’accès aux pages passerelles depuis la navigation:
               // Sur l'item de rubrique vérifier existance de (li.has-subnav > button) + cette item doit avoir l'attribut aria-expanded
               else {
                 if (nia07f11_nodes && nia07f11_nodes.length > 0) {
                   if (debug_flag)
                     console.log(
                       " - F3.1 Présence d'un lien pour se rendre à une page passerelle sur l'élement de menu n°" +
-                      iplusun
+                        iplusun
                     );
                   nia07f_list31 += iplusun + ',';
                   setItemOutline(
@@ -5211,7 +5391,7 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F3.2 Absence de bouton pour déplier le sous-menu pour l'élement de menu n°" +
-                      iplusun
+                        iplusun
                     );
                   nia07f_list32 += iplusun + ',';
                   setItemOutline(
@@ -5224,8 +5404,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F3.3 Un problème a été detecté pour l'élement de menu n°" +
-                      iplusun +
-                      ' (absence de sous-menu alors que la classe has-subnav est présente)'
+                        iplusun +
+                        ' (absence de sous-menu alors que la classe has-subnav est présente)'
                     );
                   nia07f_list33 += iplusun + ',';
                   setItemOutline(
@@ -5241,8 +5421,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - F3.4 Un problème a été detecté pour l'élement de menu n°" +
-                      iplusun +
-                      " (absence de l'attribut aria-expanded)"
+                        iplusun +
+                        " (absence de l'attribut aria-expanded)"
                     );
                   nia07f_list34 += iplusun + ',';
                   setItemOutline(
@@ -5255,8 +5435,8 @@ function check_test_07f() {
                   if (debug_flag)
                     console.log(
                       " - L'item de menu " +
-                      iplusun +
-                      ' sans page passerelles et sous-menu est OK'
+                        iplusun +
+                        ' sans page passerelles et sous-menu est OK'
                     );
                 }
               }
@@ -5266,7 +5446,7 @@ function check_test_07f() {
                 if (debug_flag)
                   console.log(
                     " - F4.1 Un problème a été detecté pour l'élement de menu n°" +
-                    iplusun
+                      iplusun
                   );
                 nia07f_list41 += iplusun + ',';
                 setItemOutline(nia07f10_nodes[i], 'orange', 'nia07f41', '07-F');
@@ -5274,7 +5454,7 @@ function check_test_07f() {
                 if (debug_flag)
                   console.log(
                     " - F4.2 Un problème a été detecté pour l'élement de menu n°" +
-                    iplusun
+                      iplusun
                   );
                 nia07f_list42 += iplusun + ',';
                 setItemOutline(nia07f10_nodes[i], 'orange', 'nia07f42', '07-F');
@@ -5282,7 +5462,7 @@ function check_test_07f() {
                 if (debug_flag)
                   console.log(
                     " - F4.3 Un problème a été detecté pour l'élement de menu n°" +
-                    iplusun
+                      iplusun
                   );
                 nia07f_list43 += iplusun + ',';
                 setItemOutline(nia07f10_nodes[i], 'orange', 'nia07f43', '07-F');
@@ -5294,7 +5474,7 @@ function check_test_07f() {
                 if (debug_flag)
                   console.log(
                     " - F4.4 Un problème a été detecté pour l'élement de menu n°" +
-                    iplusun
+                      iplusun
                   );
                 nia07f_list44 += iplusun + ',';
                 setItemOutline(nia07f10_nodes[i], 'orange', 'nia07f44', '07-F');
@@ -5312,96 +5492,96 @@ function check_test_07f() {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f21' class='result-focus label-orange'>07-F</a> Absence de lien pour se rendre à la page passerelle <span class='cy-hidden'>pour l'élément de menu n°" +
-            nia07f_list21.slice(0, -1) +
-            '</span></li>'
+              nia07f_list21.slice(0, -1) +
+              '</span></li>'
           );
         }
         if (nia07f_list22 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f22' class='result-focus label-orange'>07-F</a> : Absence de bouton pour déplier le sous-menu<span class='cy-hidden'> pour l'élement de menu n°" +
-            nia07f_list22.slice(0, -1) +
-            '</span></li>'
+              nia07f_list22.slice(0, -1) +
+              '</span></li>'
           );
         }
         if (nia07f_list23 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f23' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list23.slice(0, -1) +
-            '</span>: absence de sous-menu alors que la classe has-subnav est présente</li>'
+              nia07f_list23.slice(0, -1) +
+              '</span>: absence de sous-menu alors que la classe has-subnav est présente</li>'
           );
         }
         if (nia07f_list24 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f24' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list24.slice(0, -1) +
-            "</span>: absence de l'attribut aria-expanded</li>"
+              nia07f_list24.slice(0, -1) +
+              "</span>: absence de l'attribut aria-expanded</li>"
           );
         }
         if (nia07f_list31 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f31' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list31.slice(0, -1) +
-            '</span>: conflit sur le lien pour aller sur la page passerelle</li>'
+              nia07f_list31.slice(0, -1) +
+              '</span>: conflit sur le lien pour aller sur la page passerelle</li>'
           );
         }
         if (nia07f_list32 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f32' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list32.slice(0, -1) +
-            '</span>: absence de bouton pour déplier le sous-menu</li>'
+              nia07f_list32.slice(0, -1) +
+              '</span>: absence de bouton pour déplier le sous-menu</li>'
           );
         }
         if (nia07f_list33 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f33' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list33.slice(0, -1) +
-            '</span>: absence de sous-menu alors que la classe has-subnav est présente)</li>'
+              nia07f_list33.slice(0, -1) +
+              '</span>: absence de sous-menu alors que la classe has-subnav est présente)</li>'
           );
         }
         if (nia07f_list34 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f34' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list34.slice(0, -1) +
-            "</span>: absence de l'attribut aria-expanded</li>"
+              nia07f_list34.slice(0, -1) +
+              "</span>: absence de l'attribut aria-expanded</li>"
           );
         }
         if (nia07f_list41 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f41' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list41.slice(0, -1) +
-            '</span>: absence de lien pour acceder aux pages passerelle.</li>'
+              nia07f_list41.slice(0, -1) +
+              '</span>: absence de lien pour acceder aux pages passerelle.</li>'
           );
         }
         if (nia07f_list42 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f42' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list42.slice(0, -1) +
-            '</span>: remplacer les boutons par des liens de navigation</li>'
+              nia07f_list42.slice(0, -1) +
+              '</span>: remplacer les boutons par des liens de navigation</li>'
           );
         }
         if (nia07f_list43 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f43' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list43.slice(0, -1) +
-            '</span>: un item du menu sans sous-menu contient une liste ul</li>'
+              nia07f_list43.slice(0, -1) +
+              '</span>: un item du menu sans sous-menu contient une liste ul</li>'
           );
         }
         if (nia07f_list44 != '') {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia07f44' class='result-focus label-orange'>07-F</a> : Un problème a été detecté <span class='cy-hidden'>pour l'élement de menu n°" +
-            nia07f_list44.slice(0, -1) +
-            "</span>: présence d'attributs aria-expanded ou aria-haspopup sur un item du menu</li>"
+              nia07f_list44.slice(0, -1) +
+              "</span>: présence d'attributs aria-expanded ou aria-haspopup sur un item du menu</li>"
           );
         }
       }
@@ -5663,10 +5843,11 @@ function check_test_07f() {
     }
   }
 }
+
 // G Structure globale du menu
 function check_test_07g() {
   if (!only_redactor && isAEM) {
-        const nia07g1_nodes = document.querySelectorAll(
+    const nia07g1_nodes = document.querySelectorAll(
       'nav#headernav .nav--primary:not(ul), nav#headernav ul.nav--primary > .nav-item:not(li), nav#headernav ul.nav--primary > li.nav-item.has-subnav .subnav-item:not(li)'
     );
     if (nia07g1_nodes && nia07g1_nodes.length > 0) {
@@ -5733,8 +5914,7 @@ function check_test_07g() {
                   console.log(
                     nia07g3_nodes[i].parentElement
                       .closest('has-subnav')
-                      .firstElementChild.getAttribute('aria-current') !=
-                    'true'
+                      .firstElementChild.getAttribute('aria-current') != 'true'
                   );
                 }
                 nia07g3_flag = true;
@@ -5775,12 +5955,7 @@ function check_test_07g() {
         'dev',
         "<li><a href='#' data-destination='nia07g5' class='result-focus label-red'>07-G</a> : Il ne peut y avoir qu'un seul élément dans le menu avec l'attribut aria-current=page </li>"
       );
-      setItemOutline(
-        nia07g3_nodes[0].parentElement,
-        'red',
-        'nia07g5',
-        '07-G'
-      );
+      setItemOutline(nia07g3_nodes[0].parentElement, 'red', 'nia07g5', '07-G');
     }
   } else if (!only_error) {
     setItemToResultList(
@@ -5789,6 +5964,7 @@ function check_test_07g() {
     );
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-08 Tableau : Thématique RAWeb 5
 Vérification de plusieurs points concernant les tableaux
@@ -5820,6 +5996,7 @@ function check_test_08a() {
     setItemsOutline(nia08a_nodes, 'red', 'nia08a', '08-A');
   }
 }
+
 // B. Attribut deprecated
 function check_test_08b() {
   const nia08b_nodes = document.querySelectorAll(
@@ -5833,6 +6010,7 @@ function check_test_08b() {
     setItemsOutline(nia08b_nodes, 'red', 'nia08b', '08-B');
   }
 }
+
 // C. Attribut de tableaux deprecated
 function check_test_08c() {
   if (!only_error) {
@@ -5849,8 +6027,8 @@ function check_test_08c() {
       setItemsOutline(nia08c_nodes, 'yellow', 'nia08c', '08-C');
     }
   }
-
 }
+
 // D. Tableau de mise en forme
 function check_test_08d() {
   const nia08d_nodes = document.querySelectorAll(
@@ -5864,6 +6042,7 @@ function check_test_08d() {
     setItemsOutline(nia08d_nodes, 'red', 'nia08d', '08-D');
   }
 }
+
 // E. Chaque tableau à un entete de ligne ou de colonne balisé avec th ou role="columnheader" ou role="rowheader"
 function check_test_08e() {
   const nia08e_nodes = document.querySelectorAll(
@@ -5892,6 +6071,7 @@ function check_test_08e() {
     );
   }
 }
+
 // F Chaque tableau de donnée complexe possède un Caption()
 function check_test_08f() {
   const nia08f_nodes = document.querySelectorAll(
@@ -5956,6 +6136,7 @@ function check_test_08f() {
     return false;
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-09 Navigation
 Vérification de plusieurs points concernant la navigation dans le site
@@ -6137,6 +6318,7 @@ function check_test_09a() {
     }
   }
 }
+
 // B Page indésirable dans le plan du site
 function check_test_09b() {
   if (isSitemap && isAEM) {
@@ -6152,6 +6334,7 @@ function check_test_09b() {
     }
   }
 }
+
 // C. Presence d'attibut tabindex positif
 function check_test_09c() {
   if (!only_redactor) {
@@ -6171,10 +6354,13 @@ function check_test_09c() {
     }
   }
 }
+
 // D. Présence de 2 systemes de navigation (plan du site, recherche, menu)
 function check_test_09d() {
   if (isAEM) {
-    const nia09d_nav = document.querySelector('nav #headernav, nav#headernav, *:not(#headerwrapper-mobile) > nav[class^="page-headernav"]');
+    const nia09d_nav = document.querySelector(
+      'nav #headernav, nav#headernav, *:not(#headerwrapper-mobile) > nav[class^="page-headernav"]'
+    );
     const nia09d_nav_fixed = document.querySelector(
       '.header-icons > nav.headernav-fixed'
     );
@@ -6200,13 +6386,9 @@ function check_test_09d() {
     );
 
     let nia09d_counter = 0;
-    if (
-      nia09d_nav && isItemVisible(nia09d_nav)) {
+    if (nia09d_nav && isItemVisible(nia09d_nav)) {
       nia09d_counter++;
-    } else if (
-      nia09d_nav &&
-      nia09d_nav_btn &&
-      isItemVisible(nia09d_nav_btn)) {
+    } else if (nia09d_nav && nia09d_nav_btn && isItemVisible(nia09d_nav_btn)) {
       nia09d_counter++;
     } else if (
       nia09d_nav &&
@@ -6218,9 +6400,7 @@ function check_test_09d() {
       console.log('navigation principale non trouvé');
     }
 
-    if (
-      nia09d_search &&
-      isItemVisible(nia09d_search)) {
+    if (nia09d_search && isItemVisible(nia09d_search)) {
       nia09d_counter++;
     } else if (
       nia09d_search &&
@@ -6260,6 +6440,7 @@ function check_test_09d() {
     }
   }
 }
+
 // E. Utilisation des Skiplinks
 function check_test_09e() {
   if (!only_redactor && isAEM) {
@@ -6305,7 +6486,9 @@ function check_test_09e() {
 
     // Les skiplinks situé dans l’entête doivent être dans un élément <nav role=’navigation’> avec un aria_label
     if (!only_error) {
-      const nia09e3_nodes = document.querySelector('body > .skiplinks, body > .xfpage > .skiplinks');
+      const nia09e3_nodes = document.querySelector(
+        'body > .skiplinks, body > .xfpage > .skiplinks'
+      );
       if (
         nia09e3_nodes.firstElementChild &&
         (nia09e3_nodes.firstElementChild.nodeName != 'NAV' ||
@@ -6326,7 +6509,10 @@ function check_test_09e() {
       const nia09e4_nodes = document.querySelectorAll(
         'body > *:not(#orejime):not(#a42-ac):not(.checkA11YSpan):not(link):not(svg.iconset)'
       );
-      if (!nia09e4_nodes[0].classList.contains('skiplinks') && !nia09e4_nodes[0].firstElementChild.classList.contains('skiplinks')) {
+      if (
+        !nia09e4_nodes[0].classList.contains('skiplinks') &&
+        !nia09e4_nodes[0].firstElementChild.classList.contains('skiplinks')
+      ) {
         setItemToResultList(
           'nth',
           "<li><a href='#' data-destination='nia09e4' class='result-focus label-yellow'>09-E</a> : Les skiplinks situé dans l’entête doivent être les premiers éléments tabulable de la page (hors modale des cookies)</li>"
@@ -6359,6 +6545,7 @@ function check_test_09e() {
     }
   }
 }
+
 // F taille des éléments interactifs minimum attendue est de 24px par 24px.
 function check_test_09f() {
   if (!only_redactor && !only_error) {
@@ -6399,24 +6586,24 @@ function check_test_09f() {
                   parseFloat(
                     window.getComputedStyle(nia09f_nodes[i].parentElement)[
                       'marginLeft'
-                      ]
+                    ]
                   ) +
                   parseFloat(
                     window.getComputedStyle(nia09f_nodes[i].parentElement)[
                       'marginRight'
-                      ]
+                    ]
                   );
                 nia09f_vertical_parent =
                   nia09f_rect_parent['height'] +
                   parseFloat(
                     window.getComputedStyle(nia09f_nodes[i].parentElement)[
                       'marginTop'
-                      ]
+                    ]
                   ) +
                   parseFloat(
                     window.getComputedStyle(nia09f_nodes[i].parentElement)[
                       'marginBottom'
-                      ]
+                    ]
                   );
                 if (
                   nia09f_horizontal_parent < 24 ||
@@ -6465,6 +6652,7 @@ function check_test_09f() {
     }
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-10 Old tag
 Vérification de la présence d’attributs obsolètes.
@@ -6476,7 +6664,6 @@ function check_part_10() {
   check_test_10b();
   check_test_10c();
   check_test_10d();
-
 }
 
 /* A. Old tag
@@ -6514,6 +6701,7 @@ function check_test_10a() {
     setItemsOutline(nia10a_nodes, 'red', 'nia10a', '10-A');
   }
 }
+
 // B. Old tag Nice-to-have
 function check_test_10b() {
   // Exception pour les horaires : https://jira.intranet.etat.lu/browse/GUILUV3-1002
@@ -6534,6 +6722,7 @@ function check_test_10b() {
     }
   }
 }
+
 /* C. Old attribut
 
 --- Liste W3C ---
@@ -6600,6 +6789,7 @@ function check_test_10c() {
     setItemsOutline(nia10c_nodes, 'red', 'nia10c', '10-C');
   }
 }
+
 // D. Presentation attribut
 function check_test_10d() {
   const nia10d_nodes = document.querySelectorAll(
@@ -6613,6 +6803,7 @@ function check_test_10d() {
     setItemsOutline(nia10d_nodes, 'red', 'nia10d', '10-D');
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-11. Langue
 Vérification de la présence de changement de langue
@@ -6623,82 +6814,7 @@ function check_part_11() {
 
   check_test_11a();
   check_test_11b();
-
-/* TODO détecter du texte en langue étrangère en se basant sur les mots les plus courant ;
-Note : Cela ne permettra pas de detecter des mots isolé comme Hardware, BabyYear, etc.
-
-| Mot anglais | Type / usage                  | Pourquoi il est spécifique                     |
-| ----------- | ----------------------------- | ---------------------------------------------- |
-| **The**     | Article défini                | Article unique, structure différente ailleurs. |
-| **Will**    | Auxiliaire de futur           | N'existe pas en tant que mot isolé.            |
-| **Would**   | Modal conditionnel            | Spécifique au système verbal anglais.          |
-| **Shall**   | Modal formel / futur          | Désuet mais sans équivalent lexical.           |
-| **Might**   | Modal de possibilité          | Pas de mot unique équivalent.                  |
-| **May**     | Permission / possibilité      | Intraduisible tel quel.                        |
-| **Do**      | Auxiliaire syntaxique         | Fonction grammaticale unique.                  |
-| **Does**    | Présent 3ᵉ personne de *do*   | Forme fléchie sans correspondance.             |
-| **Did**     | Passé auxiliaire              | Pas d’équivalent lexical direct.               |
-| **Should**  | Obligation douce              | Usage idiomatique anglais.                     |
-| **Could**   | Capacité / possibilité passée | Intraduisible comme mot isolé.                 |
-| **Must**    | Nécessité / obligation        | Modal spécifique.                              |
-| **Yet**     | Adverbe de contraste / temps  | Polyvalence unique.                            |
-| **Still**   | Adverbe temporel              | Pas de correspondance directe.                 |
-| **Even**    | Adverbe d’intensité           | Sémantique idiomatique.                        |
-| **Though**  | Conjonction concessive        | Intraduisible tel quel.                        |
-| **Whether** | Conjonction conditionnelle    | Pas de mot unique.                             |
-| **Some**    | Déterminant indéfini          | Intraduisible dans son usage large.            |
-| **Any**     | Déterminant / pronom          | Usage très spécifique.                         |
-| **Whose**   | Pronom possessif interrogatif | N’a pas d’équivalent lexical exact.            |
-
-
-| Mot français | Type / usage                  | Pourquoi il est spécifique          |
-| ------------ | ----------------------------- | ----------------------------------- |
-| **On**       | Pronom indéfini               | Aucun équivalent exact.             |
-| **Y**        | Pronom adverbial              | Structure unique au français.       |
-| **En**       | Pronom partitif / lieu        | Intraduisible directement.          |
-| **Chez**     | Préposition idiomatique       | Pas d’équivalent lexical.           |
-| **Dont**     | Pronom relatif                | Fonction unique.                    |
-| **Même**     | Adjectif / adverbe / pronom   | Usage multiple sans équivalent.     |
-| **Encore**   | Adverbe de temps / répétition | Polyvalence propre au français.     |
-| **Déjà**     | Adverbe temporel              | Intraduisible mot à mot.            |
-| **Tant**     | Adverbe de quantité           | Structure spécifique.               |
-| **Bientôt**  | Adverbe temporel              | Structure spécifique.               |
-| **Quoique**  | Conjonction concessive        | Intraduisible lexicalement.         |
-| **Lorsque**  | Conjonction temporelle        | Absent sous cette forme ailleurs.   |
-| **Puisque**  | Conjonction de cause          | Mot unique français.                |
-| **Ainsi**    | Adverbe de conséquence        | Intraduisible mot pour mot.         |
-| **Voire**    | Adverbe d’intensification     | Inexistant ailleurs.                |
-| **Autant**   | Adverbe de comparaison        | Pas d’équivalent isolé.             |
-| **Leur**     | Pronom possessif / datif      | Usage spécifique.                   |
-| **Soi**      | Pronom réfléchi neutre        | Inexistant ailleurs.                |
-| **Se**       | Pronom réfléchi               | Fonction grammaticale unique.       |
-| **Aucun**    | Déterminant / pronom          | N’existe pas lexicalement ailleurs. |
-
-| Mot allemand   | Type / usage                             | Pourquoi il est spécifique              |
-| -------------- | ---------------------------------------- | --------------------------------------- |
-| **doch**       | Particule affirmative / de contradiction | Incomparable.                           |
-| **halt**       | Particule modale (acceptation)           | Intraduisible.                          |
-| **eben**       | Particule d’évidence                     | Typiquement allemand.                   |
-| **denn**       | Particule interrogative / causale        | Usage idiomatique.                      |
-| **schon**      | Adverbe temporel / modulateur            | Sens multiple, non lexicalisé ailleurs. |
-| **sich**       | Pronom réfléchi                          | Structure grammaticale spécifique.      |
-| **selbst**     | Réflexif / emphatique                    | Intraduisible simplement.               |
-| **nachdem**    | Locution conditionnelle                  | Pas de construction équivalente.        |
-| **wobei**      | Pronom relatif composé                   | Structure propre à l’allemand.          |
-| **weshalb**    | Conjonction de cause                     | Pas de mot équivalent isolé.            |
-| **zumindest**  | Adverbe concessif                        | Structure lexicale unique.              |
-| **außerdem**   | Adverbe d’ajout / argument               | Mot composé idiomatique.                |
-| **immerhin**   | Adverbe de concession                    | Pas de mot simple en fr./angl.          |
-| **sowieso**    | Adverbe d’évidence / résignation         | Intraduisible tel quel.                 |
-| **damit**      | Conjonction finale                       | Fusion lexicale typique.                |
-| **deshalb**    | Adverbe consécutif                       | Forme composée spécifique.              |
-| **zwar**       | Particule contrastive                    | Intraduisible.                          |
-| **jeweils**    | Adverbe distributif                      | Pas de mot exact en fr./angl.           |
-| **nirgends**   | Adverbe de lieu négatif                  | Intraduisible en un seul mot.           |
-| **irgendwann** | Adverbe temporel indéfini                | Signifie "un jour"                      |
-
-
- */
+  check_test_11c();
 }
 
 // A. Absence de lang
@@ -6718,6 +6834,7 @@ function check_test_11a() {
     }
   }
 }
+
 // B. Presence de lorem ipsum
 function check_test_11b() {
   if (!isPrototype && !only_redactor) {
@@ -6739,6 +6856,120 @@ function check_test_11b() {
     }
   }
 }
+
+/* C. Détecter du texte en langue étrangère en se basant sur les mots les plus courant ;
+Note : Cela ne permettra pas de detecter des mots isolé comme Hardware, BabyYear, etc.
+*/
+function check_test_11c() {
+  const nia11c_nodes = document.querySelectorAll(
+    '.cmp-text, .cmp-focus-list-description'
+  ); // Contenu rédigé par le client
+  let nia11c_flag = false;
+  let nia11c_lang;
+  let nia11c_array_test;
+
+  const nia11c_array_fr = [
+    ' on ',
+    ' y ',
+    ' en ',
+    ' chez ',
+    ' dont ',
+    ' même ',
+    ' le ',
+    ' déjà ',
+    ' pas ',
+    ' bientôt ',
+    ' avoir ',
+    ' lorsque ',
+    ' mais ',
+    ' ainsi ',
+    ' pour ',
+    ' autant ',
+    ' leur ',
+    ' dans ',
+    ' se ',
+    ' aucun '
+  ];
+  const nia11c_array_en = [
+    ' the ',
+    ' will ',
+    ' would ',
+    ' shall ',
+    ' might ',
+    ' may ',
+    ' do ',
+    ' does ',
+    ' did ',
+    ' should ',
+    ' could ',
+    ' must ',
+    ' yet ',
+    ' still ',
+    ' even ',
+    ' though ',
+    ' whether ',
+    ' some ',
+    ' any ',
+    ' whose '
+  ];
+  const nia11c_array_de = [
+    ' doch ',
+    ' schon ',
+    ' halt ',
+    ' denn ',
+    ' eben ',
+    ' nun ',
+    ' gar ',
+    ' überhaupt ',
+    ' sich ',
+    ' wird ',
+    ' damit ',
+    ' deshalb ',
+    ' dazu ',
+    ' während ',
+    ' keiner ',
+    ' etwas ',
+    ' nichts ',
+    ' allein ',
+    ' zwar ',
+    ' ebenfalls '
+  ];
+
+  if (nia11c_nodes && nia11c_nodes.length > 0) {
+    for (let i = 0; i < nia11c_nodes.length; i++) {
+      nia11c_lang = nia11c_nodes[i].closest('[lang]').getAttribute('lang');
+
+      if (nia11c_lang == 'fr') {
+        nia11c_array_test = nia11c_array_en.concat(nia11c_array_de);
+      } else if (nia11c_lang == 'en') {
+        nia11c_array_test = nia11c_array_fr.concat(nia11c_array_de);
+      } else if (nia11c_lang == 'de') {
+        nia11c_array_test = nia11c_array_fr.concat(nia11c_array_en);
+      } else {
+        break;
+      }
+
+      for (let j = 0; j < nia11c_array_test.length; j++) {
+        if (
+          nia11c_nodes[i].textContent
+            .toLowerCase()
+            .includes(nia11c_array_test[j])
+        ) {
+          setItemOutline(nia11c_nodes[i], 'orange', 'nia11c', '11-C');
+          nia11c_flag = true;
+          break;
+        }
+      }
+    }
+  }
+  if (nia11c_flag == true) {
+    setItemToResultList(
+      'man',
+      "<li><a href='#' data-destination='nia11c' class='result-focus label-orange'>11-C</a> : Forte probabilité de texte en langue étrangère présent sur la page</li>"
+    );
+  }
+}
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-12. Boutons
 Vérification des intitulé des boutons : Pour les boutons pour ouvrir la recherche, lancer la recherche, ouvrir les filtres et ouvrir le menu :
@@ -6752,7 +6983,6 @@ function check_part_12() {
   check_test_12b();
   check_test_12c();
   check_test_12d();
-
 }
 
 /* A. Bouton Role search*/
@@ -6781,6 +7011,7 @@ function check_test_12a() {
     }
   }
 }
+
 // B Bouton TopSearch
 function check_test_12b() {
   if (isAEM) {
@@ -6814,6 +7045,7 @@ function check_test_12b() {
     }
   }
 }
+
 /* C. Anchor */
 function check_test_12c() {
   if (isAEM) {
@@ -6901,6 +7133,7 @@ function check_test_12c() {
     }
   }
 }
+
 /* D. Button avec role */
 function check_test_12d() {
   if (!only_redactor && !only_error) {
@@ -6918,6 +7151,7 @@ function check_test_12d() {
     }
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-13. Regle de rédaction */
 // [TODO] Ajouter ici les autres régles propre au contenu saisi par le rédacteur
@@ -6925,7 +7159,6 @@ function check_part_13() {
   if (debug_flag) console.log('13 Rédaction');
 
   check_test_13a();
-
 }
 
 /*- ------------------------------------------------------------------------------- */
@@ -6941,7 +7174,6 @@ function check_part_14() {
   check_test_14d();
   check_test_14e();
   check_test_14f();
-  
 }
 
 // A. Heading avec role
@@ -6957,6 +7189,7 @@ function check_test_14a() {
     setItemsOutline(nia14a_nodes, 'red', 'nia14a', '14-A');
   }
 }
+
 // B. Aria-level sans heading
 function check_test_14b() {
   const nia14b_nodes = document.querySelectorAll(
@@ -6970,6 +7203,7 @@ function check_test_14b() {
     setItemsOutline(nia14b_nodes, 'red', 'nia14b', '14-B');
   }
 }
+
 // C. Heading caché au outil d'assistance
 function check_test_14c() {
   if (!only_redactor) {
@@ -6989,6 +7223,7 @@ function check_test_14c() {
     }
   }
 }
+
 // D. Heading simulé
 function check_test_14d() {
   if (!only_error) {
@@ -7012,8 +7247,8 @@ function check_test_14d() {
       );
     }
   }
-
 }
+
 // E. Ordre Heading
 function check_test_14e() {
   if (!only_error) {
@@ -7074,11 +7309,11 @@ function check_test_14e() {
             if (debug_flag)
               console.log(
                 '  > ' +
-                nia14e_nodes[i].innerText +
-                ' | current : ' +
-                nia14e_current_level +
-                ' | previous :' +
-                nia14e_previous_level
+                  nia14e_nodes[i].innerText +
+                  ' | current : ' +
+                  nia14e_current_level +
+                  ' | previous :' +
+                  nia14e_previous_level
               );
             nia14e_flag = true;
           }
@@ -7094,6 +7329,7 @@ function check_test_14e() {
     }
   }
 }
+
 // F. 2 Heading H1 : Conforme seulement si pertinent
 function check_test_14f() {
   if (!only_error) {
@@ -7123,6 +7359,7 @@ function check_test_14f() {
     }
   }
 }
+
 /*- -------------------------------------------------------------------------------- */
 /* 🗸 NIA-15. Securité */
 
@@ -7139,7 +7376,6 @@ function check_part_15() {
 	Règle n°185 : Une famille générique de police est indiquée comme dernier élément de substitution.
 	Règle n°208 : Le serveur ne communique pas d'informations sur les logiciels et langages utilisés.
 	*/
-
 }
 
 // A. Les liens externes qui ouvrent une nouvelle fenêtre ne partagent pas d'information de contexte.
@@ -7165,6 +7401,7 @@ function check_test_15a() {
     }
   }
 }
+
 // B. Les pages utilisant le protocole HTTPS ne proposent pas de ressources HTTP.
 function check_test_15b() {
   if (!only_error) {
@@ -7187,8 +7424,8 @@ function check_test_15b() {
       setItemsOutline(nia15b_nodes, 'yellow', 'nia15b', '15-B');
     }
   }
-
 }
+
 // C. Toutes les pages utilisent le protocole HTTPS.
 function check_test_15c() {
   if (!only_redactor) {
@@ -7200,9 +7437,9 @@ function check_test_15c() {
     }
   }
 }
+
 // D. Le code source de chaque page contient une métadonnée qui définit le jeu de caractères UTF-8
 function check_test_15d() {
-
   if (!only_redactor && !only_error) {
     const nia15d_node = document.querySelector('meta[charset="UTF-8"]');
     if (nia15d_node == null) {
@@ -7213,9 +7450,9 @@ function check_test_15d() {
     }
   }
 }
+
 // E Liens vers des documents en téléchargement
 function check_test_15e() {
-
   if (!only_error) {
     const nia15e_nodes = document.querySelectorAll(
       'a[href$=".doc"], a[href$=".docx"], a[href$=".xls"], a[href$=".xlsx"], a[href$=".ppt"], a[href$=".pptx"], a[href$=".txt"]'

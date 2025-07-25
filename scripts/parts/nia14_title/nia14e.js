@@ -58,11 +58,11 @@ function check_test_14e() {
             if (debug_flag)
               console.log(
                 '  > ' +
-                nia14e_nodes[i].innerText +
-                ' | current : ' +
-                nia14e_current_level +
-                ' | previous :' +
-                nia14e_previous_level
+                  nia14e_nodes[i].innerText +
+                  ' | current : ' +
+                  nia14e_current_level +
+                  ' | previous :' +
+                  nia14e_previous_level
               );
             nia14e_flag = true;
           }

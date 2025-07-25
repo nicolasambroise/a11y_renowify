@@ -14,7 +14,7 @@ function check_test_03n() {
         if (
           isItemVisible(nia03n_nodes[i]) &&
           window.getComputedStyle(nia03n_nodes[i], null).textDecorationLine !=
-          'underline'
+            'underline'
         ) {
           setItemOutline(nia03n_nodes[i], 'yellow', 'nia03n', '03-N');
           nia03n_flag = true;

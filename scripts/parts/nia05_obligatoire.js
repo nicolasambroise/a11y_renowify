@@ -10,7 +10,6 @@ Vérification de plusieurs points concernant des obligations dans le DOM
 // https://webtips.dev/webtips/javascript/find-overflowing-elements-with-javascript
 // https://www.stevefenton.co.uk/blog/2022/12/detect-overflowing-elements/
 
-
 function check_part_05() {
   if (debug_flag) console.log('05 Element Obligatoire');
 

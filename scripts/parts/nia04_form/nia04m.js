@@ -32,5 +32,4 @@ function check_test_04m() {
       );
     }
   }
-
 }

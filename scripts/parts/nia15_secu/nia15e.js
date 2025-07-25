@@ -1,6 +1,5 @@
 // E Liens vers des documents en téléchargement
 function check_test_15e() {
-
   if (!only_error) {
     const nia15e_nodes = document.querySelectorAll(
       'a[href$=".doc"], a[href$=".docx"], a[href$=".xls"], a[href$=".xlsx"], a[href$=".ppt"], a[href$=".pptx"], a[href$=".txt"]'

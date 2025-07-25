@@ -6,8 +6,7 @@ function check_test_03h() {
   let nia03h_flag = false;
   let nia03h_regexmail =
     /^((?=.+@)[A-Za-z0-9_-]+(\.[A-Za-z0-9_-]+)*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*(?:\.[A-Za-z]{2,}))$/;
-  let nia03h_regexphone =
-    /^((\+|00)|\((\+|00)[0-9]{1,4}\))?[0-9+\-\s().]*$/;
+  let nia03h_regexphone = /^((\+|00)|\((\+|00)[0-9]{1,4}\))?[0-9+\-\s().]*$/;
   let nia03h_content = '';
 
   if (nia03h_nodes && nia03h_nodes.length > 0) {

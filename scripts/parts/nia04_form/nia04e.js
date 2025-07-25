@@ -14,7 +14,7 @@ function check_test_04e() {
           nia04e_nodes[i].firstElementChild.firstElementChild &&
           nia04e_nodes[i].firstElementChild.firstElementChild.tagName &&
           nia04e_nodes[i].firstElementChild.firstElementChild.tagName ==
-          'LEGEND'
+            'LEGEND'
         ) {
           // La balise légend est encapsulée dans un container
         } else if (
@@ -36,5 +36,4 @@ function check_test_04e() {
       "<li><a href='#' data-destination='nia04e' class='result-focus label-red'>04-E</a> : Absence de la légende dans un filedset [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-6-1' target='_blank'>RAWeb 11.6.1</a>]'</li>"
     );
   }
-
 }

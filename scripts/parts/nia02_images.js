@@ -11,7 +11,6 @@ o	Images v1 légendés presence du aria-label sur le figure
 function check_part_02() {
   if (debug_flag) console.log('02 Images');
 
-
   check_test_02a();
   check_test_02b();
   check_test_02c();

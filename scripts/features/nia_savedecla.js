@@ -156,28 +156,28 @@ function saveDeclaInBdd() {
     sensible_cmp += 'Tableaux complexes,';
   if (sensible_cmp != '') sensible_cmp = sensible_cmp.slice(0, -1); // Remove last ,
 
-	let dataToSave = {
-		"url":  currentUrl, // URL de la décla
-		"conf": conf, // conformité indiquée dans le décla
-		"url_root": removeBracket(url_root), // URL de la racine indiquée dans le décla
-		"date_decla" : date_decla,
-		"date_revision" : date_revision,
-		"referentiel" : referentiel,
-		"nc" : nb_nc,
-		"nc_details" : removeBracket(nc_details),
-		"cd" : nb_cd,
-		"cd_details" : removeBracket(cd_details),
-		"ex" : nb_ex,
-		"ex_details" : removeBracket(ex_details),
-		"email_contact" : email_contact,
-		"organization" : removeBracket(organization),
-		"auditeur_name" : auditeur_name,
-		"access_features" : removeBracket(access_features),
-		"sensible_cmp" : sensible_cmp
-	};
+  let dataToSave = {
+    url: currentUrl, // URL de la décla
+    conf: conf, // conformité indiquée dans le décla
+    url_root: removeBracket(url_root), // URL de la racine indiquée dans le décla
+    date_decla: date_decla,
+    date_revision: date_revision,
+    referentiel: referentiel,
+    nc: nb_nc,
+    nc_details: removeBracket(nc_details),
+    cd: nb_cd,
+    cd_details: removeBracket(cd_details),
+    ex: nb_ex,
+    ex_details: removeBracket(ex_details),
+    email_contact: email_contact,
+    organization: removeBracket(organization),
+    auditeur_name: auditeur_name,
+    access_features: removeBracket(access_features),
+    sensible_cmp: sensible_cmp
+  };
 
-	console.log(dataToSave);
-	
+  console.log(dataToSave);
+
   if (isDecla && !isPreview && save_to_db) {
     /*
 		const db_api_url = "https://webux.gouv.etat.lu/a11y/a11y_bookmarklet/backend/save_decla.php"; 
@@ -202,7 +202,11 @@ function saveDeclaInBdd() {
 }
 
 // Fonction pour enlever les crochets et leur contenu à l'interieur de ceux-ci
-function removeBracket(data){
-	return data ? data.replaceAll(/(\r\n|\n|\r)/g, "").replaceAll(/\[.+?\]/g, "").replaceAll(/'/g, '"') : "";	
+function removeBracket(data) {
+  return data
+    ? data
+        .replaceAll(/(\r\n|\n|\r)/g, '')
+        .replaceAll(/\[.+?\]/g, '')
+        .replaceAll(/'/g, '"')
+    : '';
 }
-

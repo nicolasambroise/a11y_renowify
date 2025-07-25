@@ -70,7 +70,7 @@ function check_test_02b() {
       if (
         isItemsVisible(nia02b5_nodes[i]) &&
         ((nia02b5_nodes[i].hasAttribute('title') &&
-            nia02b5_nodes[i].getAttribute('title').length > 0) ||
+          nia02b5_nodes[i].getAttribute('title').length > 0) ||
           (nia02b5_nodes[i].hasAttribute('desc') &&
             nia02b5_nodes[i].getAttribute('desc').length > 0))
       ) {

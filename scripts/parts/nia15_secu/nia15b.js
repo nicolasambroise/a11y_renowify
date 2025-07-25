@@ -20,5 +20,4 @@ function check_test_15b() {
       setItemsOutline(nia15b_nodes, 'yellow', 'nia15b', '15-B');
     }
   }
-
 }

@@ -1,6 +1,6 @@
 body.bg-style-injected,
 body.bg-style-injected *,
-body.bg-style-injected *:before,
-body.bg-style-injected *:after {
+body.bg-style-injected *::before,
+body.bg-style-injected *::after {
   background-image: none !important;
 }

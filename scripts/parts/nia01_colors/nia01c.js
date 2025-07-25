@@ -61,21 +61,21 @@ function check_test_01c() {
             nia01c_ratio =
               nia01c_color1luminance > nia01c_color2luminance
                 ? (nia01c_color2luminance + 0.05) /
-                (nia01c_color1luminance + 0.05)
+                  (nia01c_color1luminance + 0.05)
                 : (nia01c_color1luminance + 0.05) /
-                (nia01c_color2luminance + 0.05);
+                  (nia01c_color2luminance + 0.05);
             nia01c_ratio_inv = 1 / nia01c_ratio;
             //console.log(color1+" vs "+color2+" = "+ nia01c_ratio_inv)
             if (nia01c_ratio_inv < 4.5) {
               if (debug_flag)
                 console.log(
                   '01C - FAIL 3.2.1 Standard ratio : ' +
-                  nia01c_ratio_inv +
-                  ' (' +
-                  nia01c_color1 +
-                  ' vs ' +
-                  nia01c_color2 +
-                  ')'
+                    nia01c_ratio_inv +
+                    ' (' +
+                    nia01c_color1 +
+                    ' vs ' +
+                    nia01c_color2 +
+                    ')'
                 );
               setItemOutline(nia01c_nodes[i], 'orange', 'nia01c1', '01-C');
               nia01c_flag1 = true;

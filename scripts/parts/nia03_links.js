@@ -7,10 +7,6 @@ Vérification de plusieurs points concernant les liens :
  */
 function check_part_03() {
   if (debug_flag) console.log('03 Liens');
-  let url = window.location.host;
-  if (!url) {
-    return '';
-  }
 
   check_test_03a();
   check_test_03b();
@@ -26,5 +22,5 @@ function check_part_03() {
   check_test_03l();
   check_test_03m();
   check_test_03n();
-
+  check_test_03o();
 }

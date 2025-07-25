@@ -14,7 +14,18 @@ if (document.body.classList.contains('renowify-script-injected')) {
   const pluginUrl = 'https://webux.gouv.etat.lu/a11y/a11y_bookmarklet/src';
 
   console.log('Run Renowify (script_redac)');
-  run_renowify(debug_flag, only_redactor, only_error, save_to_db, pluginUrl, run_html5, run_lighthouse, run_wave, "", "");
+  run_renowify(
+    debug_flag,
+    only_redactor,
+    only_error,
+    save_to_db,
+    pluginUrl,
+    run_html5,
+    run_lighthouse,
+    run_wave,
+    '',
+    ''
+  );
 } else {
   toggleCheckA11YPanel();
 }

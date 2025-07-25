@@ -4,7 +4,11 @@ function check_test_01b() {
     const nia01b_nodes = document.querySelectorAll(
       'input:not([disabled]):not([type="file"]), select:not([disabled]), textarea:not([disabled]), button:not([disabled])'
     );
-    let nia01b_flag1 = false, nia01b_flag2 = false, nia01b_flag3 = false, nia01b_flag4 = false, nia01b_flag5 = false;
+    let nia01b_flag1 = false,
+      nia01b_flag2 = false,
+      nia01b_flag3 = false,
+      nia01b_flag4 = false,
+      nia01b_flag5 = false;
     let nia01b_color1,
       nia01b_color2,
       nia01b_color3,
@@ -130,9 +134,9 @@ function check_test_01b() {
             nia01b_ratio23 =
               nia01b_color2luminance > nia01b_color3luminance
                 ? (nia01b_color2luminance + 0.05) /
-                (nia01b_color3luminance + 0.05)
+                  (nia01b_color3luminance + 0.05)
                 : (nia01b_color3luminance + 0.05) /
-                (nia01b_color2luminance + 0.05);
+                  (nia01b_color2luminance + 0.05);
 
             nia01b_ratio23_inv = 1 / nia01b_ratio23;
 
@@ -144,12 +148,12 @@ function check_test_01b() {
                 console.log(nia01b_ratio23_inv);
                 console.log(
                   '01B - FAIL 3.3.3 Standard ratio : ' +
-                  nia01b_ratio23_inv +
-                  ' (' +
-                  nia01b_color2 +
-                  ' vs ' +
-                  nia01b_color3 +
-                  ')'
+                    nia01b_ratio23_inv +
+                    ' (' +
+                    nia01b_color2 +
+                    ' vs ' +
+                    nia01b_color3 +
+                    ')'
                 );
               }
               setItemOutline(nia01b_nodes[i], 'orange', 'nia01b2', '01-B');
@@ -193,23 +197,23 @@ function check_test_01b() {
             nia01b_ratio12 =
               nia01b_color1luminance > nia01b_color2luminance
                 ? (nia01b_color2luminance + 0.05) /
-                (nia01b_color1luminance + 0.05)
+                  (nia01b_color1luminance + 0.05)
                 : (nia01b_color1luminance + 0.05) /
-                (nia01b_color2luminance + 0.05);
+                  (nia01b_color2luminance + 0.05);
             nia01b_ratio12_inv = 1 / nia01b_ratio12;
             nia01b_ratio13 =
               nia01b_color1luminance > nia01b_color3luminance
                 ? (nia01b_color3luminance + 0.05) /
-                (nia01b_color1luminance + 0.05)
+                  (nia01b_color1luminance + 0.05)
                 : (nia01b_color1luminance + 0.05) /
-                (nia01b_color3luminance + 0.05);
+                  (nia01b_color3luminance + 0.05);
             nia01b_ratio13_inv = 1 / nia01b_ratio13;
             nia01b_ratio23 =
               nia01b_color2luminance > nia01b_color3luminance
                 ? (nia01b_color2luminance + 0.05) /
-                (nia01b_color3luminance + 0.05)
+                  (nia01b_color3luminance + 0.05)
                 : (nia01b_color3luminance + 0.05) /
-                (nia01b_color2luminance + 0.05);
+                  (nia01b_color2luminance + 0.05);
             nia01b_ratio23_inv = 1 / nia01b_ratio23;
 
             if (
@@ -229,37 +233,36 @@ function check_test_01b() {
               if (debug_flag && nia01b_ratio12_inv < 3)
                 console.log(
                   '01B - FAIL 3.3.3 Standard ratio : ' +
-                  nia01b_ratio12_inv +
-                  ' (' +
-                  nia01b_color1 +
-                  ' vs ' +
-                  nia01b_color2 +
-                  ')'
+                    nia01b_ratio12_inv +
+                    ' (' +
+                    nia01b_color1 +
+                    ' vs ' +
+                    nia01b_color2 +
+                    ')'
                 );
               else if (debug_flag && nia01b_ratio13_inv < 3)
                 console.log(
                   '01B - FAIL 3.3.3 Standard ratio : ' +
-                  nia01b_ratio13_inv +
-                  ' (' +
-                  nia01b_color1 +
-                  ' vs ' +
-                  nia01b_color3 +
-                  ')'
+                    nia01b_ratio13_inv +
+                    ' (' +
+                    nia01b_color1 +
+                    ' vs ' +
+                    nia01b_color3 +
+                    ')'
                 );
               else if (debug_flag && nia01b_ratio23_inv < 3)
                 console.log(
                   '01B - FAIL 3.3.3 Standard ratio : ' +
-                  nia01b_ratio23_inv +
-                  ' (' +
-                  nia01b_color2 +
-                  ' vs ' +
-                  nia01b_color3 +
-                  ')'
+                    nia01b_ratio23_inv +
+                    ' (' +
+                    nia01b_color2 +
+                    ' vs ' +
+                    nia01b_color3 +
+                    ')'
                 );
               if (nia01b_position == 'absolute' || nia01b_position == 'fixed') {
                 setItemOutline(nia01b_nodes[i], 'yellow', 'nia01b2', '01-B');
                 nia01b_flag5 = true;
-
               } else {
                 setItemOutline(nia01b_nodes[i], 'orange', 'nia01b2', '01-B');
                 nia01b_flag3 = true;

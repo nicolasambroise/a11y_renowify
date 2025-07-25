@@ -29,7 +29,7 @@ function check_test_07b() {
         nia07b2_nodes[i].hasAttribute('placeholder') &&
         nia07b2_nodes[i].hasAttribute('title') &&
         nia07b2_nodes[i].getAttribute('placeholder') !=
-        nia07b2_nodes[i].getAttribute('title')
+          nia07b2_nodes[i].getAttribute('title')
       ) {
         nia07b2_flag = true;
         setItemOutline(nia07b2_nodes[i], 'red', 'nia07b2', '07-B');

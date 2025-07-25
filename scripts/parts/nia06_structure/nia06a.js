@@ -17,7 +17,7 @@ function check_test_06a() {
               (nia06a_nodes[i].parentElement.tagName == 'UL' ||
                 nia06a_nodes[i].parentElement.tagName == 'OL') &&
               ((nia06a_nodes[i].getAttribute('tabindex') == '0' &&
-                  nia06a_nodes[i].getAttribute('aria-selected') == 'true') ||
+                nia06a_nodes[i].getAttribute('aria-selected') == 'true') ||
                 (nia06a_nodes[i].getAttribute('tabindex') == '-1' &&
                   nia06a_nodes[i].getAttribute('aria-selected') != 'true'))
             )

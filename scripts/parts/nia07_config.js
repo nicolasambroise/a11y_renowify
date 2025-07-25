@@ -18,5 +18,4 @@ function check_part_07() {
   check_test_07e();
   check_test_07f();
   check_test_07g();
-  
 }

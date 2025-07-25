@@ -21,5 +21,4 @@ function check_test_14d() {
       );
     }
   }
-
 }

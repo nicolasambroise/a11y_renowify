@@ -1,6 +1,5 @@
 // G. Pas d'autocomplete sur les champs radio/checkbox
 function check_test_04g() {
-
   const nia04g_nodes = document.querySelectorAll(
     'input[type="checkbox"][autocomplete]:not([autocomplete="off"]),input[type="radio"][autocomplete]:not([autocomplete="off"])'
   );

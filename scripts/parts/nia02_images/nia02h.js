@@ -38,7 +38,7 @@ function check_test_02h() {
         !only_error &&
         nia02h_nodes[i].hasAttribute('alt') &&
         sanitizeText(nia02h_nodes[i].getAttribute('alt'), nia02h_lang).length >
-        150
+          150
       ) {
         setItemOutline(nia02h_nodes[i], 'yellow', 'nia02h', '02-H');
         nia02h_flag = true;

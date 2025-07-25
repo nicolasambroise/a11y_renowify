@@ -28,8 +28,8 @@ function check_test_05f() {
       setItemToResultList(
         'dev',
         "<li><a href='#' data-destination='nia05f' class='result-focus label-orange'>05-F</a> : Présence d'Id dupliqué<span class='cy-hidden'> (" +
-        nia05f_duplicateId +
-        ")</span> [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-2-1' target='_blank'>RAWeb 8.2.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-identifiant-html-nest-utilise-quune-seule-fois-par-page' target='_blank'>Opquast 229</a>]</li>"
+          nia05f_duplicateId +
+          ")</span> [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-8-2-1' target='_blank'>RAWeb 8.2.1</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-identifiant-html-nest-utilise-quune-seule-fois-par-page' target='_blank'>Opquast 229</a>]</li>"
       );
     }
   }

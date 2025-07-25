@@ -27,7 +27,7 @@ function check_part_06() {
   check_test_06o();
   check_test_06p();
   check_test_06q();
-  check_test_06r();  
+  check_test_06r();
   check_test_06s();
   check_test_06t();
   check_test_06u();

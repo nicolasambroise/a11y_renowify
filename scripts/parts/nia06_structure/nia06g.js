@@ -34,7 +34,11 @@ function check_test_06g() {
     );
     if (nia06g3_nodes && nia06g3_nodes.length > 1) {
       for (let i = 0; i < nia06g3_nodes.length; i++) {
-        if (nia06g3_nodes[i].closest("footer").querySelector('h2,[role="heading"][aria-level="2"]') == null ) {
+        if (
+          nia06g3_nodes[i]
+            .closest('footer')
+            .querySelector('h2,[role="heading"][aria-level="2"]') == null
+        ) {
           setItemToResultList(
             'dev',
             "<li><a href='#' data-destination='nia06g3' class='result-focus label-yellow'>06-G</a> : Absence d'un titre principal pour le footer</li>"
@@ -54,8 +58,7 @@ function check_test_06g() {
         'nc',
         "<li><span data-destination='nia06g4' class='result-focus label-red'>06-G</span> : Absence de la déclaration d'accessibilité dans le footer </li>"
       );
-    }
-    else if(nia06g4_nodes.closest("ul") == null){
+    } else if (nia06g4_nodes.closest('ul') == null) {
       setItemToResultList(
         'nc',
         "<li><a href='#' data-destination='nia06g5' class='result-focus label-red'>06-G</a> : Les liens du footer doivent être structurés sous forme de liste </li>"

@@ -34,9 +34,9 @@ function check_test_06i() {
             if (debug_flag)
               console.log(
                 'autoplay : ' +
-                nia06i_autoplay +
-                ' | controls : ' +
-                nia06i_controls
+                  nia06i_autoplay +
+                  ' | controls : ' +
+                  nia06i_controls
               );
             if (nia06i_controls == false) {
               if (nia06i_loop == true) {

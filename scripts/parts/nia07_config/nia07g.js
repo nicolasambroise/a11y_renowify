@@ -1,7 +1,7 @@
 // G Structure globale du menu
 function check_test_07g() {
   if (!only_redactor && isAEM) {
-        const nia07g1_nodes = document.querySelectorAll(
+    const nia07g1_nodes = document.querySelectorAll(
       'nav#headernav .nav--primary:not(ul), nav#headernav ul.nav--primary > .nav-item:not(li), nav#headernav ul.nav--primary > li.nav-item.has-subnav .subnav-item:not(li)'
     );
     if (nia07g1_nodes && nia07g1_nodes.length > 0) {
@@ -68,8 +68,7 @@ function check_test_07g() {
                   console.log(
                     nia07g3_nodes[i].parentElement
                       .closest('has-subnav')
-                      .firstElementChild.getAttribute('aria-current') !=
-                    'true'
+                      .firstElementChild.getAttribute('aria-current') != 'true'
                   );
                 }
                 nia07g3_flag = true;
@@ -110,12 +109,7 @@ function check_test_07g() {
         'dev',
         "<li><a href='#' data-destination='nia07g5' class='result-focus label-red'>07-G</a> : Il ne peut y avoir qu'un seul élément dans le menu avec l'attribut aria-current=page </li>"
       );
-      setItemOutline(
-        nia07g3_nodes[0].parentElement,
-        'red',
-        'nia07g5',
-        '07-G'
-      );
+      setItemOutline(nia07g3_nodes[0].parentElement, 'red', 'nia07g5', '07-G');
     }
   } else if (!only_error) {
     setItemToResultList(
