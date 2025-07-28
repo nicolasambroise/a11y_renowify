@@ -12,11 +12,11 @@ function check_test_13a() {
           nia13a_result1 = nia13a_nodes[i].innerText.match(/ {3,}/g);
           nia13a_result2 = nia13a_nodes[i].innerText.match(/\s{4,}/g);
           if (nia13a_result1 && nia13a_result1.length > 0) {
-            setItemOutline(nia13a_nodes[i], 'yellow', 'nia13a', '06-I');
+            setItemOutline(nia13a_nodes[i], 'yellow', 'nia13a', '13-A');
             nia13a_flag = true;
           }
           if (nia13a_result2 && nia13a_result2.length > 0) {
-            setItemOutline(nia13a_nodes[i], 'yellow', 'nia13a', '06-I');
+            setItemOutline(nia13a_nodes[i], 'yellow', 'nia13a', '13-A');
             nia13a_flag = true;
           }
         }

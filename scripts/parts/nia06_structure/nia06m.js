@@ -52,13 +52,10 @@ function check_test_06m() {
             setItemOutline(nia06m_nodes[i], 'yellow', 'nia06m4', '06-M');
           }
           if (nia06m_Adress && nia06m_Adress.length > 0) {
-            nia06m_Contact = nia06m_Adress[0].querySelectorAll('dl');
+            nia06m_Contact = nia06m_Adress[0].querySelectorAll('dl:not(.cmp-hours__list)');
             nia06m_StreetAdress = nia06m_Adress[0].querySelectorAll(
               'span[itemprop="streetAddress"]'
             );
-
-            //console.log(nia06m_Contact)
-            //console.log(nia06m_StreetAdress)
 
             if (
               !nia06m_Contact ||
@@ -93,7 +90,7 @@ function check_test_06m() {
     if (nia06m2_flag == true) {
       setItemToResultList(
         'nc',
-        "<li><a href='#' data-destination='nia06m2' class='result-focus label-red'>06-M</a> : Présence d'une carte Geoportail sans addresse visible</li>"
+        "<li><a href='#' data-destination='nia06m2' class='result-focus label-red'>06-M</a> : Présence d'une carte Geoportail sans adresse visible</li>"
       );
     }
     if (nia06m3_flag == true) {

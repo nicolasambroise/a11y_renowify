@@ -396,7 +396,7 @@ function check_test_01a() {
     if (nia01a_flag1 == true) {
       setItemToResultList(
         'dev',
-        "<li><a href='#' data-destination='nia01a' class='result-focus label-orange'>01-A</a> : Présence d'éléments textuels insuffisament contrasté</li>"
+        "<li><a href='#' data-destination='nia01a' class='result-focus label-orange'>01-A</a> : Présence d'éléments textuels insuffisamment contrasté</li>"
       );
     }
     if (nia01a_flag2 == true) {
@@ -699,7 +699,7 @@ function check_test_01b() {
     if (nia01b_flag3 == true) {
       setItemToResultList(
         'dev',
-        "<li><a href='#' data-destination='nia01b2' class='result-focus label-orange'>01-B</a> : Présence d'élément graphique insuffisament contrasté</li>"
+        "<li><a href='#' data-destination='nia01b2' class='result-focus label-orange'>01-B</a> : Présence d'élément graphique insuffisamment contrasté</li>"
       );
     }
     if (nia01b_flag4 == true) {
@@ -1812,7 +1812,7 @@ function check_test_03a() {
 // B. Verification de titre vide
 function check_test_03b() {
   const nia03b_nodes = document.querySelectorAll(
-    'a[title=" "],a[title="Nouvelle fenêtre"],a[title="- Nouvelle fenêtre"],a[title$="Nouvelle fenêtre - Nouvelle fenêtre"]'
+    'a[title=" "],a[title="Nouvelle fenêtre"],a[title="- Nouvelle fenêtre"],a[title$="Nouvelle fenêtre - Nouvelle fenêtre"], a[title="   - Nouvelle fenêtre"]'
   );
   if (nia03b_nodes && nia03b_nodes.length > 0 && isItemsVisible(nia03b_nodes)) {
     setItemToResultList(
@@ -2124,7 +2124,7 @@ function check_test_03k() {
 function check_test_03l() {
   if (!only_error) {
     const nia03l_nodes = document.querySelectorAll(
-      'body *:not(a):not(mark):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(button)'
+      'body *:not(a):not(mark):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(button):not([role="tab"]):not(input)'
     );
     let nia03l_flag = false;
     if (
@@ -3082,11 +3082,14 @@ function check_test_05b() {
           nia05b_lang
         );
         if (nia05b_clean_node == '' && isItemVisible(nia05b_nodes[i])) {
-          setItemOutline(nia05b_nodes[i], 'orange', 'nia05b', '05-B');
-          nia05b_nodes[i].parentElement.classList.add(
-            'checkA11YOutline__orange_parent'
-          );
-          nia05b_flag = true;
+          // Correction faux-positif pour les numéros de téléphone
+          if (nia05b_nodes[i].tagName != "A" || !nia05b_nodes[i].hasAttributes("href") || nia05b_nodes[i].getAttribute("href").indexOf("tel") != 0) {
+            setItemOutline(nia05b_nodes[i], 'orange', 'nia05b', '05-B');
+            nia05b_nodes[i].parentElement.classList.add(
+              'checkA11YOutline__orange_parent'
+            );
+            nia05b_flag = true;
+          }
         }
       }
     }
@@ -4006,7 +4009,7 @@ function check_test_06i() {
               if (nia06i_loop == true) {
                 setItemToResultList(
                   'nc',
-                  "<li><a href='#' data-destination='nia06i1' class='result-focus label-red'>06-I</a> : Les animations lues automatiquement et qui boucles doivent avoir un controleur play/pause [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
+                  "<li><a href='#' data-destination='nia06i1' class='result-focus label-red'>06-I</a> : Les animations lues automatiquement et qui boucles doivent avoir un controleur play/pause (loop) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
                 );
                 setItemOutline(nia06i_nodes[i], 'red', 'nia06i1', '06-I');
               } else {
@@ -4017,7 +4020,7 @@ function check_test_06i() {
                 if (nia06i_duration > 5) {
                   setItemToResultList(
                     'nc',
-                    "<li><a href='#' data-destination='nia06i2' class='result-focus label-red'>06-I</a> : Les animations lues automatiquement et qui durent plus de 5s doivent avoir un controleur play/pause [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
+                    "<li><a href='#' data-destination='nia06i2' class='result-focus label-red'>06-I</a> : Les animations lues automatiquement et qui durent plus de 5s doivent avoir un controleur play/pause (duration) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
                   );
                   setItemOutline(nia06i_nodes[i], 'red', 'nia06i2', '06-I');
                 }
@@ -4104,7 +4107,7 @@ function check_test_06k() {
 function check_test_06l() {
   if (isAEM && !only_redactor) {
     const nia06l1_nodes = document.querySelectorAll(
-      '.cmp-accordion > *:not(details):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon), .cmp-accordion > details > *:not(summary):not(.cmp-accordion__panel), .filters-content > *:not(details), .filters-content > details > *:not(summary):not(.filter-content)'
+      '.cmp-accordion > *:not(details):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon), .cmp-accordion > details > *:not(summary):not(span.checkA11YSpan):not(.cmp-accordion__panel):not(.accordion-local-toggle), .filters-content > *:not(details), .filters-content > details > *:not(summary):not(.filter-content)'
     );
     if (
       nia06l1_nodes &&
@@ -4119,7 +4122,7 @@ function check_test_06l() {
     }
 
     const nia06l2_nodes = document.querySelectorAll(
-      'details > summary > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not([role="heading"]):not(svg[aria-hidden="true"]):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon):not(.filter-subtitle)'
+      'details > summary:not(.cmp-hours__summary) > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not([role="heading"]):not(svg[aria-hidden="true"]):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon):not(.filter-subtitle)'
     );
     if (
       nia06l2_nodes &&
@@ -4189,13 +4192,10 @@ function check_test_06m() {
             setItemOutline(nia06m_nodes[i], 'yellow', 'nia06m4', '06-M');
           }
           if (nia06m_Adress && nia06m_Adress.length > 0) {
-            nia06m_Contact = nia06m_Adress[0].querySelectorAll('dl');
+            nia06m_Contact = nia06m_Adress[0].querySelectorAll('dl:not(.cmp-hours__list)');
             nia06m_StreetAdress = nia06m_Adress[0].querySelectorAll(
               'span[itemprop="streetAddress"]'
             );
-
-            //console.log(nia06m_Contact)
-            //console.log(nia06m_StreetAdress)
 
             if (
               !nia06m_Contact ||
@@ -4230,7 +4230,7 @@ function check_test_06m() {
     if (nia06m2_flag == true) {
       setItemToResultList(
         'nc',
-        "<li><a href='#' data-destination='nia06m2' class='result-focus label-red'>06-M</a> : Présence d'une carte Geoportail sans addresse visible</li>"
+        "<li><a href='#' data-destination='nia06m2' class='result-focus label-red'>06-M</a> : Présence d'une carte Geoportail sans adresse visible</li>"
       );
     }
     if (nia06m3_flag == true) {
@@ -4379,7 +4379,6 @@ function check_test_06o() {
               ':is(h3, h4, h5, h6)'
             );
             nia06o2_itemContent = sanitizeText(nia06o2_items[j].textContent);
-
             if (nia06o2_itemTitle) {
               if (
                 nia06o2_itemContent ==
@@ -4411,6 +4410,7 @@ function check_test_06o() {
             nia06o4_flag = true;
             setItemOutline(nia06o2_nodes[i], 'orange', 'nia06o4', '06-O');
           }
+
           if (
             nia06o2_items[0] &&
             nia06o2_items[0].classList.contains('cmp-focus-top') &&
@@ -4471,7 +4471,7 @@ function check_test_06p() {
   if (!only_redactor && isAEM) {
     const nia06p1_nodes = document.querySelectorAll('.cmp-grid');
     let nia06p1_items;
-    let nia06p1_itemTitle, nia06p1_itemContent, nia06p1_itemTitleSani;
+    let nia06p1_itemTitle, nia06p1_itemContent, nia06p1_itemTitleSani, nia06p1_hasImgDeco;
     let nia06p1_counter;
     let nia06p2_flag = false;
     let nia06p3_flag = false;
@@ -4499,6 +4499,10 @@ function check_test_06p() {
             );
             nia06p1_itemContent = sanitizeText(nia06p1_items[j].textContent);
 
+            nia06p1_hasImgInfo = nia06p1_items[j].querySelector(
+              'img:not([alt=""])'
+            );
+
             if (nia06p1_itemTitle) {
               nia06p1_itemTitleSani = sanitizeText(
                 nia06p1_itemTitle.textContent
@@ -4512,7 +4516,7 @@ function check_test_06p() {
                 setItemOutline(nia06p1_items[j], 'orange', 'nia06p2', '06-P');
               }
             }
-            if (nia06p1_itemContent == '') {
+            if (nia06p1_itemContent == '' && nia06p1_hasImgInfo == null) {
               nia06p4_flag = true;
               setItemOutline(nia06p1_items[j], 'orange', 'nia06p4', '06-P');
             }
@@ -6357,9 +6361,10 @@ function check_test_09c() {
 
 // D. Présence de 2 systemes de navigation (plan du site, recherche, menu)
 function check_test_09d() {
-  if (isAEM) {
+  if (isAEM && !isOnePage) {
+    // Menu principal
     const nia09d_nav = document.querySelector(
-      'nav #headernav, nav#headernav, *:not(#headerwrapper-mobile) > nav[class^="page-headernav"]'
+      'nav #headernav, nav#headernav, *:not(#headerwrapper-mobile) > nav[class^="page-headernav"]:not(.page-headernavmobile)'
     );
     const nia09d_nav_fixed = document.querySelector(
       '.header-icons > nav.headernav-fixed'
@@ -6368,8 +6373,9 @@ function check_test_09d() {
       '[class^="page-headernav"] button.anchor[data-destination^="#headernav"]'
     );
 
+    // Recherche
     const nia09d_search = document.querySelector(
-      '*:not(#headerwrapper-mobile) > div.topsearch[role="search"], div.topsearch-desk[role="search"], div.topsearch-desktop[role="search"]'
+      '*:not(#headerwrapper-mobile) > div.topsearch[role="search"]:not(:has(button.anchor)), div.topsearch-desk[role="search"], div.topsearch-desktop[role="search"]'
     );
     const nia09d_search_fixed = document.querySelector(
       '.header-icons > div.topsearch[role="search"]'
@@ -6378,8 +6384,9 @@ function check_test_09d() {
       'div.topsearch[role="search"] button.anchor'
     );
 
+    // Plan du site
     const nia09d_plan = document.querySelector(
-      '.page-footernav ul > li.nav-item a[href*="plan"][href$=".html"]'
+      'footer .page-footernav ul > li.nav-item a[href*="plan"][href$=".html"]'
     );
     const nia09d_footer_links = document.querySelectorAll(
       'footer .nav-item > a:not([target="_blank"])'
@@ -6688,6 +6695,8 @@ function check_part_10() {
 *** Add du RAWeb 10.1.1 ***
 <blink>
 <marquee>
+
+** Note : Attention au plugin Google Translate : Il ajoute automatiquement des balises <font> autour des textes traduits.
 */
 function check_test_10a() {
   const nia10a_nodes = document.querySelectorAll(
@@ -6793,7 +6802,7 @@ function check_test_10c() {
 // D. Presentation attribut
 function check_test_10d() {
   const nia10d_nodes = document.querySelectorAll(
-    '[align], [alink], [background], [bgcolor], [border], [cellpadding], [cellspacing], [char], [charoff], [clear], [color], [compact], [frameborder], [hspace], [link], [marginheight], [marginwidth], [text], [valign], [vlink], [vspace], [size]:not(select), *:not(symbol) > *:not(g) > [width]:not(img):not(object):not(embed):not(canvas):not(svg):not(rect),*:not(symbol) > *:not(g) > [height]:not(img):not(object):not(embed):not(canvas):not(svg):not(rect)'
+    '[align], [alink], [background], [bgcolor], [border], [cellpadding], [cellspacing], [char], [charoff], [clear], [color], [compact], [frameborder], [hspace], [link], [marginheight], [marginwidth], [text], [valign], [vlink], [vspace], [size]:not(select), *:not(symbol) > *:not(g):not(svg[aria-hidden="true"]) > [width]:not(img):not(object):not(embed):not(canvas):not(svg):not(rect),*:not(symbol) > *:not(g):not(svg[aria-hidden="true"]) > [height]:not(img):not(object):not(embed):not(canvas):not(svg):not(rect)'
   );
   if (nia10d_nodes && nia10d_nodes.length > 0 && isItemsVisible(nia10d_nodes)) {
     setItemToResultList(
@@ -7210,16 +7219,43 @@ function check_test_14c() {
     const nia14c_nodes = document.querySelectorAll(
       'h1[aria-hidden],h2[aria-hidden],h3[aria-hidden],h4[aria-hidden],h5[aria-hidden],h6[aria-hidden]'
     );
+    const nia14c_heading = document.querySelectorAll(
+      'h1:not([aria-hidden]),h2:not([aria-hidden]),h3:not([aria-hidden]),h4:not([aria-hidden]),h5:not([aria-hidden]),h6:not([aria-hidden])'
+    );
+    let nia14c_flag = false;
+    let nia14c_find = false;
     if (
       nia14c_nodes &&
       nia14c_nodes.length > 0 &&
       isItemsVisible(nia14c_nodes)
     ) {
+      // console.log(nia14c_nodes)
+      // il faut vérifier s'il n'y a pas un titre de même niveau et de même contenu présent sur la page.
+      for (let i = 0; i < nia14c_nodes.length; i++) {
+        if (isItemVisible(nia14c_nodes[i])) {
+          nia14c_find = false;
+          for (let j = 0; j < nia14c_heading.length; j++){
+            if(nia14c_nodes[i].tagName == nia14c_heading[j].tagName && sanitizeText(
+              nia14c_nodes[i].textContent) == sanitizeText(
+              nia14c_heading[j].textContent)
+            ){
+              //console.log("find : "+nia14c_nodes[i].textContent)
+              nia14c_find = true;
+              break;
+            }
+          }
+          if (nia14c_find == false) {
+            setItemOutline(nia14c_nodes[i], 'red', 'nia14c', '14-C');
+            nia14c_flag = true;
+          }
+        }
+      }
+    }
+    if (nia14c_flag == true) {
       setItemToResultList(
         'nc',
         "<li><a href='#' data-destination='nia14c' class='result-focus label-red'>14-C</a> : Présence de titre caché aux outils d'assistance</li>"
       );
-      setItemsOutline(nia14c_nodes, 'red', 'nia14c', '14-C');
     }
   }
 }

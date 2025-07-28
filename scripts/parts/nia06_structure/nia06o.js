@@ -69,7 +69,6 @@ function check_test_06o() {
               ':is(h3, h4, h5, h6)'
             );
             nia06o2_itemContent = sanitizeText(nia06o2_items[j].textContent);
-
             if (nia06o2_itemTitle) {
               if (
                 nia06o2_itemContent ==
@@ -101,6 +100,7 @@ function check_test_06o() {
             nia06o4_flag = true;
             setItemOutline(nia06o2_nodes[i], 'orange', 'nia06o4', '06-O');
           }
+
           if (
             nia06o2_items[0] &&
             nia06o2_items[0].classList.contains('cmp-focus-top') &&

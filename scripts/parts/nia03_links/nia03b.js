@@ -1,7 +1,7 @@
 // B. Verification de titre vide
 function check_test_03b() {
   const nia03b_nodes = document.querySelectorAll(
-    'a[title=" "],a[title="Nouvelle fenêtre"],a[title="- Nouvelle fenêtre"],a[title$="Nouvelle fenêtre - Nouvelle fenêtre"]'
+    'a[title=" "],a[title="Nouvelle fenêtre"],a[title="- Nouvelle fenêtre"],a[title$="Nouvelle fenêtre - Nouvelle fenêtre"], a[title="   - Nouvelle fenêtre"]'
   );
   if (nia03b_nodes && nia03b_nodes.length > 0 && isItemsVisible(nia03b_nodes)) {
     setItemToResultList(

@@ -20,6 +20,8 @@
 *** Add du RAWeb 10.1.1 ***
 <blink>
 <marquee>
+
+** Note : Attention au plugin Google Translate : Il ajoute automatiquement des balises <font> autour des textes traduits.
 */
 function check_test_10a() {
   const nia10a_nodes = document.querySelectorAll(

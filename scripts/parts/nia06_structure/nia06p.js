@@ -7,7 +7,7 @@ function check_test_06p() {
   if (!only_redactor && isAEM) {
     const nia06p1_nodes = document.querySelectorAll('.cmp-grid');
     let nia06p1_items;
-    let nia06p1_itemTitle, nia06p1_itemContent, nia06p1_itemTitleSani;
+    let nia06p1_itemTitle, nia06p1_itemContent, nia06p1_itemTitleSani, nia06p1_hasImgDeco;
     let nia06p1_counter;
     let nia06p2_flag = false;
     let nia06p3_flag = false;
@@ -35,6 +35,10 @@ function check_test_06p() {
             );
             nia06p1_itemContent = sanitizeText(nia06p1_items[j].textContent);
 
+            nia06p1_hasImgInfo = nia06p1_items[j].querySelector(
+              'img:not([alt=""])'
+            );
+
             if (nia06p1_itemTitle) {
               nia06p1_itemTitleSani = sanitizeText(
                 nia06p1_itemTitle.textContent
@@ -48,7 +52,7 @@ function check_test_06p() {
                 setItemOutline(nia06p1_items[j], 'orange', 'nia06p2', '06-P');
               }
             }
-            if (nia06p1_itemContent == '') {
+            if (nia06p1_itemContent == '' && nia06p1_hasImgInfo == null) {
               nia06p4_flag = true;
               setItemOutline(nia06p1_items[j], 'orange', 'nia06p4', '06-P');
             }

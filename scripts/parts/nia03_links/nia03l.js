@@ -2,7 +2,7 @@
 function check_test_03l() {
   if (!only_error) {
     const nia03l_nodes = document.querySelectorAll(
-      'body *:not(a):not(mark):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(button)'
+      'body *:not(a):not(mark):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(button):not([role="tab"]):not(input)'
     );
     let nia03l_flag = false;
     if (

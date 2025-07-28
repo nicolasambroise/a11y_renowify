@@ -42,7 +42,7 @@ function check_test_06i() {
               if (nia06i_loop == true) {
                 setItemToResultList(
                   'nc',
-                  "<li><a href='#' data-destination='nia06i1' class='result-focus label-red'>06-I</a> : Les animations lues automatiquement et qui boucles doivent avoir un controleur play/pause [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
+                  "<li><a href='#' data-destination='nia06i1' class='result-focus label-red'>06-I</a> : Les animations lues automatiquement et qui boucles doivent avoir un controleur play/pause (loop) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
                 );
                 setItemOutline(nia06i_nodes[i], 'red', 'nia06i1', '06-I');
               } else {
@@ -53,7 +53,7 @@ function check_test_06i() {
                 if (nia06i_duration > 5) {
                   setItemToResultList(
                     'nc',
-                    "<li><a href='#' data-destination='nia06i2' class='result-focus label-red'>06-I</a> : Les animations lues automatiquement et qui durent plus de 5s doivent avoir un controleur play/pause [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
+                    "<li><a href='#' data-destination='nia06i2' class='result-focus label-red'>06-I</a> : Les animations lues automatiquement et qui durent plus de 5s doivent avoir un controleur play/pause (duration) [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-13-8-1' target='_blank'>RAWeb 13.8.1</a>]</li>"
                   );
                   setItemOutline(nia06i_nodes[i], 'red', 'nia06i2', '06-I');
                 }

@@ -289,7 +289,7 @@ function check_test_01b() {
     if (nia01b_flag3 == true) {
       setItemToResultList(
         'dev',
-        "<li><a href='#' data-destination='nia01b2' class='result-focus label-orange'>01-B</a> : Présence d'élément graphique insuffisament contrasté</li>"
+        "<li><a href='#' data-destination='nia01b2' class='result-focus label-orange'>01-B</a> : Présence d'élément graphique insuffisamment contrasté</li>"
       );
     }
     if (nia01b_flag4 == true) {

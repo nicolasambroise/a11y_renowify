@@ -2,7 +2,7 @@
 function check_test_06l() {
   if (isAEM && !only_redactor) {
     const nia06l1_nodes = document.querySelectorAll(
-      '.cmp-accordion > *:not(details):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon), .cmp-accordion > details > *:not(summary):not(.cmp-accordion__panel), .filters-content > *:not(details), .filters-content > details > *:not(summary):not(.filter-content)'
+      '.cmp-accordion > *:not(details):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon), .cmp-accordion > details > *:not(summary):not(span.checkA11YSpan):not(.cmp-accordion__panel):not(.accordion-local-toggle), .filters-content > *:not(details), .filters-content > details > *:not(summary):not(.filter-content)'
     );
     if (
       nia06l1_nodes &&
@@ -17,7 +17,7 @@ function check_test_06l() {
     }
 
     const nia06l2_nodes = document.querySelectorAll(
-      'details > summary > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not([role="heading"]):not(svg[aria-hidden="true"]):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon):not(.filter-subtitle)'
+      'details > summary:not(.cmp-hours__summary) > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not([role="heading"]):not(svg[aria-hidden="true"]):not(span.checkA11YSpan):not(span.cmp-accordionItem__icon):not(.filter-subtitle)'
     );
     if (
       nia06l2_nodes &&

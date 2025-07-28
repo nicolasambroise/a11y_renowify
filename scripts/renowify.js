@@ -13,8 +13,22 @@ let homepageException = [
   'https://guichet.public.lu/de/citoyens.html',
   'https://guichet.public.lu/de/entreprises.html',
   'https://guichet.public.lu/de/leichte-sprache.html',
-  'https://cepas.public.lu/fr/espace-public.html'
+  'https://cepas.public.lu/fr/espace-public.html',
+  'https://cns.public.lu/fr/assure.html',
+  'https://cns.public.lu/fr/employeur.html',
+  'https://cns.public.lu/fr/professionnels-sante.html',
+  'https://cns.public.lu/en/assure.html',
+  'https://cns.public.lu/en/employeur.html',
+  'https://cns.public.lu/en/professionnels-sante.html',
+  'https://cns.public.lu/de/assure.html',
+  'https://cns.public.lu/de/employeur.html',
+  'https://cns.public.lu/de/professionnels-sante.html'
 ];
+
+let onePageException= [
+  'https://menscherechtshaus.public.lu',
+  'https://nadal2024.public.lu'
+]
 
 let isHomepage = false; // True s'il s'agit de la homepage du site
 let isPreview = false; // True s'il s'agit d'un environnement de dev (LOCAL, BUILD, INTEGR, QUAL)
@@ -24,6 +38,7 @@ let isPrototype = false; // True s'il s'agit de la page prototype / atelier grap
 let isAEM = false; // True s'il s'agit d'un site réalisé avec AEM
 let isCTIE = false; // True s'il s'agit d'un site hébergé par le CTIE
 let isSearchLogic = false; // True s'il s'agit d'une page présentant des résultats de recherche
+let isOnePage = false; // True s'il s'agit d'un site de type OnePage
 
 if (homepage || homepageException.includes(currentUrl)) {
   isHomepage = true;
@@ -61,6 +76,15 @@ if (
   currentUrl.includes('plan-site.html')
 ) {
   isSitemap = true;
+}
+
+for(let i=0; i < onePageException.length; i++){
+  if (
+    currentUrl.includes(onePageException[i])
+  ){
+    isOnePage = true;
+    break;
+  }
 }
 
 if (
@@ -146,6 +170,7 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
   if (isAEM) console.log('$ isAEM');
   if (isCTIE) console.log('$ isCTIE');
   if (isSearchLogic) console.log('$ isSearchLogic');
+  if (isOnePage) console.log('$ isOnePage');
 
   // Reset
   result_crit = '';

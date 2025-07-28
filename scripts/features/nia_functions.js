@@ -184,10 +184,10 @@ function sanitizeText(txt, locale) {
   return txt
     .toLowerCase()
     .toLocaleLowerCase(locale)
-    .replaceAll(/<span class="checkA11YSpan".*?<\/span>/gis, '')
-    .replaceAll(/\n|\r/g, ' ')
-    .replaceAll(/[.:;,?!{}$()|©'"-\\/]/g, ' ')
-    .replaceAll(/\s+/g, ' ')
+    .replaceAll(/<span class="checkA11YSpan".*?<\/span>/gis, '') // Remove s'il y a dejà une erreur
+    .replaceAll(/\n|\r/g, ' ') // Remove breakline
+    .replaceAll(/[.:;,?!{}$()|©'"-\/]/g, ' ')// Remove ponctuation (Note : ne pas excap le \ sinon problème avec les chiffres)
+    .replaceAll(/\s+/g, ' ') // Remove double space
     .trim();
 }
 

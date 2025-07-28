@@ -1,8 +1,9 @@
 // D. Présence de 2 systemes de navigation (plan du site, recherche, menu)
 function check_test_09d() {
-  if (isAEM) {
+  if (isAEM && !isOnePage) {
+    // Menu principal
     const nia09d_nav = document.querySelector(
-      'nav #headernav, nav#headernav, *:not(#headerwrapper-mobile) > nav[class^="page-headernav"]'
+      'nav #headernav, nav#headernav, *:not(#headerwrapper-mobile) > nav[class^="page-headernav"]:not(.page-headernavmobile)'
     );
     const nia09d_nav_fixed = document.querySelector(
       '.header-icons > nav.headernav-fixed'
@@ -11,8 +12,9 @@ function check_test_09d() {
       '[class^="page-headernav"] button.anchor[data-destination^="#headernav"]'
     );
 
+    // Recherche
     const nia09d_search = document.querySelector(
-      '*:not(#headerwrapper-mobile) > div.topsearch[role="search"], div.topsearch-desk[role="search"], div.topsearch-desktop[role="search"]'
+      '*:not(#headerwrapper-mobile) > div.topsearch[role="search"]:not(:has(button.anchor)), div.topsearch-desk[role="search"], div.topsearch-desktop[role="search"]'
     );
     const nia09d_search_fixed = document.querySelector(
       '.header-icons > div.topsearch[role="search"]'
@@ -21,8 +23,9 @@ function check_test_09d() {
       'div.topsearch[role="search"] button.anchor'
     );
 
+    // Plan du site
     const nia09d_plan = document.querySelector(
-      '.page-footernav ul > li.nav-item a[href*="plan"][href$=".html"]'
+      'footer .page-footernav ul > li.nav-item a[href*="plan"][href$=".html"]'
     );
     const nia09d_footer_links = document.querySelectorAll(
       'footer .nav-item > a:not([target="_blank"])'
