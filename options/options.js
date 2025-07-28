@@ -1,11 +1,13 @@
 // Saves options to chrome.storage
 const saveOptions = () => {
   const profile = document.getElementById('profile').value;
+  const wave_key = document.getElementById('wave-key').value;
+  const lighthouse_key = document.getElementById('lighthouse-key').value;
   const save_bdd = document.getElementById('switch-save-bdd').checked;
   const debug = document.getElementById('switch-debug').checked;
 
   chrome.storage.sync.set(
-    { profile: profile, save_bdd: save_bdd, debug: debug },
+    { profile: profile, save_bdd: save_bdd, debug: debug, wave_key: wave_key, lighthouse_key: lighthouse_key},
     () => {
       // Update status to let user know options were saved.
       const status = document.getElementById('status');
@@ -25,6 +27,8 @@ const restoreOptions = () => {
     { profile: 'dev', save_bdd: false, debug: false },
     (items) => {
       document.getElementById('profile').value = items.profile;
+      document.getElementById('wave_key').value = items.wave_key;
+      document.getElementById('lighthouse_key').value = items.lighthouse_key;
       document.getElementById('save_bdd').checked = items.save_bdd;
       document.getElementById('debug').checked = items.debug;
     }

@@ -11,7 +11,7 @@ if (document.body.classList.contains('renowify-script-injected')) {
   const run_wave = false; // true --> lance le script Wave (Attention aux Quotas)
 
   // Environnement
-  const pluginUrl = 'https://webux.gouv.etat.lu/a11y/a11y_bookmarklet/src';
+  const pluginUrl = ''; // load in the chrome extension
 
   console.log('Run Renowify (script_nc)');
   run_renowify(
@@ -22,9 +22,7 @@ if (document.body.classList.contains('renowify-script-injected')) {
     pluginUrl,
     run_html5,
     run_lighthouse,
-    run_wave,
-    '',
-    ''
+    run_wave
   );
 } else {
   toggleCheckA11YPanel();

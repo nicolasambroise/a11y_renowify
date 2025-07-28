@@ -22,9 +22,7 @@ if (document.body.classList.contains('renowify-script-injected')) {
     pluginUrl,
     run_html5,
     run_lighthouse,
-    run_wave,
-    '',
-    ''
+    run_wave
   );
 } else {
   toggleCheckA11YPanel();

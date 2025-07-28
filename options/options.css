@@ -142,6 +142,7 @@ input[type='radio'][disabled]::placeholder {
 
 .form-options .form-options-content {
   margin: 1.5rem 0 0.234375rem;
+  padding-left: 20px;
 }
 
 .form-options .form-options-content .form-options-group {
@@ -668,10 +669,22 @@ input[type='submit'].btn--small,
 
 fieldset {
   border: none;
-  margin: 0.9375rem 0 3.75rem;
+  margin: 0.9375rem 0 0.9375rem;
   padding: 0;
 }
 
 fieldset.form-options {
   margin: 0;
+}
+
+fieldset:not(.form-options) > .form-group {
+  padding-left: 20px;
+}
+
+fieldset:not(.form-options) > .form-group > div{
+  display: inline-block;
+}
+
+fieldset:not(.form-options) > .form-group > div label{
+  min-width: 75px;
 }

@@ -4,7 +4,7 @@ if (!document.body.classList.contains('renowify-script-injected')) {
   // Environnement
   const pluginUrl = 'https://webux.gouv.etat.lu/a11y/a11y_renowify';
 
-  console.log('Run Renowify (script_bookmarklet)');
+  console.log('Run Renowify (script_cypress)');
 
   const load_renowify = new Promise(function (resolve, reject) {
     let script = document.createElement('script');
@@ -36,9 +36,7 @@ if (!document.body.classList.contains('renowify-script-injected')) {
         pluginUrl,
         run_html5,
         run_lighthouse,
-        run_wave,
-        '',
-        ''
+        run_wave
       ),
       100
     );

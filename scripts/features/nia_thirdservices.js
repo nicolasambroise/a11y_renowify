@@ -1,6 +1,22 @@
 // Fonction Validation Third-part : HTML5 Wave Lighthouse
 function thirdPartValidation() {
   let validator_p, wave_p, lighthouse_p;
+  let lighthouseAPIKey = '';
+  let waveAPIKey = '';
+
+  // Recuperer les options (profile)
+  chrome.storage.sync.get(['wave_key'], function (sync) {
+    if (sync.wave_key && sync.wave_key != undefined && sync.wave_key != '') {
+      console.log('$_wave_key : ' + sync.wave_key);
+      waveAPIKey = sync.wave_key;
+    }
+  });
+  chrome.storage.sync.get(['lighthouse_key'], function (sync) {
+    if (sync.lighthouse_key && sync.lighthouse_key != undefined && sync.lighthouse_key != '') {
+      console.log('$_lighthouse_key : ' + sync.lighthouse_key);
+      lighthouseAPIKey = sync.lighthouse_key;
+    }
+  });
 
   if (!only_redactor && !only_error && run_html5) {
     // Fonction Validator HTML5

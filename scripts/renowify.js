@@ -120,11 +120,7 @@ let run_html5 = false;
 let run_lighthouse = false;
 let run_wave = false;
 
-// Credential --> To fill in nia_thirdservices_config.js
-let lighthouseAPIKey = '';
-let waveAPIKey = '';
-
-function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw, kl, kw) {
+function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
   /*- -------------------------------------------------------------------------------- */
   /* Pre-processing */
 
@@ -140,8 +136,6 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw, kl, kw) {
   if (rh != null) run_html5 = rh;
   if (rl != null) run_lighthouse = rl;
   if (rw != null) run_wave = rw;
-  if (kl != null) lighthouseAPIKey = kl;
-  if (kw != null) waveAPIKey = kw;
 
   // Check Page
   if (isHomepage) console.log('$ isHomepage');
