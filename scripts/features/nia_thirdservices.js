@@ -4,20 +4,6 @@ function thirdPartValidation() {
   let lighthouseAPIKey = '';
   let waveAPIKey = '';
 
-  // Recuperer les options (profile)
-  chrome.storage.sync.get(['wave_key'], function (sync) {
-    if (sync.wave_key && sync.wave_key != undefined && sync.wave_key != '') {
-      console.log('$_wave_key : ' + sync.wave_key);
-      waveAPIKey = sync.wave_key;
-    }
-  });
-  chrome.storage.sync.get(['lighthouse_key'], function (sync) {
-    if (sync.lighthouse_key && sync.lighthouse_key != undefined && sync.lighthouse_key != '') {
-      console.log('$_lighthouse_key : ' + sync.lighthouse_key);
-      lighthouseAPIKey = sync.lighthouse_key;
-    }
-  });
-
   if (!only_redactor && !only_error && run_html5) {
     // Fonction Validator HTML5
     const validatorUrl = 'https://validator.nu/?out=json';
@@ -89,12 +75,19 @@ function thirdPartValidation() {
 
     if (!isPreview && isAEM && run_lighthouse) {
       // Fonction LightHouse
+      // Recuperer les options (profile)
+      chrome.storage.sync.get(['lighthouse_key'], function (sync) {
+        if (sync.lighthouse_key && sync.lighthouse_key != undefined && sync.lighthouse_key != '') {
+          console.log('$_lighthouse_key : ' + sync.lighthouse_key);
+          lighthouseAPIKey = sync.lighthouse_key;
+        }
+      });
+
+      // Création de l'URL
       const lighthouseUrl =
         'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
-
       let lighthouseOptions =
         'locale=fr-FR&category=accessibility&category=best-practices&category=seo';
-
       if (lighthouseAPIKey != '') {
         lighthouseOptions += '&key=' + lighthouseAPIKey;
       }
@@ -219,6 +212,15 @@ function thirdPartValidation() {
     }
     if (!isPreview && isAEM && run_wave && waveAPIKey != '') {
       // Fonction Wave
+      // Recuperer les options (profile)
+      chrome.storage.sync.get(['wave_key'], function (sync) {
+        if (sync.wave_key && sync.wave_key != undefined && sync.wave_key != '') {
+          console.log('$_wave_key : ' + sync.wave_key);
+          waveAPIKey = sync.wave_key;
+        }
+      });
+
+      // Création de l'URL
       const waveUrl =
         'https://wave.webaim.org/api/request?&url=https://google.com/';
       let waveOptions = 'key=' + waveAPIKey + '&format=json&reporttype=1';

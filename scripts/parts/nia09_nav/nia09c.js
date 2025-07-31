@@ -1,4 +1,4 @@
-// C. Presence d'attibut tabindex positif
+// C. Presence d'attributs tabindex positif
 function check_test_09c() {
   if (!only_redactor) {
     const nia09c_nodes = document.querySelectorAll(

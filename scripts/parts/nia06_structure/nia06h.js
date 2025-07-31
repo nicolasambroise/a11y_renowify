@@ -72,7 +72,7 @@ function check_test_06h() {
     ) {
       setItemToResultList(
         'nc',
-        "<li><a href='#' data-destination='nia06h5' class='result-focus label-red'>06-H</a> : Présence de cadre avec attributde présentation (height, width)</li>"
+        "<li><a href='#' data-destination='nia06h5' class='result-focus label-red'>06-H</a> : Présence de cadre avec attribut de présentation (height, width)</li>"
       );
       setItemsOutline(nia06h5_nodes, 'red', 'nia06h5', '06-H');
     }

@@ -209,79 +209,9 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
       '/scripts/features/nia_thirdservices.js',
       pluginUrl
     );
-    var p01_loaded = loadScript(
-      'p01',
-      '/scripts/parts/nia01_colors.js',
-      pluginUrl
-    );
-    var p02_loaded = loadScript(
-      'p02',
-      '/scripts/parts/nia02_images.js',
-      pluginUrl
-    );
-    var p03_loaded = loadScript(
-      'p03',
-      '/scripts/parts/nia03_links.js',
-      pluginUrl
-    );
-    var p04_loaded = loadScript(
-      'p04',
-      '/scripts/parts/nia04_form.js',
-      pluginUrl
-    );
-    var p05_loaded = loadScript(
-      'p05',
-      '/scripts/parts/nia05_obligatoire.js',
-      pluginUrl
-    );
-    var p06_loaded = loadScript(
-      'p06',
-      '/scripts/parts/nia06_structure.js',
-      pluginUrl
-    );
-    var p07_loaded = loadScript(
-      'p07',
-      '/scripts/parts/nia07_config.js',
-      pluginUrl
-    );
-    var p08_loaded = loadScript(
-      'p08',
-      '/scripts/parts/nia08_table.js',
-      pluginUrl
-    );
-    var p09_loaded = loadScript(
-      'p09',
-      '/scripts/parts/nia09_nav.js',
-      pluginUrl
-    );
-    var p10_loaded = loadScript(
-      'p10',
-      '/scripts/parts/nia10_oldtag.js',
-      pluginUrl
-    );
-    var p11_loaded = loadScript(
-      'p11',
-      '/scripts/parts/nia11_lang.js',
-      pluginUrl
-    );
-    var p12_loaded = loadScript(
-      'p12',
-      '/scripts/parts/nia12_button.js',
-      pluginUrl
-    );
-    var p13_loaded = loadScript(
-      'p13',
-      '/scripts/parts/nia13_lottie.js',
-      pluginUrl
-    );
-    var p14_loaded = loadScript(
-      'p14',
-      '/scripts/parts/nia14_title.js',
-      pluginUrl
-    );
-    var p15_loaded = loadScript(
-      'p15',
-      '/scripts/parts/nia15_secu.js',
+    var checks_loaded = loadScript(
+      'checks',
+      '/scripts/dist/checks.js',
       pluginUrl
     );
 
@@ -289,21 +219,7 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
       functions_loaded,
       resultpanel_loaded,
       thirdservices_loaded,
-      p01_loaded,
-      p02_loaded,
-      p03_loaded,
-      p04_loaded,
-      p05_loaded,
-      p06_loaded,
-      p07_loaded,
-      p08_loaded,
-      p09_loaded,
-      p10_loaded,
-      p11_loaded,
-      p12_loaded,
-      p13_loaded,
-      p14_loaded,
-      p15_loaded
+      checks_loaded
     ])
       .then(function () {
         setTimeout(beforeCheck(), 100);

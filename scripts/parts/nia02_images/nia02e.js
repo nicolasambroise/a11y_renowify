@@ -1,4 +1,4 @@
-// E. Images légendés presence du aria-label sur le figure
+// E. Presence du aria-label sur le  &lt;figure&gt; des images légendées
 function check_test_02e() {
   if (!only_redactor && isAEM) {
     const nia02e_nodes = document.querySelectorAll(

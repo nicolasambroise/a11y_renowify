@@ -27,7 +27,7 @@ function check_test_06c() {
         if (nia06c2_counter > 1) {
           setItemToResultList(
             'dev',
-            "<li><span class='result-focus label-red'>06-C</span> : Il y a un plusieur elements header visible [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
+            "<li><span class='result-focus label-red'>06-C</span> : Il y a un plusieurs elements header visible [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
           );
           setItemsOutline(nia06c2_nodes, 'red', 'nia06c2', '06-C');
           break;
@@ -39,7 +39,7 @@ function check_test_06c() {
     if (nia06c3_nodes != null && nia06c3_nodes.length > 0) {
       setItemToResultList(
         'dev',
-        "<li><span class='result-focus label-red'>06-C</span> : Il y a un problème avec la structuration du header, celui-ci ne dois pas être enfant de la balise main [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
+        "<li><span class='result-focus label-red'>06-C</span> : Il y a un problème avec la structuration du header, celui-ci ne doit pas être enfant de la balise main [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
       );
       setItemsOutline(nia06c3_nodes, 'red', 'nia06c3', '06-C');
     }

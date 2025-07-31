@@ -2,7 +2,7 @@
 function check_test_04k() {
   if (!only_error && isAEM) {
     const nia04k_nodes = document.querySelectorAll(
-      "input[type='submit'], input[type='reset'], input[type='button']"
+      'html[lang="fr"] input[type="submit"], html[lang="fr"] input[type="reset"], html[lang="fr"] input[type="button"]'
     );
     let nia04k_array = [
       'envoyer',

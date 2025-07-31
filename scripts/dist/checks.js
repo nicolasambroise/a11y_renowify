@@ -728,7 +728,7 @@ function check_test_01c() {
       nia01c_btn.click();
     }
     const nia01c_nodes = document.querySelectorAll(
-      'input[placeholder]:not([disabled])'
+      'input[placeholder]:not([disabled]), textarea[placeholder]:not([disabled])'
     );
     let nia01c_flag1 = false;
     let nia01c_flag2 = false;
@@ -1102,11 +1102,11 @@ function check_test_13a() {
           nia13a_result1 = nia13a_nodes[i].innerText.match(/ {3,}/g);
           nia13a_result2 = nia13a_nodes[i].innerText.match(/\s{4,}/g);
           if (nia13a_result1 && nia13a_result1.length > 0) {
-            setItemOutline(nia13a_nodes[i], 'yellow', 'nia13a', '06-I');
+            setItemOutline(nia13a_nodes[i], 'yellow', 'nia13a', '13-A');
             nia13a_flag = true;
           }
           if (nia13a_result2 && nia13a_result2.length > 0) {
-            setItemOutline(nia13a_nodes[i], 'yellow', 'nia13a', '06-I');
+            setItemOutline(nia13a_nodes[i], 'yellow', 'nia13a', '13-A');
             nia13a_flag = true;
           }
         }
@@ -1316,7 +1316,7 @@ function check_test_02d() {
   }
 }
 
-// E. Images légendés presence du aria-label sur le figure
+// E. Presence du aria-label sur le  &lt;figure&gt; des images légendées
 function check_test_02e() {
   if (!only_redactor && isAEM) {
     const nia02e_nodes = document.querySelectorAll(
@@ -1379,7 +1379,7 @@ function check_test_02f() {
     ) {
       setItemToResultList(
         'nc',
-        "<li><a href='#' data-destination='nia02f3' class='result-focus label-red'>02-F</a> : Les images objects porteuses d'information doivent avoir une alternative textuelle - à vérifier manuellement la présence d'un mécaniseme de remplacement [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-6' target='_blank'>RAWeb 1.1.6</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-porteuse-dinformation-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 113</a>]</li>"
+        "<li><a href='#' data-destination='nia02f3' class='result-focus label-red'>02-F</a> : Les images objects porteuses d'information doivent avoir une alternative textuelle - à vérifier manuellement la présence d'un mécanisme de remplacement [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-6' target='_blank'>RAWeb 1.1.6</a> - <a href='https://checklists.opquast.com/fr/assurance-qualite-web/chaque-image-porteuse-dinformation-est-dotee-dune-alternative-textuelle-appropriee' target='_blank'>Opquast 113</a>]</li>"
       );
       setItemsOutline(nia02f3_nodes, 'red', 'nia02f3', '02-F');
     }
@@ -1394,7 +1394,7 @@ function check_test_02f() {
     ) {
       setItemToResultList(
         'nc',
-        "<li><a href='#' data-destination='nia02f4' class='result-focus label-red'>02-F</a> : Les images embarquée porteuses d'information doivent avoir une alternative textuelle - à vérifier manuellement la présence d'un mécaniseme de remplacement [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-7' target='_blank'>RAWeb 1.1.7</a>]</li>"
+        "<li><a href='#' data-destination='nia02f4' class='result-focus label-red'>02-F</a> : Les images embarquée porteuses d'information doivent avoir une alternative textuelle - à vérifier manuellement la présence d'un mécanisme de remplacement [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-7' target='_blank'>RAWeb 1.1.7</a>]</li>"
       );
       setItemsOutline(nia02f4_nodes, 'red', 'nia02f4', '02-F');
     }
@@ -1409,7 +1409,7 @@ function check_test_02f() {
     ) {
       setItemToResultList(
         'nc',
-        "<li><a href='#' data-destination='nia02f5' class='result-focus label-red'>02-F</a> : Les images bitmap (balise canvas) porteuses d'information doivent avoir une alternative textuelle - à vérifier manuellement la présence d'un mécaniseme de remplacement [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-8' target='_blank'>RAWeb 1.1.8</a>]</li>"
+        "<li><a href='#' data-destination='nia02f5' class='result-focus label-red'>02-F</a> : Les images bitmap (balise canvas) porteuses d'information doivent avoir une alternative textuelle - à vérifier manuellement la présence d'un mécanisme de remplacement [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-1-1-8' target='_blank'>RAWeb 1.1.8</a>]</li>"
       );
       setItemsOutline(nia02f5_nodes, 'red', 'nia02f5', '02-F');
     }
@@ -6964,6 +6964,7 @@ function check_test_11c() {
             .toLowerCase()
             .includes(nia11c_array_test[j])
         ) {
+          if(debug_flag) console.log("keyword detected : "+nia11c_array_test[j])
           setItemOutline(nia11c_nodes[i], 'orange', 'nia11c', '11-C');
           nia11c_flag = true;
           break;

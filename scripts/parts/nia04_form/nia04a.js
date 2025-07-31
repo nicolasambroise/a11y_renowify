@@ -6,7 +6,7 @@ function check_test_04a() {
   if (nia04a1_nodes && nia04a1_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a1' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (name) - utiliser 'family-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a1' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (name) - utiliser 'family-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a1_nodes, 'red', 'nia04a1', '04-A');
   }
@@ -16,7 +16,7 @@ function check_test_04a() {
   if (nia04a2_nodes && nia04a2_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a2' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (firstname) - utiliser 'given-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a2' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (firstname) - utiliser 'given-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a2_nodes, 'red', 'nia04a2', '04-A');
   }
@@ -26,7 +26,7 @@ function check_test_04a() {
   if (nia04a3_nodes && nia04a3_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a3' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (email) - utiliser 'email' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a3' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (email) - utiliser 'email' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a3_nodes, 'red', 'nia04a3', '04-A');
   }
@@ -36,7 +36,7 @@ function check_test_04a() {
   if (nia04a4_nodes && nia04a4_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a4' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (phone) - utiliser 'tel' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a4' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (phone) - utiliser 'tel' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a4_nodes, 'red', 'nia04a4', '04-A');
   }
@@ -46,7 +46,7 @@ function check_test_04a() {
   if (nia04a5_nodes && nia04a5_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a5' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (postal) - utiliser 'postal-code' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a5' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (postal) - utiliser 'postal-code' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a5_nodes, 'red', 'nia04a5', '04-A');
   }
@@ -56,7 +56,7 @@ function check_test_04a() {
   if (nia04a6_nodes && nia04a6_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a6' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (country) - utiliser 'country-name' ou 'country' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a6' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (country) - utiliser 'country-name' ou 'country' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a6_nodes, 'red', 'nia04a6', '04-A');
   }
@@ -66,7 +66,7 @@ function check_test_04a() {
   if (nia04a7_nodes && nia04a7_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a7' class='result-focus label-red'>04-A</a> : Attribut erronée sur des champs formulaire (matricule) - Enlever l'attribut [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a7' class='result-focus label-red'>04-A</a> : Attribut erroné sur des champs formulaire (matricule) - Enlever l'attribut [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a7_nodes, 'red', 'nia04a7', '04-A');
   }
@@ -76,7 +76,7 @@ function check_test_04a() {
   if (nia04a8_nodes && nia04a8_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a8' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (ville) - Utiliser 'address-level2' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a8' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (ville) - Utiliser 'address-level2' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a8_nodes, 'red', 'nia04a8', '04-A');
   }
@@ -86,7 +86,7 @@ function check_test_04a() {
   if (nia04a9_nodes && nia04a9_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a9' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (adresse) - Utiliser 'street-address' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a9' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (adresse) - Utiliser 'street-address' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a9_nodes, 'red', 'nia04a9', '04-A');
   }
@@ -96,7 +96,7 @@ function check_test_04a() {
   if (nia04a10_nodes && nia04a10_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a10' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (organisation) - utiliser 'organization' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a10' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (organisation) - utiliser 'organization' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a10_nodes, 'red', 'nia04a10', '04-A');
   }
@@ -106,7 +106,7 @@ function check_test_04a() {
   if (nia04a11_nodes && nia04a11_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a11' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (function) - utiliser 'organization-title' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a11' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (function) - utiliser 'organization-title' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a11_nodes, 'red', 'nia04a11', '04-A');
   }

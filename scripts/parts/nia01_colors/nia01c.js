@@ -9,7 +9,7 @@ function check_test_01c() {
       nia01c_btn.click();
     }
     const nia01c_nodes = document.querySelectorAll(
-      'input[placeholder]:not([disabled])'
+      'input[placeholder]:not([disabled]), textarea[placeholder]:not([disabled])'
     );
     let nia01c_flag1 = false;
     let nia01c_flag2 = false;

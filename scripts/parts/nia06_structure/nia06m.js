@@ -114,7 +114,7 @@ function check_test_06m() {
     if (nia06m6_flag == true) {
       setItemToResultList(
         'dev',
-        "<li><a href='#' data-destination='nia06m6' class='result-focus label-yellow'>06-M</a> : Les différents élément d'une adresse Geoportail doivent être regroupée dans une balise 'p' ou 'dd'</li>"
+        "<li><a href='#' data-destination='nia06m6' class='result-focus label-yellow'>06-M</a> : Les différents éléments d'une adresse Geoportail doivent être regroupée dans une balise 'p' ou 'dd'</li>"
       );
     }
   }

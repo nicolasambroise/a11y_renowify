@@ -1,4 +1,4 @@
-// I. Presence de triple espace (double concidéré comme erreur d'inattention)
+// I. Animation Lottie video
 function check_test_06i() {
   // A. Max duration = 5s si autoplay / Pas de loop
   const nia06i_nodes = document.querySelectorAll('lottie-player');

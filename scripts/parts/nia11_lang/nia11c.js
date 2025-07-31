@@ -96,6 +96,7 @@ function check_test_11c() {
             .toLowerCase()
             .includes(nia11c_array_test[j])
         ) {
+          if(debug_flag) console.log("keyword detected : "+nia11c_array_test[j])
           setItemOutline(nia11c_nodes[i], 'orange', 'nia11c', '11-C');
           nia11c_flag = true;
           break;

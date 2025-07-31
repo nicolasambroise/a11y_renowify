@@ -1,4 +1,4 @@
-// I. Presence de triple espace (double concidéré comme erreur d'inattention)
+// A. Presence de triple espace (double concidéré comme erreur d'inattention)
 function check_test_13a() {
   if (!only_error) {
     const nia13a_nodes = document.querySelectorAll(

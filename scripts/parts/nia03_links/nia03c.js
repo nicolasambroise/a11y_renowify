@@ -1,4 +1,4 @@
-// C. Probleme de lang
+// C. Problème de langue dans les suffixes
 function check_test_03c() {
   if (!only_redactor) {
     const nia03c_nodes = document.querySelectorAll(
@@ -11,7 +11,7 @@ function check_test_03c() {
     ) {
       setItemToResultList(
         'nc',
-        "<li><a href='#' data-destination='nia03c' class='result-focus label-orange'>03-C</a> : Présence du suffixe 'Nouvelle fenêtre' sur une page non rédiger en français (de même pour les autres langues)</li>"
+        "<li><a href='#' data-destination='nia03c' class='result-focus label-orange'>03-C</a> : Présence du suffixe 'Nouvelle fenêtre' sur une page non rédigée en français (de même pour les autres langues)</li>"
       );
       setItemsOutline(nia03c_nodes, 'orange', 'nia03c', '03-C');
     }

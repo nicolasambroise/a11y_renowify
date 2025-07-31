@@ -1,4 +1,4 @@
-// D. Présence d'un conflit dans les attribut de liens
+// D. Présence d'un conflit dans les attributs de liens
 function check_test_03d() {
   if (!only_redactor) {
     const nia03d_nodes = document.querySelectorAll(

@@ -11,7 +11,7 @@ function check_test_15e() {
     ) {
       setItemToResultList(
         'nth',
-        "<li><a href='#' data-destination='nia15e' class='result-focus label-yellow'>15-E</a> : Vérifiez si ce document ne peut pas être fourni au formt PDF ou HTML</li>"
+        "<li><a href='#' data-destination='nia15e' class='result-focus label-yellow'>15-E</a> : Vérifiez si ce document ne peut pas être fourni au format PDF ou HTML</li>"
       );
       setItemsOutline(nia15e_nodes, 'yellow', 'nia15e', '15-E');
     }

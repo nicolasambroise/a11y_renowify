@@ -205,6 +205,10 @@ body.check-panel-active [role='dialog'] {
   mask: none !important;
 }
 
+#checkA11YPanel.active .panel-body ul > li::after {
+  content: none !important;
+}
+
 #checkA11YPanel.active .panel-body ul > li a,
 #checkA11YPanel.active .panel-body ul > li a:active,
 #checkA11YPanel.active .panel-body ul > li a:visited,

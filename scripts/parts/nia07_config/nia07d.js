@@ -39,7 +39,7 @@ function check_test_07d() {
     ) {
       setItemToResultList(
         'dev',
-        "<li><a href='#' data-destination='nia07d3' class='result-focus label-orange'>07-D</a> : Les liens vers les versions linguistique doivent avoir les attributs lang, hreflang et posséder un attribut title dont le contenu textuel est tel que : « de – Deutsch » </li>"
+        "<li><a href='#' data-destination='nia07d3' class='result-focus label-orange'>07-D</a> : Les liens vers les versions linguistiques doivent avoir les attributs lang, hreflang et posséder un attribut title dont le contenu textuel est tel que : « de – Deutsch » </li>"
       );
       setItemsOutline(nia07d3_nodes, 'orange', 'nia07d3', '07-D');
     }
