@@ -1043,8 +1043,10 @@ function check_test_01f() {
     const nia01f_color = document.body.style.color;
     const nia01f_bg = document.body.style.backgroundColor;
 
-    console.log(nia01f_color);
-    console.log(nia01f_bg);
+    if (debug_flag){
+      console.log(nia01f_color);
+      console.log(nia01f_bg);
+    }
 
     if (
       nia01f_color == '' ||
@@ -1088,7 +1090,7 @@ function check_test_01f() {
   }
 }
 
-// I. Presence de triple espace (double concidéré comme erreur d'inattention)
+// A. Presence de triple espace (double concidéré comme erreur d'inattention)
 function check_test_13a() {
   if (!only_error) {
     const nia13a_nodes = document.querySelectorAll(
@@ -1823,7 +1825,7 @@ function check_test_03b() {
   }
 }
 
-// C. Probleme de lang
+// C. Problème de langue dans les suffixes
 function check_test_03c() {
   if (!only_redactor) {
     const nia03c_nodes = document.querySelectorAll(
@@ -1836,14 +1838,14 @@ function check_test_03c() {
     ) {
       setItemToResultList(
         'nc',
-        "<li><a href='#' data-destination='nia03c' class='result-focus label-orange'>03-C</a> : Présence du suffixe 'Nouvelle fenêtre' sur une page non rédiger en français (de même pour les autres langues)</li>"
+        "<li><a href='#' data-destination='nia03c' class='result-focus label-orange'>03-C</a> : Présence du suffixe 'Nouvelle fenêtre' sur une page non rédigée en français (de même pour les autres langues)</li>"
       );
       setItemsOutline(nia03c_nodes, 'orange', 'nia03c', '03-C');
     }
   }
 }
 
-// D. Présence d'un conflit dans les attribut de liens
+// D. Présence d'un conflit dans les attributs de liens
 function check_test_03d() {
   if (!only_redactor) {
     const nia03d_nodes = document.querySelectorAll(
@@ -2166,11 +2168,11 @@ function check_test_03m() {
   }
 }
 
-// N. Un lien non_souligné et inclus dans un paragraphe de texte doit être suffisamment contrasté avec le texte environnant (à l’état par défaut, hover et focus). Idéalement, toujours souligner les liens.
+// N. Un lien non_souligné et inclus dans un paragraphe de texte doit être suffisamment contrasté avec le texte environnant. Idéalement, toujours souligner les liens.
 function check_test_03n() {
   if (!only_redactor && !only_error) {
     const nia03n_nodes = document.querySelectorAll(
-      'main *:not(li.nav-item) > p > a:not(.btn), main *:not(.cmp-autocompleteSearch__keywords) > li:not(.cmp-focus-list-item):not(.nav-item):not(.cmp-languagenavigation__item):not(.cmp-breadcrumb__item):not(.subnav-item):not(.cmp-grid__item ):not(.filter-item):not(.cmp-list__item):not(.pagination-page):not(.pagination-next):not(.pagination-prev) > a:not(.toc-anchor)'
+      'main *:not(li.nav-item) > p:not(.nav-back) > a:not(.btn), main *:not(.cmp-autocompleteSearch__keywords) > li:not(.cmp-focus-list-item):not(.nav-item):not(.cmp-languagenavigation__item):not(.cmp-breadcrumb__item):not(.subnav-item):not(.cmp-grid__item ):not(.filter-item):not(.cmp-list__item):not(.pagination-page):not(.pagination-next):not(.pagination-prev) > a:not(.toc-anchor)'
     );
     let nia03n_flag = false;
     if (
@@ -2260,7 +2262,7 @@ function check_test_04a() {
   if (nia04a1_nodes && nia04a1_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a1' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (name) - utiliser 'family-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a1' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (name) - utiliser 'family-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a1_nodes, 'red', 'nia04a1', '04-A');
   }
@@ -2270,7 +2272,7 @@ function check_test_04a() {
   if (nia04a2_nodes && nia04a2_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a2' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (firstname) - utiliser 'given-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a2' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (firstname) - utiliser 'given-name' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a2_nodes, 'red', 'nia04a2', '04-A');
   }
@@ -2280,7 +2282,7 @@ function check_test_04a() {
   if (nia04a3_nodes && nia04a3_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a3' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (email) - utiliser 'email' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a3' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (email) - utiliser 'email' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a3_nodes, 'red', 'nia04a3', '04-A');
   }
@@ -2290,7 +2292,7 @@ function check_test_04a() {
   if (nia04a4_nodes && nia04a4_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a4' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (phone) - utiliser 'tel' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a4' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (phone) - utiliser 'tel' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a4_nodes, 'red', 'nia04a4', '04-A');
   }
@@ -2300,7 +2302,7 @@ function check_test_04a() {
   if (nia04a5_nodes && nia04a5_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a5' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (postal) - utiliser 'postal-code' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a5' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (postal) - utiliser 'postal-code' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a5_nodes, 'red', 'nia04a5', '04-A');
   }
@@ -2310,7 +2312,7 @@ function check_test_04a() {
   if (nia04a6_nodes && nia04a6_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a6' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (country) - utiliser 'country-name' ou 'country' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a6' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (country) - utiliser 'country-name' ou 'country' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a6_nodes, 'red', 'nia04a6', '04-A');
   }
@@ -2320,7 +2322,7 @@ function check_test_04a() {
   if (nia04a7_nodes && nia04a7_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a7' class='result-focus label-red'>04-A</a> : Attribut erronée sur des champs formulaire (matricule) - Enlever l'attribut [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a7' class='result-focus label-red'>04-A</a> : Attribut erroné sur des champs formulaire (matricule) - Enlever l'attribut [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a7_nodes, 'red', 'nia04a7', '04-A');
   }
@@ -2330,7 +2332,7 @@ function check_test_04a() {
   if (nia04a8_nodes && nia04a8_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a8' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (ville) - Utiliser 'address-level2' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a8' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (ville) - Utiliser 'address-level2' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a8_nodes, 'red', 'nia04a8', '04-A');
   }
@@ -2340,7 +2342,7 @@ function check_test_04a() {
   if (nia04a9_nodes && nia04a9_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a9' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (adresse) - Utiliser 'street-address' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a9' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (adresse) - Utiliser 'street-address' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a9_nodes, 'red', 'nia04a9', '04-A');
   }
@@ -2350,7 +2352,7 @@ function check_test_04a() {
   if (nia04a10_nodes && nia04a10_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a10' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (organisation) - utiliser 'organization' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a10' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (organisation) - utiliser 'organization' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a10_nodes, 'red', 'nia04a10', '04-A');
   }
@@ -2360,7 +2362,7 @@ function check_test_04a() {
   if (nia04a11_nodes && nia04a11_nodes.length > 0) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04a11' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erronée sur des champs formulaire (function) - utiliser 'organization-title' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
+      "<li><a href='#' data-destination='nia04a11' class='result-focus label-red'>04-A</a> : Absence d'attribut autocomplete ou attribut erroné sur des champs formulaire (function) - utiliser 'organization-title' [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-13-1' target='_blank'>RAWeb 11.13.1</a>]</li>"
     );
     setItemsOutline(nia04a11_nodes, 'red', 'nia04a11', '04-A');
   }
@@ -2480,7 +2482,7 @@ function check_test_04b() {
   if (nia04b_flag == true) {
     setItemToResultList(
       'nc',
-      "<li><a href='#' data-destination='nia04b' class='result-focus label-red'>04-B</a> : Présence de champs email sans exemple de format [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-10-5' target='_blank'>RAWeb 11.10.5</a>]</li>"
+      "<li><a href='#' data-destination='nia04b' class='result-focus label-red'>04-B</a> : Présence de champs email sans indication de format [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-11-10-5' target='_blank'>RAWeb 11.10.5</a>]</li>"
     );
   }
 }
@@ -2586,7 +2588,7 @@ function check_test_04e() {
   }
 }
 
-// F. Required ou aria-required="true" possède un asterisque dans le label
+// F. Label de champ obligatoire : Required ou aria-required="true" possède un astérisque dans le label
 function check_test_04f() {
   if (!only_redactor && isAEM) {
     const nia04f_nodes = document.querySelectorAll(
@@ -2869,7 +2871,7 @@ function check_test_04j() {
 function check_test_04k() {
   if (!only_error && isAEM) {
     const nia04k_nodes = document.querySelectorAll(
-      "input[type='submit'], input[type='reset'], input[type='button']"
+      'html[lang="fr"] input[type="submit"], html[lang="fr"] input[type="reset"], html[lang="fr"] input[type="button"]'
     );
     let nia04k_array = [
       'envoyer',
@@ -3083,7 +3085,11 @@ function check_test_05b() {
         );
         if (nia05b_clean_node == '' && isItemVisible(nia05b_nodes[i])) {
           // Correction faux-positif pour les numéros de téléphone
-          if (nia05b_nodes[i].tagName != "A" || !nia05b_nodes[i].hasAttributes("href") || nia05b_nodes[i].getAttribute("href").indexOf("tel") != 0) {
+          if (
+            nia05b_nodes[i].tagName != 'A' ||
+            !nia05b_nodes[i].hasAttributes('href') ||
+            nia05b_nodes[i].getAttribute('href').indexOf('tel') != 0
+          ) {
             setItemOutline(nia05b_nodes[i], 'orange', 'nia05b', '05-B');
             nia05b_nodes[i].parentElement.classList.add(
               'checkA11YOutline__orange_parent'
@@ -3353,7 +3359,7 @@ function check_test_05l() {
           setItemOutline(nia05l_node, 'red', 'nia05l', '05-L');
           setItemToResultList(
             'dev',
-            "<li><a href='#' data-destination='nia05l' class='result-focus label-red'>05-L</a> : Le focus clavier est supprimer d'un élément accordéon [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-focus-clavier-nest-ni-supprime-ni-masque' target='_blank'>Opquast 160</a>]</li>"
+            "<li><a href='#' data-destination='nia05l' class='result-focus label-red'>05-L</a> : Le focus clavier est supprimé d'un élément accordéon [<a href='https://checklists.opquast.com/fr/assurance-qualite-web/le-focus-clavier-nest-ni-supprime-ni-masque' target='_blank'>Opquast 160</a>]</li>"
           );
         }
       });
@@ -3692,7 +3698,7 @@ function check_test_06c() {
         if (nia06c2_counter > 1) {
           setItemToResultList(
             'dev',
-            "<li><span class='result-focus label-red'>06-C</span> : Il y a un plusieur elements header visible [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
+            "<li><span class='result-focus label-red'>06-C</span> : Il y a un plusieurs elements header visible [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
           );
           setItemsOutline(nia06c2_nodes, 'red', 'nia06c2', '06-C');
           break;
@@ -3704,14 +3710,14 @@ function check_test_06c() {
     if (nia06c3_nodes != null && nia06c3_nodes.length > 0) {
       setItemToResultList(
         'dev',
-        "<li><span class='result-focus label-red'>06-C</span> : Il y a un problème avec la structuration du header, celui-ci ne dois pas être enfant de la balise main [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
+        "<li><span class='result-focus label-red'>06-C</span> : Il y a un problème avec la structuration du header, celui-ci ne doit pas être enfant de la balise main [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
       );
       setItemsOutline(nia06c3_nodes, 'red', 'nia06c3', '06-C');
     }
   }
 }
 
-// D. Vérifier que les zones de navigation principales et secondaires sont structurées au moyen d’un élément <nav> ;
+// D. Vérifier que les zones de navigation principales est structurée au moyen d’un élément <nav>
 function check_test_06d() {
   // <nav class="page-headernav" role="navigation" aria-label="Menu principal" id="headernav">
   if (!only_redactor && !only_error) {
@@ -3721,7 +3727,7 @@ function check_test_06d() {
     if (nia06d_nodes == null) {
       setItemToResultList(
         'dev',
-        "<li><span class='result-focus label-yellow'>06-D</span> : Il y a un problème avec la structuration de la navigation [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
+        "<li><span class='result-focus label-yellow'>06-D</span> : Il y a un problème avec la structuration de la navigation principale [<a href='https://accessibilite.public.lu/fr/raweb1/criteres.html#test-9-2-1' target='_blank'>RAWeb 9.2.1</a>]</li>"
       );
     }
   }
@@ -3958,14 +3964,14 @@ function check_test_06h() {
     ) {
       setItemToResultList(
         'nc',
-        "<li><a href='#' data-destination='nia06h5' class='result-focus label-red'>06-H</a> : Présence de cadre avec attributde présentation (height, width)</li>"
+        "<li><a href='#' data-destination='nia06h5' class='result-focus label-red'>06-H</a> : Présence de cadre avec attribut de présentation (height, width)</li>"
       );
       setItemsOutline(nia06h5_nodes, 'red', 'nia06h5', '06-H');
     }
   }
 }
 
-// I. Presence de triple espace (double concidéré comme erreur d'inattention)
+// I. Animation Lottie video
 function check_test_06i() {
   // A. Max duration = 5s si autoplay / Pas de loop
   const nia06i_nodes = document.querySelectorAll('lottie-player');
@@ -4192,7 +4198,9 @@ function check_test_06m() {
             setItemOutline(nia06m_nodes[i], 'yellow', 'nia06m4', '06-M');
           }
           if (nia06m_Adress && nia06m_Adress.length > 0) {
-            nia06m_Contact = nia06m_Adress[0].querySelectorAll('dl:not(.cmp-hours__list)');
+            nia06m_Contact = nia06m_Adress[0].querySelectorAll(
+              'dl:not(.cmp-hours__list)'
+            );
             nia06m_StreetAdress = nia06m_Adress[0].querySelectorAll(
               'span[itemprop="streetAddress"]'
             );
@@ -4254,7 +4262,7 @@ function check_test_06m() {
     if (nia06m6_flag == true) {
       setItemToResultList(
         'dev',
-        "<li><a href='#' data-destination='nia06m6' class='result-focus label-yellow'>06-M</a> : Les différents élément d'une adresse Geoportail doivent être regroupée dans une balise 'p' ou 'dd'</li>"
+        "<li><a href='#' data-destination='nia06m6' class='result-focus label-yellow'>06-M</a> : Les différents éléments d'une adresse Geoportail doivent être regroupée dans une balise 'p' ou 'dd'</li>"
       );
     }
   }
@@ -4471,7 +4479,10 @@ function check_test_06p() {
   if (!only_redactor && isAEM) {
     const nia06p1_nodes = document.querySelectorAll('.cmp-grid');
     let nia06p1_items;
-    let nia06p1_itemTitle, nia06p1_itemContent, nia06p1_itemTitleSani, nia06p1_hasImgDeco;
+    let nia06p1_itemTitle,
+      nia06p1_itemContent,
+      nia06p1_itemTitleSani,
+      nia06p1_hasImgDeco;
     let nia06p1_counter;
     let nia06p2_flag = false;
     let nia06p3_flag = false;
@@ -4499,9 +4510,8 @@ function check_test_06p() {
             );
             nia06p1_itemContent = sanitizeText(nia06p1_items[j].textContent);
 
-            nia06p1_hasImgInfo = nia06p1_items[j].querySelector(
-              'img:not([alt=""])'
-            );
+            nia06p1_hasImgInfo =
+              nia06p1_items[j].querySelector('img:not([alt=""])');
 
             if (nia06p1_itemTitle) {
               nia06p1_itemTitleSani = sanitizeText(
@@ -5205,7 +5215,7 @@ function check_test_07d() {
     ) {
       setItemToResultList(
         'dev',
-        "<li><a href='#' data-destination='nia07d3' class='result-focus label-orange'>07-D</a> : Les liens vers les versions linguistique doivent avoir les attributs lang, hreflang et posséder un attribut title dont le contenu textuel est tel que : « de – Deutsch » </li>"
+        "<li><a href='#' data-destination='nia07d3' class='result-focus label-orange'>07-D</a> : Les liens vers les versions linguistiques doivent avoir les attributs lang, hreflang et posséder un attribut title dont le contenu textuel est tel que : « de – Deutsch » </li>"
       );
       setItemsOutline(nia07d3_nodes, 'orange', 'nia07d3', '07-D');
     }
@@ -6339,7 +6349,7 @@ function check_test_09b() {
   }
 }
 
-// C. Presence d'attibut tabindex positif
+// C. Presence d'attributs tabindex positif
 function check_test_09c() {
   if (!only_redactor) {
     const nia09c_nodes = document.querySelectorAll(
@@ -6964,7 +6974,8 @@ function check_test_11c() {
             .toLowerCase()
             .includes(nia11c_array_test[j])
         ) {
-          if(debug_flag) console.log("keyword detected : "+nia11c_array_test[j])
+          if (debug_flag)
+            console.log('keyword detected : ' + nia11c_array_test[j]);
           setItemOutline(nia11c_nodes[i], 'orange', 'nia11c', '11-C');
           nia11c_flag = true;
           break;
@@ -7235,11 +7246,12 @@ function check_test_14c() {
       for (let i = 0; i < nia14c_nodes.length; i++) {
         if (isItemVisible(nia14c_nodes[i])) {
           nia14c_find = false;
-          for (let j = 0; j < nia14c_heading.length; j++){
-            if(nia14c_nodes[i].tagName == nia14c_heading[j].tagName && sanitizeText(
-              nia14c_nodes[i].textContent) == sanitizeText(
-              nia14c_heading[j].textContent)
-            ){
+          for (let j = 0; j < nia14c_heading.length; j++) {
+            if (
+              nia14c_nodes[i].tagName == nia14c_heading[j].tagName &&
+              sanitizeText(nia14c_nodes[i].textContent) ==
+                sanitizeText(nia14c_heading[j].textContent)
+            ) {
               //console.log("find : "+nia14c_nodes[i].textContent)
               nia14c_find = true;
               break;
@@ -7501,7 +7513,7 @@ function check_test_15e() {
     ) {
       setItemToResultList(
         'nth',
-        "<li><a href='#' data-destination='nia15e' class='result-focus label-yellow'>15-E</a> : Vérifiez si ce document ne peut pas être fourni au formt PDF ou HTML</li>"
+        "<li><a href='#' data-destination='nia15e' class='result-focus label-yellow'>15-E</a> : Vérifiez si ce document ne peut pas être fourni au format PDF ou HTML</li>"
       );
       setItemsOutline(nia15e_nodes, 'yellow', 'nia15e', '15-E');
     }

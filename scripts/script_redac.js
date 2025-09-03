@@ -10,12 +10,7 @@ if (document.body.classList.contains('renowify-script-injected')) {
   const pluginUrl = ''; // load in the chrome extension
 
   console.log('Run Renowify (script_redac)');
-  run_renowify(
-    debug_flag,
-    only_redactor,
-    only_error,
-    pluginUrl
-  );
+  run_renowify(debug_flag, only_redactor, only_error, pluginUrl);
 } else {
   toggleCheckA11YPanel();
 }

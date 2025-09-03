@@ -681,10 +681,10 @@ fieldset:not(.form-options) > .form-group {
   padding-left: 20px;
 }
 
-fieldset:not(.form-options) > .form-group > div{
+fieldset:not(.form-options) > .form-group > div {
   display: inline-block;
 }
 
-fieldset:not(.form-options) > .form-group > div label{
+fieldset:not(.form-options) > .form-group > div label {
   min-width: 75px;
 }

@@ -24,12 +24,7 @@ if (!document.body.classList.contains('renowify-script-injected')) {
     only_redactor = false; // true --> affiche uniquement les critères relatif au redacteur
     only_error = false; // true --> affiche uniquement les Non-conformités critiques
     setTimeout(
-      run_renowify(
-        debug_flag,
-        only_redactor,
-        only_error,
-        pluginUrl
-      ),
+      run_renowify(debug_flag, only_redactor, only_error, pluginUrl),
       100
     );
   });

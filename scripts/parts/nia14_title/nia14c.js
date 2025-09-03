@@ -19,11 +19,12 @@ function check_test_14c() {
       for (let i = 0; i < nia14c_nodes.length; i++) {
         if (isItemVisible(nia14c_nodes[i])) {
           nia14c_find = false;
-          for (let j = 0; j < nia14c_heading.length; j++){
-            if(nia14c_nodes[i].tagName == nia14c_heading[j].tagName && sanitizeText(
-              nia14c_nodes[i].textContent) == sanitizeText(
-              nia14c_heading[j].textContent)
-            ){
+          for (let j = 0; j < nia14c_heading.length; j++) {
+            if (
+              nia14c_nodes[i].tagName == nia14c_heading[j].tagName &&
+              sanitizeText(nia14c_nodes[i].textContent) ==
+                sanitizeText(nia14c_heading[j].textContent)
+            ) {
               //console.log("find : "+nia14c_nodes[i].textContent)
               nia14c_find = true;
               break;

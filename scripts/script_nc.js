@@ -2,7 +2,7 @@
 
 if (document.body.classList.contains('renowify-script-injected')) {
   // Variables config globale
-  const debug_flag = true; // true -> affiche les logs
+  const debug_flag = false; // true -> affiche les logs
   const only_redactor = false; // true --> affiche uniquement les critères relatif au redacteur
   const only_error = true; // true --> affiche uniquement les Non-conformités critiques
 
@@ -10,12 +10,7 @@ if (document.body.classList.contains('renowify-script-injected')) {
   const pluginUrl = ''; // load in the chrome extension
 
   console.log('Run Renowify (script_nc)');
-  run_renowify(
-    debug_flag,
-    only_redactor,
-    only_error,
-    pluginUrl
-  );
+  run_renowify(debug_flag, only_redactor, only_error, pluginUrl);
 } else {
   toggleCheckA11YPanel();
 }

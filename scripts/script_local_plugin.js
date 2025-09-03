@@ -10,12 +10,7 @@ if (document.body.classList.contains('renowify-script-injected')) {
   const pluginUrl = 'https://nicolasambroise.github.io/a11y';
 
   console.log('Run Renowify (script_local_plugin)');
-  run_renowify(
-    debug_flag,
-    only_redactor,
-    only_error,
-    pluginUrl,
-  );
+  run_renowify(debug_flag, only_redactor, only_error, pluginUrl);
 } else {
   toggleCheckA11YPanel();
 }

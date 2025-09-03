@@ -16,7 +16,11 @@ function check_test_05b() {
         );
         if (nia05b_clean_node == '' && isItemVisible(nia05b_nodes[i])) {
           // Correction faux-positif pour les numéros de téléphone
-          if (nia05b_nodes[i].tagName != "A" || !nia05b_nodes[i].hasAttributes("href") || nia05b_nodes[i].getAttribute("href").indexOf("tel") != 0) {
+          if (
+            nia05b_nodes[i].tagName != 'A' ||
+            !nia05b_nodes[i].hasAttributes('href') ||
+            nia05b_nodes[i].getAttribute('href').indexOf('tel') != 0
+          ) {
             setItemOutline(nia05b_nodes[i], 'orange', 'nia05b', '05-B');
             nia05b_nodes[i].parentElement.classList.add(
               'checkA11YOutline__orange_parent'

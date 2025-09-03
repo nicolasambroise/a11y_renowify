@@ -52,7 +52,9 @@ function check_test_06m() {
             setItemOutline(nia06m_nodes[i], 'yellow', 'nia06m4', '06-M');
           }
           if (nia06m_Adress && nia06m_Adress.length > 0) {
-            nia06m_Contact = nia06m_Adress[0].querySelectorAll('dl:not(.cmp-hours__list)');
+            nia06m_Contact = nia06m_Adress[0].querySelectorAll(
+              'dl:not(.cmp-hours__list)'
+            );
             nia06m_StreetAdress = nia06m_Adress[0].querySelectorAll(
               'span[itemprop="streetAddress"]'
             );

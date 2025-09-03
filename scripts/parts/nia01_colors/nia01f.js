@@ -4,8 +4,10 @@ function check_test_01f() {
     const nia01f_color = document.body.style.color;
     const nia01f_bg = document.body.style.backgroundColor;
 
-    console.log(nia01f_color);
-    console.log(nia01f_bg);
+    if (debug_flag){
+      console.log(nia01f_color);
+      console.log(nia01f_bg);
+    }
 
     if (
       nia01f_color == '' ||
