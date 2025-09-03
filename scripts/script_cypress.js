@@ -23,20 +23,12 @@ if (!document.body.classList.contains('renowify-script-injected')) {
     debug_flag = false; // true -> affiche les logs
     only_redactor = false; // true --> affiche uniquement les critères relatif au redacteur
     only_error = true; // true --> affiche uniquement les Non-conformités critiques
-    save_to_db = false; // true --> autorise la sauvegarde des resultats en base de données
-    run_html5 = false; // true --> lance le script W3C de detection d'erreur HTML5
-    run_lighthouse = false; // true --> lance le script Lighthouse de Google (Attention aux Quotas)
-    run_wave = false; // true --> lance le script Wave (Attention aux Quotas)
     setTimeout(
       run_renowify(
         debug_flag,
         only_redactor,
         only_error,
-        save_to_db,
-        pluginUrl,
-        run_html5,
-        run_lighthouse,
-        run_wave
+        pluginUrl
       ),
       100
     );

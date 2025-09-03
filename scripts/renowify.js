@@ -127,24 +127,14 @@ let result_nc_nb = 0;
 let result_nth_nb = 0;
 let result_dev_nb = 0;
 let result_man_nb = 0;
-let result_html5 = '';
-let result_html5_nb = 0;
-let result_wave = '';
-let result_lighthouse = '';
-let result_lighthouse_access = '';
-let result_lighthouse_bp = '';
-let result_lighthouse_seo = '';
 
 // Init Var
 let debug_flag = false;
 let only_redactor = false;
 let only_error = false;
-let save_to_db = false;
-let run_html5 = false;
-let run_lighthouse = false;
-let run_wave = false;
 
-function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
+
+function run_renowify(df, or, oe, pluginUrl) {
   /*- -------------------------------------------------------------------------------- */
   /* Pre-processing */
 
@@ -156,10 +146,6 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
   if (df != null) debug_flag = df;
   if (or != null) only_redactor = or;
   if (oe != null) only_error = oe;
-  if (std != null) save_to_db = std;
-  if (rh != null) run_html5 = rh;
-  if (rl != null) run_lighthouse = rl;
-  if (rw != null) run_wave = rw;
 
   // Check Page
   if (isHomepage) console.log('$ isHomepage');
@@ -183,9 +169,7 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
   result_nth_nb = '';
   result_dev_nb = '';
   result_man_nb = '';
-  result_html5 = '';
-  result_wave = '';
-  result_lighthouse = '';
+
 
   /*- -------------------------------------------------------------------------------- */
   // Add JS
@@ -204,11 +188,6 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
       '/scripts/features/nia_resultpanel.js',
       pluginUrl
     );
-    var thirdservices_loaded = loadScript(
-      'thirdservices',
-      '/scripts/features/nia_thirdservices.js',
-      pluginUrl
-    );
     var checks_loaded = loadScript(
       'checks',
       '/scripts/dist/checks.js',
@@ -218,7 +197,6 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
     Promise.all([
       functions_loaded,
       resultpanel_loaded,
-      thirdservices_loaded,
       checks_loaded
     ])
       .then(function () {
@@ -305,9 +283,6 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
         ])
           .then(function () {
             setTimeout(createResultPanel(), 100);
-          })
-          .then(function () {
-            setTimeout(thirdPartValidation(), 100);
           })
           .then(function () {
             setTimeout(activateCheckA11YPanel(), 100);
@@ -407,9 +382,6 @@ function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
       })
       .then(function () {
         setTimeout(createResultPanel(), 100);
-      })
-      .then(function () {
-        setTimeout(thirdPartValidation(), 100);
       })
       .then(function () {
         setTimeout(activateCheckA11YPanel(), 100);
