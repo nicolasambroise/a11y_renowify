@@ -26,6 +26,35 @@
             </select>
           </div>
         </div>
+        <fieldset>
+          <legend class="label form-options-legend">Licences</legend>
+          <div class="form-group">
+            <div class="form-group-label">
+              <label for="wave-key">Wave</label>
+            </div>
+            <div class="form-group-field">
+              <input
+                type="text"
+                id="wave-key"
+                class="form-field"
+                name="wave-key"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group-label">
+              <label for="lighthouse-key">Lighthouse</label>
+            </div>
+            <div class="form-group-field">
+              <input
+                type="text"
+                id="lighthouse-key"
+                class="form-field"
+                name="lighthouse-key"
+              />
+            </div>
+          </fieldset>
+        </div>
         <div class="form-group">
           <fieldset
             class="form-options form-options--switch form-options--switch--mini"
@@ -33,6 +62,26 @@
             <legend class="label form-options-legend">Options</legend>
             <div class="form-options-wrapper">
               <ul class="form-options-content">
+                <li class="form-options-group">
+                  <label for="switch-save-bdd" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-save-bdd"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-options"
+                      value="save-bdd"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                      ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                    >Autoriser l'envoi de données au server</span
+                    >
+                  </label>
+                </li>
                 <li class="form-options-group">
                   <label for="switch-debug" class="form-options-label">
                     <input

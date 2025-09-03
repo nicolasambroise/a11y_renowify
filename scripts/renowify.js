@@ -125,13 +125,24 @@ let result_nc_nb = 0;
 let result_nth_nb = 0;
 let result_dev_nb = 0;
 let result_man_nb = 0;
+let result_html5 = '';
+let result_html5_nb = 0;
+let result_wave = '';
+let result_lighthouse = '';
+let result_lighthouse_access = '';
+let result_lighthouse_bp = '';
+let result_lighthouse_seo = '';
 
 // Init Var
 let debug_flag = false;
 let only_redactor = false;
 let only_error = false;
+let save_to_db = false;
+let run_html5 = false;
+let run_lighthouse = false;
+let run_wave = false;
 
-function run_renowify(df, or, oe, pluginUrl) {
+function run_renowify(df, or, oe, std, pluginUrl, rh, rl, rw) {
   /*- -------------------------------------------------------------------------------- */
   /* Pre-processing */
 
@@ -143,6 +154,10 @@ function run_renowify(df, or, oe, pluginUrl) {
   if (df != null) debug_flag = df;
   if (or != null) only_redactor = or;
   if (oe != null) only_error = oe;
+  if (std != null) save_to_db = std;
+  if (rh != null) run_html5 = rh;
+  if (rl != null) run_lighthouse = rl;
+  if (rw != null) run_wave = rw;
 
   // Recuperer les options (profile)
   chrome.storage.sync.get(['debug'], function (sync) {
@@ -152,245 +167,264 @@ function run_renowify(df, or, oe, pluginUrl) {
     }
     //alert('Display detailled debug : ' + debug_flag);
 
-    // Check Page
-    if (isHomepage) console.log('$ isHomepage');
-    if (isPreview) console.log('$ isPreview');
-    if (isDecla) console.log('$ isDecla');
-    if (isSitemap) console.log('$ isSitemap');
-    if (isPrototype) console.log('$ isPrototype');
-    if (isAEM) console.log('$ isAEM');
-    if (isCTIE) console.log('$ isCTIE');
-    if (isSearchLogic) console.log('$ isSearchLogic');
-    if (isOnePage) console.log('$ isOnePage');
+  // Check Page
+  if (isHomepage) console.log('$ isHomepage');
+  if (isPreview) console.log('$ isPreview');
+  if (isDecla) console.log('$ isDecla');
+  if (isSitemap) console.log('$ isSitemap');
+  if (isPrototype) console.log('$ isPrototype');
+  if (isAEM) console.log('$ isAEM');
+  if (isCTIE) console.log('$ isCTIE');
+  if (isSearchLogic) console.log('$ isSearchLogic');
+  if (isOnePage) console.log('$ isOnePage');
 
-    // Reset
-    result_crit = '';
-    result_nc = '';
-    result_nth = '';
-    result_dev = '';
-    result_man = '';
-    result_crit_nb = '';
-    result_nc_nb = '';
-    result_nth_nb = '';
-    result_dev_nb = '';
-    result_man_nb = '';
+  // Reset
+  result_crit = '';
+  result_nc = '';
+  result_nth = '';
+  result_dev = '';
+  result_man = '';
+  result_crit_nb = '';
+  result_nc_nb = '';
+  result_nth_nb = '';
+  result_dev_nb = '';
+  result_man_nb = '';
+  result_html5 = '';
+  result_wave = '';
+  result_lighthouse = '';
 
-    /*- -------------------------------------------------------------------------------- */
-    // Add JS
-    // - double sécurité pour que ce sript puisse également être appelé par l'extention chrome
-    if (!document.body.classList.contains('renowify-script-injected')) {
-      /* Pour le bookmarklet */
-      console.log('== Start Bookmarklet Renowify ==');
-      loadStyle(pluginUrl);
-      var functions_loaded = loadScript(
-        'functions',
-        '/scripts/features/nia_functions.js',
-        pluginUrl
-      );
-      var resultpanel_loaded = loadScript(
-        'resultpanel',
-        '/scripts/features/nia_resultpanel.js',
-        pluginUrl
-      );
-      var checks_loaded = loadScript(
-        'checks',
-        '/scripts/dist/checks.js',
-        pluginUrl
-      );
+  /*- -------------------------------------------------------------------------------- */
+  // Add JS
+  // - double sécurité pour que ce sript puisse également être appelé par l'extention chrome
+  if (!document.body.classList.contains('renowify-script-injected')) {
+    /* Pour le bookmarklet */
+    console.log('== Start Bookmarklet Renowify ==');
+    loadStyle(pluginUrl);
+    var functions_loaded = loadScript(
+      'functions',
+      '/scripts/features/nia_functions.js',
+      pluginUrl
+    );
+    var resultpanel_loaded = loadScript(
+      'resultpanel',
+      '/scripts/features/nia_resultpanel.js',
+      pluginUrl
+    );
+    var thirdservices_loaded = loadScript(
+      'thirdservices',
+      '/scripts/features/nia_thirdservices.js',
+      pluginUrl
+    );
+    var checks_loaded = loadScript(
+      'checks',
+      '/scripts/dist/checks.js',
+      pluginUrl
+    );
 
-      Promise.all([functions_loaded, resultpanel_loaded, checks_loaded])
-        .then(function () {
-          setTimeout(beforeCheck(), 100);
-        })
-        .then(function () {
-          var p01 = new Promise(function (resolve) {
-            check_part_01();
-            setTimeout(resolve, 100);
-          });
-          var p02 = new Promise(function (resolve) {
-            check_part_02();
-            setTimeout(resolve, 100);
-          });
-          var p03 = new Promise(function (resolve) {
-            check_part_03();
-            setTimeout(resolve, 100);
-          });
-          var p04 = new Promise(function (resolve) {
-            check_part_04();
-            setTimeout(resolve, 100);
-          });
-          var p05 = new Promise(function (resolve) {
-            check_part_05();
-            setTimeout(resolve, 100);
-          });
-          var p06 = new Promise(function (resolve) {
-            check_part_06();
-            setTimeout(resolve, 100);
-          });
-          var p07 = new Promise(function (resolve) {
-            check_part_07();
-            setTimeout(resolve, 100);
-          });
-          var p08 = new Promise(function (resolve) {
-            check_part_08();
-            setTimeout(resolve, 100);
-          });
-          var p09 = new Promise(function (resolve) {
-            check_part_09();
-            setTimeout(resolve, 100);
-          });
-          var p10 = new Promise(function (resolve) {
-            check_part_10();
-            setTimeout(resolve, 100);
-          });
-          var p11 = new Promise(function (resolve) {
-            check_part_11();
-            setTimeout(resolve, 100);
-          });
-          var p12 = new Promise(function (resolve) {
-            check_part_12();
-            setTimeout(resolve, 100);
-          });
-          var p13 = new Promise(function (resolve) {
-            check_part_13();
-            setTimeout(resolve, 100);
-          });
-          var p14 = new Promise(function (resolve) {
-            check_part_14();
-            setTimeout(resolve, 100);
-          });
-          var p15 = new Promise(function (resolve) {
-            check_part_15();
-            setTimeout(resolve, 100);
-          });
-
-          Promise.all([
-            p01,
-            p02,
-            p03,
-            p04,
-            p05,
-            p06,
-            p07,
-            p08,
-            p09,
-            p10,
-            p11,
-            p12,
-            p13,
-            p14,
-            p15
-          ])
-            .then(function () {
-              setTimeout(createResultPanel(), 100);
-            })
-            .then(function () {
-              setTimeout(activateCheckA11YPanel(), 100);
-            });
-        })
-        .then(function () {
-          console.log('== End Bookmarklet Renowify ==');
+    Promise.all([
+      functions_loaded,
+      resultpanel_loaded,
+      thirdservices_loaded,
+      checks_loaded
+    ])
+      .then(function () {
+        setTimeout(beforeCheck(), 100);
+      })
+      .then(function () {
+        var p01 = new Promise(function (resolve) {
+          check_part_01();
+          setTimeout(resolve, 100);
         });
-    } else {
-      console.log('== Start Plugin Renowify ==');
-
-      beforeCheck();
-      /* Pour le Plugin (les script sont appelé dans le fichier sw_chrome.js) */
-      var part01 = new Promise(function (resolve) {
-        check_part_01();
-        setTimeout(resolve, 100);
-      });
-      var part02 = new Promise(function (resolve) {
-        check_part_02();
-        setTimeout(resolve, 100);
-      });
-      var part03 = new Promise(function (resolve) {
-        check_part_03();
-        setTimeout(resolve, 100);
-      });
-      var part04 = new Promise(function (resolve) {
-        check_part_04();
-        setTimeout(resolve, 100);
-      });
-      var part05 = new Promise(function (resolve) {
-        check_part_05();
-        setTimeout(resolve, 100);
-      });
-      var part06 = new Promise(function (resolve) {
-        check_part_06();
-        setTimeout(resolve, 100);
-      });
-      var part07 = new Promise(function (resolve) {
-        check_part_07();
-        setTimeout(resolve, 100);
-      });
-      var part08 = new Promise(function (resolve) {
-        check_part_08();
-        setTimeout(resolve, 100);
-      });
-      var part09 = new Promise(function (resolve) {
-        check_part_09();
-        setTimeout(resolve, 100);
-      });
-      var part10 = new Promise(function (resolve) {
-        check_part_10();
-        setTimeout(resolve, 100);
-      });
-      var part11 = new Promise(function (resolve) {
-        check_part_11();
-        setTimeout(resolve, 100);
-      });
-      var part12 = new Promise(function (resolve) {
-        check_part_12();
-        setTimeout(resolve, 100);
-      });
-      var part13 = new Promise(function (resolve) {
-        check_part_13();
-        setTimeout(resolve, 100);
-      });
-      var part14 = new Promise(function (resolve) {
-        check_part_14();
-        setTimeout(resolve, 100);
-      });
-      var part15 = new Promise(function (resolve) {
-        check_part_15();
-        setTimeout(resolve, 100);
-      });
-
-      Promise.allSettled([
-        part01,
-        part02,
-        part03,
-        part04,
-        part05,
-        part06,
-        part07,
-        part08,
-        part09,
-        part10,
-        part11,
-        part12,
-        part13,
-        part14,
-        part15
-      ])
-        .then((results) => {
-          results.forEach((result, index) => {
-            let newi = ('0' + (index + 1)).slice(-2);
-            console.log('- Part' + newi + ' : ' + result.status);
-          });
-        })
-        .then(function () {
-          setTimeout(createResultPanel(), 100);
-        })
-        .then(function () {
-          setTimeout(activateCheckA11YPanel(), 100);
-        })
-        .then(function () {
-          console.log('== End Plugin Renowify ==');
+        var p02 = new Promise(function (resolve) {
+          check_part_02();
+          setTimeout(resolve, 100);
         });
-    }
-  });
+        var p03 = new Promise(function (resolve) {
+          check_part_03();
+          setTimeout(resolve, 100);
+        });
+        var p04 = new Promise(function (resolve) {
+          check_part_04();
+          setTimeout(resolve, 100);
+        });
+        var p05 = new Promise(function (resolve) {
+          check_part_05();
+          setTimeout(resolve, 100);
+        });
+        var p06 = new Promise(function (resolve) {
+          check_part_06();
+          setTimeout(resolve, 100);
+        });
+        var p07 = new Promise(function (resolve) {
+          check_part_07();
+          setTimeout(resolve, 100);
+        });
+        var p08 = new Promise(function (resolve) {
+          check_part_08();
+          setTimeout(resolve, 100);
+        });
+        var p09 = new Promise(function (resolve) {
+          check_part_09();
+          setTimeout(resolve, 100);
+        });
+        var p10 = new Promise(function (resolve) {
+          check_part_10();
+          setTimeout(resolve, 100);
+        });
+        var p11 = new Promise(function (resolve) {
+          check_part_11();
+          setTimeout(resolve, 100);
+        });
+        var p12 = new Promise(function (resolve) {
+          check_part_12();
+          setTimeout(resolve, 100);
+        });
+        var p13 = new Promise(function (resolve) {
+          check_part_13();
+          setTimeout(resolve, 100);
+        });
+        var p14 = new Promise(function (resolve) {
+          check_part_14();
+          setTimeout(resolve, 100);
+        });
+        var p15 = new Promise(function (resolve) {
+          check_part_15();
+          setTimeout(resolve, 100);
+        });
+
+        Promise.all([
+          p01,
+          p02,
+          p03,
+          p04,
+          p05,
+          p06,
+          p07,
+          p08,
+          p09,
+          p10,
+          p11,
+          p12,
+          p13,
+          p14,
+          p15
+        ])
+          .then(function () {
+            setTimeout(createResultPanel(), 100);
+          })
+          .then(function () {
+            setTimeout(thirdPartValidation(), 100);
+          })
+          .then(function () {
+            setTimeout(activateCheckA11YPanel(), 100);
+          });
+      })
+      .then(function () {
+        console.log('== End Bookmarklet Renowify ==');
+      });
+  } else {
+    console.log('== Start Plugin Renowify ==');
+
+    beforeCheck();
+    /* Pour le Plugin (les script sont appelé dans le fichier sw_chrome.js) */
+    var part01 = new Promise(function (resolve) {
+      check_part_01();
+      setTimeout(resolve, 100);
+    });
+    var part02 = new Promise(function (resolve) {
+      check_part_02();
+      setTimeout(resolve, 100);
+    });
+    var part03 = new Promise(function (resolve) {
+      check_part_03();
+      setTimeout(resolve, 100);
+    });
+    var part04 = new Promise(function (resolve) {
+      check_part_04();
+      setTimeout(resolve, 100);
+    });
+    var part05 = new Promise(function (resolve) {
+      check_part_05();
+      setTimeout(resolve, 100);
+    });
+    var part06 = new Promise(function (resolve) {
+      check_part_06();
+      setTimeout(resolve, 100);
+    });
+    var part07 = new Promise(function (resolve) {
+      check_part_07();
+      setTimeout(resolve, 100);
+    });
+    var part08 = new Promise(function (resolve) {
+      check_part_08();
+      setTimeout(resolve, 100);
+    });
+    var part09 = new Promise(function (resolve) {
+      check_part_09();
+      setTimeout(resolve, 100);
+    });
+    var part10 = new Promise(function (resolve) {
+      check_part_10();
+      setTimeout(resolve, 100);
+    });
+    var part11 = new Promise(function (resolve) {
+      check_part_11();
+      setTimeout(resolve, 100);
+    });
+    var part12 = new Promise(function (resolve) {
+      check_part_12();
+      setTimeout(resolve, 100);
+    });
+    var part13 = new Promise(function (resolve) {
+      check_part_13();
+      setTimeout(resolve, 100);
+    });
+    var part14 = new Promise(function (resolve) {
+      check_part_14();
+      setTimeout(resolve, 100);
+    });
+    var part15 = new Promise(function (resolve) {
+      check_part_15();
+      setTimeout(resolve, 100);
+    });
+
+    Promise.allSettled([
+      part01,
+      part02,
+      part03,
+      part04,
+      part05,
+      part06,
+      part07,
+      part08,
+      part09,
+      part10,
+      part11,
+      part12,
+      part13,
+      part14,
+      part15
+    ])
+      .then((results) => {
+        results.forEach((result, index) => {
+          let newi = ('0' + (index + 1)).slice(-2);
+          console.log('- Part' + newi + ' : ' + result.status);
+        });
+      })
+      .then(function () {
+        setTimeout(createResultPanel(), 100);
+      })
+      .then(function () {
+        setTimeout(thirdPartValidation(), 100);
+      })
+      .then(function () {
+        setTimeout(activateCheckA11YPanel(), 100);
+      })
+      .then(function () {
+        console.log('== End Plugin Renowify ==');
+      });
+  }
+	});
 }
 
 // END

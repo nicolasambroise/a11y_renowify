@@ -216,6 +216,9 @@ function addScriptRenowify(currentTabId) {
             scriptFolder + 'dist/checks.js',
             scriptFolder + 'features/nia_functions.js',
             scriptFolder + 'features/nia_resultpanel.js',
+            scriptFolder + 'features/nia_savebdd.js',
+            scriptFolder + 'features/nia_savedecla.js',
+            scriptFolder + 'features/nia_thirdservices.js',
             scriptFolder + 'renowify.js'
           ],
           target: { tabId: currentTabId }
