@@ -3508,16 +3508,29 @@ function check_test_05q() {
     let nia05q_flag1 = false;
     let nia05q_flag2 = false;
     let nia05q_flag3 = false;
+    let nia05q_found = false;
     let nia05q_img, nia05q_tagline;
     if (nia05q_nodes && nia05q_nodes.length > 0) {
       for (let i = 0; i < nia05q_nodes.length; i++) {
         if (
-          !nia05q_nodes[i].hasAttribute('href') ||
-          (!nia05q_nodes[i].getAttribute('href').includes('fr.html') &&
-            !homepageException.includes(nia05q_nodes[i].getAttribute('href')))
+          !nia05q_nodes[i].hasAttribute('href')
         ) {
-          setItemOutline(nia05q_nodes[i], 'yellow', 'nia05q1', '05-Q');
-          nia05q_flag1 = true;
+            setItemOutline(nia05q_nodes[i], 'yellow', 'nia05q1', '05-Q');
+            nia05q_flag1 = true;
+        } else if (
+          !nia05q_nodes[i].getAttribute('href').includes('fr.html')
+        ) {
+          nia05q_found = false;
+          for(let j = 0; j < homepageException.length; j++){
+            if(homepageException[j].substring(homepageException[j].indexOf("//")) == nia05q_nodes[i].getAttribute('href')){
+              nia05q_found = true;
+              break;
+            }
+          }
+          if(nia05q_found == false) {
+            setItemOutline(nia05q_nodes[i], 'yellow', 'nia05q1', '05-Q');
+            nia05q_flag1 = true;
+          }
         } else if (
           nia05q_nodes[i].hasAttribute('title') &&
           !nia05q_nodes[i].getAttribute('title').includes('- Accueil')
@@ -5609,7 +5622,7 @@ function check_test_07f() {
         '.topnav > button.anchor.anchor-scroll, .page-headernav > button.anchor.anchor-scroll, .page-headernavmobile > button.anchor.anchor-scroll'
       );
       const nia07f21_btnClose = document.querySelector(
-        '[aria-modal="true"] button.anchor.anchor-close'
+        '[aria-modal="true"] button.anchor-close'
       );
       if (
         nia07f20_btn &&
@@ -6405,7 +6418,7 @@ function check_test_09d() {
     let nia09d_counter = 0;
     if (nia09d_nav && isItemVisible(nia09d_nav)) {
       nia09d_counter++;
-    } else if (nia09d_nav && nia09d_nav_btn && isItemVisible(nia09d_nav_btn)) {
+    } else if (nia09d_nav_btn && isItemVisible(nia09d_nav_btn)) {
       nia09d_counter++;
     } else if (
       nia09d_nav &&
@@ -6415,6 +6428,11 @@ function check_test_09d() {
       nia09d_counter++;
     } else if (debug_flag) {
       console.log('navigation principale non trouvé');
+
+
+      console.log(nia09d_nav_btn)
+      console.log(window.getComputedStyle(nia09d_nav_btn))
+      console.log(isItemVisible(nia09d_nav_btn))
     }
 
     if (nia09d_search && isItemVisible(nia09d_search)) {
@@ -6883,12 +6901,14 @@ function check_test_11c() {
   const nia11c_nodes = document.querySelectorAll(
     '.cmp-text, .cmp-focus-list-description'
   ); // Contenu rédigé par le client
-  let nia11c_flag = false;
+  let nia11c_flag1 = false;
+  let nia11c_flag2 = false;
   let nia11c_lang;
   let nia11c_array_test;
+  let nia11c_childlang = false;
 
   const nia11c_array_fr = [
-    ' on ',
+    ' les ',
     ' y ',
     ' en ',
     ' chez ',
@@ -6976,19 +6996,37 @@ function check_test_11c() {
         ) {
           if (debug_flag)
             console.log('keyword detected : ' + nia11c_array_test[j]);
-          setItemOutline(nia11c_nodes[i], 'orange', 'nia11c', '11-C');
-          nia11c_flag = true;
+
+          nia11c_childlang = nia11c_nodes[i].querySelector("[lang]");
+          console.log(nia11c_childlang)
+          console.log(nia11c_lang)
+
+          if(nia11c_childlang && nia11c_childlang != null){
+            setItemOutline(nia11c_nodes[i], 'yellow', 'nia11c', '11-C');
+            nia11c_flag2 = true;
+          }
+          else {
+            setItemOutline(nia11c_nodes[i], 'orange', 'nia11c', '11-C');
+            nia11c_flag1 = true;
+          }
           break;
         }
       }
     }
   }
-  if (nia11c_flag == true) {
+  if (nia11c_flag1 == true) {
     setItemToResultList(
       'man',
       "<li><a href='#' data-destination='nia11c' class='result-focus label-orange'>11-C</a> : Forte probabilité de texte en langue étrangère présent sur la page</li>"
     );
   }
+  else if (nia11c_flag2 == true) {
+    setItemToResultList(
+      'man',
+      "<li><a href='#' data-destination='nia11c' class='result-focus label-yellow'>11-C</a> : Forte probabilité de texte en langue étrangère présent sur la page</li>"
+    );
+  }
+
 }
 
 /*- -------------------------------------------------------------------------------- */

@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Renowify - Check Access",
-  "description": "Vérification de l'accessibilité des sites web",
+  "name": "Renowify - Assistant Accessibilité",
+  "description": "Outil d'aide à la vérification de l'accessibilité des sites web en suivant le référentiel RAWeb",
   "version": "2.3.0",
-  "author": "Nicolas AMBROISE",
+  "author": "Renow",
   "icons": {
     "16": "images/renow-16.png",
     "32": "images/renow-32.png",
@@ -38,7 +38,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "noreply@renowify.lu",
+      "id": "noreply@renow.public.lu",
       "strict_min_version": "109.0"
     }
   }

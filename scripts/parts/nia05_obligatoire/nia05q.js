@@ -12,16 +12,29 @@ function check_test_05q() {
     let nia05q_flag1 = false;
     let nia05q_flag2 = false;
     let nia05q_flag3 = false;
+    let nia05q_found = false;
     let nia05q_img, nia05q_tagline;
     if (nia05q_nodes && nia05q_nodes.length > 0) {
       for (let i = 0; i < nia05q_nodes.length; i++) {
         if (
-          !nia05q_nodes[i].hasAttribute('href') ||
-          (!nia05q_nodes[i].getAttribute('href').includes('fr.html') &&
-            !homepageException.includes(nia05q_nodes[i].getAttribute('href')))
+          !nia05q_nodes[i].hasAttribute('href')
         ) {
-          setItemOutline(nia05q_nodes[i], 'yellow', 'nia05q1', '05-Q');
-          nia05q_flag1 = true;
+            setItemOutline(nia05q_nodes[i], 'yellow', 'nia05q1', '05-Q');
+            nia05q_flag1 = true;
+        } else if (
+          !nia05q_nodes[i].getAttribute('href').includes('fr.html')
+        ) {
+          nia05q_found = false;
+          for(let j = 0; j < homepageException.length; j++){
+            if(homepageException[j].substring(homepageException[j].indexOf("//")) == nia05q_nodes[i].getAttribute('href')){
+              nia05q_found = true;
+              break;
+            }
+          }
+          if(nia05q_found == false) {
+            setItemOutline(nia05q_nodes[i], 'yellow', 'nia05q1', '05-Q');
+            nia05q_flag1 = true;
+          }
         } else if (
           nia05q_nodes[i].hasAttribute('title') &&
           !nia05q_nodes[i].getAttribute('title').includes('- Accueil')

@@ -34,7 +34,7 @@ function check_test_09d() {
     let nia09d_counter = 0;
     if (nia09d_nav && isItemVisible(nia09d_nav)) {
       nia09d_counter++;
-    } else if (nia09d_nav && nia09d_nav_btn && isItemVisible(nia09d_nav_btn)) {
+    } else if (nia09d_nav_btn && isItemVisible(nia09d_nav_btn)) {
       nia09d_counter++;
     } else if (
       nia09d_nav &&
@@ -44,6 +44,11 @@ function check_test_09d() {
       nia09d_counter++;
     } else if (debug_flag) {
       console.log('navigation principale non trouvé');
+
+
+      console.log(nia09d_nav_btn)
+      console.log(window.getComputedStyle(nia09d_nav_btn))
+      console.log(isItemVisible(nia09d_nav_btn))
     }
 
     if (nia09d_search && isItemVisible(nia09d_search)) {

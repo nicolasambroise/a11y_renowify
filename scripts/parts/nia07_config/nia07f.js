@@ -365,7 +365,7 @@ function check_test_07f() {
         '.topnav > button.anchor.anchor-scroll, .page-headernav > button.anchor.anchor-scroll, .page-headernavmobile > button.anchor.anchor-scroll'
       );
       const nia07f21_btnClose = document.querySelector(
-        '[aria-modal="true"] button.anchor.anchor-close'
+        '[aria-modal="true"] button.anchor-close'
       );
       if (
         nia07f20_btn &&

@@ -5,12 +5,14 @@ function check_test_11c() {
   const nia11c_nodes = document.querySelectorAll(
     '.cmp-text, .cmp-focus-list-description'
   ); // Contenu rédigé par le client
-  let nia11c_flag = false;
+  let nia11c_flag1 = false;
+  let nia11c_flag2 = false;
   let nia11c_lang;
   let nia11c_array_test;
+  let nia11c_childlang = false;
 
   const nia11c_array_fr = [
-    ' on ',
+    ' les ',
     ' y ',
     ' en ',
     ' chez ',
@@ -98,17 +100,35 @@ function check_test_11c() {
         ) {
           if (debug_flag)
             console.log('keyword detected : ' + nia11c_array_test[j]);
-          setItemOutline(nia11c_nodes[i], 'orange', 'nia11c', '11-C');
-          nia11c_flag = true;
+
+          nia11c_childlang = nia11c_nodes[i].querySelector("[lang]");
+          console.log(nia11c_childlang)
+          console.log(nia11c_lang)
+
+          if(nia11c_childlang && nia11c_childlang != null){
+            setItemOutline(nia11c_nodes[i], 'yellow', 'nia11c', '11-C');
+            nia11c_flag2 = true;
+          }
+          else {
+            setItemOutline(nia11c_nodes[i], 'orange', 'nia11c', '11-C');
+            nia11c_flag1 = true;
+          }
           break;
         }
       }
     }
   }
-  if (nia11c_flag == true) {
+  if (nia11c_flag1 == true) {
     setItemToResultList(
       'man',
       "<li><a href='#' data-destination='nia11c' class='result-focus label-orange'>11-C</a> : Forte probabilité de texte en langue étrangère présent sur la page</li>"
     );
   }
+  else if (nia11c_flag2 == true) {
+    setItemToResultList(
+      'man',
+      "<li><a href='#' data-destination='nia11c' class='result-focus label-yellow'>11-C</a> : Forte probabilité de texte en langue étrangère présent sur la page</li>"
+    );
+  }
+
 }
