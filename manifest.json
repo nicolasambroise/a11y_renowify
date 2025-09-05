@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Renowify - Assistant Accessibilité",
   "description": "Outil d'aide à la vérification de l'accessibilité des sites web en suivant le référentiel RAWeb",
-  "version": "2.3.0",
+  "version": "0.2.3.0",
   "author": "Renow",
   "icons": {
     "16": "images/renow-16.png",
