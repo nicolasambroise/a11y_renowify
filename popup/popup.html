@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,shrink-to-fit=no"
+    />
+    <title>Plugin A11Y Renowify</title>
+    <meta name="description" content="Plugin A11Y Renowify - Luxembourg" />
+    <meta name="author" content="Nicolas AMBROISE" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body id="checkA11YPopup">
+    <header role="banner">
+      <h1>Plugin A11Y Renowify</h1>
+    </header>
+    <main role="main">
+      <div class="frame" id="check">
+        <h2>Check Access</h2>
+        <div class="form-group">
+          <fieldset
+            class="form-options form-options--switch form-options--switch--mini"
+          >
+            <legend class="label form-options-legend">
+              Vérification automatique
+            </legend>
+            <div class="form-options-wrapper">
+              <ul class="form-options-content">
+                <li class="form-options-group">
+                  <label for="switch-redac" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-redac"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="3"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Contenu rédacteur</span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-nc" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-nc"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="3"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Erreurs et alertes</span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-all" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-all"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="3"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Erreurs, alertes et bonnes pratiques</span
+                    >
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="frame" id="tools">
+        <h2>Outils</h2>
+        <div class="form-group">
+          <fieldset
+            class="form-options form-options--switch form-options--switch--mini"
+          >
+            <legend class="label form-options-legend">
+              Vérification manuelle
+            </legend>
+            <div class="form-options-wrapper">
+              <ul class="form-options-content">
+                <li class="form-options-group">
+                  <label for="switch-images" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-images"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="1"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Textes alternatifs d'<strong>images</strong></span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-tab" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-tab"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="2"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Forcer l'affichage du <strong>focus</strong></span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-lang" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-lang"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="3"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Afficher les changements de <strong>langue</strong></span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-space" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-space"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="4"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Modifier les <strong>espacements</strong> de
+                      caractères</span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-headings" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-headings"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="5"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Afficher les niveaux de <strong>titre</strong></span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-autocomplete" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-autocomplete"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="6"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Afficher les attributs
+                      '<strong>autocomplete</strong>'</span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-table" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-table"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="7"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Afficher les attributs des
+                      <strong>tableaux</strong></span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-link" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-link"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="8"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Afficher les 'title' des <strong>liens</strong></span
+                    >
+                  </label>
+                </li>
+                <li class="form-options-group">
+                  <label for="switch-bg" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-bg"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-renowify"
+                      value="9"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Cacher les images de <strong>background</strong></span
+                    >
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </main>
+    <footer role="contentinfo">
+      <span>V2.4</span>
+    </footer>
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>

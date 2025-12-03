@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Renowify - Assistant Accessibilité",
+  "description": "Outil d'aide à l'amélioration de l'accessibilité des sites web en suivant le référentiel RAWeb",
+  "version": "0.2.4.2",
+  "author": "Nicolas AMBROISE",
+  "icons": {
+    "16": "images/renow-16.png",
+    "32": "images/renow-32.png",
+    "48": "images/renow-48.png",
+    "144": "images/renow-144.png",
+    "180": "images/renow-180.png"
+  },
+  "action": {
+    "default_title": "Renowify",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "images/renow-16.png",
+      "32": "images/renow-32.png",
+      "48": "images/renow-48.png",
+      "144": "images/renow-144.png",
+      "180": "images/renow-180.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
+  },
+  "minimum_chrome_version": "120",
+  "permissions": ["scripting", "activeTab", "storage"],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Insert",
+        "mac": "Command+Insert"
+      }
+    }
+  }
+}

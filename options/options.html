@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,shrink-to-fit=no"
+    />
+    <title>Plugin A11Y Renowify</title>
+    <meta name="description" content="Plugin A11Y Renowify - Luxembourg" />
+    <meta name="author" content="Nicolas AMBROISE" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main role="main">
+      <div class="frame">
+        <div id="half-column">
+          <div class="form-group">
+            <div class="form-group-label">
+              <label for="profile">Rôle</label>
+            </div>
+            <div class="form-group-field">
+              <select id="profile" name="profile">
+                <option value="redac">Redacteur</option>
+                <option value="dev">Developpeur</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group-label">
+              <label for="password">Mot de passe</label>
+            </div>
+            <div class="form-group-field">
+              <input id="password" name="password" type="password" disabled />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <fieldset
+            class="form-options form-options--switch form-options--switch--mini"
+          >
+            <legend class="label form-options-legend">Options</legend>
+            <div class="form-options-wrapper">
+              <ul class="form-options-content">
+                <li class="form-options-group">
+                  <label for="switch-debug" class="form-options-label">
+                    <input
+                      type="checkbox"
+                      id="switch-debug"
+                      class="form-options-field form-options-field--checkbox"
+                      name="switch-options"
+                      value="3"
+                      role="switch"
+                    />
+                    <span class="state">
+                      <span class="container"
+                        ><span class="position"></span
+                      ></span>
+                    </span>
+                    <span class="form-options-description"
+                      >Afficher les logs de debug dans la console</span
+                    >
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </fieldset>
+        </div>
+        <div id="status" aria-live="polite"></div>
+        <button id="save">Enregistrer</button>
+      </div>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

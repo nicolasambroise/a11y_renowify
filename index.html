@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plugin A11Y Renowify</title>
+    <style>
+      html {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+          sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      }
+
+      body {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        word-wrap: break-word;
+        color: #1f2328;
+      }
+      header,
+      main,
+      footer {
+        max-width: 1012px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      h1 {
+        padding-bottom: 0.3em;
+        font-size: 2em;
+        border-bottom: 1px solid #eaecef;
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+      }
+      h2 {
+        padding-bottom: 0.3em;
+        font-size: 1.5em;
+        border-bottom: 1px solid #eaecef;
+        margin-top: 24px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+      }
+      #btn-renowify {
+        display: none;
+      }
+      footer {
+        text-align: right;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index.css">
+  </head>
+  <body>
+    <header>
+      <h1>Renowify : Votre allié pour un web plus accessible</h1>
+    </header>
+    <main>
+      <article class="markdown-body entry-content container-lg" itemprop="text">
+        <p>
+          <strong
+            >Outil d'aide à la vérification de l'accessibilité des sites web en
+            suivant le référentiel RAWeb</strong
+          >
+        </p>
+        <h2 tabindex="-1">Présentation</h2>
+        <p>
+          Renowify est une extension de navigateur pensée pour les rédacteurs,
+          développeurs, designers et responsables qualité qui souhaitent rendre
+          leurs sites web plus inclusifs et conformes aux standards
+          d’accessibilité numérique. Facile à utiliser et puissante, elle vous
+          permet d’identifier rapidement les obstacles à l’accessibilité et de
+          les corriger efficacement.
+        </p>
+        <p>
+          Initialement conçue pour répondre aux exigences du référentiel RAWeb,
+          Renowify s’est transformée en un véritable couteau suisse de l’audit
+          d’accessibilité. Elle combine des tests automatisés rigoureux avec des
+          outils d’analyse manuelle pour vous offrir une vision complète de
+          l’état d’accessibilité de vos pages.
+        </p>
+        <p>Fonctionnalités principales</p>
+        <ul>
+          <li>
+            <strong>Analyse automatique</strong> : En un clic, Renowify exécute
+            plus d’une centaine de tests unitaires sur la page en cours et
+            affiche un récapitulatif clair et structuré dans une barre latérale.
+          </li>
+          <li>
+            <strong>Outils manuels</strong> : Pour aller plus loin, l’extension
+            propose une série d’outils interactifs qui vous permettent de
+            vérifier visuellement certains critères souvent négligés ou
+            difficiles à détecter automatiquement.
+          </li>
+        </ul>
+        <h2 tabindex="-1">Utilisation</h2>
+        <p>L’utilisation de Renowify est d’une simplicité déconcertante :</p>
+        <ol>
+          <li>
+            Ouvrez la page web que vous souhaitez auditer dans votre navigateur.
+          </li>
+          <li>Cliquez sur l’icône de l’extension Renowify.</li>
+          <li>
+            L’analyse démarre automatiquement et les résultats s’affichent dans
+            la barre latérale.
+          </li>
+          <li>
+            Activez les outils manuels selon vos besoins pour compléter votre
+            audit..
+          </li>
+        </ol>
+        <h2 tabindex="-1">Liste des tests unitaires automatiques</h2>
+        <ol>
+          <li>Couleur et contraste</li>
+          <li>
+            Images
+            <ul>
+              <li>Alternative textuelle sur toutes les images informatives</li>
+              <li>Attributs des svg de décoration</li>
+            </ul>
+          </li>
+          <li>Liens</li>
+          <li>
+            Formulaire et Autocomplete
+            <ul>
+              <li>Présence d'un label</li>
+              <li>Autocomplete sur les champs classique</li>
+            </ul>
+          </li>
+          <li>Elements Obligatoires</li>
+          <li>Structure des composants</li>
+          <li>Configuration des composants</li>
+          <li>Tableau</li>
+          <li>Navigation</li>
+          <li>Balises/attributs obsolètes</li>
+          <li>Changement de langue</li>
+          <li>Boutons</li>
+          <li>Règles de rédaction</li>
+          <li>Titres</li>
+          <li>Sécurité</li>
+        </ol>
+        <h2 tabindex="-1">Liste des outils disponible</h2>
+        <p>
+          Voici les outils que vous pouvez activer à tout moment pour inspecter
+          votre page :
+        </p>
+        <ol>
+          <li>
+            <strong>Textes alternatifs d’images</strong> : Vérifiez si chaque
+            image dispose d’un attribut alt pertinent.
+          </li>
+          <li>
+            <strong>Affichage du focus clavier</strong> : Mettez en évidence les
+            éléments recevant le focus pour tester la navigation au clavier.
+          </li>
+          <li>
+            <strong>Changements de langue</strong> : Identifiez les zones où une
+            balise explicite est définie.
+          </li>
+          <li>
+            <strong>Espacement des caractères</strong> : Modifiez
+            l’interlettrage pour tester la lisibilité.
+          </li>
+          <li>
+            <strong>Niveaux de titres</strong> : Visualisez la hiérarchie des
+            titres (h1 à h6) pour vérifier leur cohérence.
+          </li>
+          <li>
+            <strong>Attributs Autocomplete</strong> : Affichez les champs de
+            formulaire avec leurs attributs autocomplete.
+          </li>
+          <li>
+            <strong>Attributs Tableau</strong> : Inspectez les balises table et
+            leurs rôles sémantiques.
+          </li>
+          <li>
+            <strong>Titres des liens</strong> : Listez les attributs title des
+            liens pour évaluer leur pertinence.
+          </li>
+          <li>
+            <strong>Image de background</strong> : Vérifiez si le texte reste
+            lisible en l'absence d'image de fond.
+          </li>
+        </ol>
+        <h2 tabindex="-1">Pourquoi choisir Renowify ?</h2>
+        <ul>
+          <li>
+            <strong>Gain de temps</strong> : Plus besoin de vérifier chaque
+            critère manuellement, l’extension fait le gros du travail pour vous.
+          </li>
+          <li>
+            <strong>Fiabilité</strong> : Basée sur le référentiel RAWeb, elle
+            vous guide vers une conformité solide.
+          </li>
+          <li>
+            <strong>Simplicité</strong> : Une interface claire, des résultats
+            lisibles et une prise en main immédiate.
+          </li>
+          <li>
+            <strong>Complémentarité</strong> : Combine tests automatiques et
+            outils manuels pour une couverture maximale.
+          </li>
+        </ul>
+        <p>
+          Renowify est bien plus qu’un outil technique : c’est une démarche vers
+          un web plus inclusif, équitable et accessible à tous. Que vous soyez
+          développeur, intégrateur ou simplement soucieux de l’expérience
+          utilisateur, Renowify vous aide à faire la différence.
+        </p>
+        <h2 tabindex="-1">Collaborer</h2>
+        <p>
+          N'hésitez pas à me remonter les problèmes, faux-positifs ou vos
+          suggestions d'améliorations.
+        </p>
+        <h2 tabindex="-1">Licence</h2>
+        <p>Copyright : Nicolas AMBROISE - CTIE - Licence MIT</p>
+      </article>
+      <div id="app"></div>
+    </main>
+  </body>
+</html>
