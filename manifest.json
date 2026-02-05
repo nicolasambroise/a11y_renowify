@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Renowify - Assistant Accessibilité",
   "description": "Outil d'aide à l'amélioration de l'accessibilité des sites web en suivant le référentiel RAWeb",
-  "version": "0.2.4.2",
+  "version": "0.2.4.4",
   "author": "Nicolas AMBROISE",
   "icons": {
     "16": "images/renow-16.png",
@@ -33,6 +33,15 @@
       "suggested_key": {
         "default": "Ctrl+Insert",
         "mac": "Command+Insert"
+      }
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "renowify@renow.public.lu",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": {
+        "required": ["none"]
       }
     }
   }

@@ -3,6 +3,7 @@ const saveOptions = () => {
   const profile = document.getElementById('profile').value;
   const debug = document.getElementById('switch-debug').checked;
   const status = document.getElementById('status');
+  const error = document.getElementById('password-desc');
   const password = document.getElementById('password');
   password.removeAttribute('aria-invalid');
   password.closest('.form-group').classList.remove('form-group--error');
@@ -11,6 +12,8 @@ const saveOptions = () => {
   if (checkSecurity(profile, password.value)) {
     chrome.storage.sync.set({ profile: profile, debug: debug }, () => {
       // Update status to let user know options were saved.
+      status.classList.remove('msg--error');
+      status.classList.add('msg--success');
       status.innerHTML = '<p>Vos options ont été sauvegardées.</p>';
       setTimeout(() => {
         status.textContent = '';
@@ -18,7 +21,10 @@ const saveOptions = () => {
       }, 1500);
     });
   } else {
-    status.innerHTML = '<p>Mauvais mot de passe !</p>';
+    status.classList.remove('msg--success');
+    status.classList.add('msg--error');
+    error.innerHTML = '<p>Mauvais mot de passe !</p>';
+    status.innerHTML = '<p>Erreur !</p>';
     password.setAttribute('aria-invalid', 'true');
     password.closest('.form-group').classList.add('form-group--error');
     password.focus();
@@ -29,7 +35,7 @@ const saveOptions = () => {
 // stored in chrome.storage.
 const restoreOptions = () => {
   chrome.storage.sync.get({ profile: 'redac', debug: false }, (items) => {
-    if(items) {
+    if (items) {
       document.getElementById('profile').value = items.profile;
       document.getElementById('switch-debug').checked = items.debug;
     }
@@ -61,6 +67,7 @@ function checkSecurity(profile, password) {
   return true;
 }
 
+// Activer/Désactiver le champ mot de passe
 const togglePassword = () => {
   const password = document.getElementById('password');
   if (document.getElementById('profile').value != 'dev') {
@@ -68,12 +75,25 @@ const togglePassword = () => {
     password.removeAttribute('aria-invalid');
     password.closest('.form-group').classList.remove('form-group--error');
     password.value = '';
-    document.getElementById('status').textContent = '';
+    document.getElementById('password-desc').textContent = '';
   } else {
     password.removeAttribute('disabled');
+  }
+};
+
+// Afficher/Masquer les caractères du champ mot de passe
+const showPassword = () => {
+  const password = document.getElementById('password');
+  if (password.type === 'password') {
+    password.type = 'text';
+  } else {
+    password.type = 'password';
   }
 };
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.getElementById('save').addEventListener('click', saveOptions);
 document.getElementById('profile').addEventListener('change', togglePassword);
+document
+  .getElementById('password-show')
+  .addEventListener('click', showPassword);

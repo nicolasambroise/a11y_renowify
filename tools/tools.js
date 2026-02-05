@@ -45,7 +45,7 @@ let nia_formBottomLine;
 
 /* Link */
 const nia_linkElm = document.querySelectorAll(
-  'a[href]:not([role="button"]),[role="link"][href]'
+  'a[href]:not([role="button"]):not([aria-hidden="true"][role="presentation"]),[role="link"][href]'
 );
 let nia_linkError = 0;
 let nia_linkBottomLine;
@@ -55,3 +55,7 @@ const nia_tableElm = document.querySelectorAll('table, caption, th, td');
 let nia_tableError = 0;
 let nia_tableWarning = 0;
 let nia_tableBottomLine;
+
+/* Hidden */
+const nia_hiddenElm = document.querySelectorAll('[aria-hidden="true"]');
+const nia_allElm = document.querySelectorAll('*:not([aria-hidden="true"])');

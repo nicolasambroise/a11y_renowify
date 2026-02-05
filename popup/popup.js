@@ -1,50 +1,44 @@
 /* Script Check A11Y Renowify - Nicolas AMBROISE */
 
-// Fonction pour activer un script au clic sur le switch correspondant
+// Fonction pour activer un script au clic sur le radio correspondant
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const currentTabId = tabs[0].id;
   console.log('==== Init ====');
   initRenowify(currentTabId);
 
   //enable click eventrun_renowify
-  const switchBtn = document.querySelectorAll(
-    'input[type="checkbox"][role="switch"][id^="switch-"]'
-  );
-  for (let i = 0; i < switchBtn.length; i++) {
-    switchBtn[i].addEventListener('click', (event) => {
-      let switchBtnId = event.target.id.replace('switch-', '');
-      console.log('ClickSwitchBtn > ' + switchBtnId);
+  document
+    .querySelectorAll('input[type="radio"][name="radio-renowify"]')
+    .forEach((el) => {
+      el.addEventListener('input', () => {
+        let radioBtnValue = el.value;
+        console.log('ClickRadioBtn > ' + radioBtnValue);
 
-      chrome.storage.local.get(['renowifyData'], function (result) {
-        if (result && result.renowifyData != undefined) {
-          let previous_storage = result.renowifyData;
-
-          if (previous_storage != switchBtnId) {
-            activeSwitch(switchBtnId, true, currentTabId);
-            chrome.storage.local.set({ renowifyData: switchBtnId });
+        chrome.storage.local.get(['renowifyData'], function (result) {
+          if (result && result.renowifyData != undefined) {
+            let previous_storage = result.renowifyData;
+            activeRadio(radioBtnValue, currentTabId);
+            chrome.storage.local.set({ renowifyData: radioBtnValue });
             if (previous_storage == '') {
-              console.log('$_Storage : "" => ' + switchBtnId);
+              console.log('$_Storage : "" => ' + radioBtnValue);
             } else {
               console.log(
-                '$_Storage : ' + previous_storage + ' => ' + switchBtnId
+                '$_Storage : ' + previous_storage + ' => ' + radioBtnValue
               );
             }
           } else {
-            activeSwitch(switchBtnId, false, currentTabId);
-            chrome.storage.local.set({ renowifyData: '' });
-            console.log('$_Storage : ' + previous_storage + ' => ""');
+            console.log('==== initialise local storage ====');
+            activeRadio(radioBtnValue, currentTabId);
+            chrome.storage.local.set({ renowifyData: radioBtnValue });
+            console.log('$_Storage : undefined => ' + radioBtnValue);
           }
-        } else {
-          console.log('==== initialise local storage ====');
-          chrome.storage.local.set({ renowifyData: '' });
-
-          activeSwitch(switchBtnId, true, currentTabId);
-          chrome.storage.local.set({ renowifyData: switchBtnId });
-          console.log('$_Storage : undefined => ' + switchBtnId);
-        }
+        });
       });
     });
-  }
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    resetRadio(currentTabId);
+  });
 });
 
 function initRenowify(currentTabId) {
@@ -66,83 +60,68 @@ function initRenowify(currentTabId) {
     setTimeout(resolve, 100);
   });
 
-  // retrive switch state
+  // retrive radio state
   Promise.all([e1, e2, e3]).then(() => {
-    retrieveSwitch(currentTabId);
+    retrieveRadio(currentTabId);
     console.log('Renowify READY !');
   });
 
-  // Recuperer les options (profile)
+  // Recuperer les options (profile) - switch masqués par défaut.
   chrome.storage.sync.get(['profile'], function (sync) {
-    if (sync && sync.profile && sync.profile != undefined && sync.profile != '') {
-      console.log('$_Sync : ' + sync.profile);
-      if (sync.profile == 'dev') {
-        document.getElementById('switch-nc').closest('li').style.display =
-          'block';
-        document.getElementById('switch-all').closest('li').style.display =
-          'block';
-      } else {
-        document.getElementById('switch-nc').closest('li').style.display =
-          'none';
-        document.getElementById('switch-all').closest('li').style.display =
-          'none';
-      }
+    if (sync && sync.profile && sync.profile == 'dev') {
+      document.querySelectorAll('.dev-only').forEach((el) => {
+        el.style.display = 'block';
+      });
+    } else {
+      document.querySelectorAll('.dev-only').forEach((el) => {
+        el.style.display = 'none';
+      });
     }
   });
 }
 
 // Fonction pour injecter les CSS ou les retirer
-function activeSwitch(switchBtnId, checked, currentTabId) {
-  // Déselectionne tous
-  resetSwitch();
+function activeRadio(radioBtnValue, currentTabId) {
   chrome.scripting
     .executeScript({
       target: { tabId: currentTabId },
       func: cleanRenowify
     })
     .then(() => {
-      // Selectionne actif
-      const switchBtn = document.getElementById('switch-' + switchBtnId);
-      console.log('ActiveSwitch > ' + switchBtnId + ' : ' + checked);
-      if (checked == true) {
-        switchBtn.checked = true;
-        switchBtn.setAttribute('aria-pressed', checked);
-
-        // Run Renowify
-        if (
-          switchBtnId == 'redac' ||
-          switchBtnId == 'nc' ||
-          switchBtnId == 'all'
-        ) {
-          runRenowify(switchBtnId, currentTabId);
-        }
-        // Inject JS
-        else if (
-          switchBtnId == 'images' ||
-          switchBtnId == 'lang' ||
-          switchBtnId == 'headings' ||
-          switchBtnId == 'autocomplete' ||
-          switchBtnId == 'link' ||
-          switchBtnId == 'table' ||
-          switchBtnId == 'tab' ||
-          switchBtnId == 'space' ||
-          switchBtnId == 'bg'
-        ) {
-          let path_a = 'tools/nia_' + switchBtnId + '.js'
-          if(navigator.userAgent.includes('Firefox')) {
-            path_a = '../'+path_a;
-          }
-          chrome.scripting.executeScript({
-              files: [path_a],
-              target: {tabId: currentTabId}
-            });
-        } else {
-          alert('Switch not configured !');
-        }
-        addBadge(currentTabId);
-      } else {
-        removeBadge(currentTabId);
+      console.log('activeRadio > ' + radioBtnValue);
+      // Run Renowify
+      if (
+        radioBtnValue == 'redac' ||
+        radioBtnValue == 'nc' ||
+        radioBtnValue == 'all'
+      ) {
+        runRenowify(radioBtnValue, currentTabId);
       }
+      // Inject JS
+      else if (
+        radioBtnValue == 'images' ||
+        radioBtnValue == 'lang' ||
+        radioBtnValue == 'headings' ||
+        radioBtnValue == 'autocomplete' ||
+        radioBtnValue == 'link' ||
+        radioBtnValue == 'table' ||
+        radioBtnValue == 'tab' ||
+        radioBtnValue == 'space' ||
+        radioBtnValue == 'hidden' ||
+        radioBtnValue == 'bg'
+      ) {
+        let path_a = 'tools/nia_' + radioBtnValue + '.js';
+        if (navigator.userAgent.includes('Firefox')) {
+          path_a = '../' + path_a;
+        }
+        chrome.scripting.executeScript({
+          files: [path_a],
+          target: { tabId: currentTabId }
+        });
+      } else {
+        alert('Radio Button not configured !');
+      }
+      addBadge(currentTabId);
     });
 }
 
@@ -154,7 +133,7 @@ chrome.tabs.onUpdated.addListener(function (currentTabId, changeInfo, tab) {
   }
 });
 
-function retrieveSwitch(currentTabId) {
+function retrieveRadio(currentTabId) {
   chrome.storage.local.get(['renowifyData'], function (result) {
     if (
       result &&
@@ -163,24 +142,40 @@ function retrieveSwitch(currentTabId) {
       result.renowifyData != ''
     ) {
       console.log('$_Storage : ' + result.renowifyData);
-      activeSwitch(result.renowifyData, true, currentTabId);
+      const RadioBtn = document.querySelector(
+        'input[type="radio"][name="radio-renowify"][value="' +
+          result.renowifyData +
+          '"]'
+      );
+      if (RadioBtn) {
+        RadioBtn.checked = true;
+        activeRadio(result.renowifyData, currentTabId);
+      }
     }
   });
 }
 
-function resetSwitch() {
-  const switchBtns = document.querySelectorAll(
-    'input[type="checkbox"][role="switch"][id^="switch-"]'
-  );
-  for (let i = 0; i < switchBtns.length; i++) {
-    switchBtns[i].checked = false;
-    switchBtns[i].removeAttribute('aria-pressed');
-  }
+function resetRadio(currentTabId) {
+  console.log('resetRadio');
+  chrome.scripting
+    .executeScript({
+      target: { tabId: currentTabId },
+      func: cleanRenowify
+    })
+    .then(() => {
+      document
+        .querySelectorAll('input[type="radio"][name="radio-renowify"]')
+        .forEach((el) => {
+          el.checked = false;
+        });
+      removeBadge(currentTabId);
+      chrome.storage.local.set({ renowifyData: '' });
+    });
 }
 
 // ==== Load Style Renowify
 function addStyleRenowify(currentTabId) {
-  console.log('addStyleRenowify - Init');
+  console.log('addStyleRenowify > Init');
   chrome.scripting
     .executeScript({
       target: { tabId: currentTabId },
@@ -188,9 +183,9 @@ function addStyleRenowify(currentTabId) {
     })
     .then((styleInjected) => {
       if (styleInjected[0].result == false) {
-        let path_d = 'assets/index.css'
-        if(navigator.userAgent.includes('Firefox')) {
-          path_d = '../'+path_d;
+        let path_d = 'assets/index.css';
+        if (navigator.userAgent.includes('Firefox')) {
+          path_d = '../' + path_d;
         }
         const d1 = chrome.scripting.insertCSS({
           files: [path_d],
@@ -211,7 +206,7 @@ function addStyleRenowify(currentTabId) {
 
 // ==== Load Script Renowify
 function addScriptRenowify(currentTabId) {
-  console.log('addScriptRenowify - Init');
+  console.log('addScriptRenowify > Init');
   chrome.scripting
     .executeScript({
       func: checkScriptClassInjected,
@@ -219,9 +214,9 @@ function addScriptRenowify(currentTabId) {
     })
     .then((scriptInjected) => {
       if (scriptInjected[0].result == false) {
-        let path_p = 'assets/index.js'
-        if(navigator.userAgent.includes('Firefox')) {
-          path_p = '../'+path_p;
+        let path_p = 'assets/index.js';
+        if (navigator.userAgent.includes('Firefox')) {
+          path_p = '../' + path_p;
         }
         const p1 = chrome.scripting.executeScript({
           files: [path_p],
@@ -242,7 +237,7 @@ function addScriptRenowify(currentTabId) {
 
 // ==== Load Tools Script
 function addScriptTools(currentTabId) {
-  console.log('addScriptTools - Init');
+  console.log('addScriptTools > Init');
   chrome.scripting
     .executeScript({
       func: checkToolsClassInjected,
@@ -250,9 +245,9 @@ function addScriptTools(currentTabId) {
     })
     .then((toolsInjected) => {
       if (toolsInjected[0].result == false) {
-        let path_t = 'tools/tools.js'
-        if(navigator.userAgent.includes('Firefox')) {
-          path_t = '../'+path_t;
+        let path_t = 'tools/tools.js';
+        if (navigator.userAgent.includes('Firefox')) {
+          path_t = '../' + path_t;
         }
         const t1 = chrome.scripting.executeScript({
           files: [path_t],
@@ -272,21 +267,19 @@ function addScriptTools(currentTabId) {
 }
 
 // ==== Run Renowify Script
-function runRenowify(switchBtnId, currentTabId) {
-  console.log('Run Renowify script : ' + switchBtnId);
+function runRenowify(radioBtnId, currentTabId) {
+  console.log('Run Renowify script : ' + radioBtnId);
   chrome.scripting.executeScript({
     target: { tabId: currentTabId },
-    args: [switchBtnId],
-    func: (switchBtnId) => {
+    args: [radioBtnId],
+    func: (radioBtnId) => {
       if (document.body.classList.contains('renowify-script-injected')) {
         // Variables config globale
         const debug_flag = false; // true -> affiche les logs
-        let only_redactor = false; // true --> affiche uniquement les critères relatif au redacteur
-        let only_nc = false; // true --> affiche uniquement les Non-conformités critiques
+        const only_redactor = radioBtnId != 'redac' ? false : true; // true --> affiche uniquement les critères relatif au redacteur
+        const only_nc = radioBtnId === 'nc' ? true : false; // true --> affiche uniquement les Non-conformités critiques
 
-        if (switchBtnId == 'nc') only_nc = true;
-        else if (switchBtnId == 'redac') only_redactor = true;
-        run_renowify(debug_flag, only_redactor, only_nc);
+        renowify(debug_flag, only_redactor, only_nc);
       } else {
         toggleCheckA11YPanel();
       }
@@ -334,11 +327,11 @@ function cleanRenowify() {
   document.body.classList.remove('tab-style-injected');
   document.body.classList.remove('space-style-injected');
   document.body.classList.remove('bg-style-injected');
+  document.body.classList.remove('hidden-style-injected');
 }
 
 // ==== Gestion des multi-injections
 // Ajoute une classe au <body> pour eviter de relancer le script si le plugin est appelé plusieurs fois
-
 function addStyleClassToBody() {
   document.body.classList.add('renowify-style-injected');
 }
@@ -375,17 +368,7 @@ function addBadge(currentTabId) {
 }
 
 function removeBadge(currentTabId) {
-  const switchBtns = document.querySelectorAll(
-    'input[type="checkbox"][role="switch"]'
-  );
-  let isActif = false;
-  for (let i = 0; i < switchBtns.length; i++) {
-    if (switchBtns[i].checked) {
-      isActif = true;
-      break;
-    }
-  }
-  if (isActif == false) {
+  if (document.querySelector('input[name="radio-renowify"]:checked') == null) {
     chrome.action.setBadgeText({
       tabId: currentTabId,
       text: 'OFF'

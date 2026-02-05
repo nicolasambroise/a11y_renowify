@@ -15,60 +15,85 @@
   <body>
     <main role="main">
       <div class="frame">
-        <div id="half-column">
-          <div class="form-group">
-            <div class="form-group-label">
-              <label for="profile">Rôle</label>
-            </div>
-            <div class="form-group-field">
-              <select id="profile" name="profile">
-                <option value="redac">Redacteur</option>
-                <option value="dev">Developpeur</option>
-              </select>
-            </div>
+        <h2>Options</h2>
+        <div class="form-group">
+          <div class="form-group-label">
+            <label for="profile">Rôle</label>
           </div>
-          <div class="form-group">
-            <div class="form-group-label">
-              <label for="password">Mot de passe</label>
-            </div>
-            <div class="form-group-field">
-              <input id="password" name="password" type="password" disabled />
-            </div>
+          <div class="form-group-field">
+            <select id="profile" name="profile">
+              <option value="redac">Redacteur</option>
+              <option value="dev">Developpeur</option>
+            </select>
           </div>
         </div>
         <div class="form-group">
-          <fieldset
+          <div class="form-group-label">
+            <label for="password">Mot de passe</label>
+          </div>
+          <div class="form-group-field form-group--suffix">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              aria-describedby="password-desc"
+              disabled
+            />
+            <button
+              class="btn btn-borderless form-field--suffix btn-icon-only"
+              type="button"
+              title="Afficher le mot de passe"
+              id="password-show"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 12"
+                fill="none"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M7.99758 11.639C4.54224 11.639 1.80223 9.73555 0.0709252 6.13473C-0.0236417 5.93589 -0.0236417 5.70311 0.0709252 5.50428C1.80223 1.90346 4.54467 0 8.00242 0C11.4602 0 14.1978 1.90346 15.9291 5.50428C16.0236 5.70311 16.0236 5.93589 15.9291 6.13473C14.1978 9.73555 11.4553 11.639 7.99758 11.639ZM1.53793 5.8195C2.60483 7.88058 4.56407 10.1841 7.99758 10.1841C11.4311 10.1841 13.3952 7.88058 14.4621 5.8195C13.3952 3.75843 11.4359 1.45488 8.00242 1.45488C4.56892 1.45488 2.60483 3.75843 1.53793 5.8195Z"
+                  fill="black"
+                />
+                <path
+                  d="M7.99998 9.45669C5.99468 9.45669 4.36279 7.82481 4.36279 5.8195C4.36279 3.8142 5.99468 2.18231 7.99998 2.18231C10.0053 2.18231 11.6372 3.8142 11.6372 5.8195C11.6372 7.82481 10.0053 9.45669 7.99998 9.45669ZM7.99998 3.63719C6.79729 3.63719 5.81767 4.61681 5.81767 5.8195C5.81767 7.0222 6.79729 8.00182 7.99998 8.00182C9.20268 8.00182 10.1823 7.0222 10.1823 5.8195C10.1823 4.61681 9.20268 3.63719 7.99998 3.63719Z"
+                  fill="black"
+                />
+              </svg>
+              <span class="btn-text at">Afficher le mot de passe</span>
+            </button>
+            <div class="msg msg--error" id="password-desc"></div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="form-group">
+          <div
             class="form-options form-options--switch form-options--switch--mini"
           >
-            <legend class="label form-options-legend">Options</legend>
-            <div class="form-options-wrapper">
-              <ul class="form-options-content">
-                <li class="form-options-group">
-                  <label for="switch-debug" class="form-options-label">
-                    <input
-                      type="checkbox"
-                      id="switch-debug"
-                      class="form-options-field form-options-field--checkbox"
-                      name="switch-options"
-                      value="3"
-                      role="switch"
-                    />
-                    <span class="state">
-                      <span class="container"
-                        ><span class="position"></span
-                      ></span>
-                    </span>
-                    <span class="form-options-description"
-                      >Afficher les logs de debug dans la console</span
-                    >
-                  </label>
-                </li>
-              </ul>
-            </div>
-          </fieldset>
+            <label for="switch-debug" class="form-options-label">
+              <input
+                type="checkbox"
+                id="switch-debug"
+                class="form-options-field form-options-field--checkbox at"
+                name="switch-options"
+                value="3"
+                role="switch"
+              />
+              <span class="state">
+                <span class="container"><span class="position"></span></span>
+              </span>
+              <span class="form-options-description"
+                >Afficher les logs dans la console</span
+              >
+            </label>
+          </div>
         </div>
-        <div id="status" aria-live="polite"></div>
-        <button id="save">Enregistrer</button>
+        <div class="bottom-right">
+          <button id="save" class="btn btn-secondary">Enregistrer</button>
+          <div id="status" aria-live="polite" class="msg msg--success"></div>
+        </div>
       </div>
     </main>
     <script src="options.js"></script>

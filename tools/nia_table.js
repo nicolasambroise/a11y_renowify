@@ -36,7 +36,7 @@ if (typeof nia_tableElm !== 'undefined') {
       }
     }
 
-    label = '&lt;' + item.tagName.toLowerCase() + attr + '&gt;';
+    label = '<' + item.tagName.toLowerCase() + attr + '>';
     item.classList.add('checkA11YOutline__' + color);
     const spanLabel = document.createElement('span');
     spanLabel.classList.add('checkA11YSpan');
